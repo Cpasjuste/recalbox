@@ -34,30 +34,115 @@ variables:
 
 build rpi1:
   <<: *build_definition
+  only:
+    - master
+    - tags
   variables:
     ARCH: 'rpi1'
 build rpi2:
   <<: *build_definition
+  only:
+    - master
+    - tags
   variables:
     ARCH: 'rpi2'
 build rpi3:
   <<: *build_definition
+  only:
+    - master
+    - tags
   variables:
     ARCH: 'rpi3'
 build x86_64:
   <<: *build_definition
+  only:
+    - master
+    - tags
   variables:
     ARCH: 'x86_64'
 build x86:
   <<: *build_definition
+  only:
+    - master
+    - tags
   variables:
     ARCH: 'x86'
 build odroidc2:
   <<: *build_definition
+  only:
+    - master
+    - tags
   variables:
     ARCH: 'odroidc2'
 build odroidxu4:
   <<: *build_definition
+  only:
+    - master
+    - tags
+  variables:
+    ARCH: 'odroidxu4'
+
+build rpi1 for test:
+  <<: *build_definition
+  when: manual
+  only:
+    - branches
+  except:
+    - master
+  variables:
+    ARCH: 'rpi1'
+build rpi2 for test:
+  <<: *build_definition
+  when: manual
+  only:
+    - branches
+  except:
+    - master
+  variables:
+    ARCH: 'rpi2'
+build rpi3 for test:
+  <<: *build_definition
+  when: manual
+  only:
+    - branches
+  except:
+    - master
+  variables:
+    ARCH: 'rpi3'
+build x86_64 for test:
+  <<: *build_definition
+  when: manual
+  only:
+    - branches
+  except:
+    - master
+  variables:
+    ARCH: 'x86_64'
+build x86 for test:
+  <<: *build_definition
+  when: manual
+  only:
+    - branches
+  except:
+    - master
+  variables:
+    ARCH: 'x86'
+build odroidc2 for test:
+  <<: *build_definition
+  when: manual
+  only:
+    - branches
+  except:
+    - master
+  variables:
+    ARCH: 'odroidc2'
+build odroidxu4 for test:
+  <<: *build_definition
+  when: manual
+  only:
+    - branches
+  except:
+    - master
   variables:
     ARCH: 'odroidxu4'
 
@@ -97,6 +182,7 @@ release stable:
 
 release for test:
   <<: *release_definition
+  when: manual
   only:
     - branches
     - tags
