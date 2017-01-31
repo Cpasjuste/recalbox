@@ -100,7 +100,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Added Japanese, Russian and Hungarian languages
 - Bumped virtualgamepads version - virtualkeyboard now available
 - Add usb encoder 3H-Dual-Arcade, Mayflash dreamcast adapter
-
+- Added "Joe Contre Les Pharaons" Amstrad CPC homebrew
 
 ## [4.0.0-beta5] - 2016-08-13hs the ratio issue in mame.
 - Improved pads and gpio support for moonlight
