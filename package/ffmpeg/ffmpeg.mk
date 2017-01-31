@@ -463,6 +463,10 @@ else
 FFMPEG_CONF_OPTS += --disable-pic
 endif
 
+ifeq ($(BR2_PACKAGE_RPI_FIRMWARE),y)
+FFMPEG_CONF_OPTS += --enable-mmal --enable-omx --enable-omx-rpi --extra-cflags=-I$(STAGING_DIR)/usr/include/IL
+endif
+
 # Default to --cpu=generic for MIPS architecture, in order to avoid a
 # warning from ffmpeg's configure script.
 ifeq ($(BR2_mips)$(BR2_mipsel)$(BR2_mips64)$(BR2_mips64el),y)
