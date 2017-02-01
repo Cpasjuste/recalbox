@@ -35,6 +35,15 @@ index 341513c..de89a97 100644
  
  set(CommonMIPS
  	Common/MipsCPUDetect.cpp
+@@ -404,7 +404,7 @@ if(USE_FFMPEG)
+       elseif(MACOSX)
+         set(PLATFORM_ARCH "macosx/x86_64")
+       elseif(LINUX)
+-        if(ARMV7)
++        if(ARMV7 OR ARM64)
+           set(PLATFORM_ARCH "linux/armv7")
+         elseif(ARM)
+           set(PLATFORM_ARCH "linux/arm")
 @@ -1072,7 +1072,7 @@ if (NOT MOBILE_DEVICE)
  		Core/WaveFile.h)
  endif()
