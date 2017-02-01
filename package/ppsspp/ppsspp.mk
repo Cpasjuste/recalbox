@@ -3,24 +3,15 @@
 # PPSSPP
 #
 ################################################################################
-PPSSPP_VERSION = 7ddd68de1798ac8ce5d626a1e05a910236c2ca5d
-PPSSPP_SITE = $(call github,hrydgard,ppsspp,$(PPSSPP_VERSION))
-PPSSPP_GIT = https://github.com/hrydgard/ppsspp.git
+PPSSPP_VERSION = 668023967dbbe514c55cc8ab6cd75f9defe0b2d6
+PPSSPP_SITE = git://github.com/hrydgard/ppsspp.git
+PPSSPP_GIT_SUBMODULES=y
 PPSSPP_DEPENDENCIES = sdl2 zlib libzip linux zip ffmpeg
 
 # required at least on x86
 ifeq ($(BR2_PACKAGE_LIBGLU),y)
 PPSSPP_DEPENDENCIES += libglu
 endif
-
-# Dirty hack to download submodules
-define PPSSPP_EXTRACT_CMDS
-	rm -rf $(@D)
-	git clone --recursive $(PPSSPP_GIT) $(@D)
-	touch $(@D)/.stamp_downloaded
-	cd $(@D) && \
-	git reset --hard $(PPSSPP_VERSION)
-endef
 
 define PPSSPP_CONFIGURE_PI
 	sed -i "s+/opt/vc+$(STAGING_DIR)/usr+g" $(@D)/CMakeLists.txt
@@ -34,7 +25,7 @@ define PPSSPP_INSTALL_TO_TARGET
 endef
 
 PPSSPP_INSTALL_TARGET_CMDS = $(PPSSPP_INSTALL_TO_TARGET)
-PPSSPP_CONF_OPTS += -DUSE_FFMPEG=1 -DUSE_SYSTEM_FFMPEG=0 -DFFMPEG_BUILDDIR=1
+PPSSPP_CONF_OPTS += -DUSE_FFMPEG=1
 
 ifeq ($(BR2_PACKAGE_MALI_OPENGLES_SDK),y)
 	PPSSPP_CONF_OPTS += -DUSING_FBDEV=1
