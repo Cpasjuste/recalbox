@@ -3,15 +3,10 @@
 # PPSSPP
 #
 ################################################################################
-PPSSPP_VERSION = 668023967dbbe514c55cc8ab6cd75f9defe0b2d6
+PPSSPP_VERSION = 48934df6787cd9d693779ec1b0915a5c1ce02c72
 PPSSPP_SITE = git://github.com/hrydgard/ppsspp.git
 PPSSPP_GIT_SUBMODULES=y
 PPSSPP_DEPENDENCIES = sdl2 zlib libzip linux zip ffmpeg
-
-define PPSSPP_COPY_AARCH64_FFPMPEG
-	cp -r package/ppsspp/ffmpeg/aarch64 $(@D)/ffmpeg/linux
-endef
-PPSSPP_POST_EXTRACT_HOOKS += PPSSPP_COPY_AARCH64_FFPMPEG
 
 # required at least on x86
 ifeq ($(BR2_PACKAGE_LIBGLU),y)
