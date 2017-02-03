@@ -8,6 +8,11 @@ PPSSPP_SITE = git://github.com/hrydgard/ppsspp.git
 PPSSPP_GIT_SUBMODULES=y
 PPSSPP_DEPENDENCIES = sdl2 zlib libzip linux zip ffmpeg
 
+define PPSSPP_COPY_AARCH64_FFPMPEG
+	cp -r package/ppsspp/ffmpeg/aarch64 $(@D)/ffmpeg/linux
+endef
+PPSSPP_POST_EXTRACT_HOOKS += PPSSPP_COPY_AARCH64_FFPMPEG
+
 # required at least on x86
 ifeq ($(BR2_PACKAGE_LIBGLU),y)
 PPSSPP_DEPENDENCIES += libglu
