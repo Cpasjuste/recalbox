@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ ! "$1" ];then
-	echo -e "usage : recalbox-config.sh [command] [args]\nWith command in\n\toverscan [enable|disable]\n\toverclock [none|high|turbo|extrem]\n\taudio [hdmi|jack|auto]\n\tcanupdate\n\tupdate\n\twifi [enable|disable] ssid key\n\tstorage [current|list|INTERNAL|ANYEXTERNAL|RAM|DEV UUID]\n\tsetRootPassword [password]\n\tgetRootPassword"
+	echo -e "usage : recalbox-config.sh [command] [args]\nWith command in\n\toverscan [enable|disable]\n\toverclock [none|high|turbo|extrem]\n\taudio [hdmi|jack|auto|string]\n\tlsaudio\n\tcanupdate\n\tupdate\n\twifi [enable|disable] ssid key\n\tstorage [current|list|INTERNAL|ANYEXTERNAL|RAM|DEV UUID]\n\tsetRootPassword [password]\n\tgetRootPassword"
 	exit 1
 fi
 configFile="/boot/config.txt"
@@ -252,7 +252,8 @@ if [ "$command" == "audio" ];then
     # this code is specific to the rpi
     # don't set it on other boards
     # find a more generic way would be nice
-    if [[ "${arch}" =~ "rpi" ]]
+    rm /recalbox/share/system/.asoundrc 2>/dev/null
+    if [[ "${arch}" =~ "rpi" && "auto hdmi jack" =~ "${mode}" ]]
     then
 	# this is specific to the rpi
 	cmdVal="0"
@@ -263,7 +264,47 @@ if [ "$command" == "audio" ];then
 	fi
         echo "`logtime` : setting audio output mode : $mode" >> $log
 	amixer cset numid=3 $cmdVal || exit 1
+    elif echo "$mode" | grep -qE "^\[[0-9]:[0-9]\]"
+    then
+        cardId=`echo $mode | sed "s+^\[\([0-9]\)\:\([0-9]\)\].*+\1+g"`
+        deviceId=`echo $mode | sed "s+^\[\([0-9]\)\:\([0-9]\)\].*+\2+g"`
+        recallog "setting audio output mode : '$mode' => $cardId $deviceId"
+        cat > /recalbox/share/system/.asoundrc << EOF
+pcm.!default {
+        type hw
+        card ${cardId}
+        device ${deviceId}
+}
+ 
+ctl.!default {
+        type hw           
+        card ${cardId}
+}
+EOF
+        exit $?
+    else
+        recallog -e "Uknown audio format : $mode"
+        exit 1
     fi
+    exit 0
+fi
+
+if [ "$command" == "lsaudio" ];then
+    # lists audio devices
+    echo "auto"
+    if [[ "${arch}" =~ "rpi" ]] ; then
+        echo "hdmi"
+        echo "jack"
+    fi
+    # Now other embedded devices
+    find /proc/asound -type d -name "pcm*p" | while read fileDev ; do
+        cardId=`echo $fileDev | sed "s+.*card\([0-9]\).*+\1+g"`
+        deviceId=`echo $fileDev | sed "s+.*pcm\([0-9]\)p$+\1+g"`
+        cardName=`grep " ${cardId} \[" /proc/asound/cards | cut -d ":" -f 2 | sed "s+^ ++g"`
+        echo "$cardName" | grep -q "bcm2835" && continue # Exclude Pi3 internal audio
+        deviceName=`cat /proc/asound/card${cardId}/pcm${deviceId}p/info | grep "^id:" | cut -d ":" -f 2 | sed "s+^ ++g"`
+        echo "[${cardId}:${deviceId}] ${cardName} + ${deviceName}"
+    done
     exit 0
 fi
 
