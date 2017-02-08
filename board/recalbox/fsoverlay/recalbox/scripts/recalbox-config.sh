@@ -319,6 +319,7 @@ if [ "$command" == "volume" ];then
 			amixer set Master -- ${mode}% || exit 1
 		fi
 		if ( amixer scontrols | grep -q 'PCM' ); then
+			amixer set PCM    unmute      || exit 1
 			amixer set PCM    -- ${mode}% || exit 1
 		fi
 		# Odroids have no sound controller. Too bad, exit 0 anyway
