@@ -124,79 +124,119 @@ fi
 if [ "$command" == "overclock" ]; then
 
 declare -A arm_freq
+arm_freq["rpi3-extrem"]=1400
+arm_freq["rpi3-turbo"]=1350
+arm_freq["rpi3-high"]=1300
 arm_freq["rpi2-extrem"]=1100
 arm_freq["rpi2-turbo"]=1050
 arm_freq["rpi2-high"]=1050
 arm_freq["extrem"]=1100
 arm_freq["turbo"]=1000
 arm_freq["high"]=950
-arm_freq["none"]=700
-arm_freq["none-rpi2"]=900
 
 declare -A core_freq
+core_freq["rpi3-extrem"]=500
+core_freq["rpi3-turbo"]=500
+core_freq["rpi3-high"]=500
 core_freq["rpi2-extrem"]=550
 core_freq["rpi2-turbo"]=525
 core_freq["rpi2-high"]=525
 core_freq["extrem"]=550
 core_freq["turbo"]=500
 core_freq["high"]=250
-core_freq["none"]=250
-core_freq["none-rpi2"]=250
 
 declare -A sdram_freq
+sdram_freq["rpi3-extrem"]=575
+sdram_freq["rpi3-turbo"]=575
+sdram_freq["rpi3-high"]=575
 sdram_freq["rpi2-extrem"]=480
 sdram_freq["rpi2-turbo"]=480
 sdram_freq["rpi2-high"]=450
 sdram_freq["extrem"]=600
 sdram_freq["turbo"]=600
 sdram_freq["high"]=450
-sdram_freq["none"]=400
-sdram_freq["none-rpi2"]=450
 
 declare -A force_turbo
+force_turbo["rpi3-extrem"]=0
+force_turbo["rpi3-turbo"]=0
+force_turbo["rpi3-high"]=0
 force_turbo["rpi2-extrem"]=1
 force_turbo["rpi2-turbo"]=0
 force_turbo["rpi2-high"]=0
 force_turbo["extrem"]=1
 force_turbo["turbo"]=0
 force_turbo["high"]=0
-force_turbo["none"]=0
-force_turbo["none-rpi2"]=0
 
 declare -A over_voltage
+over_voltage["rpi3-extrem"]=4
+over_voltage["rpi3-turbo"]=4
+over_voltage["rpi3-high"]=4
 over_voltage["rpi2-extrem"]=4
 over_voltage["rpi2-turbo"]=4
 over_voltage["rpi2-high"]=4
 over_voltage["extrem"]=8
 over_voltage["turbo"]=6
 over_voltage["high"]=6
-over_voltage["none"]=0
-over_voltage["none-rpi2"]=0
 
-declare -A over_voltage_sdram
-over_voltage_sdram["rpi2-extrem"]=4
-over_voltage_sdram["rpi2-turbo"]=2
-over_voltage_sdram["rpi2-high"]=2
-over_voltage_sdram["extrem"]=6
-over_voltage_sdram["turbo"]=0
-over_voltage_sdram["high"]=0
-over_voltage_sdram["none"]=0
-over_voltage_sdram["none-rpi2"]=0
+declare -A over_voltage_sdram_p
+over_voltage_sdram_p["rpi3-extrem"]=6
+over_voltage_sdram_p["rpi3-turbo"]=6
+over_voltage_sdram_p["rpi3-high"]=6
+over_voltage_sdram_p["rpi2-extrem"]=4
+over_voltage_sdram_p["rpi2-turbo"]=2
+over_voltage_sdram_p["rpi2-high"]=2
+over_voltage_sdram_p["extrem"]=6
+over_voltage_sdram_p["turbo"]=0
+over_voltage_sdram_p["high"]=0
+
+declare -A over_voltage_sdram_i
+over_voltage_sdram_i["rpi3-extrem"]=4
+over_voltage_sdram_i["rpi3-turbo"]=4
+over_voltage_sdram_i["rpi3-high"]=4
+over_voltage_sdram_i["rpi2-extrem"]=4
+over_voltage_sdram_i["rpi2-turbo"]=2
+over_voltage_sdram_i["rpi2-high"]=2
+over_voltage_sdram_i["extrem"]=6
+over_voltage_sdram_i["turbo"]=0
+over_voltage_sdram_i["high"]=0
+
+declare -A over_voltage_sdram_c
+over_voltage_sdram_c["rpi3-extrem"]=4
+over_voltage_sdram_c["rpi3-turbo"]=4
+over_voltage_sdram_c["rpi3-high"]=4
+over_voltage_sdram_c["rpi2-extrem"]=4
+over_voltage_sdram_c["rpi2-turbo"]=2
+over_voltage_sdram_c["rpi2-high"]=2
+over_voltage_sdram_c["extrem"]=6
+over_voltage_sdram_c["turbo"]=0
+over_voltage_sdram_c["high"]=0
 
 declare -A gpu_freq
+gpu_freq["rpi3-extrem"]=500
+gpu_freq["rpi3-turbo"]=500
+gpu_freq["rpi3-high"]=500
 gpu_freq["rpi2-extrem"]=366
 gpu_freq["rpi2-turbo"]=350
 gpu_freq["rpi2-high"]=350
 gpu_freq["extrem"]=250
 gpu_freq["turbo"]=250
 gpu_freq["high"]=250
-gpu_freq["none"]=250
-gpu_freq["none-rpi2"]=250
+
+declare -A sdram_schmoo
+sdram_schmoo["rpi3-extrem"]=0x02000020
+sdram_schmoo["rpi3-turbo"]=0x02000020
+sdram_schmoo["rpi3-high"]=0x02000020
+sdram_schmoo["rpi2-extrem"]=0x02000020
+sdram_schmoo["rpi2-turbo"]=0x02000020
+sdram_schmoo["rpi2-high"]=0x02000020
+sdram_schmoo["extrem"]=0x02000020
+sdram_schmoo["turbo"]=0x02000020
+sdram_schmoo["high"]=0x02000020
 
 if [ -f "$configFile" ];then
         preBootConfig
         if [[ "$mode" == "none" ]]; then
-          for entry in arm_freq core_freq sdram_freq force_turbo over_voltage over_voltage_sdram gpu_freq; do
+          for entry in arm_freq core_freq sdram_freq force_turbo over_voltage over_voltage_sdram_p over_voltage_sdram_i over_voltage_sdram_c gpu_freq sdram_schmoo; do
 	    sed -i "/^${entry}/d" "$configFile"
           done
         else
@@ -220,13 +260,25 @@ if [ -f "$configFile" ];then
 	if [ "$?" != "0" ];then
 		echo "over_voltage=" >> "$configFile"
 	fi
-	cat "$configFile" | grep "over_voltage_sdram"
+	cat "$configFile" | grep "over_voltage_sdram_p"
 	if [ "$?" != "0" ];then
-		echo "over_voltage_sdram=" >> "$configFile"
+		echo "over_voltage_sdram_p=" >> "$configFile"
+	fi
+	cat "$configFile" | grep "over_voltage_sdram_i"
+	if [ "$?" != "0" ];then
+		echo "over_voltage_sdram_i=" >> "$configFile"
+	fi
+	cat "$configFile" | grep "over_voltage_sdram_c"
+	if [ "$?" != "0" ];then
+		echo "over_voltage_sdram_c=" >> "$configFile"
 	fi
 	cat "$configFile" | grep "gpu_freq"
 	if [ "$?" != "0" ];then
 		echo "gpu_freq=" >> "$configFile"
+	fi
+	cat "$configFile" | grep "sdram_schmoo"
+	if [ "$?" != "0" ];then
+		echo "sdram_schmoo=" >> "$configFile"
 	fi
 
 	sed -i "s/#\?arm_freq=.*/arm_freq=${arm_freq[$mode]}/g" "$configFile"
@@ -234,8 +286,11 @@ if [ -f "$configFile" ];then
 	sed -i "s/#\?sdram_freq=.*/sdram_freq=${sdram_freq[$mode]}/g" "$configFile"
 	sed -i "s/#\?force_turbo=.*/force_turbo=${force_turbo[$mode]}/g" "$configFile"
 	sed -i "s/#\?over_voltage=.*/over_voltage=${over_voltage[$mode]}/g" "$configFile"
-	sed -i "s/#\?over_voltage_sdram=.*/over_voltage_sdram=${over_voltage_sdram[$mode]}/g" "$configFile"
+	sed -i "s/#\?over_voltage_sdram_p=.*/over_voltage_sdram_p=${over_voltage_sdram_p[$mode]}/g" "$configFile"
+	sed -i "s/#\?over_voltage_sdram_i=.*/over_voltage_sdram_i=${over_voltage_sdram_i[$mode]}/g" "$configFile"
+	sed -i "s/#\?over_voltage_sdram_c=.*/over_voltage_sdram_c=${over_voltage_sdram_c[$mode]}/g" "$configFile"
 	sed -i "s/#\?gpu_freq=.*/gpu_freq=${gpu_freq[$mode]}/g" "$configFile"
+	sed -i "s/#\?sdram_schmoo=.*/sdram_schmoo=${sdram_schmoo[$mode]}/g" "$configFile"
         fi
         echo "`logtime` : enabled overclock mode : $mode" >> $log
 
