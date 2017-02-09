@@ -124,7 +124,7 @@ fi
 if [ "$command" == "overclock" ]; then
 
 declare -A arm_freq
-arm_freq["rpi3-extrem"]=1400
+arm_freq["rpi3-extrem"]=1375
 arm_freq["rpi3-turbo"]=1350
 arm_freq["rpi3-high"]=1300
 arm_freq["rpi2-extrem"]=1100
