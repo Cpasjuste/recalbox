@@ -3,9 +3,12 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unrelease][unreleased]
+- add tft waveshare 3.2 and 3.5 overlays + fbcp program to support them
+- add pwm-audio-pi-zero overlay to get audio thanks to PWMs through GPIO Pins 18 and 13 on an Pi Zero equivalent to dtoverlay=pwm-2chan,pin=18,func=2,pin2=13,func2=4
 - new web manager
 - add pwm-audio-pi-zero overlay to get audio thanks to PWMs through GPIO Pins 18 and 13 on an Pi Zero equivalent to dtoverlay=pwm-2chan,pin=18,func=2,pin2=13,func2=4
 - add rgb-pi overlay
+- fixed rgb-pi overlay
 - checksum on upgrades, progression percentage much more accurate
 - Bump to Bump rpi-userland 8e84b9003d8259472f9c79b385443b1b4975203e and rpi-firmware b365edad4e75126fb9bfee2325652758407e4f74 to change be able to change video résolution on the fly via the vcgencmd command. This will be very useful the get pixel perfect on rgb screen
 - Fixing BT firmware copy for Realtek BT devices (81xx 87xx and 88xx)
@@ -103,6 +106,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Add usb encoder 3H-Dual-Arcade, Mayflash dreamcast adapter
 - Added "Joe Contre Les Pharaons" Amstrad CPC homebrew
 - Added RPI3 overclock presets + warning popup if TURBO/EXTREM
+- Add support for smb and upnp protocols in Kodi
 
 ## [4.0.0-beta5] - 2016-08-13hs the ratio issue in mame.
 - Improved pads and gpio support for moonlight
