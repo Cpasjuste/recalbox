@@ -20,6 +20,8 @@ do_start() {
     2)
         cd /usr/recalbox-manager2/ && PORT=80 node recalbox-manager2.js &
         ;;
+    *)
+        cd /usr/recalbox-manager2/ && PORT=80 node recalbox-manager2.js &
     esac
 }
 
