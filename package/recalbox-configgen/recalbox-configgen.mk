@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-RECALBOX_CONFIGGEN_VERSION = a43aefa652bf6bcf4d0568b505cf91361dfd4379
+RECALBOX_CONFIGGEN_VERSION = f4febfdcee5465e0446a5d6add7b05e422cdb383
 
 RECALBOX_CONFIGGEN_SITE = $(call github,recalbox,recalbox-configgen,$(RECALBOX_CONFIGGEN_VERSION))
 
