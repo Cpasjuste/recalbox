@@ -112,6 +112,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Added RPI3 overclock presets + warning popup if TURBO/EXTREM
 - Add support for smb and upnp protocols in Kodi
 - Removed xboxdrv driver - broken since kernel's bump
+- Deactivated rumble support in pcsx core - causes endless vibrations problems
+- Bumped pcsx core - added an option to enable bios splashscreeen (may broke some games - disabled by default)
 
 ## [4.0.0-beta5] - 2016-08-13hs the ratio issue in mame.
 - Improved pads and gpio support for moonlight
