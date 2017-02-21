@@ -4,6 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unrelease][unreleased]
 - fix missing roms + configs subfolders creation
+- fix recalbox.conf not being upgraded
 - fixed black screen on systems with new configgen version
 - added Czech language support
 - run v2 of manager if version not found in recalbox.conf
