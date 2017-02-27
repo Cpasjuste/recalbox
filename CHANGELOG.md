@@ -4,6 +4,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unrelease][unreleased]
 - Carefully compare versions to verify if an update is available
+- Add a generic SNES pad configuration
+- Add Logitech F310 Direct Input mode configuration
+- Add Logitech F310 XInput mode (which is recommended) configuration
 - Added Latvian support
 - Added Luxembourgish support
 - fix missing roms + configs subfolders creation
