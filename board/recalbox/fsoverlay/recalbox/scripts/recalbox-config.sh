@@ -22,6 +22,31 @@ postBootConfig() {
     mount -o remount,ro /boot
 }
 
+function getSubNum () {
+	# $1 : version number. ex 4.0.2
+	# $2 : separator. ex : "."
+	# $3 : the position you need. ex : 2
+	result=`echo $1 | cut -d "$2" -f "$3" 2>/dev/null`
+	[[ -z $result ]] && echo "0" || echo $result
+}
+
+function isNewer () {
+	# compare $1 and $2
+	# if $1 >= $2 return 0
+	# else return 1
+	newVersion="$1"
+	oldVersion="$2"
+
+	for i in 1 2 3 ; do
+		oldNum=`getSubNum $oldVersion "." "$i"`
+		newNum=`getSubNum $newVersion "." "$i"`
+		[[ $newNum -eq $oldNum ]] && continue 
+		[[ $newNum -gt $oldNum ]] && return 0
+		[[ $newNum -lt $oldNum ]] && return 1
+	done
+	return 1
+}
+
 log=/recalbox/share/system/logs/recalbox.log
 systemsetting="python /usr/lib/python2.7/site-packages/configgen/settings/recalboxSettings.pyc"
 
@@ -415,7 +440,16 @@ if [ "$command" == "canupdate" ];then
 		exit 2
 	fi
 	installed=`cat /recalbox/recalbox.version`
-	if [[ "$available" != "$installed" ]]; then
+	
+	archiveVersion=`echo ${available} | cut -d '-' -f 1`
+	localVersion=`echo ${installed} | cut -d '-' -f 1`
+	
+	if [[ ${updatetype} == "stable" ]] ; then
+		if isNewer $archiveVersion $localVersion ; then
+			echo "update available"
+			exit 0
+		fi
+	elif [[ "$available" != "$installed" ]]; then
 		echo "update available"
 		exit 0
 	fi
