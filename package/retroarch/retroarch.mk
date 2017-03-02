@@ -40,6 +40,11 @@ ifeq ($(BR2_cortex_a8),y)
         RETROARCH_CONF_OPTS += --enable-neon --enable-floathard
 endif
 
+# Add dispamnx renderer for Pi
+ifeq ($(BR2_PACKAGE_RPI_FIRMWARE),y)
+	 RETROARCH_CONF_OPTS += --enable-dispmanx
+endif
+
 # odroid xu4
 ifeq ($(BR2_cortex_a15),y)
         RETROARCH_CONF_OPTS += --enable-neon --enable-floathard
