@@ -102,7 +102,7 @@ case "${RECALBOX_TARGET}" in
 	rm -rf "${GENIMAGE_TMP}" || exit 1
 	cp "board/raspberrypi/genimage.cfg" "${BINARIES_DIR}/genimage.cfg.tmp" || exit 1
 	FILES=$(find "${BINARIES_DIR}/rpi-firmware" -type f | sed -e s+"^${BINARIES_DIR}/rpi-firmware/\(.*\)$"+"file \1 \{ image = 'rpi-firmware/\1' }"+ | tr '\n' '@')
-	cat "${BINARIES_DIR}/genimage.cfg.tmp" | sed -e s+'@files'+"${FILES}"+ | tr '@' '\n' > "${BINARIES_DIR}/genimage.cfg" || exit 1
+	cat "${BINARIES_DIR}/genimage.cfg.tmp" | sed -e s+'@files'+"${FILES}"+ -e "s+size = 0+size = 2000M+" | tr '@' '\n' > "${BINARIES_DIR}/genimage.cfg" || exit 1
 	rm -f "${BINARIES_DIR}/genimage.cfg.tmp" || exit 1
 	genimage --rootpath="${TARGET_DIR}" --inputpath="${BINARIES_DIR}" --outputpath="${RECALBOX_BINARIES_DIR}" --config="${BINARIES_DIR}/genimage.cfg" --tmppath="${GENIMAGE_TMP}" || exit 1
 	rm -f "${RECALBOX_BINARIES_DIR}/boot.vfat" || exit 1
@@ -198,3 +198,10 @@ case "${RECALBOX_TARGET}" in
 	bash
 	exit 1
 esac
+
+# Compress the generated .img
+if [[ -f ${RECALBOX_BINARIES_DIR}/recalbox.img ]] ; then
+    echo "Compressing ${RECALBOX_BINARIES_DIR}/recalbox.img ..."
+    cd "${RECALBOX_BINARIES_DIR}"
+    tar -cJf "${RECALBOX_BINARIES_DIR}/recalbox.img.xz" recalbox.img && rm recalbox.img
+fi

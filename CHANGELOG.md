@@ -3,6 +3,9 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unrelease][unreleased]
+- Force a 2GB root size for .img
+- Compress .img in xz
+- Don't forget bluetooth paired devices on upgrade
 - Don't forget bluetooth paired devices on upgrade
 - Proper restart of Emulationstation
 - add locales to recalbox-manager2
