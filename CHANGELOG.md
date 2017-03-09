@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unrelease][unreleased]
+- fix gamecon 1.2
 - Solve a bug on .img compression
 - Force a 2GB root size for .img
 - Compress .img in xz
