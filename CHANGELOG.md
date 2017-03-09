@@ -9,6 +9,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Don't forget bluetooth paired devices on upgrade
 - Proper restart of Emulationstation
 - add locales to recalbox-manager2
+- Improve sound management when running multiple sound cards
 - Bumped recalbox-manager2 to v2.0
 - Carefully compare versions to verify if an update is available
 - Add a generic SNES pad configuration
