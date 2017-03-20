@@ -263,15 +263,15 @@
                         <p>Build <!--<a href="https://gitlab.com/recalbox/recalbox-buildroot/builds/${CI_BUILD_ID}">-->${CI_BUILD_ID}<!--</a>-->
                             from pipeline ${CI_PIPELINE_ID} based on ${CI_BUILD_REF_NAME}</h1>
                         </p>
-                        <p>On Linu, use <tt>unxz</tt> or <tt>tar -xvJ</tt> to uncompress the .img.xz then <tt>dd</tt> to burn the .img.</p>
+                        <p>On Linux, use <tt>xz -d</tt> or <tt>tar -xvJ</tt> to uncompress the .img.xz then <tt>dd</tt> to burn the .img.</p>
                         <p>On an alternative OS, use <a href="http://www.7-zip.org/"> 7zip</a> to uncompress the .xz then
                         <a href="https://sourceforge.net/projects/win32diskimager/">win32diskimage</a> to burn the .img</p>
                         <p>
                             The system image (.img file) will not be available for review builds based on merge requests
                         </p>
-			<p>
-			    See the changelog here : <a href="rpi3/recalbox.changelog">CHANGELOG.md</a>
-			</p>
+                        <p>
+                            See the changelog here : <a href="rpi3/recalbox.changelog">CHANGELOG.md</a>
+                        </p>
                         <table class="pure-table pure-table-striped">
                             <thead>
                             <tr>
