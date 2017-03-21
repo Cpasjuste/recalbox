@@ -28,7 +28,7 @@ ADVANCEMAME_CONF_OPTS += \
 	--disable-mevent
 	
 ifeq ($(BR2_PACKAGE_SDL2),y)
-	ADVANCEMAME_DEPENDENCIES += sdl
+	ADVANCEMAME_DEPENDENCIES += sdl2
 	ADVANCEMAME_CONF_OPTS += \
 		--enable-sdl2 \
 		--with-sdl2-prefix=$(STAGING_DIR)/usr \
