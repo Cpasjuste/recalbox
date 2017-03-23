@@ -201,7 +201,6 @@ esac
 
 # Compress the generated .img
 if [[ -f ${RECALBOX_BINARIES_DIR}/recalbox.img ]] ; then
-    echo "Compressing ${RECALBOX_BINARIES_DIR}/recalbox.img ..."
-    cd "${RECALBOX_BINARIES_DIR}"
-    tar -cJf "${RECALBOX_BINARIES_DIR}/recalbox.img.xz" recalbox.img && rm recalbox.img
+    echo "Compressing ${RECALBOX_BINARIES_DIR}/recalbox.img ... "
+    xz "${RECALBOX_BINARIES_DIR}/recalbox.img"
 fi
