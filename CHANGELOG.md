@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unrelease][unreleased]
+- Pad: add idroid default mapping
 - added recalbox as default CEC name on rpi
 - improve moonlight package
 - rewrite usb quirks
