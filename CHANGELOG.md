@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - fix webmanager2's dependencies
 - fix sound regression since handling of multiple cards
 - Fix muted sound on boot
+- samba: definitely remove printer support
 - improve CI output + better error logging on failed build
 - fix gamecon 1.2
 - configgen: scummvm: added fullscreen option
