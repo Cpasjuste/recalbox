@@ -3,7 +3,7 @@
 # RECALBOX_MANAGER2
 #
 ################################################################################
-RECALBOX_MANAGER2_VERSION = v2.0.1
+RECALBOX_MANAGER2_VERSION = decb5ef4a4854a327059d0344cb9c98fceda2cd4
 RECALBOX_MANAGER2_SITE = git://github.com/DjLeChuck/recalbox-manager
 
 RECALBOX_MANAGER2_DEPENDENCIES = nodejs

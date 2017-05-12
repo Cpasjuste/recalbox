@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unrelease][unreleased]
+- fix webmanager2's dependencies
 - improve CI output + better error logging on failed build
 - fix gamecon 1.2
 - configgen: scummvm: added fullscreen option
