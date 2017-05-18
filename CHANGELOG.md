@@ -4,6 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unrelease][unreleased]
 - fix lynx core name
+- appleII: fix known file extensions
 - fix webmanager2's dependencies
 - fix sound regression since handling of multiple cards
 - Fix muted sound on boot

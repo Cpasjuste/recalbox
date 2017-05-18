@@ -5,7 +5,7 @@
 ################################################################################
 
 # Package generated with :
-# ./scripts/linux/empack.py --system apple2 --extension '.iso .ISO .gc .GC .gcz .GCZ' --fullname 'Apple II' --platform apple2 --theme apple2 BR2_PACKAGE_LINAPPLE_PIE
+# ./scripts/linux/empack.py --system apple2 --extension '.nib .NIB .do .DO .po .PO .dsk .DSK' --fullname 'Apple II' --platform apple2 --theme apple2 BR2_PACKAGE_LINAPPLE_PIE
 
 # Name the 3 vars as the package requires
 RECALBOX_ROMFS_APPLE2_SOURCE = 
@@ -23,7 +23,7 @@ SOURCE_ROMDIR_APPLE2 = $(RECALBOX_ROMFS_APPLE2_PKGDIR)/roms
 
 ifeq ($(BR2_PACKAGE_LINAPPLE_PIE),y)
 define CONFIGURE_APPLE2
-	$(call RECALBOX_ROMFS_CALL_ADD_STANDALONE_SYSTEM,$(SYSTEM_XML_APPLE2),Apple II,$(SYSTEM_NAME_APPLE2),.iso .ISO .gc .GC .gcz .GCZ,apple2,apple2,$(SOURCE_ROMDIR_APPLE2),$(@D))
+	$(call RECALBOX_ROMFS_CALL_ADD_STANDALONE_SYSTEM,$(SYSTEM_XML_APPLE2),Apple II,$(SYSTEM_NAME_APPLE2),.nib .NIB .do .DO .po .PO .dsk .DSK,apple2,apple2,$(SOURCE_ROMDIR_APPLE2),$(@D))
 endef
 RECALBOX_ROMFS_APPLE2_CONFIGURE_CMDS += $(CONFIGURE_APPLE2)
 endif
