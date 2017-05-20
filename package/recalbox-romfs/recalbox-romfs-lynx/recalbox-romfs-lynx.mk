@@ -5,7 +5,7 @@
 ################################################################################
 
 # Package generated with :
-# ./scripts/linux/empack.py --system lynx --extension '.zip .ZIP .lnx .LNX' --fullname 'Lynx' --platform atarilynx --theme lynx libretro:atarilynx:BR2_PACKAGE_LIBRETRO_BEETLE_LYNX
+# ./scripts/linux/empack.py --system lynx --extension '.zip .ZIP .lnx .LNX' --fullname 'Lynx' --platform atarilynx --theme lynx libretro:mednafen_lynx:BR2_PACKAGE_LIBRETRO_BEETLE_LYNX
 
 # Name the 3 vars as the package requires
 RECALBOX_ROMFS_LYNX_SOURCE = 
@@ -32,7 +32,7 @@ define CONFIGURE_LYNX_LIBRETRO_START
 endef
 ifeq ($(BR2_PACKAGE_LIBRETRO_BEETLE_LYNX),y)
 define CONFIGURE_LYNX_LIBRETRO_ATARILYNX_DEF
-	$(call RECALBOX_ROMFS_CALL_ADD_CORE,$(SYSTEM_XML_LYNX),atarilynx)
+	$(call RECALBOX_ROMFS_CALL_ADD_CORE,$(SYSTEM_XML_LYNX),mednafen_lynx)
 endef
 endif
 
