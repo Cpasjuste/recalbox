@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unrelease][unreleased]
+- increase the number of inodes for .img
 - fix lynx core name
 - appleII: fix known file extensions
 - fix webmanager2's dependencies
