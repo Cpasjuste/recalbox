@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - increase the number of inodes for .img
 - fix lynx core name
 - appleII: fix known file extensions
+- adding new kernel patch to support natively xinmo 20pins usb encoder
 - fix webmanager2's dependencies
 - fix sound regression since handling of multiple cards
 - Fix muted sound on boot
