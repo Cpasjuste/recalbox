@@ -238,16 +238,18 @@ do_upgrade() {
     BOOTTAR="/recalbox/share/system/upgrade/boot.tar.xz"
     ROOTTAR="/recalbox/share/system/upgrade/root.tar.xz"
     NB_FILES_TARGET=`cat /recalbox/share/system/upgrade/root.list | wc -l`
+    
+    cp /bin/busybox /tmp
     # percentage
     touch /tmp/upgrade.files
     (
 	echo "title Upgrading the system"
 	while true
 	do
-	    NF=$(cat /tmp/upgrade.files | wc -l)
+	    NF=$(/tmp/busybox cat /tmp/upgrade.files | /tmp/busybox wc -l)
 	    let NP=${NF}00/${NB_FILES_TARGET}
-	    echo "percent ${NP}"
-	    sleep 10
+	    /tmp/busybox echo "percent ${NP}"
+	    /tmp/busybox sleep 10
 	done
     ) | /recalbox/scripts/shell2fb.py &
     
