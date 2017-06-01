@@ -5,6 +5,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unrelease][unreleased]
 - Timezone change fixed
 - increase the number of inodes for .img
+- Better upgrade information
+- Update CHANGELOG.md for nicer upgrade logs
+- Show progression while downloading an update
 - fix lynx core name
 - appleII: fix known file extensions
 - adding new kernel patch to support natively xinmo 20pins usb encoder
