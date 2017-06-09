@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unrelease][unreleased]
+- BT : improve startup, pairing and forgetting devices
+- Add support for RPI0-W
 - advancemame : bump to 3.4 and disable keyboard to prevent a crash when no keyboard is plugged
 - Timezone change fixed
 - increase the number of inodes for .img
