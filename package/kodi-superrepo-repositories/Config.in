@@ -1,8 +1,0 @@
-config BR2_PACKAGE_KODI_SUPERREPO_REPOSITORIES
-    depends on BR2_PACKAGE_KODI
-    bool "kodi-superrepo-repositories"
-    default y
-    help
-      Kodi SuperRepo Repositories
-
-      http://srp.nu
