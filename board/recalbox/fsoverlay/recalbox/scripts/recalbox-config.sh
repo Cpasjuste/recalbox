@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ ! "$1" ];then
-	echo -e "usage : recalbox-config.sh [command] [args]\nWith command in\n\toverscan [enable|disable]\n\toverclock [none|high|turbo|extrem]\n\taudio [hdmi|jack|auto|string]\n\tlsaudio\n\tcanupdate\n\tupdate\n\twifi [enable|disable] ssid key\n\tstorage [current|list|INTERNAL|ANYEXTERNAL|RAM|DEV UUID]\n\tsetRootPassword [password]\n\tgetRootPassword"
+	echo -e "usage : recalbox-config.sh [command] [args]\nWith command in\n\toverscan [enable|disable]\n\toverclock [none|high|turbo|extrem]\n\taudio [hdmi|jack|auto|string]\n\tlsaudio\n\tcanupdate\n\tupdate\n\twifi [enable|disable] ssid key\n\tstorage [current|list|INTERNAL|ANYEXTERNAL|RAM|DEV UUID]\n\tsetRootPassword [password]\n\tgetRootPassword\n updateesinput [deviceName] [deviceGUID]"
 	exit 1
 fi
 configFile="/boot/config.txt"
@@ -632,5 +632,30 @@ if [[ "$command" == "forgetBT" ]]; then
     done
     exit 0
 fi
+
+if [[ "$command" == "updateesinput" ]]; then
+    inputSrcFile=/recalbox/share_init/system/.emulationstation/es_input.cfg
+    inputDstFile=/recalbox/share/system/.emulationstation/es_input.cfg
+    tmpFile=/tmp/es_input.cfg
+
+    deviceName="$mode"
+    deviceGUID="$extra1"
+    
+    recallog "Updating ${inputDstFile} for deviceName=\"${deviceName}\" deviceGUID=\"${deviceGUID}\""
+    # Get the node from share_init, then escape \n for sed
+    realNode=`sed "/inputConfig type=\"joystick\" deviceName=\"${deviceName}\" deviceGUID=\"${deviceGUID}\"/,/<\/inputConfig>/!d" "${inputSrcFile}"`
+    realNodeEscaped=${realNode//$'\n'/\\$'\n'}
+
+    # 1st: remove the desired node from the user's es_input.cfg
+    # 2nd: add the realNode before the closing inputList tag
+    sed -e "/inputConfig type=\"joystick\" deviceName=\"${deviceName}\" deviceGUID=\"${deviceGUID}\"/,/<\/inputConfig>/d" \
+        -e "/<\/inputList>/i ${realNodeEscaped}" \
+        "${inputDstFile}" | xmllint --format -dtdvalid /recalbox/scripts/es_input.dtd - > $tmpFile
+    [ $? == 0 ] && cp $tmpFile $inputDstFile || recallog -e "Couldn't upgrade es_input.cfg for deviceName=\"${deviceName}\" deviceGUID=\"${deviceGUID}\""
+    exit $?
+fi
+
+echo "Uknown command $command"
+recallog -e "recalbox-config.sh: unknown command $command"
 
 exit 10
