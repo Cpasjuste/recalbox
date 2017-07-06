@@ -165,7 +165,7 @@ case "$1" in
 	( rb_volume_configure ; rb_audio_configure ) &  # 1.0
 	rb_timezone&          # 0.4
 	rb_hostname&          # 0.4
-	rb_xarcade2jstick&    # 0.1
+	( sleep 8 ; rb_xarcade2jstick ) &    # 0.1
 	wait
 	;;
   stop)
