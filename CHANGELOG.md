@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unrelease][unreleased]
+- rewrite usb quirks
 - odroic c2: enable H264 hardware decoding
 - xarcade: delay the startup of the driver
 - xarcade: disable predefined combo keys
