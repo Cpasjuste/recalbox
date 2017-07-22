@@ -31,6 +31,9 @@ boot_delay=3
 # uncomment if you don't want the rainbow at startup
 disable_splash=1
 
+# default CEC name
+cec_osd_name=recalbox
+
 # Overclock
 gpu_mem_256=128
 gpu_mem_512=256
