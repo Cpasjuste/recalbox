@@ -5,6 +5,8 @@ Put your msx roms in this directory.
 Rom files must have a ".mx2" extension.
 Rename .rom files .mx2
 
+BlueMSX emulator can load .dsk files
+
 
 ## BIOS ##
 

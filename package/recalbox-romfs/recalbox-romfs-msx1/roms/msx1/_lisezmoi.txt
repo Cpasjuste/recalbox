@@ -5,6 +5,8 @@ Placez ici vos roms msx.
 Les roms doivent avoir l'extension ".mx1" pour les roms MSX1.
 Renommez donc vos .rom en .mx1
 
+L'émulateur BlueMSX gére également les fichiers .dsk
+
 
 ## BIOS ##
 
