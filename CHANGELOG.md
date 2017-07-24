@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Fixed joystick sensitivity issue with mupen64plus
 - MAJOR BLUETOOTH CHANGE: users upgrading from 4.0 MUST PAIR AGAIN their controllers
 - BT: add a manual fix for xiaomi gamepad
+- deploys updates as docker containers
 - fixed a BT scan bug
 - bump configgen : remove moonlight config files before writing them + 5th moonlight player, remove commas in pad name
 - BlueMSX: added F3/F4 buttons on gamepad
