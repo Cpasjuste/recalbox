@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unrelease][unreleased]
+- Amstrad CPC (libretro-cap32 core): Fixed gamepads support + 2 players support + GUI menu
 - fixed Nintendo Wiimote sending multiples events
 - fix saving recalbox.conf when the same key exists multiple times
 - Pad: add idroid default mapping
