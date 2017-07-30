@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unrelease][unreleased]
+- fixed a BT scan bug
+- bump configgen : remove moonlight config files before writing them + 5th moonlight player, remove commas in pad name
 - BlueMSX: added F3/F4 buttons on gamepad
 - BlueMSX: added .dsk files support
 - Amstrad CPC (libretro-cap32 core): Fixed gamepads support + 2 players support + GUI menu
