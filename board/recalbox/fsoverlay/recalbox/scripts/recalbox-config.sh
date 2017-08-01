@@ -540,7 +540,7 @@ EOF
 	fi
 fi
 if [[ "$command" == "hcitoolscan" ]]; then
-	/recalbox/scripts/bluetooth/test-device list
+	PYTHONIOENCODING=UTF-8 /recalbox/scripts/bluetooth/test-device list
 	exit 0
 fi
 

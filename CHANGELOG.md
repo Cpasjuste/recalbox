@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unrelease][unreleased]
+- MAJOR BLUETOOTH CHANGE: users upgrading from 4.0 MUST PAIR AGAIN their controllers
+- BT: add a manual fix for xiaomi gamepad
 - fixed a BT scan bug
 - bump configgen : remove moonlight config files before writing them + 5th moonlight player, remove commas in pad name
 - BlueMSX: added F3/F4 buttons on gamepad
