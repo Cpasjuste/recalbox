@@ -1,5 +1,5 @@
 <inputList>
-<input name="AnalogDeadzone" value="0,0" />
+<input name="AnalogDeadzone" value="4096,4096" />
 <input name="a"        	     value="C Button R" />
 <input name="b"        	     value="A Button" />
 <input name="x"        	     value="C Button U" />
