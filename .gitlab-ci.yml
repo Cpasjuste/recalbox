@@ -191,9 +191,10 @@ release review:
 ### Deploy
 purge master:
   stage: purge
+  image: registry.gitlab.com/recalbox/ops/rancher-cli:0.6.2
   only:
     - master
-  image: registry.gitlab.com/recalbox/ops/rancher-cli:0.6.2
+  dependencies: []
   script:
     - echo cleaning master old deployments
     - rancher rm $(rancher ps | grep "${STACK_NAME}/master-" | awk '{print $1}')
