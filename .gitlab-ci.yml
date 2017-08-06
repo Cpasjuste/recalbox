@@ -171,7 +171,7 @@ build odroidxu4 for test:
 release master:
   <<: *release_definition
   variables:
-    ARCHIVE_IMAGE: "${IMAGE}:unstable"
+    ARCHIVE_IMAGE: "${IMAGE}:master"
     RANCHER_DIRECTORY: master
     SKIP_IMAGES: 'false'
   only:
