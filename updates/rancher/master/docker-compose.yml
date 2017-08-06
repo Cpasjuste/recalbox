@@ -31,13 +31,13 @@ services:
         max-file: '1'
         max-size: 300m
     ports:
-    - 8443:443/tcp
+    - 8443:8443/tcp
     labels:
       io.rancher.container.agent.role: environmentAdmin
       io.rancher.container.create_agent: 'true'
       io.rancher.container.hostname_override: container_name
       io.rancher.scheduler.global: 'true'
-      io.rancher.sidekicks: RANCHER_SERVICENAME-data
+      io.rancher.lb_service.target: only-local
   RANCHER_SERVICENAME-data:
     image: ${ARCHIVE_IMAGE}
     logging:

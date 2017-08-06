@@ -1,9 +1,9 @@
 image: docker:latest
 
 stages:
-  - purge
   - build
   - release
+  - purge
   - deploy
   - clean
 
@@ -210,7 +210,7 @@ purge master:
   script:
     - echo "Deploying image ${ARCHIVE_IMAGE} on ${STACK_NAME}/${SERVICENAME}"
     - cd updates/rancher/${RANCHER_DIRECTORY}
-    - sed "s/RANCHER_SERVICENAME:/${SERVICENAME}:/" -i docker-compose.yml rancher-compose.yml
+    - sed "s/RANCHER_SERVICENAME/${SERVICENAME}/" -i docker-compose.yml rancher-compose.yml
     - rancher up -s $STACK_NAME -u --force-upgrade -d
 
 deploy master:

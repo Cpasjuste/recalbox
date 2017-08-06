@@ -14,7 +14,7 @@ services:
       port_rules:
       - backend_name: archive-ssl
         hostname: ${ARCHIVE_FQDN}
-        priority: 2
+        priority: 1
         protocol: https
         service: RANCHER_SERVICENAME-data
         source_port: 8443
