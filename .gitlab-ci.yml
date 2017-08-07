@@ -173,7 +173,6 @@ release master:
   variables:
     ARCHIVE_IMAGE: "${IMAGE}:master"
     RANCHER_DIRECTORY: master
-    SKIP_IMAGES: 'false'
   only:
   - master
 
