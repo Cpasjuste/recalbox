@@ -225,7 +225,7 @@ deploy master:
     - master
   environment:
     name: master
-    url: https://master-${CI_PIPELINE_ID}-${STACK_NAME}-prod.recalbox.com/
+    url: https://master-${CI_PIPELINE_ID}-${STACK_NAME}-prod.recalbox.com:8443/
 
 deploy review:
   <<: *deploy_definition
