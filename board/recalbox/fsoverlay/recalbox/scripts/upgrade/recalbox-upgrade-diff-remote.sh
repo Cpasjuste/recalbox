@@ -46,7 +46,7 @@ New version available: ${NEW_VERSION}
 Changes:
 ${changes:-- No changes detected}"
 else
- echo -e "${changes}"
+ echo -ne "${changes}"
 fi
 
 exit 0

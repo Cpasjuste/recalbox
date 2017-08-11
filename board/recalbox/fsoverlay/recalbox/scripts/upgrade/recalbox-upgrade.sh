@@ -35,6 +35,7 @@ fi
 if [ "${COMMAND}" == "upgrade" ];then
   if [[ "${UPGRADETYPE}" == "stable" ]]; then
     echo "TODO"
+    exit 1
   else
     "$BINDIR/recalbox-do-upgrade.sh" --upgrade-dir "/recalbox/share/system/upgrade" --upgrade-url "${UPGRADETYPE}" --arch "${ARCH}"
     exit $?
@@ -44,6 +45,7 @@ fi
 if [ "${COMMAND}" == "diffremote" ];then
   if [[ "${UPGRADETYPE}" == "stable" ]]; then
     echo "TODO"
+    exit 1
   else
     "$BINDIR/recalbox-upgrade-diff-remote.sh" --from-version "${INSTALLED_VERSION}" --upgrade-url "${UPGRADETYPE}" --arch "${ARCH}" --changelog "/recalbox/recalbox.changelog"
     exit $?
