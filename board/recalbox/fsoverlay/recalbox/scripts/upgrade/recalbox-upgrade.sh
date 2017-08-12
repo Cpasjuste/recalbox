@@ -15,7 +15,7 @@ INSTALLED_VERSION=$(cat /recalbox/recalbox.version)
 ARCH=$(cat /recalbox/recalbox.arch)
 UPGRADETYPE="$($SYSTEMSETTINGS  -command load -key updates.type)"
 
-SERVICE_URL="https://review-5-allow-ca-hmok4e-recaleur-prod.recalbox.com"
+SERVICE_URL="https://recaleur-archive-prod.recalbox.com:9443"
 
 UUID=$("$BINDIR/../system/uuid.sh" --uuid-file "${RECALBOX_SYSTEM_DIR}/uuid")
 
