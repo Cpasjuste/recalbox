@@ -55,7 +55,7 @@ if [ "${COMMAND}" == "diffremote" ];then
   else
     UPGRADE_URL="${UPGRADETYPE}"
   fi
-  "$BINDIR/recalbox-upgrade-diff-remote.sh" --from-version "${INSTALLED_VERSION}" --upgrade-url "${UPGRADETYPE}" --arch "${ARCH}" --changelog "/recalbox/recalbox.changelog"
+  "$BINDIR/recalbox-upgrade-diff-remote.sh" --from-version "${INSTALLED_VERSION}" --upgrade-url "${UPGRADE_URL}" --arch "${ARCH}" --changelog "/recalbox/recalbox.changelog"
   exit $?
 fi
 
