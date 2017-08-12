@@ -38,6 +38,9 @@ services:
       io.rancher.container.hostname_override: container_name
       io.rancher.scheduler.global: 'true'
       io.rancher.lb_service.target: only-local
+      traefik.port: 8000
+      traefik.enable: true
+      traefik.frontend.rule: Host:install.recalbox.com
   RANCHER_SERVICENAME-data:
     image: ${ARCHIVE_IMAGE}
     logging:
