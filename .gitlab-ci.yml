@@ -5,6 +5,7 @@ stages:
   - release
   - purge
   - deploy
+  - canary
   - clean
 
 variables:
@@ -208,10 +209,9 @@ purge master:
     SERVICENAME: the rancher directory to use
     RANCHER_DIRECTORY: the rancher directory to use
   script:
-    - echo "Deploying image ${ARCHIVE_IMAGE} on ${STACK_NAME}/${SERVICENAME}"
     - cd updates/rancher/${RANCHER_DIRECTORY}
     - sed "s/RANCHER_SERVICENAME/${SERVICENAME}/" -i docker-compose.yml rancher-compose.yml
-    - rancher up -s $STACK_NAME -u --force-upgrade -d
+    - rancher up -s $STACK_NAME -u --force-upgrade --batch-size 20 -d
 
 deploy master:
   <<: *deploy_definition
@@ -220,6 +220,8 @@ deploy master:
     ARCHIVE_FQDN: master-${CI_PIPELINE_ID}-${STACK_NAME}-prod.recalbox.com
     SERVICENAME: master-${CI_PIPELINE_ID}
     RANCHER_DIRECTORY: master
+    RECALEUR_CANARY: 15
+    RECALEUR_RESPONSE: https://master-${CI_PIPELINE_ID}-${STACK_NAME}-prod.recalbox.com:8443
   only:
     - master
   environment:
@@ -240,6 +242,30 @@ deploy review:
     name: review/${CI_COMMIT_REF_SLUG}
     url: https://${CI_ENVIRONMENT_SLUG}-${STACK_NAME}-prod.recalbox.com/
     on_stop: clean review
+
+validate release:
+  <<: *deploy_definition
+  stage: canary
+  when: manual
+  dependencies: []
+  variables:
+    RANCHER_DIRECTORY: recaleur
+    RECALEUR_CANARY: 256
+    RECALEUR_RESPONSE: https://master-${CI_PIPELINE_ID}-${STACK_NAME}-prod.recalbox.com:8443
+  only:
+    - master
+
+emergency valve:
+  <<: *deploy_definition
+  stage: canary
+  when: manual
+  dependencies: []
+  variables:
+    RANCHER_DIRECTORY: recaleur
+    RECALEUR_CANARY: 0
+    RECALEUR_RESPONSE: https://master-${CI_PIPELINE_ID}-${STACK_NAME}-prod.recalbox.com:8443
+  only:
+    - master
 
 clean review:
   stage: clean

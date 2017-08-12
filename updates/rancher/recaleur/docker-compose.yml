@@ -1,0 +1,16 @@
+version: '2'
+services:
+  recaleur-server:
+    image: registry.gitlab.com/recalbox/ops/recaleur:2.0.0
+    environment:
+      LOGSTASH_TAGS: recaleur
+    command:
+    - --response
+    - ${RECALEUR_RESPONSE}
+    - --canary
+    - ${RECALEUR_CANARY}
+    logging:
+      driver: json-file
+      options:
+        max-file: '1'
+        max-size: 50m
