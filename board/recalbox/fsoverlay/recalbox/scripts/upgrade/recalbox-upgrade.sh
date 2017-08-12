@@ -2,30 +2,35 @@
 
 
 COMMAND="$1"
-BINDIR="${BINDIR:-/recalbox/scripts/upgrade/}"
-systemsetting="python /usr/lib/python2.7/site-packages/configgen/settings/recalboxSettings.pyc"
 
 if [[ -z ${COMMAND} ]]; then
   echo -e "Usage:\n$0 COMMAND" && exit 1
 fi
 
 
-UPGRADETYPE="$($systemsetting  -command load -key updates.type)"
+BINDIR="${BINDIR:-/recalbox/scripts/upgrade/}"
+SYSTEMSETTINGS="python /usr/lib/python2.7/site-packages/configgen/settings/recalboxSettings.pyc"
+RECALBOX_SYSTEM_DIR="/recalbox/share/system"
+INSTALLED_VERSION=$(cat /recalbox/recalbox.version)
+ARCH=$(cat /recalbox/recalbox.arch)
+UPGRADETYPE="$($SYSTEMSETTINGS  -command load -key updates.type)"
+
+SERVICE_URL="https://review-5-allow-ca-hmok4e-recaleur-prod.recalbox.com"
+
+UUID=$("$BINDIR/../system/uuid.sh" --uuid-file "${RECALBOX_SYSTEM_DIR}/uuid")
 
 if [[ "${UPGRADETYPE}" == "beta" || "${UPGRADETYPE}" == "unstable" ]]; then
   UPGRADETYPE="stable"
 fi
 
-INSTALLED_VERSION=`cat /recalbox/recalbox.version`
-ARCH=`cat /recalbox/recalbox.arch`
-
 
 ## COMMANDS
 if [ "${COMMAND}" == "canupgrade" ];then
   if [[ "${UPGRADETYPE}" == "stable" ]]; then
-    echo "TODO"
+    "$BINDIR/recalbox-canupgrade.sh" --from-version "${INSTALLED_VERSION}" --service-url "${SERVICE_URL}" --arch "${ARCH}" --uuid "${UUID}"
+    exit $?
   else
-    "$BINDIR/recalbox-canupgrade-from-archive.sh" --from-version "$INSTALLED_VERSION" --upgrade-url "${UPGRADETYPE}" --arch "${ARCH}"
+    "$BINDIR/recalbox-canupgrade-from-archive.sh" --from-version "${INSTALLED_VERSION}" --upgrade-url "${UPGRADETYPE}" --arch "${ARCH}"
     exit $?
   fi
   echo "no upgrade available"
@@ -34,28 +39,28 @@ fi
 
 if [ "${COMMAND}" == "upgrade" ];then
   if [[ "${UPGRADETYPE}" == "stable" ]]; then
-    echo "TODO"
-    exit 1
+    UPGRADE_URL=$("$BINDIR/recalbox-canupgrade.sh" --from-version "${INSTALLED_VERSION}" --service-url "${SERVICE_URL}" --arch "${ARCH}" --uuid "${UUID}")
+    [[ "$?" != "0" ]] && exit 1
   else
-    "$BINDIR/recalbox-do-upgrade.sh" --upgrade-dir "/recalbox/share/system/upgrade" --upgrade-url "${UPGRADETYPE}" --arch "${ARCH}"
-    exit $?
+    UPGRADE_URL="${UPGRADETYPE}"
   fi
+  "$BINDIR/recalbox-do-upgrade.sh" --upgrade-dir "${RECALBOX_SYSTEM_DIR}/upgrade" --upgrade-url "${UPGRADE_URL}" --arch "${ARCH}"
+  exit $?
 fi
 
 if [ "${COMMAND}" == "diffremote" ];then
-  if [[ "${UPGRADETYPE}" == "stable" ]]; then
-    echo "TODO"
-    exit 1
+   if [[ "${UPGRADETYPE}" == "stable" ]]; then
+    UPGRADE_URL=$("$BINDIR/recalbox-canupgrade.sh" --from-version "${INSTALLED_VERSION}" --service-url "${SERVICE_URL}" --arch "${ARCH}" --uuid "${UUID}")
+    [[ "$?" != "0" ]] && exit 1
   else
-    "$BINDIR/recalbox-upgrade-diff-remote.sh" --from-version "${INSTALLED_VERSION}" --upgrade-url "${UPGRADETYPE}" --arch "${ARCH}" --changelog "/recalbox/recalbox.changelog"
-    exit $?
+    UPGRADE_URL="${UPGRADETYPE}"
   fi
-  echo "no upgrade available"
-  exit 12
+  "$BINDIR/recalbox-upgrade-diff-remote.sh" --from-version "${INSTALLED_VERSION}" --upgrade-url "${UPGRADETYPE}" --arch "${ARCH}" --changelog "/recalbox/recalbox.changelog"
+  exit $?
 fi
 
 if [ "${COMMAND}" == "difflocal" ];then
-  "$BINDIR/recalbox-upgrade-diff-local.sh" --from-changelog "/recalbox/share/system/recalbox.changelog.done" --to-changelog "/recalbox/recalbox.changelog"
+  "$BINDIR/recalbox-upgrade-diff-local.sh" --from-changelog "${RECALBOX_SYSTEM_DIR}/recalbox.changelog.done" --to-changelog "/recalbox/recalbox.changelog"
   exit $?
 fi
 
