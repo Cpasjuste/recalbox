@@ -16,7 +16,7 @@ when curl isCalled thenEcho "4.1.0-0002"
 
 assertThat "$recalboxcanupgrade --from-version 4.1.0-0001 --upgrade-url https://url-to-use.com --arch rpi1" exitedWith 0
 
-assertThat curl hasBeenCalledWith "https://url-to-use.com/rpi1/recalbox.version"
+assertThat curl hasBeenCalledWith "https://url-to-use.com/v1/upgrade/rpi1/recalbox.version?source=recalbox"
 
 
 
@@ -27,7 +27,7 @@ when curl isCalled thenEcho "4.1.0-0002"
 
 assertThat "$recalboxcanupgrade --from-version 4.1.0-0002 --upgrade-url https://url-to-use.com --arch rpi1" exitedWith 1
 
-assertThat curl hasBeenCalledWith "https://url-to-use.com/rpi1/recalbox.version"
+assertThat curl hasBeenCalledWith "https://url-to-use.com/v1/upgrade/rpi1/recalbox.version?source=recalbox"
 
 
 
@@ -38,7 +38,7 @@ assertThat curl hasBeenCalledWith "https://url-to-use.com/rpi1/recalbox.version"
 
 #assertThat "$recalboxcanupgrade --from-version 4.1.0-0002 --upgrade-url https://url-to-use.com --arch rpi1" exitedWith 1
 
-#assertThat curl hasBeenCalledWith "https://url-to-use.com/rpi1/recalbox.version"
+#assertThat curl hasBeenCalledWith "https://url-to-use.com/v1/upgrade/rpi1/recalbox.version"
 
 
 
@@ -49,7 +49,7 @@ when curl isCalled thenEcho "147-new-update-system-1145454"
 
 assertThat "$recalboxcanupgrade --from-version 147-new-update-system-1145454 --upgrade-url https://url-to-use.com --arch rpi1" exitedWith 1
 
-assertThat curl hasBeenCalledWith "https://url-to-use.com/rpi1/recalbox.version"
+assertThat curl hasBeenCalledWith "https://url-to-use.com/v1/upgrade/rpi1/recalbox.version?source=recalbox"
 
 
 
@@ -60,7 +60,7 @@ when curl isCalled thenEcho "147-new-update-system-1145470"
 
 assertThat "$recalboxcanupgrade --from-version 147-new-update-system-1145454 --upgrade-url https://url-to-use.com --arch rpi1" exitedWith 0
 
-assertThat curl hasBeenCalledWith "https://url-to-use.com/rpi1/recalbox.version"
+assertThat curl hasBeenCalledWith "https://url-to-use.com/v1/upgrade/rpi1/recalbox.version?source=recalbox"
 
 
 
@@ -71,7 +71,7 @@ when curl isCalled thenEcho "aversion"
 
 assertThat "$recalboxcanupgrade --from-version aversion --upgrade-url https://url-to-use.com --arch rpi3" exitedWith 1
 
-assertThat curl hasBeenCalledWith "https://url-to-use.com/rpi3/recalbox.version"
+assertThat curl hasBeenCalledWith "https://url-to-use.com/v1/upgrade/rpi3/recalbox.version?source=recalbox"
 
 
 
@@ -82,7 +82,7 @@ when curl isCalled thenEcho "aversion"
 
 assertThat "$recalboxcanupgrade --from-version aversion --upgrade-url https://url-to-use.com --arch rpi3" exitedWith 1
 
-assertThat curl hasBeenCalledWith "https://url-to-use.com/rpi3/recalbox.version"
+assertThat curl hasBeenCalledWith "https://url-to-use.com/v1/upgrade/rpi3/recalbox.version?source=recalbox"
 
 
 

@@ -86,7 +86,7 @@ clean
 # Check sizes from header
 size="0"
 for file in ${FILES_TO_UPGRADE}; do
-  FILE_URL="${UPGRADE_URL}/${ARCH}/${file}"
+  FILE_URL="${UPGRADE_URL}/v1/upgrade/${ARCH}/${file}"
   headers=$(curl -sfI "${FILE_URL}${ADDITIONAL_PARAMETERS}")
   if [[ "$?" != "0" ]];then
     echoerr "Unable to get headers for ${FILE_URL}"
@@ -127,7 +127,7 @@ echoerr "Will download ${size}kb of files in ${UPGRADE_DIR} where ${freespace}kb
 cyclicProgression "$sizeInBytes" &
 progressionPid=$!
 for file in ${FILES_TO_UPGRADE}; do
-  FILE_URL="${UPGRADE_URL}/${ARCH}/${file}"
+  FILE_URL="${UPGRADE_URL}/v1/upgrade/${ARCH}/${file}"
   if ! curl -fs "${FILE_URL}${ADDITIONAL_PARAMETERS}" -o "${UPGRADE_DIR}/${file}";then
     echoerr "Unable to download file ${FILE_URL}"
     kill -9 "${progressionPid}" > /dev/null 2>&1

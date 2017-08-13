@@ -13,11 +13,11 @@ function prepareCurlHeadersFor {
     UPGRADE_URL="$1"
     UPGRADE_DIR="$2"
     ARCH="$3"
-    when curl isCalled with "-sfI ${UPGRADE_URL}/${ARCH}/root.tar.xz?source=recalbox" thenEcho "Content-Length: 151221624"
-    when curl isCalled with "-sfI ${UPGRADE_URL}/${ARCH}/boot.tar.xz?source=recalbox" thenEcho "Content-Length: 10122162"
-    when curl isCalled with "-sfI ${UPGRADE_URL}/${ARCH}/boot.tar.xz.sha1?source=recalbox" thenEcho "Content-Length: 100"
-    when curl isCalled with "-sfI ${UPGRADE_URL}/${ARCH}/root.tar.xz.sha1?source=recalbox" thenEcho "Content-Length: 101"
-    when curl isCalled with "-sfI ${UPGRADE_URL}/${ARCH}/root.list?source=recalbox" thenEcho "Content-Length: 1000"
+    when curl isCalled with "-sfI ${UPGRADE_URL}/v1/upgrade/${ARCH}/root.tar.xz?source=recalbox" thenEcho "Content-Length: 151221624"
+    when curl isCalled with "-sfI ${UPGRADE_URL}/v1/upgrade/${ARCH}/boot.tar.xz?source=recalbox" thenEcho "Content-Length: 10122162"
+    when curl isCalled with "-sfI ${UPGRADE_URL}/v1/upgrade/${ARCH}/boot.tar.xz.sha1?source=recalbox" thenEcho "Content-Length: 100"
+    when curl isCalled with "-sfI ${UPGRADE_URL}/v1/upgrade/${ARCH}/root.tar.xz.sha1?source=recalbox" thenEcho "Content-Length: 101"
+    when curl isCalled with "-sfI ${UPGRADE_URL}/v1/upgrade/${ARCH}/root.list?source=recalbox" thenEcho "Content-Length: 1000"
 }
 
 function prepareCurlFor {
@@ -28,11 +28,11 @@ function prepareCurlFor {
     prepareCurlHeadersFor $UPGRADE_URL $UPGRADE_DIR $ARCH
 
     # Files
-    when curl isCalled with "-fs ${UPGRADE_URL}/${ARCH}/boot.tar.xz?source=recalbox -o ${UPGRADE_DIR}/boot.tar.xz" thenExit 0
-    when curl isCalled with "-fs ${UPGRADE_URL}/${ARCH}/root.tar.xz?source=recalbox -o ${UPGRADE_DIR}/root.tar.xz" thenExit 0
-    when curl isCalled with "-fs ${UPGRADE_URL}/${ARCH}/boot.tar.xz.sha1?source=recalbox -o ${UPGRADE_DIR}/boot.tar.xz.sha1" thenExit 0
-    when curl isCalled with "-fs ${UPGRADE_URL}/${ARCH}/root.tar.xz.sha1?source=recalbox -o ${UPGRADE_DIR}/root.tar.xz.sha1" thenExit 0
-    when curl isCalled with "-fs ${UPGRADE_URL}/${ARCH}/root.list?source=recalbox -o ${UPGRADE_DIR}/root.list" thenExit 0
+    when curl isCalled with "-fs ${UPGRADE_URL}/v1/upgrade/${ARCH}/boot.tar.xz?source=recalbox -o ${UPGRADE_DIR}/boot.tar.xz" thenExit 0
+    when curl isCalled with "-fs ${UPGRADE_URL}/v1/upgrade/${ARCH}/root.tar.xz?source=recalbox -o ${UPGRADE_DIR}/root.tar.xz" thenExit 0
+    when curl isCalled with "-fs ${UPGRADE_URL}/v1/upgrade/${ARCH}/boot.tar.xz.sha1?source=recalbox -o ${UPGRADE_DIR}/boot.tar.xz.sha1" thenExit 0
+    when curl isCalled with "-fs ${UPGRADE_URL}/v1/upgrade/${ARCH}/root.tar.xz.sha1?source=recalbox -o ${UPGRADE_DIR}/root.tar.xz.sha1" thenExit 0
+    when curl isCalled with "-fs ${UPGRADE_URL}/v1/upgrade/${ARCH}/root.list?source=recalbox -o ${UPGRADE_DIR}/root.list" thenExit 0
 }
 
 function prepareCurlAndDfFor {
@@ -48,7 +48,7 @@ function prepareCurlAndDfFor {
 ###################################################################################
 init "when file header download failed then exit with network error"
 
-when curl isCalled with "-sfI https://url-to-use.com/rpi1/root.tar.xz?source=recalbox" thenExit 1
+when curl isCalled with "-sfI https://url-to-use.com/v1/upgrade/rpi1/root.tar.xz?source=recalbox" thenExit 1
 
 assertThat "$recalboxupgrade --upgrade-dir /tmp/recalbox-upgrade --upgrade-url https://url-to-use.com --arch rpi1" exitedWith 2
 
@@ -59,7 +59,7 @@ init "when file download failed then exit with network error"
 
 prepareCurlHeadersFor https://url-to-use.com /tmp/recalbox-upgrade rpi3
 
-when curl isCalled with "-fs https://url-to-use.com/rpi3/boot.tar.xz?source=recalbox -o $/tmp/recalbox-upgrade/boot.tar.xz" thenExit 1
+when curl isCalled with "-fs https://url-to-use.com/v1/upgrade/rpi3/boot.tar.xz?source=recalbox -o $/tmp/recalbox-upgrade/boot.tar.xz" thenExit 1
 
 assertThat "$recalboxupgrade --upgrade-dir /tmp/recalbox-upgrade --upgrade-url https://url-to-use.com --arch rpi3" exitedWith 7
 

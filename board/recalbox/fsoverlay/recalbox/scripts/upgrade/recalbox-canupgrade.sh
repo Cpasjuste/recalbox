@@ -37,7 +37,7 @@ if [[ "$?" != "0" ]]; then
   exit 2
 fi
 
-AVAILABLE_VERSION=$(curl -f "${VERSION_URL}/${ARCH}/recalbox.version?arch=${ARCH}&boardversion=${FROM_VERSION}&uuid=${UUID}&source=recalbox")
+AVAILABLE_VERSION=$(curl -f "${VERSION_URL}/v1/upgrade/${ARCH}/recalbox.version?arch=${ARCH}&boardversion=${FROM_VERSION}&uuid=${UUID}&source=recalbox")
 if [[ "${AVAILABLE_VERSION}" != "${FROM_VERSION}" ]]; then
   echo "${VERSION_URL}"
   exit 0

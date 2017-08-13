@@ -41,8 +41,8 @@ init "when calling then uses diff"
 
 UPGRADE_DIR="/tmp/upgradedir"
 
-when curl isCalled with "-f https://url-to-use.com/rpi1/recalbox.changelog?source=recalbox" thenExit 0
-when curl isCalled with "-f https://url-to-use.com/rpi1/recalbox.version?source=recalbox" thenEcho "review-2"
+when curl isCalled with "-f https://url-to-use.com/v1/upgrade/rpi1/recalbox.changelog?source=recalbox" thenExit 0
+when curl isCalled with "-f https://url-to-use.com/v1/upgrade/rpi1/recalbox.version?source=recalbox" thenEcho "review-2"
 when diff isCalled thenEcho "- change1\\\n- change2"
 when cat isCalled with "/tmp/changelog" thenEcho "- a news in review 1"
 
@@ -61,8 +61,8 @@ init "when calling with changelog then return changes with verbose"
 
 UPGRADE_DIR="/tmp/upgradedir"
 
-when curl isCalled with "-f https://url-to-use.com/rpi1/recalbox.changelog?source=recalbox" thenEcho "- a news in review 2"
-when curl isCalled with "-f https://url-to-use.com/rpi1/recalbox.version?source=recalbox" thenEcho "review-2"
+when curl isCalled with "-f https://url-to-use.com/v1/upgrade/rpi1/recalbox.changelog?source=recalbox" thenEcho "- a news in review 2"
+when curl isCalled with "-f https://url-to-use.com/v1/upgrade/rpi1/recalbox.version?source=recalbox" thenEcho "review-2"
 
 when cat isCalled with "/tmp/changelog" thenEcho "- a news in review 1"
 
@@ -79,8 +79,8 @@ init "when calling with changelog then return changes"
 
 UPGRADE_DIR="/tmp/upgradedir"
 
-when curl isCalled with "-f https://url-to-use.com/rpi1/recalbox.changelog?source=recalbox" thenEcho "- a news in review 2"
-when curl isCalled with "-f https://url-to-use.com/rpi1/recalbox.version?source=recalbox" thenEcho "review-2"
+when curl isCalled with "-f https://url-to-use.com/v1/upgrade/rpi1/recalbox.changelog?source=recalbox" thenEcho "- a news in review 2"
+when curl isCalled with "-f https://url-to-use.com/v1/upgrade/rpi1/recalbox.version?source=recalbox" thenEcho "review-2"
 
 when cat isCalled with "/tmp/changelog" thenEcho "- a news in review 1"
 
@@ -93,8 +93,8 @@ init "when nothing in changelog but new version then show empty message with ver
 
 UPGRADE_DIR="/tmp/upgradedir"
 
-when curl isCalled with "-f https://url-to-use.com/rpi1/recalbox.changelog?source=recalbox" thenEcho "- a news in review 1"
-when curl isCalled with "-f https://url-to-use.com/rpi1/recalbox.version?source=recalbox" thenEcho "review-2"
+when curl isCalled with "-f https://url-to-use.com/v1/upgrade/rpi1/recalbox.changelog?source=recalbox" thenEcho "- a news in review 1"
+when curl isCalled with "-f https://url-to-use.com/v1/upgrade/rpi1/recalbox.version?source=recalbox" thenEcho "review-2"
 
 when cat isCalled with "/tmp/changelog" thenEcho "- a news in review 1"
 
@@ -111,8 +111,8 @@ init "when nothing in changelog but new version then show empty message"
 
 UPGRADE_DIR="/tmp/upgradedir"
 
-when curl isCalled with "-f https://url-to-use.com/rpi1/recalbox.changelog?source=recalbox" thenEcho "- a news in review 1"
-when curl isCalled with "-f https://url-to-use.com/rpi1/recalbox.version?source=recalbox" thenEcho "review-2"
+when curl isCalled with "-f https://url-to-use.com/v1/upgrade/rpi1/recalbox.changelog?source=recalbox" thenEcho "- a news in review 1"
+when curl isCalled with "-f https://url-to-use.com/v1/upgrade/rpi1/recalbox.version?source=recalbox" thenEcho "review-2"
 
 when cat isCalled with "/tmp/changelog" thenEcho "- a news in review 1"
 
