@@ -2,6 +2,7 @@
 
 FILES_TO_UPGRADE="boot.tar.xz root.tar.xz boot.tar.xz.sha1 root.tar.xz.sha1 root.list"
 FILES_TO_CHECK="boot.tar.xz root.tar.xz"
+ADDITIONAL_PARAMETERS="?source=recalbox"
 
 while [[ $# -gt 1 ]]
 do
@@ -86,7 +87,7 @@ clean
 size="0"
 for file in ${FILES_TO_UPGRADE}; do
   FILE_URL="${UPGRADE_URL}/${ARCH}/${file}"
-  headers=$(curl -sfI ${FILE_URL})
+  headers=$(curl -sfI "${FILE_URL}${ADDITIONAL_PARAMETERS}")
   if [[ "$?" != "0" ]];then
     echoerr "Unable to get headers for ${FILE_URL}"
     exit 2
@@ -127,7 +128,7 @@ cyclicProgression "$sizeInBytes" &
 progressionPid=$!
 for file in ${FILES_TO_UPGRADE}; do
   FILE_URL="${UPGRADE_URL}/${ARCH}/${file}"
-  if ! curl -fs "${FILE_URL}" -o "${UPGRADE_DIR}/${file}";then
+  if ! curl -fs "${FILE_URL}${ADDITIONAL_PARAMETERS}" -o "${UPGRADE_DIR}/${file}";then
     echoerr "Unable to download file ${FILE_URL}"
     kill -9 "${progressionPid}" > /dev/null 2>&1
     cleanBeforeExit 7
