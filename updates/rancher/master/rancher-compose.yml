@@ -10,6 +10,9 @@ services:
         defaults
           log 127.0.0.1:8514 local0 debug
           option httplog
+        frontend 8000
+          option forwardfor
+          capture request header X-Forwarded-For len 500
       default_cert: wildcard.recalbox.com
       port_rules:
       - backend_name: archive-ssl
