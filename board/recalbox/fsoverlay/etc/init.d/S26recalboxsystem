@@ -114,6 +114,7 @@ rb_keyboad_lang() {
 
 rb_timezone() {
     settings_timezone="`$systemsetting -command load -key system.timezone`"
+    [[ -z $settings_timezone ]] && settings_timezone="Europe/Paris"
     if [[ "$settings_timezone" != "" && -f "/usr/share/zoneinfo/$settings_timezone" ]];then
         recallog "setting timezone to $settings_timezone"
         echo "$settings_timezone" > /var/timezone
