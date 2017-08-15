@@ -53,7 +53,7 @@ services:
       io.rancher.container.hostname_override: container_name
       io.rancher.scheduler.global: 'true'
   recaleur-server:
-    image: registry.gitlab.com/recalbox/ops/recaleur:2.0.0
+    image: registry.gitlab.com/recalbox/ops/recaleur:2.1.0
     environment:
       LOGSTASH_TAGS: recaleur
     command:
@@ -61,6 +61,8 @@ services:
     - ${RECALEUR_RESPONSE}
     - --canary
     - ${RECALEUR_CANARY}
+    - --expire
+    - ${RECALEUR_EXPIRE}
     logging:
       driver: json-file
       options:
