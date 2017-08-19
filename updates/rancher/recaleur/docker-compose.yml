@@ -1,7 +1,7 @@
 version: '2'
 services:
   recaleur-server:
-    image: registry.gitlab.com/recalbox/ops/recaleur:2.2.0
+    image: registry.gitlab.com/recalbox/ops/recaleur:2.3.0
     environment:
       LOGSTASH_TAGS: recaleur
     command:
@@ -18,3 +18,6 @@ services:
       options:
         max-file: '1'
         max-size: 50m
+    labels:
+      archive: true
+      io.rancher.scheduler.affinity:host_label: archive=true

@@ -15,3 +15,5 @@ services:
       traefik.port: 80
       traefik.enable: true
       traefik.frontend.rule: Host:${ARCHIVE_FQDN}
+      archive: true
+      io.rancher.scheduler.affinity:host_label: archive=true

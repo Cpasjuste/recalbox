@@ -206,7 +206,6 @@ purge master:
   variables:
     ARCHIVE_IMAGE: image to deploy
     ARCHIVE_FQDN: fqdn of the service
-    SERVICENAME: the rancher directory to use
     RANCHER_DIRECTORY: the rancher directory to use
   script:
     - cd updates/rancher/${RANCHER_DIRECTORY}
@@ -217,11 +216,10 @@ deploy master:
   <<: *deploy_definition
   variables:
     ARCHIVE_IMAGE: ${IMAGE}:${CI_COMMIT_REF_SLUG}
-    ARCHIVE_FQDN: master-${CI_PIPELINE_ID}-${STACK_NAME}-prod.recalbox.com
-    SERVICENAME: master-${CI_PIPELINE_ID}
+    ARCHIVE_FQDN: master-${STACK_NAME}-prod.recalbox.com
     RANCHER_DIRECTORY: master
     RECALEUR_CANARY: 15
-    RECALEUR_RESPONSE: https://master-${CI_PIPELINE_ID}-${STACK_NAME}-prod.recalbox.com:8443
+    RECALEUR_RESPONSE: https://master-${STACK_NAME}-prod.recalbox.com
     RECALEUR_PATH: "/v1/upgrade"
     RECALEUR_DELTA: ${RECALEUR_DELTA}
   before_script:
@@ -230,7 +228,7 @@ deploy master:
     - master
   environment:
     name: master
-    url: https://master-${CI_PIPELINE_ID}-${STACK_NAME}-prod.recalbox.com:8443/
+    url: https://master-${STACK_NAME}-prod.recalbox.com
 
 deploy review:
   <<: *deploy_definition
@@ -244,7 +242,7 @@ deploy review:
     - master
   environment:
     name: review/${CI_COMMIT_REF_SLUG}
-    url: https://${CI_ENVIRONMENT_SLUG}-${STACK_NAME}-prod.recalbox.com/
+    url: https://${CI_ENVIRONMENT_SLUG}-${STACK_NAME}-prod.recalbox.com
     on_stop: clean review
 
 validate release:
@@ -255,7 +253,7 @@ validate release:
   variables:
     RANCHER_DIRECTORY: recaleur
     RECALEUR_CANARY: 256
-    RECALEUR_RESPONSE: https://master-${CI_PIPELINE_ID}-${STACK_NAME}-prod.recalbox.com:8443
+    RECALEUR_RESPONSE: https://master-${STACK_NAME}-prod.recalbox.com
     RECALEUR_PATH: "/v1/upgrade"
     RECALEUR_DELTA: ${RECALEUR_DELTA}
   only:
@@ -269,7 +267,7 @@ emergency valve:
   variables:
     RANCHER_DIRECTORY: recaleur
     RECALEUR_CANARY: 0
-    RECALEUR_RESPONSE: https://master-${CI_PIPELINE_ID}-${STACK_NAME}-prod.recalbox.com:8443
+    RECALEUR_RESPONSE: https://master-${STACK_NAME}-prod.recalbox.com
     RECALEUR_PATH: "/v1/upgrade"
     RECALEUR_DELTA: "0ms"
   only:
@@ -286,7 +284,7 @@ clean review:
   except:
     - master
   script:
-    - echo "cleaning ${ARCHIVE_IMAGE} from ${STACK_NAME}/${SERVICENAME}"
+    - echo "cleaning ${ARCHIVE_IMAGE} from ${STACK_NAME}/${CI_ENVIRONMENT_SLUG}"
     - rancher rm ${STACK_NAME}/${CI_ENVIRONMENT_SLUG}
   environment:
     name: review/${CI_COMMIT_REF_SLUG}

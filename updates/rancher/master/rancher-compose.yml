@@ -1,6 +1,6 @@
 version: '2'
 services:
-  RANCHER_SERVICENAME:
+  master:
     start_on_create: true
     lb_config:
       certs: []
@@ -15,17 +15,36 @@ services:
           capture request header X-Forwarded-For len 500
       default_cert: wildcard.recalbox.com
       port_rules:
-      - backend_name: archive-ssl
+      - path: /updates/v1.0/stable/rpi1/recalbox.version
         priority: 1
-        protocol: https
-        service: RANCHER_SERVICENAME-data
-        source_port: 8443
-        target_port: 80
-      - backend_name: archive
+        protocol: http
+        service: recaleur40
+        source_port: 80
+        target_port: 8080
+      - path: /updates/v1.0/stable/rpi2/recalbox.version
         priority: 2
         protocol: http
-        service: RANCHER_SERVICENAME-data
-        source_port: 8000
+        service: recaleur40
+        source_port: 80
+        target_port: 8080
+      - path: /updates/v1.0/stable/rpi3/recalbox.version
+        priority: 3
+        protocol: http
+        service: recaleur40
+        source_port: 80
+        target_port: 8080
+      - path: /
+        priority: 4
+        protocol: http
+        service: master-data
+        source_port: 80
+        target_port: 80
+      - path: /
+        backend_name: archive-ssl
+        priority: 5
+        protocol: https
+        service: master-data
+        source_port: 443
         target_port: 80
     health_check:
       healthy_threshold: 2
@@ -36,7 +55,7 @@ services:
       interval: 2000
       strategy: recreate
       reinitializing_timeout: 60000
-  RANCHER_SERVICENAME-data:
+  master-data:
     start_on_create: true
     health_check:
       healthy_threshold: 2
@@ -86,3 +105,7 @@ services:
       interval: 2000
       strategy: recreate
       reinitializing_timeout: 60000
+  # 4.0 upgrades - to remove after
+  recaleur40:
+    scale: 1
+    start_on_create: true

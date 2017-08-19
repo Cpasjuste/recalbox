@@ -1,6 +1,6 @@
 version: '2'
 services:
-  RANCHER_SERVICENAME:
+  master:
     image: rancher/lb-service-haproxy:v0.7.5
     environment:
       HTTPERRORPAGE: |-
@@ -31,17 +31,17 @@ services:
         max-file: '1'
         max-size: 300m
     ports:
-    - 8443:8443/tcp
+    - 80:80/tcp
+    - 443:443/tcp
     labels:
       io.rancher.container.agent.role: environmentAdmin
       io.rancher.container.create_agent: 'true'
       io.rancher.container.hostname_override: container_name
       io.rancher.scheduler.global: 'true'
+      archive: true
+      io.rancher.scheduler.affinity:host_label: archive=true
       io.rancher.lb_service.target: only-local
-      traefik.port: 8000
-      traefik.enable: true
-      traefik.frontend.rule: Host:install.recalbox.com
-  RANCHER_SERVICENAME-data:
+  master-data:
     image: ${ARCHIVE_IMAGE}
     logging:
       driver: json-file
@@ -52,8 +52,10 @@ services:
       io.rancher.container.pull_image: always
       io.rancher.container.hostname_override: container_name
       io.rancher.scheduler.global: 'true'
+      archive: true
+      io.rancher.scheduler.affinity:host_label: archive=true
   recaleur-server:
-    image: registry.gitlab.com/recalbox/ops/recaleur:2.2.0
+    image: registry.gitlab.com/recalbox/ops/recaleur:2.3.0
     environment:
       LOGSTASH_TAGS: recaleur
     command:
@@ -72,6 +74,9 @@ services:
       options:
         max-file: '1'
         max-size: 50m
+    labels:
+      archive: true
+      io.rancher.scheduler.affinity:host_label: archive=true
   recaleur:
     image: rancher/lb-service-haproxy:v0.7.5
     environment:
@@ -108,3 +113,28 @@ services:
       io.rancher.container.agent.role: environmentAdmin
       io.rancher.container.create_agent: 'true'
       io.rancher.container.hostname_override: container_name
+      archive: true
+      io.rancher.scheduler.affinity:host_label: archive=true
+  # 4.0 upgrades
+  recaleur40:
+    image: registry.gitlab.com/recalbox/ops/recaleur:2.3.0
+    stdin_open: true
+    tty: true
+    command:
+    - --path
+    - '*'
+    - --responsedelta
+    - ${RECALEUR_DELTA}
+    - --response
+    - 4.1.0
+    - --ignore-uuid
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.container.hostname_override: container_name
+      archive: true
+      io.rancher.scheduler.affinity:host_label: archive=true
+    logging:
+      driver: json-file
+      options:
+        max-file: '1'
+        max-size: 50m
