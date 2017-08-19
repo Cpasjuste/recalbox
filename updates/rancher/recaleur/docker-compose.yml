@@ -1,7 +1,7 @@
 version: '2'
 services:
   recaleur-server:
-    image: registry.gitlab.com/recalbox/ops/recaleur:2.1.0
+    image: registry.gitlab.com/recalbox/ops/recaleur:2.2.0
     environment:
       LOGSTASH_TAGS: recaleur
     command:
@@ -9,6 +9,8 @@ services:
     - ${RECALEUR_RESPONSE}
     - --canary
     - ${RECALEUR_CANARY}
+    - --path
+    - ${RECALEUR_PATH}
     logging:
       driver: json-file
       options:
