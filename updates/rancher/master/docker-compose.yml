@@ -65,6 +65,8 @@ services:
     - ${RECALEUR_EXPIRE}
     - --path
     - ${RECALEUR_PATH}
+    - --responsedelta
+    - ${RECALEUR_DELTA}
     logging:
       driver: json-file
       options:

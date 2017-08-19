@@ -223,6 +223,7 @@ deploy master:
     RECALEUR_CANARY: 15
     RECALEUR_RESPONSE: https://master-${CI_PIPELINE_ID}-${STACK_NAME}-prod.recalbox.com:8443
     RECALEUR_PATH: "/v1/upgrade"
+    RECALEUR_DELTA: ${RECALEUR_DELTA}
   before_script:
     - export RECALEUR_EXPIRE=$(date -u -d "1970.01.01-00:00:$(date +"%s + 6 * 3600"|xargs expr)" +%Y-%m-%d-%H:%M)
   only:
@@ -256,6 +257,7 @@ validate release:
     RECALEUR_CANARY: 256
     RECALEUR_RESPONSE: https://master-${CI_PIPELINE_ID}-${STACK_NAME}-prod.recalbox.com:8443
     RECALEUR_PATH: "/v1/upgrade"
+    RECALEUR_DELTA: ${RECALEUR_DELTA}
   only:
     - master
 
@@ -269,6 +271,7 @@ emergency valve:
     RECALEUR_CANARY: 0
     RECALEUR_RESPONSE: https://master-${CI_PIPELINE_ID}-${STACK_NAME}-prod.recalbox.com:8443
     RECALEUR_PATH: "/v1/upgrade"
+    RECALEUR_DELTA: "0ms"
   only:
     - master
 
