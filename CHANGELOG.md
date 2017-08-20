@@ -3,8 +3,10 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unrelease][unreleased]
+- Now able to flash and boot x86 images on internal hard drive
 - Updated libretro-cheats
 - reicast: bump + fix RTC clock
+- Now able to flash and boot x86 images on internal hard drive
 - Bump retroarch to solve pad reordering issue
 - psp: saves now go to the right folder
 - Enhanced gliden64 video plugin configuration
