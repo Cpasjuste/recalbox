@@ -55,7 +55,7 @@ services:
       archive: true
       io.rancher.scheduler.affinity:host_label: archive=true
   recaleur-server:
-    image: registry.gitlab.com/recalbox/ops/recaleur:2.3.0
+    image: registry.gitlab.com/recalbox/ops/recaleur:2.4.0
     environment:
       LOGSTASH_TAGS: recaleur
     command:
@@ -69,6 +69,9 @@ services:
     - ${RECALEUR_PATH}
     - --responsedelta
     - ${RECALEUR_DELTA}
+    - --retain-ip
+    - --retain-ip-header
+    - X-Forwarded-For
     logging:
       driver: json-file
       options:
@@ -117,7 +120,7 @@ services:
       io.rancher.scheduler.affinity:host_label: archive=true
   # 4.0 upgrades
   recaleur40:
-    image: registry.gitlab.com/recalbox/ops/recaleur:2.3.0
+    image: registry.gitlab.com/recalbox/ops/recaleur:2.4.0
     stdin_open: true
     tty: true
     command:
@@ -128,6 +131,9 @@ services:
     - --response
     - 4.1.0
     - --ignore-uuid
+    - --retain-ip
+    - --retain-ip-header
+    - X-Forwarded-For
     labels:
       io.rancher.container.pull_image: always
       io.rancher.container.hostname_override: container_name
