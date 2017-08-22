@@ -17,7 +17,7 @@ index 2f33e78..c5d4f9c 100644
  
  void mcfg_CreateDevices()
  {
--	int numberOfControl = cfgLoadInt("players", "nb", 1);
+-int numberOfControl = cfgLoadInt("players", "nb", 1);
  #if DC_PLATFORM == DC_PLATFORM_DREAMCAST
 -	if (numberOfControl <= 0)
 -		numberOfControl = 1;
