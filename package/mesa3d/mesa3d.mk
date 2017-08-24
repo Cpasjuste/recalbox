@@ -183,4 +183,9 @@ MESA3D_CONF_OPTS += --enable-static=no
 # Avoid automatic search of llvm-config
 MESA3D_CONF_OPTS += --with-llvm-prefix=$(STAGING_DIR)/usr/bin
 
+# Needed to get OpenGL 3.0 - Will be removed post BR bump
+# This option has been added updstream, disabled by default.
+# So we will have to enable BR2_PACKAGE_MESA3D_OPENGL_TEXTURE_FLOAT
+MESA3D_CONF_OPTS += --enable-texture-float
+
 $(eval $(autotools-package))
