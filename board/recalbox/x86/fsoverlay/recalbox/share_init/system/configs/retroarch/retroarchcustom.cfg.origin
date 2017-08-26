@@ -51,8 +51,11 @@ input_exit_emulator = "escape"
 
 menu_swap_ok_cancel_buttons = "true"
 
+libretro_log_level = 0
+log_verbosity = false
+
 # specific to x86
-video_driver = "sdl2"
-# avoid blinking borders coming sometimes
-video_black_frame_insertion = true
+video_driver = "gl"
+# avoid blinking borders coming sometimes - to use only with sdl2 video driver
+video_black_frame_insertion = false
 video_fullscreen = true
