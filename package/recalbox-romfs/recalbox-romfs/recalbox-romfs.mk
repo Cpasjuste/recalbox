@@ -176,7 +176,7 @@ ifeq ($(BR2_PACKAGE_REICAST),y)
 endif
 
 # System: fba
-ifneq ($(BR2_PACKAGE_LIBRETRO_FBA)$(BR2_PACKAGE_PIFBA),)
+ifneq ($(BR2_PACKAGE_PIFBA),)
         RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-fba
 endif
 
