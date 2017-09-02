@@ -2,7 +2,7 @@
 <gameList>
 	<game>
 		<path>./Anguna (Nathan Tolbert and Chris Hildenbrand).gba</path>
-		<name>Anguna</name>
+		<name>Anguna - Warriors of Virtue</name>
 		<desc>
 It is a short but exciting action-adventure game, reminiscent of the original Legend of Zelda.
 Anguna includes: 5 dungeons and a large overworld to explore, Multiple weapons and items including: a sword, bow &amp; arrows, bear traps, dynamite, lantern, magic boots, and more, Many hidden rooms, secrets, and powerups, Lots of interesting enemies and boss monsters
@@ -18,24 +18,31 @@ Anguna includes: 5 dungeons and a large overworld to explore, Multiple weapons a
 	<game>
 		<path>./GEMini (Mr Smayds).gba</path>
 		<name>GEMini</name>
+		<desc>
+Bejeweled style match-3 for the GameBoy Advance.
+</desc>
 		<image>./downloaded_images/GEMini (Mr Smayds)-image.png</image>
 		<developer>Mr Smayds</developer>
 		<publisher>Mr Smayds</publisher>
 		<genre>Puzzle-Game</genre>
-		<players></players>
 	</game>
 	<game>
 		<path>./SpaceTwins.gba</path>
 		<name>Space Twins</name>
+		<desc>
+Very professional and solid platform/puzzle game for Gameboy Advance.
+</desc>
 		<image>./downloaded_images/SpaceTwins-image.png</image>
 		<developer>9wires</developer>
 		<publisher>9wires</publisher>
 		<genre>Puzzle-Game</genre>
-		<players></players>
 	</game>
 	<game>
 		<path>./Uranus.gba</path>
 		<name>Uranus</name>
+		<desc>
+First game of "Uranus" serie from ZoneGN. This is a vertical scrolling space shooter. Very good from what I've played (using VisualBoyAdvance), with good graphics, music, and the action was pretty fierce as well.
+</desc>
 		<image>./downloaded_images/Uranus-image.png</image>
 		<developer>ZoneGN</developer>
 		<publisher>ZoneGN</publisher>
@@ -45,6 +52,9 @@ Anguna includes: 5 dungeons and a large overworld to explore, Multiple weapons a
 	<game>
 		<path>./Uranus Zero.gba</path>
 		<name>Uranus Zero</name>
+		<desc>
+Third game of "Uranus" serie from ZoneGN. This is a vertical scrolling space shooter. Very good from what I've played (using VisualBoyAdvance), with good graphics, music, and the action was pretty fierce as well.
+</desc>
 		<image>./downloaded_images/Uranus Zero-image.png</image>
 		<developer>ZoneGN</developer>
 		<publisher>ZoneGN</publisher>
@@ -55,9 +65,10 @@ Anguna includes: 5 dungeons and a large overworld to explore, Multiple weapons a
 		<path>./Uranus Zero EV.gba</path>
 		<name>Uranus Zero EV</name>
 		<desc>
-This is a vertical scrolling space shooter. Very good from what I've played (using VisualBoyAdvance), with good graphics, music, and the action was pretty fierce as well.
+Third game of "Uranus" serie from ZoneGN, in his "easy version". This is a vertical scrolling space shooter. Very good from what I've played (using VisualBoyAdvance), with good graphics, music, and the action was pretty fierce as well.
 </desc>
 		<image>./downloaded_images/Uranus Zero EV-image.png</image>
+		<releasedate>20030101T000000</releasedate>
 		<developer>ZoneGN</developer>
 		<publisher>ZoneGN</publisher>
 		<genre>Shoot'em Up</genre>
@@ -65,7 +76,10 @@ This is a vertical scrolling space shooter. Very good from what I've played (usi
 	</game>
 	<game>
 		<path>./Uranus2.gba</path>
-		<name>Uranus2</name>
+		<name>Uranus 2</name>
+		<desc>
+Second game of "Uranus" serie from ZoneGN. This is a vertical scrolling space shooter. Very good from what I've played (using VisualBoyAdvance), with good graphics, music, and the action was pretty fierce as well.
+</desc>
 		<image>./downloaded_images/Uranus2-image.png</image>
 		<developer>ZoneGN</developer>
 		<publisher>ZoneGN</publisher>
@@ -75,8 +89,13 @@ This is a vertical scrolling space shooter. Very good from what I've played (usi
 	<game>
 		<path>./Waimanu (disjointedstudio).gba</path>
 		<name>Waimanu</name>
+		<desc>
+Waimanu for Gameboy Advance - Planet Earth is threatened by Wekas, evil alien Jellies who invaded the planet with the intent of colonizing it. Daring Waimanu will face them to defend the fate of our planet!
+
+Waimanu can push blocks and make them slide, and sliding blocks can squash Wekas between them. He can also destroy blocks that can't be moved because they're against a wall or if there's another block behind them. Also Wekas can destroy blocks whenever they want to try to reach our hero.
+</desc>
 		<image>./downloaded_images/Waimanu (disjointedstudio)-image.png</image>
-		<developer>Disjointed Studio</developer>
+		<developer></developer>
 		<publisher></publisher>
 		<genre>Puzzle-Game</genre>
 		<players></players>

@@ -10,7 +10,6 @@ You are a Biological Entity Remover Node And Repair Droid (or B.E.R.N.A.R.D. for
 		<developer>Andrew Darovich</developer>
 		<publisher>Aetherbyte</publisher>
 		<genre>Action</genre>
-		<players></players>
 	</game>
 	<game>
 		<path>./Santatlantean (aetherbyte).pce</path>
@@ -24,6 +23,5 @@ Santatlantean is a festive high-score action shoot 'em up (based on Aetherbyte's
 		<developer>Andrew Darovich</developer>
 		<publisher>Aetherbyte</publisher>
 		<genre>Shoot'em up / Horizontal</genre>
-		<players></players>
 	</game>
 </gameList>

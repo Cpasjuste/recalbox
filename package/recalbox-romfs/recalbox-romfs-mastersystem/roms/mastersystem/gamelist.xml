@@ -16,7 +16,6 @@ Getting down to the pipelines is not an easy job, digging is exhausting with onl
 		<developer>Playgeneration</developer>
 		<publisher>Playgeneration</publisher>
 		<genre>Platform</genre>
-		<players></players>
 	</game>
 	<game>
 		<path>./Pong Master 4k.sms</path>
@@ -29,6 +28,6 @@ An implementation of the classic game of Pong for the Sega Master System. Probab
 		<developer>Haroldo Pinheiro</developer>
 		<publisher>homebrew</publisher>
 		<genre>Action</genre>
-		<players></players>
+		<players>2</players>
 	</game>
 </gameList>
