@@ -53,14 +53,18 @@ Thanks to read the "readme.txt" file present in the "/roms/msx" folder of your r
 - LYNX :
 fcd403db69f54290b51035d82f835e7b lynxboot.img
 
--ATARI 7800 :
+- ATARI 7800 :
 0763f1ffb006ddbe32e52d497ee848ae 7800 BIOS (U).rom
 
--ATARI ST : 
+- ATARI ST : 
 b2a8570de2e850c5acf81cb80512d9f6  tos.img
 
--ODYSSEY2/VIDEOPAC :
+- ODYSSEY2/VIDEOPAC :
 562d5ebf9e030a40d6fabfc2f33139fd  o2rom.bin
 
--COLECOVISION :
+- COLECOVISION :
 Thanks to read the "readme.txt" file present in the "/roms/colecovision" folder of your recalbox.
+
+- DREAMCAST :
+e10c53c2f8b90bab96ead2d368858623 dc_boot.bin
+d6e11a23f1fa01cddb5dfccf7e4cc8d7 dc_flash.bin
