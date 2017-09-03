@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unrelease][unreleased]
+- PPSSPP: SNES-like pads can navigate in the menu + add retroarch-like combos
 - X86: added xrandr to be able to manually manage video outputs
 - X86: disabled screensaver (dpms)
 - Commodore 64: added libretro-vice core (by default)
