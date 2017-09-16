@@ -2,4 +2,4 @@
 
 Placez ici vos roms segacd et segacd 32X.
 
-Les roms doivent contenir un fichier ".cue"
+Les roms doivent avoir l'extension ".cue/.iso"

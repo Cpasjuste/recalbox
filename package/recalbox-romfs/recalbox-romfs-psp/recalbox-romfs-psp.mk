@@ -5,7 +5,7 @@
 ################################################################################
 
 # Package generated with :
-# ./scripts/linux/empack.py --system psp --extension '.iso .ISO .cso .CSO' --fullname 'Sony Playstation Portable' --platform psp --theme psp BR2_PACKAGE_PPSSPP
+# ./scripts/linux/empack.py --system psp --extension '.iso .ISO .cso .CSO .pbp .PBP' --fullname 'Sony Playstation Portable' --platform psp --theme psp BR2_PACKAGE_PPSSPP
 
 # Name the 3 vars as the package requires
 RECALBOX_ROMFS_PSP_SOURCE = 

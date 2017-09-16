@@ -2,7 +2,7 @@
 
 Put your dos games in this directory.
 
-Each game must be placed in a directory having the .pc extension.
+Each game must be placed in a directory having the ".pc/.dos" extension.
 In each directory, a dosbox.bat file must contain the command line to run the game.
 
 For example :

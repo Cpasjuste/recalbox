@@ -2,5 +2,8 @@
 
 Placez ici vos roms super nintendo.
 
-Les roms doivent avoir l'extension ".smc/.sfc/.zip"
+Les roms doivent avoir l'extension ".smc/.sfc/.mgd/.zip"
 
+Ce système supporte également les roms compressées au format .zip.
+Attention toutefois, il ne s'agit que d'une archive. Les fichiers contenus dans les .zip doivent correspondre aux extensions citées précédemment.
+De plus, chaque fichier .zip ne doit contenir qu'une seule rom compressée.

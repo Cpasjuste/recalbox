@@ -1,6 +1,6 @@
 ## RECALBOX - SYSTEM SCUMMVM ##
 
-Put your scummvm games foders here..
+Put your scummvm game folders here.
 
 For each game, you must create a file named from the short name of the game and with the extension .scummvm
 

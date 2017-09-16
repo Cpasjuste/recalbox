@@ -2,7 +2,7 @@
 
 Put your fba roms in this directory.
 
-Rom files must have a ".fba" or ".zip"  extension.
+Rom files must have a ".fba/.zip"  extension.
 
 The file clrmamepro/piFBA_gamelist.txt list compatible games.
 

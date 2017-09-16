@@ -2,5 +2,4 @@
 
 Put your pcengine cd roms in this directory.
 
-Rom files must have a ".pce/.cue/.ccd/.sgx" extension.
-
+Rom files must have a ".cue/.ccd" extension.

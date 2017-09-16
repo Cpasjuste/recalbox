@@ -5,7 +5,7 @@
 ################################################################################
 
 # Package generated with :
-# ./scripts/linux/empack.py --system fba_libretro --extension '.zip .ZIP .fba .FBA' --fullname 'FBA_LIBRETRO' --platform arcade --theme fba_libretro libretro:fba:BR2_PACKAGE_LIBRETRO_FBA
+# ./scripts/linux/empack.py --system fba_libretro --extension '.zip .ZIP .fba .FBA .7z .7Z' --fullname 'FBA_LIBRETRO' --platform arcade --theme fba_libretro libretro:fba:BR2_PACKAGE_LIBRETRO_FBA
 
 # Name the 3 vars as the package requires
 RECALBOX_ROMFS_FBA_LIBRETRO_SOURCE = 
@@ -23,7 +23,7 @@ SOURCE_ROMDIR_FBA_LIBRETRO = $(RECALBOX_ROMFS_FBA_LIBRETRO_PKGDIR)/roms
 
 ifneq ($(BR2_PACKAGE_LIBRETRO_FBA),)
 define CONFIGURE_MAIN_FBA_LIBRETRO_START
-	$(call RECALBOX_ROMFS_CALL_ADD_SYSTEM,$(SYSTEM_XML_FBA_LIBRETRO),FBA_LIBRETRO,$(SYSTEM_NAME_FBA_LIBRETRO),.zip .ZIP .fba .FBA,arcade,fba_libretro)
+	$(call RECALBOX_ROMFS_CALL_ADD_SYSTEM,$(SYSTEM_XML_FBA_LIBRETRO),FBA_LIBRETRO,$(SYSTEM_NAME_FBA_LIBRETRO),.zip .ZIP .fba .FBA .7z .7Z,arcade,fba_libretro)
 endef
 
 ifneq ($(BR2_PACKAGE_LIBRETRO_FBA),)

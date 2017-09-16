@@ -2,7 +2,7 @@
 
 Placez ici vos jeux pc.
 
-Chaque jeu doit être contenu dans un dossier ayant l'extension .pc.
+Chaque jeu doit être contenu dans un dossier ayant l'extension ".pc/.dos".
 Dans chaque dossier, un fichier dosbox.bat doit comporter la ligne de commande à lancer.
 
 Par exemple :

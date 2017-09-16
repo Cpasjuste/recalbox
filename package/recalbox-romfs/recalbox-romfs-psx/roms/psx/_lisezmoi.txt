@@ -2,5 +2,5 @@
 
 Placez ici vos roms playstation.
 
-Les roms doivent avoir l'extension ".iso/.img/.bin/.pbp"
-
+Les roms doivent avoir l'extension ".iso/.img/.pbp/.cue/.ccd/.cbn"
+Les fichiers .bin nécessitent un fichier .cue pour être démarrés.

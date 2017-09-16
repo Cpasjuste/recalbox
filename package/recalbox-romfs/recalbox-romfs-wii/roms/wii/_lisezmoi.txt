@@ -1,5 +1,5 @@
-## RECALBOX - SYSTEM Wii ##
+## RECALBOX - SYSTEM WII ##
 
 Placez ici vos roms Wii.
 
-Les roms doivent avoir l'extension ".iso"
+Les roms doivent avoir l'extension ".iso/.wbfs"

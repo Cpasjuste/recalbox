@@ -2,7 +2,12 @@
 
 Put your lua games or lutro games in this directory.
 
-Games files must have a ".lua" or . "lutro" extension.
+Games files must have a ".lua/.lutro/.zip" extension.
+
+This system allows to use compressed roms on .zip.
+But, it is only an archive. Files inside the .zip must match with extensions mentioned above.
+Each .zip file must contain only one compressed rom.
+
 
 You can download lua demo games on github :
 https://github.com/libretro/lutro-platformer

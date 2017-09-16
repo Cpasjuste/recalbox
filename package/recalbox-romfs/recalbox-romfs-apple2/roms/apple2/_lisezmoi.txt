@@ -1,1 +1,5 @@
-Remplir ce fichier
+## RECALBOX - SYSTEM APPLE II ##
+
+Placez ici vos roms apple II.
+
+Les roms doivent avoir l'extension ".nib/.do/.po/.dsk"

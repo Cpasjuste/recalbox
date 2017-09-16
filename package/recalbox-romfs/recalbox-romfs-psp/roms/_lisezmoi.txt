@@ -1,5 +1,0 @@
-## RECALBOX - SYSTEM PSP ##
-
-Placez ici vos roms PSP.
-
-Les roms doivent avoir l'extension ".cso", ".iso" ou ".pbp"

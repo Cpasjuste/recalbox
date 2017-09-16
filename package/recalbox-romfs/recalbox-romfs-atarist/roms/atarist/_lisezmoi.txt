@@ -1,6 +1,9 @@
-## RECALBOX - SYSTEM Atari ST ##
+## RECALBOX - SYSTEM ATARI ST ##
 
 Placez ici vos roms atari ST.
 
 Les roms doivent avoir l'extension ".st/.stx/.ipf/.zip"
 
+Ce système supporte également les roms compressées au format .zip.
+Attention toutefois, il ne s'agit que d'une archive. Les fichiers contenus dans les .zip doivent correspondre aux extensions citées précédemment.
+De plus, chaque fichier .zip ne doit contenir qu'une seule rom compressée.
