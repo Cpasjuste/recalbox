@@ -10,6 +10,10 @@ settings_lang="`$systemsetting -command load -key system.language`"
 map_name=$(echo $settings_lang | cut -c 1-2)
 setxkbmap "${map_name}"
 
+# disable dpms to prevent screen to turns blank
+xset -dpms
+xset s off
+
 #
 export HOME=/recalbox/share/system
 export LC_ALL="${settings_lang}.UTF-8"
