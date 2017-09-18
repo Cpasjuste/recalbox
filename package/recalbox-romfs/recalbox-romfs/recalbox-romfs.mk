@@ -77,11 +77,24 @@ endef
 # $6 = theme
 # $7 = system rom source dir
 # $8 = system rom destination dir
-define RECALBOX_ROMFS_CALL_ADD_STANDALONE_SYSTEM
+RECALBOX_ROMFS_CALL_ADD_STANDALONE_SYSTEM = $(call RECALBOX_ROMFS_CALL_ADD_STANDALONE_SYSTEM_FULLPATH,$(1),$(2),$(3),$(4),$(5),$(6),$(7),$(8),/recalbox/share/roms/$(3))
+
+# function to add a new system that only has a standalone emulator specifying
+# its ull path to the roms folder
+# $1 = XML file
+# $2 = full system name
+# $3 = short system name
+# $4 = e=list of extensions ex : .zip .ZIP
+# $5 = platform
+# $6 = theme
+# $7 = system rom source dir
+# $8 = system rom destination dir
+# $9 = full path to roms
+define RECALBOX_ROMFS_CALL_ADD_STANDALONE_SYSTEM_FULLPATH
     echo -e '<system>\n' \
     '<fullname>$(2)</fullname>\n' \
     "<name>$(3)</name>\n" \
-    '<path>/recalbox/share/roms/$(3)</path>\n' \
+    '<path>$(9)</path>\n' \
     '<extension>$(4)</extension>\n' \
     "<command>$(CONFIGGEN_STD_CMD)</command>\n" \
     '<platform>$(5)</platform>\n' \
