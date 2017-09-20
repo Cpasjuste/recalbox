@@ -14,6 +14,10 @@ setxkbmap "${map_name}"
 xset -dpms
 xset s off
 
+# to disable a video output (multi-screen setup) and prevent ES to be stretcht on all screens, 
+# uncomment the line below, and replace output_name by the output that you want disable on ES startup (ex: HDMI-0)
+# xrandr --output output_name --off
+
 #
 export HOME=/recalbox/share/system
 export LC_ALL="${settings_lang}.UTF-8"

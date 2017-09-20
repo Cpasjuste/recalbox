@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unrelease][unreleased]
+- X86: added xrandr to be able to manually manage video outputs
 - X86: disabled screensaver (dpms)
 - Commodore 64: added libretro-vice core (by default)
 - X86: fixed issue that prevents retroarch shaders to work
