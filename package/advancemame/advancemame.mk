@@ -38,7 +38,7 @@ ifeq ($(BR2_PACKAGE_SDL2),y)
 else
 	ADVANCEMAME_CONF_OPTS += \
 		--disable-jsdl \
-		--disable-ksdl
+		--disable-ksdl \
 		--disable-msdl
 endif
 
