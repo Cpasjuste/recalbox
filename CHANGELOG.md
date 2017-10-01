@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unrelease][unreleased]
+- Snes9x_next: added a rule to enable multitap support only if there is at least 3 gamepads connected
 - Bump virtual gamepad
 - Add a script to easily update various package types
 - PPSSPP: SNES-like pads can navigate in the menu + add retroarch-like combos
