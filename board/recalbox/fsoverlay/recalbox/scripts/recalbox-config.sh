@@ -484,6 +484,10 @@ EOF
 fi
 
 if [[ "$command" == "hcitoolscan" ]]; then
+    scanningDaemon=test-discovery
+    alternate="`$systemsetting  -command load -key controllers.bluetooth.alternate`"
+    [[ $alternate == 1 ]] && scanningDaemon=btDaemon
+    /recalbox/scripts/bluetooth/"$scanningDaemon" & ( PID=$! ;sleep 10 ; kill -15 $PID)
     PYTHONIOENCODING=UTF-8 /recalbox/scripts/bluetooth/test-device list
     exit 0
 fi
