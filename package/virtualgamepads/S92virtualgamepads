@@ -4,6 +4,9 @@
 #
 
 systemsetting="python /usr/lib/python2.7/site-packages/configgen/settings/recalboxSettings.pyc"
+logfile="/recalbox/share/system/logs/virtualgamepads.log"
+logswitch_default="1"
+loglevel_default="info"
 
 case "$1" in
   start)
@@ -19,12 +22,27 @@ case "$1" in
       exit 0
     fi
     
-    echo "Starting virtual-gamepads server"
-    cd /usr/node-virtual-gamepads/ && PORT=8080 node virtualgamepads.js &
+    cd /usr/node-virtual-gamepads/
+    logswitch="`$systemsetting  -command load -key system.virtual-gamepads.log.enabled`"
+    loglevel="`$systemsetting  -command load -key system.virtual-gamepads.log.level`"
+    if [ -z "$logswitch" ];then logswitch="$logswitch_default"; fi
+    if [ -z "$loglevel" ];then loglevel="$loglevel_default"; fi
+    echo "Starting virtual-gamepads server logging=$logswitch, loglevel=$loglevel"
+    if [ "$logswitch" == "1" ];then
+        mv $logfile $logfile.old
+        PORT=8080 LOGLEVEL=$loglevel node virtualgamepads.js > "$logfile" 2>&1 &
+    else
+        PORT=8080 node virtualgamepads.js &
+    fi
     ;;
   stop)
-    echo -n "Stoping virtual-gamepads server"
-    ps -ef | grep node | grep virtualgamepads | grep -v grep | awk '{print $1}' | xargs kill
+    echo "Stoping virtual-gamepads server"
+    # if you want to use SIGKILL make sure to kill child processes as well:
+    #serverpids=$(ps -efo pid,args | grep node | grep virtualgamepads | awk '{print $1}')
+    #childpids=$(echo $serverpids | xargs -n 1 pgrep -P)
+    #echo $serverpids | xargs -n 1 kill -s KILL
+    #echo $childpids | xargs -n 1 kill -s KILL
+    ps -ef | grep node | grep virtualgamepads | grep -v grep | awk '{print $1}' | xargs -n 1 kill
     ;;
   restart|reload)
     $0 stop
