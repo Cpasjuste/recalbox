@@ -1,11 +1,12 @@
 #!/bin/bash
 
 # Getting prepared for the external tree
-[[ -z $BUILDROOT_DIR ]] && BUILDROOT_DIR=.
+[[ -z $BUILDROOT_DIR && -d buildroot ]] && BUILDROOT_DIR="./buildroot" || BUILDROOT_DIR=.
 [[ -z $RECALBOX_DIR ]] && RECALBOX_DIR=.
 
 # EMULATORS is compared to each package's repo
 EMULATORS="advancemame moonlight-embedded reicast retroarch ppsspp scummvm libretro-vice libretro-beetle-supergrafx libretro-fceunext libretro-cap32 libretro-gpsp libretro-beetle-pce libretro-pocketsnes libretro-beetle-pcfx libretro-nxengine libretro-beetle-ngp libretro-fuse libretro-pcsx libretro-meteor libretro-4do libretro-o2em libretro-prboom libretro-cheats libretro-nestopia libretro-imageviewer libretro-vecx libretro-mgba libretro-fceumm libretro-snes9x-next libretro-imame libretro-fmsx libretro-quicknes libretro-genesisplusgx libretro-beetle-vb libretro-bluemsx libretro-glupen64 libretro-virtualjaguar libretro-mupen64 libretro-mame2003 libretro-tgbdual libretro-beetle-lynx libretro-picodrive libretro-fba libretro-gambatte libretro-stella libretro-snes9x libretro-prosystem libretro-lutro libretro-uae libretro-armsnes libretro-beetle-wswan libretro-scummvm libretro-hatari libretro-gw libretro-catsfc libretro-81 mupen64plus-audio-sdl mupen64plus-core mupen64plus-gles2 mupen64plus-gles2rice mupen64plus-gliden64 mupen64plus-input-sdl mupen64plus-omx mupen64plus-rice mupen64plus-rsphle mupen64plus-uiconsole mupen64plus-video-glide64mk2"
+EMULATORS=scummvm
 
 # PACKAGES is compared to each package's repo
 PACKAGES="rpi-firmware rpi-userland odroid-scripts odroid-mali"
@@ -328,6 +329,7 @@ function usage() {
   echo "-U, --user <user>              Specify github user for API access"
   echo "-t, --token <token>            Specify github user token for API access"
   echo
+  echo "To query the github API you need to set some github user + token through the command line"
   echo "You can also specify github user and token by creating scripts/linux/.githubAPIToken with the following content:"
   echo "GHUser=username"
   echo "GHKey=xxxxxxxxxxxxxxxxxxxxxxxxxxxx"

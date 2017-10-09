@@ -1,0 +1,20 @@
+diff --git a/package/mesa3d/mesa3d.mk b/package/mesa3d/mesa3d.mk
+index 96ebb95..8cfcabf 100644
+--- a/package/mesa3d/mesa3d.mk
++++ b/package/mesa3d/mesa3d.mk
+@@ -177,7 +177,15 @@ else
+ MESA3D_CONF_OPTS += --disable-gles1 --disable-gles2
+ endif
+ 
++# force mesa3d to static=no while recalbox forces it
++MESA3D_CONF_OPTS += --enable-static=no
++
+ # Avoid automatic search of llvm-config
+ MESA3D_CONF_OPTS += --with-llvm-prefix=$(STAGING_DIR)/usr/bin
+ 
++# Needed to get OpenGL 3.0 - Will be removed post BR bump
++# This option has been added updstream, disabled by default.
++# So we will have to enable BR2_PACKAGE_MESA3D_OPENGL_TEXTURE_FLOAT
++MESA3D_CONF_OPTS += --enable-texture-float
++
+ $(eval $(autotools-package))
