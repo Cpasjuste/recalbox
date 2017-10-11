@@ -40,7 +40,7 @@ services:
       io.rancher.scheduler.global: 'true'
       archive: true
       io.rancher.scheduler.affinity:host_label: archive=true
-      io.rancher.lb_service.target: only-local
+      io.rancher.lb_service.target: prefer-local
   master-data:
     image: ${ARCHIVE_IMAGE}
     logging:
