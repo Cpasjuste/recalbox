@@ -2,7 +2,8 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unrelease][unreleased]
+## [4.1.0] - 2017-10-13
+- Pad: added Microsoft Xbox One S & Elite default mapping
 - fix regression in splash video for pi
 - BT: no more permanent background scan, just powerup hci0
 - Splash video for Odroid XU4 and C2 + updated recalbox splash logo
