@@ -4,6 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
 - Switch to versionning based on YEAR.MONTH.DAY (17.10.21) for the recalbox released on October 21th 2017
+- Fixed security option impossible to disable
 
 
 ## [4.1.0] - 2017-10-13

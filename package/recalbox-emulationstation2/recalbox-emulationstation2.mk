@@ -1,6 +1,6 @@
 ################################################################################
 #
-# Emulation Station 2 - recalbox version https://github.com/digitalLumberjack/recalbox-emulationstation
+# EmulationStation 2 - recalbox version https://gitlab.com/recalbox/recalbox-emulationstation
 #
 ################################################################################
 
@@ -14,8 +14,9 @@ else ifeq ($(BR2_PACKAGE_RECALBOX_TARGET_RPI0),y)
         RECALBOX_EMULATIONSTATION2_CONF_OPTS = -DRPI_VERSION=1
 endif
 
-RECALBOX_EMULATIONSTATION2_SITE = $(call github,recalbox,recalbox-emulationstation,$(RECALBOX_EMULATIONSTATION2_VERSION))
-RECALBOX_EMULATIONSTATION2_VERSION = 14bf38853e03b5378c32e446c915b951ea93e4ed
+RECALBOX_EMULATIONSTATION2_SITE = https://gitlab.com/recalbox/recalbox-emulationstation.git
+RECALBOX_EMULATIONSTATION2_VERSION = c4c4ad6e416a285400f6a2016b40f65224e4ceae
+RECALBOX_EMULATIONSTATION2_SITE_METHOD = git
 RECALBOX_EMULATIONSTATION2_LICENSE = MIT
 RECALBOX_EMULATIONSTATION2_DEPENDENCIES = sdl2 sdl2_mixer boost freeimage freetype eigen alsa-lib \
 	libcurl openssl
