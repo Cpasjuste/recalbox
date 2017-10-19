@@ -8,6 +8,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - X86: added Marvell Wifi-Ex 8801 USB & Intel Wireless Bluetooth firmwares
 
 ## [4.1.0] - 2017-10-13
+- moonlight: solve a configgen bug preventing from playing
 - Pad: added Microsoft Xbox One S & Elite default mapping
 - fix regression in splash video for pi
 - BT: no more permanent background scan, just powerup hci0
