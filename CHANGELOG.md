@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Pad: added Orange Controller default mapping
 - scummvm: support the .scummvm extension directories. Still need the .scummvm file inside
 - Added hyperion support
+- Add usbhid quirk for [GamepadBlock](https://blog.petrockblock.com/gamepadblock/)
 
 ## [17.11.02] - 2017-11-02
 - add upgrade logs to the support archive
