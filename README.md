@@ -6,6 +6,10 @@ Welcome to the main recalbox repository.
 
 This repository contains the source code that build the recalboxOS for different boards.
 
+Recalbox is an opensource project. We hope that you will contribute and help us to improve this OS.
+But if you are working on a fork, by respect for our work, we ask you not to integrate our work in progress located on branches other than master.
+Thank you for waiting for a merge on master branch.
+
 Please use **Issues** in corresponding projects to report a bug or request a feature.
 
 ## Recalbox Projects
