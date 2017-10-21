@@ -4,6 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
 - add upgrade logs to the support archive
+- bugfix: all bt pads were forced a udev rule
+- increase BT detection time to 15s, log connect process
 - use the right device GUID for PPSSPP
 - now respect pad order in ES for PPSSPP
 - force SDL2 retrarch input driver for moga pro

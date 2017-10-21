@@ -10,6 +10,7 @@ command="$1"
 mode="$2"
 extra1="$3"
 extra2="$4"
+postMode="${@:3}"
 arch=`cat /recalbox/recalbox.arch`
 
 preBootConfig() {
@@ -493,7 +494,7 @@ if [[ "$command" == "hcitoolscan" ]]; then
 fi
 
 if [[ "$command" == "hiddpair" ]]; then
-    name="$extra1"
+    name="$postMode"
     mac1="$mode"
     mac=`echo $mac1 | grep -oEi "([0-9A-F]{2}[:-]){5}([0-9A-F]{2})" | tr '[:lower:]' '[:upper:]'`
     macLowerCase=`echo $mac | tr '[:upper:]' '[:lower:]'`
@@ -501,7 +502,7 @@ if [[ "$command" == "hiddpair" ]]; then
         exit 1
     fi
     recallog "pairing $name $mac"
-    echo $name | grep "8Bitdo\|other" | recallog
+    echo $name | grep "8Bitdo\|other"
     if [ "$?" == "0" ]; then
         recallog "8Bitdo detected"
         cat "/run/udev/rules.d/99-8bitdo.rules" | grep "$mac" >> /dev/null
@@ -510,8 +511,8 @@ if [[ "$command" == "hiddpair" ]]; then
             echo "SUBSYSTEM==\"input\", ATTRS{uniq}==\"$macLowerCase\", MODE=\"0666\", ENV{ID_INPUT_JOYSTICK}=\"1\"" >> "/run/udev/rules.d/99-8bitdo.rules"
         fi
     fi
-    ( /recalbox/scripts/bluetooth/simple-agent -c NoInputNoOutput -i hci0 "$mac" ) | recallog
-    connected=$?
+    /recalbox/scripts/bluetooth/simple-agent -c NoInputNoOutput -i hci0 "$mac" 2>&1 | recallog
+    connected=${PIPESTATUS[0]}
     if [ $connected -eq 0 ]; then
         hcitool con | grep $mac1
         if [[ $? == "0" ]]; then
