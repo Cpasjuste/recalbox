@@ -14,6 +14,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Fixed security option impossible to disable
 - X86: added Marvell Wifi-Ex 8801 USB & Intel Wireless Bluetooth firmwares
 - BlueMSX: changed default core-options (MSX2/60Hz/ym2413=enabled)
+- Pad: added Moga Pro 2 HID default mapping
 
 ## [4.1.0] - 2017-10-13
 - Pad: added Microsoft Xbox One S & Elite default mapping
