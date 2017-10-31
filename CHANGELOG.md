@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
+- Pad: added Orange Controller default mapping
 
 ## [17.11.02] - 2017-11-02
 - add upgrade logs to the support archive
