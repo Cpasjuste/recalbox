@@ -1,6 +1,6 @@
 version: '2'
 services:
-  master:
+  lb:
     start_on_create: true
     lb_config:
       certs: []
@@ -36,14 +36,14 @@ services:
       - path: /
         priority: 4
         protocol: http
-        service: master-data
+        service: data
         source_port: 80
         target_port: 80
       - path: /
         backend_name: archive-ssl
         priority: 5
         protocol: https
-        service: master-data
+        service: data
         source_port: 443
         target_port: 80
     health_check:
@@ -55,7 +55,7 @@ services:
       interval: 2000
       strategy: recreate
       reinitializing_timeout: 60000
-  master-data:
+  data:
     start_on_create: true
     health_check:
       healthy_threshold: 2

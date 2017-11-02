@@ -41,7 +41,7 @@ services:
       archive: true
       io.rancher.scheduler.affinity:host_label: archive=true
       io.rancher.lb_service.target: prefer-local
-  master-data:
+  data:
     image: ${ARCHIVE_IMAGE}
     logging:
       driver: json-file
