@@ -169,7 +169,7 @@ build odroidxu4 for test:
 release prod:
   <<: *release_definition
   variables:
-    ARCHIVE_IMAGE: ${IMAGE}:${CI_COMMIT_REF_SLUG}
+    ARCHIVE_IMAGE: ${IMAGE}:${CI_COMMIT_TAG}
     RANCHER_DIRECTORY: prod
   only:
   - tags
