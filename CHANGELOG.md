@@ -4,7 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
 
-## [17.10.02] - 2017-11-02
+## [17.11.02] - 2017-11-02
 - add upgrade logs to the support archive
 - bugfix: all bt pads were forced a udev rule
 - increase BT detection time to 15s, log connect process
