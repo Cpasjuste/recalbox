@@ -3,7 +3,6 @@ image: docker:latest
 stages:
   - build
   - release
-  - purge
   - deploy
   - canary
   - clean
@@ -186,16 +185,6 @@ release review:
 
 
 ### Deploy
-purge prod:
-  stage: purge
-  image: registry.gitlab.com/recalbox/ops/rancher-cli:0.6.2
-  only:
-    - tags
-  dependencies: []
-  script:
-    - echo cleaning tag old deployments
-    - rancher rm "${PROD_STACK_NAME}"
-
 .deploy_template: &deploy_definition
   stage: deploy
   image: registry.gitlab.com/recalbox/ops/rancher-cli:0.6.2
