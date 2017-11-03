@@ -202,7 +202,7 @@ release review:
 deploy prod:
   <<: *deploy_definition
   variables:
-    ARCHIVE_IMAGE: ${IMAGE}:${CI_COMMIT_REF_SLUG}
+    ARCHIVE_IMAGE: ${IMAGE}:${CI_COMMIT_TAG}
     ARCHIVE_FQDN: lb-${PROD_STACK_NAME}-prod.recalbox.com
     RANCHER_DIRECTORY: prod
     RECALEUR_CANARY: ${RECALEUR_CANARY}
