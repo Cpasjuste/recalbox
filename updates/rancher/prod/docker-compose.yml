@@ -121,8 +121,6 @@ services:
   # 4.0 upgrades
   recaleur40:
     image: registry.gitlab.com/recalbox/ops/recaleur:2.4.0
-    stdin_open: true
-    tty: true
     command:
     - --path
     - '*'
