@@ -47,6 +47,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Added hyperion support
 - Add usbhid quirk for [GamepadBlock](https://blog.petrockblock.com/gamepadblock/)
 - Lynx: added libretro-handy core (by default)
+## Unreleased
+- pin356 script updated to add timer and short/long press to manage emulator exit and reset (reset only for RA)
 
 ## [17.11.02] - 2017-11-02
 - add upgrade logs to the support archive
