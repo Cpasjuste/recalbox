@@ -1,0 +1,48 @@
+#!/bin/sh
+#
+# Start hyperion
+#
+# Support for hyperion, config file in /recalbox/share/system/configs/hyperion/hyperion.config.json
+#
+
+systemsetting="python /usr/lib/python2.7/site-packages/configgen/settings/recalboxSettings.pyc"
+
+start() {
+	echo -n "Starting hyperion: "
+	mkdir -p /recalbox/share/system/configs/hyperion/
+	start-stop-daemon -b -S -q -m -p /var/run/hyperion.pid --exec /usr/bin/hyperiond -- /recalbox/share/system/configs/hyperion/hyperion.config.json
+	echo "OK"
+}
+
+stop() {
+	echo -n "Stopping hyperion: "
+	start-stop-daemon -K -p /var/run/hyperion.pid
+	echo "OK"
+}
+
+enabled="`$systemsetting -command load -key hyperion.enabled`"
+case "$1" in
+  start)
+        if [ "$enabled" != "1" ];then
+          echo "Hyperion service: disabled"
+          exit 0
+        fi
+        start
+	;;
+  stop)
+        if [ "$enabled" != "1" ];then
+          echo "Hyperion service: disabled"
+          exit 0
+        fi
+	stop
+	;;
+  restart|reload)
+	stop
+	start
+	;;
+  *)
+	echo "Usage: $0 {start|stop|restart}"
+	exit 1
+esac
+
+exit $?

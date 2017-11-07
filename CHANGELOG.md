@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - New pads : Nintendo Wii U and Switch Pro Controller, 8bitdo FC30 Arcade (BT and USB), Thrustmaster T Mini Wireless
 - Pad: added Orange Controller default mapping
 - scummvm: support the .scummvm extension directories. Still need the .scummvm file inside
+- Added hyperion support
 
 ## [17.11.02] - 2017-11-02
 - add upgrade logs to the support archive
@@ -20,6 +21,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - X86: added Marvell Wifi-Ex 8801 USB & Intel Wireless Bluetooth firmwares
 - BlueMSX: changed default core-options (MSX2/60Hz/ym2413=enabled)
 - Pad: added Moga Pro 2 HID default mapping
+
 
 ## [4.1.0] - 2017-10-13
 - Pad: added Microsoft Xbox One S & Elite default mapping

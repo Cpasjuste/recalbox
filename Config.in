@@ -140,6 +140,7 @@ menu "Languages"
 endmenu
 endmenu
 menu "Utils"
+         source "$BR2_EXTERNAL_RECALBOX_PATH/package/hyperion/Config.in"
          source "$BR2_EXTERNAL_RECALBOX_PATH/package/raspi2png/Config.in"
          source "$BR2_EXTERNAL_RECALBOX_PATH/package/megatools/Config.in"
          source "$BR2_EXTERNAL_RECALBOX_PATH/package/jstest2/Config.in"
