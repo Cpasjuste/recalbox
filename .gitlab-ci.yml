@@ -245,6 +245,7 @@ validate release:
     RECALEUR_RESPONSE: https://lb-${PROD_STACK_NAME}-prod.recalbox.com
     RECALEUR_PATH: "/v1/upgrade"
     RECALEUR_DELTA: ${RECALEUR_DELTA}
+    STACK: ${PROD_STACK_NAME}
   only:
     - tags
 
@@ -259,6 +260,7 @@ emergency valve:
     RECALEUR_RESPONSE: https://lb-${PROD_STACK_NAME}-prod.recalbox.com
     RECALEUR_PATH: "/v1/upgrade"
     RECALEUR_DELTA: "0ms"
+    STACK: ${PROD_STACK_NAME}
   only:
     - tags
 
