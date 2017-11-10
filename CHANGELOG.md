@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [17.11.10.2] - 2017-11-10
+- Fixed hyperion libraries
+
 ## [17.11.10] - 2017-11-10
 - New pads : Nintendo Wii U and Switch Pro Controller, 8bitdo FC30 Arcade (BT and USB), Thrustmaster T Mini Wireless
 - Pad: added Orange Controller default mapping
