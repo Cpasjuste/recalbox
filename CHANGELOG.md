@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Cores: bumped libretro cores - first step
 - Bumped retroarch to v1.6.7
 - Bumped ScummVM
+- Dreamcast: add a VMU to each connected pad
 
 ## [17.11.10.2] - 2017-11-10
 - Fixed hyperion libraries
