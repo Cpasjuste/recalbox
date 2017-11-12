@@ -93,6 +93,11 @@ do_upgrade() {
     return 0
 }
 
+pre_reboot_actions() {
+  # If we don't restore before reboot, default values will be saved at reboot, losing custom ones
+  recallog "Restoring sound config before reboot"
+  alsactl -f /recalbox/share/system/configs/asound.state restore 2>&1 | recallog
+}
 
 # what about doing an upgrade ?
 if test -e "/recalbox/share/system/upgrade/boot.tar.xz" -a -e "/recalbox/share/system/upgrade/root.tar.xz"
@@ -103,6 +108,8 @@ then
     # remove to not apply it indefinitly, even if it fails
     rm "/recalbox/share/system/upgrade/boot.tar.xz" "/recalbox/share/system/upgrade/root.tar.xz"
     
+    # Last commands before reboot
+    pre_reboot_actions
     # rebooting now
     shutdown -r now
 fi
