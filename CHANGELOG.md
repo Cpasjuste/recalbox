@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+- checkPackage: remove test case, new option to select packages to update
 - X86: Added 2 new PSX cores mednafen_psx and mednafen_psx_hw (enhanced version with OpenGL renderer)
 - Cores: bumped libretro cores - first step
 - Bumped retroarch to v1.6.7

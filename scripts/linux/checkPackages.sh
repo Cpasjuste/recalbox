@@ -5,8 +5,7 @@
 [[ -z $RECALBOX_DIR ]] && RECALBOX_DIR=.
 
 # EMULATORS is compared to each package's repo
-EMULATORS="advancemame moonlight-embedded reicast retroarch ppsspp scummvm libretro-vice libretro-beetle-supergrafx libretro-fceunext libretro-cap32 libretro-gpsp libretro-beetle-pce libretro-pocketsnes libretro-beetle-pcfx libretro-nxengine libretro-beetle-ngp libretro-fuse libretro-pcsx libretro-meteor libretro-4do libretro-o2em libretro-prboom libretro-cheats libretro-nestopia libretro-imageviewer libretro-vecx libretro-mgba libretro-fceumm libretro-snes9x-next libretro-imame libretro-fmsx libretro-quicknes libretro-genesisplusgx libretro-beetle-vb libretro-bluemsx libretro-glupen64 libretro-virtualjaguar libretro-mupen64 libretro-mame2003 libretro-tgbdual libretro-beetle-lynx libretro-picodrive libretro-fba libretro-gambatte libretro-stella libretro-snes9x libretro-prosystem libretro-lutro libretro-uae libretro-armsnes libretro-beetle-wswan libretro-scummvm libretro-hatari libretro-gw libretro-catsfc libretro-81 mupen64plus-audio-sdl mupen64plus-core mupen64plus-gles2 mupen64plus-gles2rice mupen64plus-gliden64 mupen64plus-input-sdl mupen64plus-omx mupen64plus-rice mupen64plus-rsphle mupen64plus-uiconsole mupen64plus-video-glide64mk2"
-EMULATORS=scummvm
+EMULATORS="advancemame moonlight-embedded reicast retroarch ppsspp scummvm libretro-vice libretro-beetle-supergrafx libretro-fceunext libretro-cap32 libretro-gpsp libretro-beetle-pce libretro-pocketsnes libretro-beetle-pcfx libretro-nxengine libretro-beetle-ngp libretro-fuse libretro-pcsx libretro-meteor libretro-4do libretro-o2em libretro-prboom libretro-cheats libretro-nestopia libretro-imageviewer libretro-vecx libretro-mgba libretro-fceumm libretro-snes9x-next libretro-imame libretro-fmsx libretro-quicknes libretro-genesisplusgx libretro-beetle-vb libretro-bluemsx libretro-glupen64 libretro-virtualjaguar libretro-mupen64 libretro-mame2003 libretro-tgbdual libretro-beetle-lynx libretro-picodrive libretro-fba libretro-gambatte libretro-stella libretro-snes9x libretro-prosystem libretro-lutro libretro-uae libretro-armsnes libretro-beetle-wswan libretro-scummvm libretro-hatari libretro-gw libretro-catsfc libretro-81 mupen64plus-audio-sdl mupen64plus-core mupen64plus-gles2 mupen64plus-gles2rice mupen64plus-gliden64 mupen64plus-input-sdl mupen64plus-omx mupen64plus-rice mupen64plus-rsphle mupen64plus-uiconsole mupen64plus-video-glide64mk2 libretro-handy libretro-beetle-psx libretro-beetle-psx-hw"
 
 # PACKAGES is compared to each package's repo
 PACKAGES="rpi-firmware rpi-userland odroid-scripts odroid-mali"
@@ -134,7 +133,7 @@ function updatePackageCommitId () {
   oldId="$2"
   newId="$3"
   brPackageName=`echo $package | tr /a-z/ /A-Z/ | sed s+-+_+g`
-
+  echo "UPDATING: $1 $oldId -> $newId" >&2
   sed -i "s/\(${brPackageName}_VERSION\s\?=\s\?\)${oldId}/\1${newId}/" "$RECALBOX_DIR"/package/"${package}"/"${package}".mk
 }
 
@@ -167,7 +166,9 @@ function comparePiDefconfig() {
   skippedDefconfig="$3"
   [[ $piVersion == 1 ]] && piBRVersion=0 || piBRVersion=$piVersion
   
-  if [[ $willUpdate == 1 && $skippedDefconfig != *"recalbox-rpi${piVersion}_defconfig"* ]] ; then
+  if [[ $willUpdate == 1 && $skippedDefconfig != *"recalbox-rpi${piVersion}_defconfig"* ]] && \
+	  [[ ! -z $selectedPackages && $selectedPackages == *"recalbox-rpi${piVersion}_defconfig"* || -z $selectedPackages ]]
+  then
     brKernelHeaders=`grep "BR2_PACKAGE_HOST_LINUX_HEADERS_CUSTOM_" "$BUILDROOT_DIR/configs/raspberrypi${piBRVersion}_defconfig"`
     updateDefconfig "$RECALBOX_DIR/configs/recalbox-rpi${piVersion}_defconfig" "BR2_PACKAGE_HOST_LINUX_HEADERS_CUSTOM_" "$brKernelHeaders"
     brKernelCommitId=`grep "BR2_LINUX_KERNEL_CUSTOM_REPO_VERSION" "$BUILDROOT_DIR/configs/raspberrypi${piBRVersion}_defconfig"`
@@ -214,6 +215,7 @@ function comparePcDefconfig() {
 Kernel branch\t${rbxkernelBranch}\t${brkernelBranch}\t${updateKernelBranch}
 Kernel Version\t${rbxKernelCustomValue}\t${brKernelCustomValue}\t${updateKernelCommitId}\t${X86_LATEST_KERNEL}" | column -ten -s $'\t'
 }
+
 #
 # Get package infos + upstream infos and compare
 #
@@ -231,8 +233,10 @@ function taskEmulators () {
   fi
 
   # Update the package if update is set and the package is not skipped
-  [[ $willUpdate == 1 ]] && [[ $skippedPackages != *"$emu"* ]] && updatePackageCommitId "$emu" "$currentId" "$remoteId"
-  #~ updatePackageCommitId "$emu" "$currentId" "$remoteId"
+  [[ $willUpdate == 1 ]] && \
+	  [[ $skippedPackages != *"$emu"* ]] && \
+	  [[ ! -z $selectedPackages && $selectedPackages == *"$emu"* || -z $selectedPackages ]] && \
+	  updatePackageCommitId "$emu" "$currentId" "$remoteId"
   currentId=`getCommitIdFromPackage "$emu"`
 
   str="$emu\t${currentId:0:7}\t${remoteId:0:7}"
@@ -265,8 +269,10 @@ function taskPackages () {
   fi
 
   # Update the package if update is set and the package is not skipped
-  [[ $willUpdate == 1 ]] && [[ $skippedPackages != *"$emu"* ]] && updatePackageCommitId "$emu" "$currentId" "$remoteId"
-  #~ updatePackageCommitId "$emu" "$currentId" "$remoteId"
+  [[ $willUpdate == 1 ]] && \
+	  [[ $skippedPackages != *"$emu"* ]] && \
+	  [[ ! -z $selectedPackages && $selectedPackages == *"$emu"* || -z $selectedPackages ]] && \
+	  updatePackageCommitId "$emu" "$currentId" "$remoteId"
   currentId=`getCommitIdFromPackage "$emu"`
 
   str="$emu\t${currentId:0:7}\t${remoteId:0:7}"
@@ -285,7 +291,7 @@ function mainEmulators () {
   willUpdate="$1"
   skippedPackages="$2"
   for emu in $EMULATORS ; do
-    taskEmulators "$emu" "$willUpdate" "$skippedPackages" &
+    taskEmulators "$emu" "$willUpdate" "$skippedPackages" "$selectedPackages" &
   done >> /tmp/result
   wait
   # We need \t + 3 spaces behind to compensate the non printable caracters for bold
@@ -309,15 +315,15 @@ function mainPackages () {
 }
 
 function main() {
-  mainEmulators "$willUpdate" "$skippedPackages"
+  mainEmulators "$willUpdate" "$skippedPackages" "$selectedPackages"
   echo
-  mainPackages "$willUpdate" "$skippedPackages"
+  mainPackages "$willUpdate" "$skippedPackages" "$selectedPackages"
   echo
-  comparePiDefconfig 1 "$willUpdate"
-  comparePiDefconfig 2 "$willUpdate"
-  comparePiDefconfig 3 "$willUpdate" "$skippedPackages"
-  comparePcDefconfig x86 "$willUpdate" "$skippedPackages"
-  comparePcDefconfig x86_64 "$willUpdate" "$skippedPackages"
+  comparePiDefconfig 1 "$willUpdate" "$skippedPackages" "$selectedPackages"
+  comparePiDefconfig 2 "$willUpdate" "$skippedPackages" "$selectedPackages"
+  comparePiDefconfig 3 "$willUpdate" "$skippedPackages" "$selectedPackages"
+  comparePcDefconfig x86 "$willUpdate" "$skippedPackages" "$selectedPackages"
+  comparePcDefconfig x86_64 "$willUpdate" "$skippedPackages" "$selectedPackages"
 }
 
 # Usage
@@ -326,6 +332,7 @@ function usage() {
   echo "-h, --help                     Print this help"
   echo "-u, --update                   Update packages"
   echo "-s, --skip-package <package>   Exclude <package> from update. Can be used multiple times"
+  echo "-p, --package-select <package> Select only <package>. Can be used multiple times"
   echo "-U, --user <user>              Specify github user for API access"
   echo "-t, --token <token>            Specify github user token for API access"
   echo
@@ -339,6 +346,7 @@ function usage() {
 #default values
 willUpdate=0
 skippedPackages=""
+selectedPackages=""
 # parse arguments
 while [[ $# -gt 0 ]]
 do
@@ -352,7 +360,12 @@ do
             echo "PARAMS: will update packages" >&2
             willUpdate=1
             ;;
-	-s | --skip-package)
+        -p | --package-select)
+            echo "PARAMS: add $2 to selected packages for update" >&2
+            selectedPackages="$selectedPackages $2"
+	    shift
+	    ;;
+        -s | --skip-package)
             echo "PARAMS: skipping package $2" >&2
             skippedPackages="$skippedPackages $2"
 	    shift
@@ -377,4 +390,4 @@ done
 
 getAPIToken
 
-main "$willUpdate" "$skippedPackages"
+main
