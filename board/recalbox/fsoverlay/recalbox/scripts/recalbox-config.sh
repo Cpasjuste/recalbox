@@ -407,7 +407,7 @@ if [ "$command" == "volume" ];then
         fi
         # Odroids have no sound controller. Too bad, exit 0 anyway
         # Force the sound volume to every mixer on the default sound card
-        for param in `amixer controls | cut -d ',' -f 1` ; do recallog "Setting volume for $param" ; amixer -q cset ${param} ${mode}% ; done
+        for param in `amixer controls | grep -i Playback | cut -d ',' -f 1` ; do recallog "Setting volume for $param" ; amixer -q cset ${param} ${mode}% unmute ; done
         exit 0
     fi
     exit 12
