@@ -2,4 +2,4 @@
 
 Placez ici vos roms pcengine cd.
 
-Les roms doivent avoir l'extension ".cue/.ccd"
+Les roms doivent avoir l'extension ".cue/.ccd/.chd"

@@ -5,7 +5,7 @@
 ################################################################################
 
 # Package generated with :
-# ./scripts/linux/empack.py --system pcenginecd --extension '.cue .CUE .ccd .CCD' --fullname 'PC Engine CD' --platform pcenginecd --theme pcenginecd libretro:mednafen_supergrafx:BR2_PACKAGE_LIBRETRO_BEETLE_SUPERGRAFX libretro:pce:BR2_PACKAGE_LIBRETRO_BEETLE_PCE
+# ./scripts/linux/empack.py --system pcenginecd --extension '.cue .CUE .ccd .CCD .chd .CHD' --fullname 'PC Engine CD' --platform pcenginecd --theme pcenginecd libretro:mednafen_supergrafx:BR2_PACKAGE_LIBRETRO_BEETLE_SUPERGRAFX libretro:pce:BR2_PACKAGE_LIBRETRO_BEETLE_PCE
 
 # Name the 3 vars as the package requires
 RECALBOX_ROMFS_PCENGINECD_SOURCE = 
@@ -23,7 +23,7 @@ SOURCE_ROMDIR_PCENGINECD = $(RECALBOX_ROMFS_PCENGINECD_PKGDIR)/roms
 
 ifneq ($(BR2_PACKAGE_LIBRETRO_BEETLE_SUPERGRAFX)$(BR2_PACKAGE_LIBRETRO_BEETLE_PCE),)
 define CONFIGURE_MAIN_PCENGINECD_START
-	$(call RECALBOX_ROMFS_CALL_ADD_SYSTEM,$(SYSTEM_XML_PCENGINECD),PC Engine CD,$(SYSTEM_NAME_PCENGINECD),.cue .CUE .ccd .CCD,pcenginecd,pcenginecd)
+	$(call RECALBOX_ROMFS_CALL_ADD_SYSTEM,$(SYSTEM_XML_PCENGINECD),PC Engine CD,$(SYSTEM_NAME_PCENGINECD),.cue .CUE .ccd .CCD .chd .CHD,pcenginecd,pcenginecd)
 endef
 
 ifneq ($(BR2_PACKAGE_LIBRETRO_BEETLE_SUPERGRAFX)$(BR2_PACKAGE_LIBRETRO_BEETLE_PCE),)
