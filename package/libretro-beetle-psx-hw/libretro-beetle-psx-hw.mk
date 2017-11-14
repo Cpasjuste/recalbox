@@ -20,6 +20,8 @@ define LIBRETRO_BEETLE_PSX_HW_CROSS_FIXUP
 	$(SED) 's|-L/usr/local/lib|-L$(STAGING_DIR)/usr/lib|g' $(@D)/Makefile
 	$(SED) 's|-I/usr/local/include|-I$(STAGING_DIR)/usr/include|g' $(@D)/Makefile.common
 	$(SED) 's|FIRST_RENDERER EXT_RENDERER|EXT_RENDERER FIRST_RENDERER|g' $(@D)/libretro.cpp
+	$(SED) 's`EXT_RENDERER "|opengl|software"`EXT_RENDERER "opengl|software|"`g' $(@D)/libretro.cpp
+	$(SED) 's`EXT_RENDERER "|software"`EXT_RENDERER "software|"`g' $(@D)/libretro.cpp
 endef
 
 LIBRETRO_BEETLE_PSX_HW_PRE_CONFIGURE_HOOKS += LIBRETRO_BEETLE_PSX_HW_CROSS_FIXUP
