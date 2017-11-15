@@ -10,6 +10,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Bumped ScummVM
 - Dreamcast: add a VMU to each connected pad
 - Cores: bumped libretro cores - second step
+- Bluemsx: bumped core to last version + added .cas/.m3u files support
 
 ## [17.11.10.2] - 2017-11-10
 - Fixed hyperion libraries
