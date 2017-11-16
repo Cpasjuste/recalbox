@@ -2,8 +2,15 @@
 
 Placez ici vos dossiers de jeux scummvm.
 
-Pour chaque jeu, dans son repertoire, vous devez creer un fichier portant le nom court du jeu et finissant par .scummvm
+Pour chaque jeu, dans son répertoire, vous devez créer un fichier portant le nom court du jeu et finissant par .scummvm
+Si vous le désirez, vous pouvez démarrer votre jeu ScummVM en sélectionnant son répertoire s'il possède l'extension .scummvm
+Vous aurez toujours besoin de créer un fichier portant le nom court du jeu et finissant par .scummvm dans ce répertoire.
+Mais Emulationstation affichera uniquement votre `répertoire.scummvm` comme étant un jeu.
+
+Exemple:
+scummvm
+|- Day of the Tentacle.scummvm
+| |- tentacle.scummvm
+| |- ...
 
 Vous trouverez les noms courts a l'adresse : http://scummvm.org/compatibility/
-
-Par exemple pour "Les Chevaliers de Baphomet" creez le fichier "Les Chevaliers de Baphomet/sword1.scummvm"
