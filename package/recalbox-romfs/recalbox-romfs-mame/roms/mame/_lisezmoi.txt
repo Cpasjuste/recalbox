@@ -4,11 +4,13 @@ Placez ici vos roms mame.
 
 Les roms doivent avoir l'extension ".zip"
 
-Par défaut, recalbox utilise le core libretro mame2003. Les roms doivent donc provenir du set 0.78
+Par défaut, recalbox utilise le core libretro mame2003. Les roms doivent donc provenir du romset mame 0.78
 
-Le core imame4all, basé sur une version de mame utilisant un romset 0.37b5 est également présent dans recalbox.
+Sont également présents dans Recalbox:
+- core libretro imame4all: romset mame 0.37b5
+- émulateur standalone advancemame: romset mame 0.106
 
-Si vous souhaitez utiliser ce core, à la place de celui par défaut, vous devrez modifier votre fichier recalbox.conf selon les informations présentes dans cette page :
+Si vous souhaitez utiliser un core/émulateur différent de celui par défaut, vous devrez modifier votre fichier recalbox.conf selon les informations présentes dans cette page :
 https://github.com/recalbox/recalbox-os/wiki/recalbox.conf-%28FR%29
 
 Vous pouvez utiliser clrmamepro disponible sur http://mamedev.emulab.it/clrmamepro/
