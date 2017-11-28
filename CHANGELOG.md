@@ -18,6 +18,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - X86: Added boot menu with verbose option
 - Fix steam controller
 - Arcade: updated dat and readme files
+- N64: added mupen64plus GLideN64 video plugin on Odroid XU4 and C2
 
 ## [17.11.10.2] - 2017-11-10
 - Fixed hyperion libraries
