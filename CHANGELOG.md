@@ -4,6 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 - Added mame2010 libretro core on all boards excepted rpi0/1
+- X86: Added Nintendo DS support libretro cores desmume and melonds
 
 ## [17.12.02] - 2017-12-02
 - fixed steam controller service auto start, fixes lag in ES
