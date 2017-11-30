@@ -19,6 +19,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Fix steam controller
 - Arcade: updated dat and readme files
 - N64: added mupen64plus GLideN64 video plugin on Odroid XU4 and C2
+- On rpi Kodi now boots using the default screen resolution
+- Retroarch: network commands fixed
 
 ## [17.11.10.2] - 2017-11-10
 - Fixed hyperion libraries
