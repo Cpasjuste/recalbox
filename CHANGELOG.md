@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [17.12.02] - 2017-12-02
+- fixed steam controller service auto start, fixes lag in ES
+
 ## [17.12.01] - 2017-12-01
 - solve erroneous logtime in recalbog.log
 - updated recalbox-config.sh for wifi scan
