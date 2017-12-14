@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - X86: Added Nintendo DS support libretro cores desmume and melonds
 - Replace intro video for christmas release
 - add ipega 9055 udev rule
+- Add quirk for micreal arcade dual
 
 ## [17.12.02] - 2017-12-02
 - fixed steam controller service auto start, fixes lag in ES
