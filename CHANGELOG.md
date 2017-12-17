@@ -15,6 +15,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Added Panasonic 3DO (XU4 / X86) with libretro core 4do
 - Odroid XU4: HDMI CEC disabled by default
 - Add ResidualVM 0.4.0 as a new emulator for ScummVM system (rev. a98cca7)
+- ScummVM: Allows to configure mapping of joystick buttons
 
 ## [17.12.02] - 2017-12-02
 - fixed steam controller service auto start, fixes lag in ES
