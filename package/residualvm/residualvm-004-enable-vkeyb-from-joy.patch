@@ -156,7 +156,7 @@ Signed-off-by: Laurent Merckx <laurent-merckx@skynet.be>
  #define JOY_BUT_PERIOD 1
  #define JOY_BUT_SPACE 4
  #define JOY_BUT_F5 5
-+#define JOY_BUT_VKEYBOARD 7
++#define JOY_BUT_VKEYBOARD 6
  
  #if SDL_VERSION_ATLEAST(2, 0, 0)
  static uint32 convUTF8ToUTF32(const char *src) {
