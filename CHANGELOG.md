@@ -17,6 +17,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Add ResidualVM 0.4.0 as a new emulator for ScummVM system (rev. a98cca7)
 - ScummVM: Allows to configure mapping of joystick buttons
 - ScummVM: Bump to 2.0.0 + allows to configure mapping of joystick buttons
+- DosBox: bump to r4067 (joystick configuration improvements) + enable IPX network
 
 ## [17.12.02] - 2017-12-02
 - fixed steam controller service auto start, fixes lag in ES
