@@ -16,6 +16,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Odroid XU4: HDMI CEC disabled by default
 - Add ResidualVM 0.4.0 as a new emulator for ScummVM system (rev. a98cca7)
 - ScummVM: Allows to configure mapping of joystick buttons
+- ScummVM: Bump to 2.0.0 + allows to configure mapping of joystick buttons
 
 ## [17.12.02] - 2017-12-02
 - fixed steam controller service auto start, fixes lag in ES
