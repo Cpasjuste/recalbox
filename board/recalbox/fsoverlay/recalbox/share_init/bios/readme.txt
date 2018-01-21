@@ -79,3 +79,9 @@ d6e11a23f1fa01cddb5dfccf7e4cc8d7  dc_flash.bin
 df692a80a5b1bc90728bc3dfc76cd948  bios7.bin
 a392174eb3e572fed6447e956bde4b25  bios9.bin
 e45033d9b0fa6b0de071292bba7c9d13  firmware.bin
+
+- SHARP X68000 :
+Bios files must be placed in a subfolder named "keropi"
+
+7fd4caabac1d9169e289f0f7bbf71d8e  keropi/iplrom.dat
+cb0a5cfcf7247a7eab74bb2716260269  keropi/cgrom.dat
