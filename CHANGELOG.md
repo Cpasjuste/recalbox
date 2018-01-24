@@ -24,6 +24,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Bump mGBA emulator and add it to gb and gbc for Super Game Boy support
 - Add Thomson TO + MO support with libretro core theodore, thank you zlika
 - linapple: support apple2.configfile=dummy to avoid overwriting configuration
+- Add Amstrad CPC core: crocods
 
 ## [18.04.20] - 2018-04-20
 - ES: Added pop-ups
@@ -108,7 +109,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - pin356 script updated to add timer and short/long press to manage emulator exit and reset (reset only for RA)
 
 - Odroid XU4: HDMI hot plug disabled by default
-- Added new Amstrad CPC core: crocods
 
 ## [17.12.02] - 2017-12-02
 - fixed steam controller service auto start, fixes lag in ES
