@@ -16,10 +16,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - ES: games can be started from the webmanager
 - restored original splash video + added a few new ones, randomly played at boot
 - fix mame platform
+- PPSSPP: bump to 1.5.4
 
 ## [18.02.09] - 2018-02-09
 - C2: disable picodrive for now until we fix compilation
 - New system : amiga for pi2 and pi3
+- Bump PPSSPP to 1.5.4
 - Added mame2010 libretro core on all boards excepted rpi0/1
 - X86: Added Nintendo DS support with libretro cores desmume and melonds
 - Replaced intro video for christmas release
