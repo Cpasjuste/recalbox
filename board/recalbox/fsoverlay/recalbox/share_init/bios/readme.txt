@@ -85,3 +85,7 @@ Bios files must be placed in a subfolder named "keropi"
 
 7fd4caabac1d9169e289f0f7bbf71d8e  keropi/iplrom.dat
 cb0a5cfcf7247a7eab74bb2716260269  keropi/cgrom.dat
+
+- PANASONIC 3DO :
+51f2f43ae2f3508a14d9f56597e2d3ce  panafz10.bin
+

@@ -1,22 +1,20 @@
+diff --git a/Makefile b/Makefile
+index f066d1c..a8ce7c6 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -106,6 +106,19 @@
- 	AR = psp-ar$(EXE_EXT)
-    STATIC_LINKING = 1
- 	FLAGS += -G0 -DLSB_FIRST
+@@ -76,6 +76,15 @@ ifneq (,$(findstring unix,$(platform)))
+         endif
+     endif
+ 
++# ARM
 +else ifneq (,$(findstring armv,$(platform)))
-+	TARGET := $(TARGET_NAME)_libretro.so
-+   	fpic := -fPIC
-+	SHARED := -shared -Wl,--no-undefined -Wl,--version-script=link.T
-+   	CC = gcc
-+   	CXX = g++
-+	FLAGS += -marm
-+	ifneq (,$(findstring softfloat,$(platform)))
-+   		FLAGS += -mfloat-abi=softfp
-+	else ifneq (,$(findstring hardfloat,$(platform)))
-+   		FLAGS += -mfloat-abi=hard
-+	endif
-+   	FLAGS += -DARM
- else
-    TARGET := $(TARGET_NAME)_libretro.dll
-    CC = gcc
++    AR = ${CC_PREFIX}ar
++    CC = ${CC_PREFIX}gcc
++
++    TARGET := $(TARGET_NAME)_libretro.so
++    fpic := -fPIC
++    SHARED := -shared -Wl,--no-undefined -Wl,--version-script=link.T
++
+ else ifeq ($(platform), osx)
+    TARGET := $(TARGET_NAME)_libretro.dylib
+    fpic := -fPIC
