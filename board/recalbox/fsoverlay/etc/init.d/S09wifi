@@ -1,0 +1,82 @@
+#!/bin/bash
+
+# Function to create connmann wifi profiles based on user settings
+
+rb_wifi_boot_configure() {
+        [ "$1" = "1" ] && X="" || X="$1"
+        settings_ssid=`egrep "^wifi${X}.ssid" /tmp/wifi.conf|sed "s/wifi${X}.ssid=//g"`
+        settings_key=`egrep "^wifi${X}.key" /tmp/wifi.conf|sed "s/wifi${X}.key=//g"`
+        settings_file="/var/lib/connman/recalbox_wifi${X}.config"
+        [ "$1" = "1" ] && settings_name="default" || settings_name="${X}"
+
+        if [[ "$settings_ssid" != "" ]] ;then
+        mkdir -p "/var/lib/connman"
+        cat > "${settings_file}" <<EOF
+[global]
+Name=recalbox
+
+[service_recalbox_${settings_name}]
+Type=wifi
+Name=${settings_ssid}
+EOF
+        if test "${settings_key}" != ""
+        then
+            settings_key_dec=$(/recalbox/scripts/recalbox-encode.sh decode "${settings_key}")
+            echo "Passphrase=${settings_key_dec}" >> "${settings_file}"
+	fi
+    fi
+}
+
+# Main
+
+case "$1" in
+  start)
+	if [ ! -f /tmp/wifi.conf ]
+	then
+		egrep -v '^wifi' /boot/recalbox-boot.conf > /tmp/recalbox-boot.conf # Copy recalbox-boot.conf to a tmp location without wifi information
+		egrep '^wifi' /boot/recalbox-boot.conf > /tmp/wifi.conf # Keep wifi information into another tmp file
+		mount -o remount,rw /boot
+		mv /tmp/recalbox-boot.conf /boot/recalbox-boot.conf # Replace recalbox-boot.conf to its original location (without wifi information)
+		mount -o remount,ro /boot
+	fi
+
+	# If wifi.conf is empty, don't start wifi
+	if [ -s /tmp/wifi.conf ]
+	then
+
+		for i in {1..3}; do
+			rb_wifi_boot_configure $i&
+		done
+
+		sleep 1 # wait a bit, otherwise, connman is not really started
+		/usr/bin/connmanctl enable wifi || exit 1
+		/usr/bin/connmanctl scan   wifi || exit 1
+	fi
+
+	# We don't need the tmp wifi file anymore
+	if [ -f /tmp/wifi.conf ]
+	then
+		rm /tmp/wifi.conf
+	fi
+
+	# If share over network, let's add a timeout of 10 seconds (max) for slow networks
+	if [ `grep -c "^sharedevice=NETWORK$" /boot/recalbox-boot.conf` -ne 0 ]
+	then
+		try=0
+		until [ ! $try -lt 10 ]
+		do
+			if [ `ifconfig |grep -v "127.0.0.1"|grep -c "inet addr"` -gt 0 ]
+			then
+				break # Of course if network is OK, don't wait anymore!
+			fi
+			sleep 1
+			try=`expr $try + 1`
+		done
+	fi
+	;;
+  stop)
+	;;
+  *)
+esac
+
+exit $?
