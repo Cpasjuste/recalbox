@@ -1,0 +1,17 @@
+config BR2_PACKAGE_AMIBERRY
+	depends on BR2_PACKAGE_SDL
+        depends on BR2_PACKAGE_RECALBOX_SYSTEM
+	select BR2_PACKAGE_MPG123
+	select BR2_PACKAGE_GUICHAN
+	select BR2_PACKAGE_SDL_TTF
+	select BR2_PACKAGE_SDL_GFX
+	select BR2_PACKAGE_RECALBOX_ROMFS_AMIGA600
+	select BR2_PACKAGE_RECALBOX_ROMFS_AMIGA1200
+        bool "Amiberry"
+        help
+          An Amiga emulator
+
+	  https://github.com/midwan/amiberry
+
+comment "Amiberry depends on SDL"
+	depends on !(BR2_PACKAGE_SDL)
