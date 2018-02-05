@@ -27,6 +27,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - DosBox: bump to r4067 (joystick configuration improvements) + enable IPX network
 - pin356 script updated to add timer and short/long press to manage emulator exit and reset (reset only for RA)
 
+- Odroid XU4: HDMI hot plug disabled by default
 
 ## [17.12.02] - 2017-12-02
 - fixed steam controller service auto start, fixes lag in ES
