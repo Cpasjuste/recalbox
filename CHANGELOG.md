@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## [18.02.09] - 2018-02-09
 - C2: disable picodrive for now until we fix compilation
 - New system : amiga for pi2 and pi3
 - Added mame2010 libretro core on all boards excepted rpi0/1
@@ -19,6 +19,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - ScummVM: Allows to configure mapping of joystick buttons
 - ScummVM: Bump to 2.0.0 + allows to configure mapping of joystick buttons
 - DosBox: bump to r4067 (joystick configuration improvements) + enable IPX network
+- pin356 script updated to add timer and short/long press to manage emulator exit and reset (reset only for RA)
+
 
 ## [17.12.02] - 2017-12-02
 - fixed steam controller service auto start, fixes lag in ES
@@ -55,8 +57,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Added hyperion support
 - Add usbhid quirk for [GamepadBlock](https://blog.petrockblock.com/gamepadblock/)
 - Lynx: added libretro-handy core (by default)
-## Unreleased
-- pin356 script updated to add timer and short/long press to manage emulator exit and reset (reset only for RA)
 
 ## [17.11.02] - 2017-11-02
 - add upgrade logs to the support archive
