@@ -38,5 +38,7 @@ doClean "${TARGET_DIR}/etc/init.d/S30dbus"
 doClean "${TARGET_DIR}/etc/init.d/S40network"
 doClean "${TARGET_DIR}/etc/init.d/S45connman"
 
+# V180209 2018-02-09
+doClean "${TARGET_DIR}/etc/init.d/S46network-config"
 
 exit 0
