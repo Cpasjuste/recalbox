@@ -1,6 +1,0 @@
-#!/bin/sh
-#
-# This script is deprecated and has been replaced by S09wifi
-#
-
-exit $?
