@@ -11,6 +11,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Moonlight: bump to 2.4.6, supports up to GFE 3.12 + can handle several GFE PC + rewrote scrape
 - recalbox.conf videomode now supports a new auto mode
 - ScummVM: Enable MT-32 emulation
+- DosBox: bump to r4076 + add a virtual keyboard
 
 ## [18.02.09] - 2018-02-09
 - C2: disable picodrive for now until we fix compilation
