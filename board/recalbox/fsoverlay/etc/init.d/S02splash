@@ -1,6 +1,14 @@
 #!/bin/bash
 
-video="/recalbox/system/resources/splash/recalboxintro.mp4"
+selectVideo() {
+IFS='
+'
+videoList=($(find /recalbox/system/resources/splash -name *.mp4))
+videoNumber=${#videoList[*]}
+video=${videoList[$((RANDOM%videoNumber))]}
+echo "${video}"
+}
+video="`selectVideo`"
 
 do_ffmpeg_start () {
     if ! `which ffplay >/dev/null` || [[ ! -f $video ]] ; then
