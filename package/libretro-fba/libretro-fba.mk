@@ -3,7 +3,7 @@
 # FBA
 #
 ################################################################################
-LIBRETRO_FBA_VERSION = e54b9c31207ad3798b28dca80756a7cf8573256f
+LIBRETRO_FBA_VERSION = c0e0632295bcd4010e3b32a2537c00d8eba3a031
 LIBRETRO_FBA_SITE = $(call github,libretro,fbalpha,$(LIBRETRO_FBA_VERSION))
 
 define LIBRETRO_FBA_BUILD_CMDS
