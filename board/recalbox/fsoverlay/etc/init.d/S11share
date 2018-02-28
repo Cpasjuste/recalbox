@@ -167,6 +167,9 @@ mountNetwork() {
 			    "BIOS")
 				CMD_TDIR="/recalbox/share/bios"
 			    ;;
+			    "MUSIC")
+				CMD_TDIR="/recalbox/share/music"
+			    ;;
 			esac
 
 			case "${CTYPE}" in
