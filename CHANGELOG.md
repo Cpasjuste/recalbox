@@ -5,6 +5,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## Unreleased
 - ES: new carousel mode ! Check UI Settings > Theme configuration with recalbox-next theme
 - ES: no more whiste screen of death when VRAM is filled
+- ES: new WiFi SSID selection box
+- ES: also scan music subfolders
+- ES: fix no music + wrong infos at boot
+- ES: fix black screen once back from emulator
+- ES: Kodi can only be started on the main systems screen
 - segacd: add chd as supported file format
 - sound: only set volume for playback devices
 - psx: fixed typo (mu3 instead of m3u file extension)
