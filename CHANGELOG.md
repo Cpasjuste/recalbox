@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## Unreleased
+- Odroid-xu4: remove screeching noise at fan startup
+
 ## [18.03.16] - 2018-03-16
 - ES: new carousel mode ! Check UI Settings > Theme configuration with recalbox-next theme
 - ES: no more whiste screen of death when VRAM is filled
