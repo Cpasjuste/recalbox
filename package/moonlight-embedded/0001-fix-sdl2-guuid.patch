@@ -1,0 +1,32 @@
+From dcda1a5d133007e94afdb289bb2f850083832e70 Mon Sep 17 00:00:00 2001
+From: Iwan Timmer <irtimmer@gmail.com>
+Date: Tue, 20 Mar 2018 19:49:26 +0100
+Subject: [PATCH] Correct controller GUID when product or vendor id is
+ undefined
+
+---
+ src/input/evdev.c | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/src/input/evdev.c b/src/input/evdev.c
+index 7fc1181a..25710cc7 100644
+--- a/src/input/evdev.c
++++ b/src/input/evdev.c
+@@ -454,9 +454,14 @@ void evdev_create(const char* device, struct mapping* mappings, bool verbose) {
+ 
+   int16_t guid[8] = {0};
+   guid[0] = int16_to_le(libevdev_get_id_bustype(evdev));
+-  guid[2] = int16_to_le(libevdev_get_id_vendor(evdev));
+-  guid[4] = int16_to_le(libevdev_get_id_product(evdev));
+-  guid[6] = int16_to_le(libevdev_get_id_version(evdev));
++  int16_t vendor = libevdev_get_id_vendor(evdev);
++  int16_t product = libevdev_get_id_product(evdev);
++  if (vendor && product) {
++    guid[2] = int16_to_le(vendor);
++    guid[4] = int16_to_le(product);
++    guid[6] = int16_to_le(libevdev_get_id_version(evdev));
++  } else
++    strncpy((char*) &guid[2], name, 11);
+ 
+   char str_guid[33];
+   char* buf = str_guid;

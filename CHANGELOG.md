@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
+- moonlight: fix bad SDL2 GUID generation
 - Odroid-xu4: remove screeching noise at fan startup
 - configgen: fix videoconfig=auto
 - ES: fix slow transition from last to first system
