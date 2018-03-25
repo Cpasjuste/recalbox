@@ -55,6 +55,8 @@ DISPLAY=:0.0 glxinfo    > "${DSYSTEM}/glxinfo.txt"
 DISPLAY=:0.0 xrandr     > "${DSYSTEM}/xrandr.txt"
 connmanctl technologies > "${DSYSTEM}/connman-technologies.txt"
 connmanctl services     > "${DSYSTEM}/connman-services.txt"
+mount                   > "${DSYSTEM}/mount.txt"
+blkid                   > "${DSYSTEM}/blkid.txt"
 f_cp /recalbox/recalbox.version                               "${DSYSTEM}"
 f_cp /recalbox/recalbox.arch                                  "${DSYSTEM}"
 f_cp /boot/config.txt                                         "${DSYSTEM}"
@@ -66,6 +68,10 @@ f_cp /recalbox/share/system/.emulationstation/es_log.txt      "${DSYSTEM}"
 f_cp /recalbox/share/system/.emulationstation/es_input.cfg    "${DSYSTEM}"
 f_cp /boot/recalbox-boot.conf                                 "${DSYSTEM}"
 f_cp /var/log/Xorg.0.log                                      "${DSYSTEM}"
+
+# Themes
+ls -1 /recalbox/share/system/.emulationstation/themes > "${DSYSTEM}/share_themes.txt"
+ls -1 /recalbox/share_init/system/.emulationstation/themes > "${DSYSTEM}/share_init_themes.txt"
 
 # Update logs
 d_cp /recalbox/share/system/upgrade                           "${DSYSTEM}"

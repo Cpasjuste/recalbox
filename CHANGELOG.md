@@ -10,6 +10,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Theme: various fix to recalbox-next
 - manager: fix credentials and menu
 - force the creation of a uuid file if it's missing
+- more informations in support archives
 
 ## [18.03.16] - 2018-03-16
 - ES: new carousel mode ! Check UI Settings > Theme configuration with recalbox-next theme
