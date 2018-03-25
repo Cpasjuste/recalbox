@@ -73,6 +73,9 @@ f_cp /var/log/Xorg.0.log                                      "${DSYSTEM}"
 ls -1 /recalbox/share/system/.emulationstation/themes > "${DSYSTEM}/share_themes.txt"
 ls -1 /recalbox/share_init/system/.emulationstation/themes > "${DSYSTEM}/share_init_themes.txt"
 
+# Recalbox intros
+ls -l /recalbox/system/resources/splash/ | tail -n +2 | awk '{print $9, "-", $5}' > "${DSYSTEM}/recalbox_intros.txt"
+
 # Update logs
 d_cp /recalbox/share/system/upgrade                           "${DSYSTEM}"
 find "${DSYSTEM}/upgrade" -type f ! -name "*upgrade*" | xargs rm
