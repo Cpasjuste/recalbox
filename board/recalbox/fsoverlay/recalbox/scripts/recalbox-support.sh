@@ -68,7 +68,8 @@ f_cp /recalbox/share/system/.emulationstation/es_log.txt      "${DSYSTEM}"
 f_cp /recalbox/share/system/.emulationstation/es_input.cfg    "${DSYSTEM}"
 f_cp /boot/recalbox-boot.conf                                 "${DSYSTEM}"
 f_cp /var/log/Xorg.0.log                                      "${DSYSTEM}"
-f_cp /recalbox/share_init/system/.emulationstation/es_systems.cfg "${DSYSTEM}"
+f_cp /recalbox/share_init/system/.emulationstation/es_systems.cfg "${DSYSTEM}/share_init_es_systems.cfg"
+f_cp /recalbox/share/system/.emulationstation/es_systems.cfg "${DSYSTEM}/share_es_systems.cfg"
 
 # Themes
 ls -1 /recalbox/share/system/.emulationstation/themes > "${DSYSTEM}/share_themes.txt"
