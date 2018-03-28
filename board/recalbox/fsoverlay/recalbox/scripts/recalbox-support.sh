@@ -83,7 +83,7 @@ d_cp /recalbox/share/system/upgrade                           "${DSYSTEM}"
 find "${DSYSTEM}/upgrade" -type f ! -name "*upgrade*" | xargs rm
 
 # Emulators configs
-d_cp /recalbox/share/system/configs                           "${TMPDIR}/configs"
+test -d "/recalbox/share/system/configs" && rsync -a "/recalbox/share/system/configs" "${TMPDIR}" --exclude "ppsspp/PSP/SAVEDATA" --exclude "ppsspp/PSP/PPSSPP_STATE" --exclude "retroarch/overlays"
 
 # joysticks
 DJOYS="${TMPDIR}/joysticks"
@@ -106,7 +106,7 @@ DKODI="${TMPDIR}/kodi"
 f_cp "${DHOME}/.kodi/userdata/Lircmap.xml"          "${DKODI}"
 f_cp "${DHOME}/.kodi/userdata/keymaps/recalbox.xml" "${DKODI}"
 d_cp "${DHOME}/.kodi/userdata/remotes"              "${DKODI}"
-f_cp "${DHOME}/.kodi/temp/kodi.log"                 "${DKODI}"
+test -e "${DHOME}/.kodi/temp/kodi.log" && tail -4000 "${DHOME}/.kodi/temp/kodi.log" > "${DKODI}/kodi.log"
 
 if ! (cd "${GTMP}" && tar cf -  "${REPORTNAME}" | gzip -c > "${OUTPUTFILE}")
 then
