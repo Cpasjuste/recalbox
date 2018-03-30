@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [18.04.20] - 2018-04-20
+- more informations in support archives
+
 ## [18.03.30] - 2018-03-30
 - moonlight: fix bad SDL2 GUID generation
 - Odroid-xu4: remove screeching noise at fan startup
@@ -10,7 +13,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Theme: various fix to recalbox-next
 - manager: fix credentials and menu
 - force the creation of a uuid file if it's missing
-- more informations in support archives
 
 ## [18.03.16] - 2018-03-16
 - ES: new carousel mode ! Check UI Settings > Theme configuration with recalbox-next theme
