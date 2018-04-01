@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## Unreleased
+- recalbox-config.sh: added getEmulatorDefaults
+
 ## [18.04.20] - 2018-04-20
 - ES: Added pop-ups
 - ES: Added tag in theme to force transition style
