@@ -11,6 +11,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - ES: Fixed reload of theme when gamelistonly=0
 - ES: Fixed HelpMessages not translated
 - ES: Add "QUIT" help message on main menu
+- revert PPSSPP version to previous one
 - more informations in support archives
 - upgrade: fix upgrading from custom branch to stable
 - recallog now logs even when share is not mounted
