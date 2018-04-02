@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [18.04.20] - 2018-04-20
 - more informations in support archives
 - upgrade: fix upgrading from custom branch to stable
+- recallog now logs even when share is not mounted
 
 ## [18.03.30] - 2018-03-30
 - moonlight: fix bad SDL2 GUID generation

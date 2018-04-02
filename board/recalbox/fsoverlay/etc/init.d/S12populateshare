@@ -5,6 +5,15 @@ then
   exit 0
 fi
 
+# append tmp boot log files to log files in share
+logpath="/recalbox/share/system/logs"
+for bootlogfile in /tmp/logappend-*.*
+do
+        destfile=`echo "$bootlogfile" | sed 's|/tmp/logappend-||'`
+        cat "${bootlogfile}" >> "${logpath}/${destfile}"
+        rm "${bootlogfile}"
+done
+
 source /recalbox/scripts/recalbox-includes.sh
 
 IN=/recalbox/share_init
