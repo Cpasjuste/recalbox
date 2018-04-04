@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [18.04.20] - 2018-04-20
+- fix: default font for ES and RA now in system
 - more informations in support archives
 - upgrade: fix upgrading from custom branch to stable
 - recallog now logs even when share is not mounted
