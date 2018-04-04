@@ -22,6 +22,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - fix: fmsx could not be selected as a MSX core
 - DosBox: resolve lag regression on RPI3 + strange behavior if no dosbox.bat
 - Odroid XU4: improved HDMI stability, boot.ini options
+- fix: Game&Watch core name not properly displayed
 
 ## [18.03.30] - 2018-03-30
 - moonlight: fix bad SDL2 GUID generation
