@@ -4,6 +4,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [18.04.20] - 2018-04-20
 - fix: default font for ES and RA now in system
+- ES: Added dynamic change of volume and audio output in menu
+- ES: Added ubuntu_condensed.ttf as fallback font
+- ES: Added clock in main menu
+- ES: Added missing fav icons for Amigas 3DO and X68k
+- ES: Fixed reload of theme when gamelistonly=0
+- ES: Fixed HelpMessages not translated
+- ES: Add "QUIT" help message on main menu
 - more informations in support archives
 - upgrade: fix upgrading from custom branch to stable
 - recallog now logs even when share is not mounted
