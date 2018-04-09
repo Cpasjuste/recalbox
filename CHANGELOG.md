@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [18.04.20] - 2018-04-20
+- ES: Fixed audio card change
 - fix: default font for ES and RA now in system
 - ES: Added dynamic change of volume and audio output in menu
 - ES: Added ubuntu_condensed.ttf as fallback font
