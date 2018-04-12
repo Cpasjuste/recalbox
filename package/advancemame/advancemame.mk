@@ -34,9 +34,7 @@ ifeq ($(BR2_PACKAGE_SDL2),y)
 		--with-sdl2-prefix=$(STAGING_DIR)/usr \
 		--enable-jsdl \
 		--enable-ksdl \
-		--enable-msdl \
-		--enable-mraw \
-		--enable-mevent
+		--enable-msdl
 else
 	ADVANCEMAME_CONF_OPTS += \
 		--disable-jsdl \
