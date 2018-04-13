@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [18.04.20] - 2018-04-20
+- ES: Added pop-ups
+- ES: Added tag in theme to force transition style
 - Bump kodi-plugin-video-youtube to 5.4.6
 - Bump Advancemame to 3.7 and spinner support added
 - ES: Fixed audio card change
