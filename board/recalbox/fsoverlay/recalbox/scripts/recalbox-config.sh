@@ -382,14 +382,31 @@ if [ "$command" == "lsaudio" ];then
         echo "jack"
     fi
     # Now other embedded devices
-    find /proc/asound -type d -name "pcm*p" | while read fileDev ; do
-        cardId=`echo $fileDev | sed "s+.*card\([0-9]\).*+\1+g"`
-        deviceId=`echo $fileDev | sed "s+.*pcm\([0-9]\)p$+\1+g"`
-        cardName=`grep " ${cardId} \[" /proc/asound/cards | cut -d ":" -f 2 | sed "s+^ ++g"`
-        echo "$cardName" | grep -q "bcm2835" && continue # Exclude Pi3 internal audio
-        deviceName=`cat /proc/asound/card${cardId}/pcm${deviceId}p/info | grep "^id:" | cut -d ":" -f 2 | sed "s+^ ++g"`
-        echo "[${cardId}:${deviceId}] ${cardName} + ${deviceName}"
-    done
+    if [ -d /proc/asound ] ; then
+	find /proc/asound -type d -name "pcm*p" | while read fileDev ; do
+	    cardId=`echo $fileDev | sed "s+.*card\([0-9]\).*+\1+g"`
+	    deviceId=`echo $fileDev | sed "s+.*pcm\([0-9]\)p$+\1+g"`
+	    cardName=`grep " ${cardId} \[" /proc/asound/cards | cut -d ":" -f 2 | sed "s+^ ++g"`
+	    echo "$cardName" | grep -q "bcm2835" && continue # Exclude Pi3 internal audio
+	    deviceName=`cat /proc/asound/card${cardId}/pcm${deviceId}p/info | grep "^id:" | cut -d ":" -f 2 | sed "s+^ ++g"`
+	    echo "[${cardId}:${deviceId}] ${cardName} + ${deviceName}"
+	done
+    elif `which aplay > /dev/null 2>&1` ; then
+	aplay -l | grep "^card" | sed "s+^card \([0-9]\): .*\[\(.*\)\], device \([0-9]\): .*\[\(.*\)\].*+[\1:\3] \2 \4+g"
+    elif [ -d /dev/snd ] ; then
+	find /dev/snd -type c -name "pcm*p" | while read fileDev ; do
+	    devName=""
+	    cardId=`echo $fileDev | sed "s+.*pcmC\([0-9]\).*+\1+g"`
+	    deviceId=`echo $fileDev | sed "s+.*pcmC[0-9]D\([0-9]\)p$+\1+g"`
+	    for platform in /dev/snd/by-path/* ; do
+		realDev=`readlink "$platform"`
+		if [[ $realDev == "../controlC${cardId}" ]] ; then
+		    devName=`basename $platform | sed "s/platform-//g"`
+		fi
+	    done
+	    echo "[${cardId}:${deviceId}] $devName"
+	done
+    fi
     exit 0
 fi
 
