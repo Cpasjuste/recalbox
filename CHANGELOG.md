@@ -12,6 +12,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - picodrive: partially rewrite package + re-enable for odroidc2
 ## Unreleased
 - add alternative methods to detect sound cards
+- Boot time optimization
 
 ## [18.04.20] - 2018-04-20
 - ES: Added pop-ups
