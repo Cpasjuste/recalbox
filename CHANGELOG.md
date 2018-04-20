@@ -2,6 +2,8 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+- Bump desmume to desmume2015
+
 ## [18.06.27] - 2018-06-27
 - Adding introRecalboxEASports.mp4
 - Theme: updated "controls" gamelistview + bugfixes and enhancements

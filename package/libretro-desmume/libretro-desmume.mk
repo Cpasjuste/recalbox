@@ -3,8 +3,8 @@
 # DESMUME
 #
 ################################################################################
-LIBRETRO_DESMUME_VERSION = 94645824e96a425a642d9dfee8f9c1e2fa134e4f
-LIBRETRO_DESMUME_SITE = $(call github,libretro,desmume,$(LIBRETRO_DESMUME_VERSION))
+LIBRETRO_DESMUME_VERSION = f5df1820124ee5cbb57385cd9ae9c5c3a7183a33
+LIBRETRO_DESMUME_SITE = $(call github,libretro,desmume2015,$(LIBRETRO_DESMUME_VERSION))
 LIBRETRO_DESMUME_LICENSE = GPLv2
 
 
@@ -13,7 +13,7 @@ define LIBRETRO_DESMUME_BUILD_CMDS
 endef
 
 define LIBRETRO_DESMUME_INSTALL_TARGET_CMDS
-	$(INSTALL) -D $(@D)/desmume/desmume_libretro.so \
+	$(INSTALL) -D $(@D)/desmume/desmume2015_libretro.so \
 		$(TARGET_DIR)/usr/lib/libretro/desmume_libretro.so
 endef
 
