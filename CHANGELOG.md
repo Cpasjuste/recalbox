@@ -2,8 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## Unreleased
+## [Unreleased]
+- ES: Refactored gamepad configuration panel
+- ES: Update Emulator / Core selection process to avoid gui inception and to display default values
+- ES: Update font size on game metadata gui
+- ES: Remove dead code of RomsManager
 - recalbox-config.sh: added getEmulatorDefaults
+- Added fonts to support all languages
 
 ## [18.04.20] - 2018-04-20
 - ES: Added pop-ups
