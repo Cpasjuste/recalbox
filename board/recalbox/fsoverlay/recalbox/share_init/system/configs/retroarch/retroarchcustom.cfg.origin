@@ -1,5 +1,7 @@
 core_options_path = /recalbox/share/system/configs/retroarch/cores/retroarch-core-options.cfg
 
+network_cmd_enable = "true"
+
 system_directory = /recalbox/share/bios/
 
 config_save_on_exit = false
