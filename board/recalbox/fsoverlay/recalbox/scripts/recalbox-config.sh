@@ -502,6 +502,10 @@ EOF
 	done
 
         connmanctl enable wifi || exit 1
+	settings_region="`$systemsetting  -command load -key wifi.region`"
+	if [[ "$settings_region" != "" ]] ;then
+		/usr/sbin/iw reg set "${settings_region}"
+	fi
         connmanctl scan   wifi || exit 1
         exit 0
     fi
@@ -513,6 +517,10 @@ EOF
             fi
         fi
         connmanctl enable wifi || exit 1
+	settings_region="`$systemsetting  -command load -key wifi.region`"
+	if [[ "$settings_region" != "" ]] ;then
+		/usr/sbin/iw reg set "${settings_region}"
+	fi
         connmanctl scan   wifi || exit 1
         exit 0
     fi
@@ -521,6 +529,10 @@ EOF
         exit $?
     fi
     if [[ "$mode" == "list" ]]; then
+	settings_region="`$systemsetting  -command load -key wifi.region`"
+	if [[ "$settings_region" != "" ]] ;then
+		/usr/sbin/iw reg set "${settings_region}"
+	fi
         connmanctl scan wifi &> /dev/null
         WAVAILABLE=$(connmanctl services | grep "wifi_" | grep -v "_hidden_" | cut -c 5- | sed -e "s/\(.*[^ ]\) *wifi_.*/\1/g")
         if test -n "${ssid}"
