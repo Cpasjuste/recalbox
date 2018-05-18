@@ -10,11 +10,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - recalbox-config.sh: added getEmulatorDefaults
 - Added fonts to support all languages
 - picodrive: partially rewrite package + re-enable for odroidc2
-## Unreleased
-- add alternative methods to detect sound cards
+- Add alternative methods to detect sound cards
 - Boot time optimization
 - Wifi: option to change region added to recalbox.conf - with wifi.region=FR fixes channel 12 issue for example
 - Old deprecated API removed, new API in development
+- more informations in support archives
 
 ## [18.04.20] - 2018-04-20
 - ES: Added pop-ups
