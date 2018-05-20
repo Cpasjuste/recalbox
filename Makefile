@@ -11,10 +11,10 @@ ifeq ($(MAKECMDGOALS),)
 all: | merge buildBR 
 else
 recalbox-%_defconfig: | merge
-	BR2_DL_DIR=$(DL_DIR) $(MAKE) BR2_EXTERNAL="$(PWD)" O="$(PWD)/output" -C "$(PWD)/buildroot" $(MAKEOVERRIDES) $@
+	BR2_DL_DIR=$(DL_DIR) $(MAKE) BR2_EXTERNAL="$(PWD)" BR2_PACKAGE_OVERRIDE_FILE="$(PWD)/local.mk" O="$(PWD)/output" -C "$(PWD)/buildroot" $(MAKEOVERRIDES) $@
 
 %: 
-	BR2_DL_DIR=$(DL_DIR) $(MAKE) BR2_EXTERNAL="$(PWD)" O="$(PWD)/output" -C "$(PWD)/buildroot" $(MAKEOVERRIDES) $@
+	BR2_DL_DIR=$(DL_DIR) $(MAKE) BR2_EXTERNAL="$(PWD)" BR2_PACKAGE_OVERRIDE_FILE="$(PWD)/local.mk" O="$(PWD)/output" -C "$(PWD)/buildroot" $(MAKEOVERRIDES) $@
 endif
 
 
@@ -23,4 +23,4 @@ merge:
 
 buildBR:
 	@echo $(MAKEFLAGS) $(MAKECMDGOALS)
-	BR2_DL_DIR=$(DL_DIR) $(MAKE) BR2_EXTERNAL="$(PWD)" O="$(PWD)/output" -C "$(PWD)/buildroot" $(MAKEOVERRIDES) $(MAKECMDGOALS)
+	BR2_DL_DIR=$(DL_DIR) $(MAKE) BR2_EXTERNAL="$(PWD)" BR2_PACKAGE_OVERRIDE_FILE="$(PWD)/local.mk" O="$(PWD)/output" -C "$(PWD)/buildroot" $(MAKEOVERRIDES) $(MAKECMDGOALS)
