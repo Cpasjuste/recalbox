@@ -22,6 +22,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - pin356ONOFFRESET: improved behaviour, more compatible with nespi+ case
 - Add splash screen duration option in recalbox.conf
 - Bump mGBA emulator and add it to gb and gbc for Super Game Boy support
+- Add Thomson TO + MO support with libretro core theodore, thank you zlika
 
 ## [18.04.20] - 2018-04-20
 - ES: Added pop-ups
