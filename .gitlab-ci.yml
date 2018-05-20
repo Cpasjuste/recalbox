@@ -25,6 +25,8 @@ variables:
     - rm -rf output/
     - echo "${RECALBOX_VERSION}" >> "${DIST_DIR}/recalbox.version"
     - cp CHANGELOG.md "${DIST_DIR}/recalbox.changelog"
+  after_script:
+    - rm -rf buildroot
   artifacts:
     name: dist-${ARCH}-${CI_BUILD_ID}
     when: always
