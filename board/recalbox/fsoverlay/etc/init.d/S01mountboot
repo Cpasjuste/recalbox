@@ -28,6 +28,13 @@ case "$1" in
       fi
       ;;
   stop)
+      #Backup recalbox.conf to /boot partition
+      mount -o remount,rw /boot
+      cp /recalbox/share/system/recalbox.conf /boot/recalbox-backup.conf
+      sed -i '1s/^/#THIS IS A BACKUP OF RECALBOX.CONF\n#PLEASE DO NOT MAKE ANY CHANGE HERE !!!\n\n\n/' /boot/recalbox-backup.conf
+      mount -o remount,ro /boot
+      sync
+      recallog "recalbox.conf saved to /boot partition"
       umount /boot || exit 1
       ;;
   *)

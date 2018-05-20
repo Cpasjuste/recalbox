@@ -44,4 +44,7 @@ doClean "${TARGET_DIR}/etc/init.d/S46network-config"
 # V180420 2018-04-20
 doClean "${TARGET_DIR}/etc/init.d/S95api"
 
+# V1806XX 2018-06-XX
+doClean "${TARGET_DIR}/etc/init.d/S04mountboot"
+
 exit 0

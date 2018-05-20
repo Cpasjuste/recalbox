@@ -10,6 +10,11 @@ echo "${video}"
 }
 video="`selectVideo`"
 
+videolength=`egrep "^system.splash.length" /boot/recalbox-backup.conf|sed "s/system.splash.length=//g"`
+if [[ -z $videolength || $videolength -eq 0 || $videolength -lt -1 ]] ; then
+	videolength=20
+fi
+
 do_ffmpeg_start () {
     if ! `which ffplay >/dev/null` || [[ ! -f $video ]] ; then
         return
@@ -19,11 +24,12 @@ do_ffmpeg_start () {
     ffplay $ffplay_opts -vf "$ffplay_srt" "$video" >/dev/null 2>&1 &
     PID=$!
     count=0
-    
-    while [[ ! -f "/tmp/emulationstation.ready" && ! -e "/var/run/kodi.msg" && $count -lt 200 ]]; do
-        sleep 0.1
-        ((count++))
-    done
+    if [[ $videolength -gt -1 ]]; then
+        while [[ ! -f "/tmp/emulationstation.ready" && ! -e "/var/run/kodi.msg" && $count -lt $(($videolength*10)) ]]; do
+            sleep 0.1
+            ((count++))
+        done
+    fi
     do_ffmpeg_stop $PID
     show_logo
 }
@@ -63,14 +69,15 @@ do_omx_start ()
     PID=$!
 
     # Stop the video when ready
-    if [[ $? -eq 0 ]]; then
-        # Wait for emulationstation or Kodi, but not more than 20 seconds
+    if [[ $? -eq 0 && $videolength -gt -1 ]]; then
+        recallog "Let's play the video for $videolength seconds"
+        # Wait for emulationstation or Kodi, but not more than $videolength seconds
         count=0
-        while [[ ! -f "/tmp/emulationstation.ready" && ! -e "/var/run/kodi.msg" && $count -lt 20 ]]; do
+	while [[ ! -f "/tmp/emulationstation.ready" && ! -e "/var/run/kodi.msg" && $count -lt $videolength ]]; do
             sleep 1
             ((count++))
         done
-         # Finish with a one second fade out.
+        # Finish with a one second fade out.
         audio_fade=1
         video_fade=250
         while [[ $video_fade -gt 0 ]]; do
@@ -82,6 +89,8 @@ do_omx_start ()
         done
         # Ready flag set or timeout occured; stop video process.
         dbus-send --print-reply=literal --session --dest=org.mpris.MediaPlayer2.omxplayer /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Action int32:15 >/dev/null
+    else
+        recallog "Let's play the video entirely"
     fi
 }
 

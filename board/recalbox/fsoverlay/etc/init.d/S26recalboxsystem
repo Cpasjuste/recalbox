@@ -152,17 +152,6 @@ case "$1" in
   stop)
         rb_audio_save &
 
-	#Save wifi informations to /boot/recalbox-boot.conf
-	wifienabled="`$systemsetting  -command load -key wifi.enabled`"
-	if [ "$wifienabled" == "1" ];then
-		mount -o remount,rw /boot
-		egrep '^wifi.?..[se]' /recalbox/share/system/recalbox.conf >> /boot/recalbox-boot.conf
-		mount -o remount,ro /boot
-		recallog "Wifi information saved to recalbox-boot.conf on shutdown correctly"
-	else
-		recallog "Wifi information not saved to recalbox-boot.conf on shutdown because wifi.enabled=0 in recalbox.conf"
-	fi
-	
 	;;
   restart|reload)
 	;;
