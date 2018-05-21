@@ -16,6 +16,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Old deprecated API removed, new API in development
 - more informations in support archives
 - sound: try to fix configuration loss on upgrade
+- Add message to warn before turning off Recalbox
 
 ## [18.04.20] - 2018-04-20
 - ES: Added pop-ups
