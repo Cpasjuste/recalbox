@@ -18,6 +18,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - more informations in support archives
 - sound: try to fix configuration loss on upgrade
 - Add message to warn before turning off Recalbox
+- Add Daphne system using Hypseus emulator
 
 ## [18.04.20] - 2018-04-20
 - ES: Added pop-ups
