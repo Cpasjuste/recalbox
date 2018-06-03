@@ -23,6 +23,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Add splash screen duration option in recalbox.conf
 - Bump mGBA emulator and add it to gb and gbc for Super Game Boy support
 - Add Thomson TO + MO support with libretro core theodore, thank you zlika
+- linapple: support apple2.configfile=dummy to avoid overwriting configuration
 
 ## [18.04.20] - 2018-04-20
 - ES: Added pop-ups
