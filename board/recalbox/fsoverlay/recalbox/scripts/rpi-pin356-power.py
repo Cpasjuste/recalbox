@@ -64,6 +64,7 @@ def onoff_mode(channel):
 					nwcommand="QUIT"
 					retroarch(nwcommand)
 					print('game exit')
+					killthatshit()
 				elif (timer > 1):
 					proces=subprocess.Popen(['/bin/sh', '-c', 'ps -ef | grep [e]mulatorlauncher'], stdout=subprocess.PIPE) # Search presence of emulatorlauncher in processes to determmine if in game or in ES menu
 					result=proces.stdout.read()
@@ -71,7 +72,6 @@ def onoff_mode(channel):
 						nwcommand="RESET"
 						retroarch(nwcommand)
 						print('game reset')
-						killthatshit(channel)
 					else:
 						speed=0.05
 						shutdownstring="shutdown -r now"
@@ -112,20 +112,21 @@ def push_mode(channel):
 			elif (timer >1):
 				retroarch(nwcommand)
 				print('retroarch')
-				killthatshit(channel)
+				if channel == POWERPLUS:
+					killthatshit()
 
 			timer = 0
 			flag = False
 		time.sleep(0.1)
 
 # trying to kill all listed emus
-def killthatshit(channel):
-	if channel == POWERPLUS:
-		for bin in recalboxFiles.recalboxBins:
-				print(bin)
-				proc = os.path.basename(bin)
-				print(proc)
-				os.system("killall -9 "+proc)
+def killthatshit():
+	for name in recalboxFiles.recalboxBins:
+		bin = recalboxFiles.recalboxBins[name]
+		print(bin)
+		proc = os.path.basename(bin)
+		print(proc)
+		os.system("killall -9 "+proc)
 
 # clean stop of ES then shutdown -h or -r
 def offreset(speed, shutdownstring):
