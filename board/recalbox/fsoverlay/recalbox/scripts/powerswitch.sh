@@ -211,8 +211,8 @@ wittyPi_stop()
 
 pin356_start()
 {
-	mode=$1
-	python /recalbox/scripts/rpi-pin356-power.py -m "$mode" &
+    mode=$1
+    python /recalbox/scripts/rpi-pin356-power.py -m "$mode" &
     pid=$!
     echo "$pid" > /tmp/rpi-pin356-power.pid
     wait "$pid"
@@ -280,7 +280,7 @@ case "$CONFVALUE" in
         echo "will start pin356_$1"
         pin356_$1 onoff
     ;;
-	"PIN356PUSHRESET")
+    "PIN356PUSHRESET")
         echo "will start pin356_$1"
         pin356_$1 push
     ;;

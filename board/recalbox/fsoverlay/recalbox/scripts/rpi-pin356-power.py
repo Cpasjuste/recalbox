@@ -22,6 +22,7 @@ PORTNUM = 55355
 
 POWERPLUS = 3
 RESETPLUS = 2
+POWEREN = 4
 LED = 14
 
 GPIO.setwarnings(False)		# no warnings
@@ -39,6 +40,11 @@ GPIO.setup(LED, GPIO.OUT)
 GPIO.output(LED, True)
 # GPIO on pin 8 is the GPIO 14 in BCM mode
 #to LED+
+
+GPIO.setup(POWEREN, GPIO.OUT)
+GPIO.output(POWEREN, True)
+# GPIO on pin 7 is the GPIO 4 in BCM mode
+#to request power off when falling (at shutdown)
 
 # Define a threaded callback function for ONOFF mode
 def onoff_mode(channel):
