@@ -41,11 +41,6 @@ GPIO.output(LED, True)
 # GPIO on pin 8 is the GPIO 14 in BCM mode
 #to LED+
 
-GPIO.setup(POWEREN, GPIO.OUT)
-GPIO.output(POWEREN, True)
-# GPIO on pin 7 is the GPIO 4 in BCM mode
-#to request power off when falling (at shutdown)
-
 # Define a threaded callback function for ONOFF mode
 def onoff_mode(channel):
 	if channel == POWERPLUS:
@@ -170,6 +165,9 @@ def retroarch(nwcommand):
 	s.sendto(nwcommand, (IPADDR, PORTNUM))
 
 if mode == "onoff" :
+	# Allow Nespi+ to detect the end of the shutdown for proper power-off
+	GPIO.setup(POWEREN, GPIO.OUT)
+	GPIO.output(POWEREN, True)
 	GPIO.add_event_detect(POWERPLUS, GPIO.FALLING, callback=onoff_mode, bouncetime=2)
 	GPIO.add_event_detect(RESETPLUS, GPIO.BOTH, callback=onoff_mode, bouncetime=2)
 elif mode == "push":
