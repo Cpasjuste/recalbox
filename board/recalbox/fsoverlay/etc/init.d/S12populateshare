@@ -92,4 +92,7 @@ test ! -e /recalbox/share/system/recalbox.changelog.done && cp /recalbox/recalbo
 
 # create a uuid if it's missing
 [ ! -e /recalbox/share/system/uuid ] && /recalbox/scripts/system/uuid.sh --uuid-file /recalbox/share/system/uuid
+
+# build the cores list if it doesn't exist
+[ ! -e /recalbox/share/system/configs/retroarch.corenames ] && upgradeRetroarchCoreNames -f /recalbox/share/system/configs/retroarch.corenames
 # END

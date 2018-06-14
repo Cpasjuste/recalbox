@@ -1,0 +1,162 @@
+diff --git a/Makefile b/Makefile
+index 8bd1f36..0b7d695 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,9 +1,9 @@
+ target   := nanoarch
+ sources  := nanoarch.c
+-CFLAGS   := -Wall -O2 -g
++CFLAGS   := -Wall -O2
+ LFLAGS   := -static-libgcc
+-LIBS     := -ldl
+-packages := gl glew glfw3 alsa
++LIBS     := -ldl -lstdc++
++#packages := gl glew glfw3 alsa
+ 
+ # do not edit from here onwards
+ objects := $(addprefix build/,$(sources:.c=.o))
+diff --git a/nanoarch.c b/nanoarch.c
+index 1d31c60..dbfe71d 100644
+--- a/nanoarch.c
++++ b/nanoarch.c
+@@ -8,6 +8,7 @@
+ 
+ #include "libretro.h"
+ 
++/*
+ #include <GL/glew.h>
+ #include <GLFW/glfw3.h>
+ #include <alsa/asoundlib.h>
+@@ -40,7 +41,7 @@ static struct {
+ 	GLuint bpp;
+ } g_video  = {0};
+ 
+-
++*/
+ static struct {
+ 	void *handle;
+ 	bool initialized;
+@@ -66,7 +67,7 @@ static struct {
+ //	size_t retro_get_memory_size(unsigned id);
+ } g_retro;
+ 
+-
++/*
+ struct keymap {
+ 	unsigned k;
+ 	unsigned rk;
+@@ -88,7 +89,7 @@ struct keymap g_binds[] = {
+ };
+ 
+ static unsigned g_joy[RETRO_DEVICE_ID_JOYPAD_R3+1] = { 0 };
+-
++i*/
+ #define load_sym(V, S) do {\
+ 	if (!((*(void**)&V) = dlsym(g_retro.handle, #S))) \
+ 		die("Failed to load symbol '" #S "'': %s", dlerror()); \
+@@ -110,7 +111,7 @@ static void die(const char *fmt, ...) {
+ 
+ 	exit(EXIT_FAILURE);
+ }
+-
++/*
+ static void refresh_vertex_data() {
+ 	assert(g_video.tex_w);
+ 	assert(g_video.tex_h);
+@@ -416,7 +417,7 @@ static size_t core_audio_sample_batch(const int16_t *data, size_t frames) {
+ 	return audio_write(data, frames);
+ }
+ 
+-
++*/
+ static void core_load(const char *sofile) {
+ 	void (*set_environment)(retro_environment_t) = NULL;
+ 	void (*set_video_refresh)(retro_video_refresh_t) = NULL;
+@@ -451,20 +452,20 @@ static void core_load(const char *sofile) {
+ 	load_sym(set_audio_sample, retro_set_audio_sample);
+ 	load_sym(set_audio_sample_batch, retro_set_audio_sample_batch);
+ 
+-	set_environment(core_environment);
+-	set_video_refresh(core_video_refresh);
+-	set_input_poll(core_input_poll);
+-	set_input_state(core_input_state);
+-	set_audio_sample(core_audio_sample);
+-	set_audio_sample_batch(core_audio_sample_batch);
++	//set_environment(core_environment);
++	//set_video_refresh(core_video_refresh);
++	//set_input_poll(core_input_poll);
++	//set_input_state(core_input_state);
++	//set_audio_sample(core_audio_sample);
++	//set_audio_sample_batch(core_audio_sample_batch);
+ 
+-	g_retro.retro_init();
++	//g_retro.retro_init();
+ 	g_retro.initialized = true;
+ 
+-	puts("Core loaded");
++	//puts("Core loaded");
+ }
+ 
+-
++/*
+ static void core_load_game(const char *filename) {
+ 	struct retro_system_av_info av = {0};
+ 	struct retro_system_info system = {0};
+@@ -500,7 +501,7 @@ static void core_load_game(const char *filename) {
+ libc_error:
+ 	die("Failed to load content '%s': %s", filename, strerror(errno));
+ }
+-
++*
+ 
+ static void core_unload() {
+ 	if (g_retro.initialized)
+@@ -509,18 +510,24 @@ static void core_unload() {
+ 	if (g_retro.handle)
+ 		dlclose(g_retro.handle);
+ }
+-
++*/
+ 
+ int main(int argc, char *argv[]) {
+-	if (argc < 3)
+-		die("usage: %s <core> <game>", argv[0]);
++	struct retro_system_info system = {0};
+ 
+-	if (!glfwInit())
+-		die("Failed to initialize glfw");
++	if (argc < 2)
++		die("usage: %s <core>", argv[0]);
+ 
++/*	if (!glfwInit())
++		die("Failed to initialize glfw");
++*/
+ 	core_load(argv[1]);
+-	core_load_game(argv[2]);
+-
++	g_retro.retro_get_system_info(&system);
++	//puts(system.library_name);
++	//puts(system.library_version);
++	printf("%s;%s\n", system.library_name, system.library_version);
++//	core_load_game(argv[2]);
++/*
+ 	while (!glfwWindowShouldClose(g_win)) {
+ 		glfwPollEvents();
+ 
+@@ -532,11 +539,11 @@ int main(int argc, char *argv[]) {
+ 
+ 		glfwSwapBuffers(g_win);
+ 	}
++*/
++//	core_unload();
++//	audio_deinit();
++//	video_deinit();
+ 
+-	core_unload();
+-	audio_deinit();
+-	video_deinit();
+-
+-	glfwTerminate();
++//	glfwTerminate();
+ 	return 0;
+ }

@@ -102,3 +102,17 @@ function upgradeInputs {
 function upgradeTheme {
   /recalbox/scripts/recalbox-themes.sh
 }
+
+function upgradeRetroarchCoreNames {
+  OUTPUT=/recalbox/system/resources/retroarch.corenames
+  [[ "$1" == "-f" ]] && OUTPUT="$2"
+  rm "$OUTPUT" 2>/dev/null
+
+  for file in /usr/lib/libretro/*.so ; do
+    rbxsystem=`basename $file | sed -E "s%(.*)_libretro.so%\1%"`
+    coreinfos=`/usr/bin/nanoarch $file 2>/dev/null`
+    coreName=`echo $coreinfos | cut -d ';' -f 1`
+    coreVersion=`echo $coreinfos | cut -d ';' -f 2`
+    echo "$coreName;$rbxsystem;$coreVersion" >> "$OUTPUT"
+  done
+}

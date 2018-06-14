@@ -1,0 +1,4 @@
+config BR2_PACKAGE_NANOARCH
+        bool "nanoarch"
+        help
+          A simple core loader 
