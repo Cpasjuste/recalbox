@@ -4,6 +4,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 - Adding introRecalboxEASports.mp4
+- ES: Added Netplay option in menus + menus to add roms hashs in gamelists
+- ES: Added Netplay : GUI for client mode and button to launch as host
+- ES: Fixed clock not in local time
+- ES: Fixed old themes crash
+- ES: Option for popup position
+- ES: Help messages in popups
+- ES: Slider for popup duration 
+- ES: Languages names in their own language
 - Bump kodi-plugin-video-youtube to 5.5.1
 - ES: Refactored gamepad configuration panel
 - ES: Update Emulator / Core selection process to avoid gui inception and to display default values
