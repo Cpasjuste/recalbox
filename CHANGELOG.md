@@ -4,6 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 - Adding introRecalboxEASports.mp4
+- Theme: updated "controls" gamelistview + bugfixes and enhancements
+- ES: updated translations
 - ES: Added Netplay option in menus + menus to add roms hashs in gamelists
 - ES: Added Netplay : GUI for client mode and button to launch as host
 - ES: Fixed clock not in local time
