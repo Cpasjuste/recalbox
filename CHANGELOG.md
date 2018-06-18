@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+- Adding introRecalboxEASports.mp4
 - Bump kodi-plugin-video-youtube to 5.5.1
 - ES: Refactored gamepad configuration panel
 - ES: Update Emulator / Core selection process to avoid gui inception and to display default values
