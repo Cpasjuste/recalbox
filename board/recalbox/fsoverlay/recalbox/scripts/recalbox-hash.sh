@@ -42,7 +42,7 @@ function hashFile () {
 #system=$1
 #rom=$2
 # Don't hash handhelds, CD, arcade
-forbiddenSystems='gb gbc gba n64 gamecube wii psx psp dreamcast megacd fba fba_libretro mame'
+forbiddenSystems='gb gbc gba n64 gamecube wii psx psp dreamcast megacd fba fba_libretro mame neogeo'
 forbiddenExtensions='m3u'
 pRoms=/recalbox/share/roms
 hashFilePath=/recalbox/share/system/configs/hashes
