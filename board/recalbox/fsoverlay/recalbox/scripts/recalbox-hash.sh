@@ -48,7 +48,7 @@ pRoms=/recalbox/share/roms
 hashFilePath=/recalbox/share/system/configs/hashes
 testMode=
 
-while [[ $# -gt 1 ]]
+while [[ $# -ge 1 ]]
 do
 key="$1"
 case $key in
