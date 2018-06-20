@@ -19,6 +19,19 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - ES: Update Emulator / Core selection process to avoid gui inception and to display default values
 - ES: Update font size on game metadata gui
 - ES: Remove dead code of RomsManager
+- ES: Make gamelist sort persistent
+- ES: Show folder content in detail panel
+- ES: Show single folder game as game in parent list
+- ES: Added an option to list folder content instead of folder name
+- ES: Only display available letter in JumpToLetter + Append figures
+- ES: Avoid reload of images if source doesn't changed
+- ES: Update Games lists from GameList menu
+- ES: Set Menu list in loop mode
+- ES: Fixed back button in gamelist
+- ES: Fixed back from game launch
+- ES: Fixed detailed panel missing when jumping to letter A
+- ES: Fixed set a game favorite for the first time (required two switches before)
+- ES: Stay is selected sub-folder when changing sort type / order in gamelist
 - recalbox-config.sh: added getEmulatorDefaults
 - Added fonts to support all languages
 - picodrive: partially rewrite package + re-enable for odroidc2
