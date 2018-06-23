@@ -50,8 +50,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - linapple: support apple2.configfile=dummy to avoid overwriting configuration
 - Add Amstrad CPC core: crocods
 - New version of libretro-o2em now supports save states and rewind
-- Bump ell libretro cores
-- Bump Retroarch to 1.7.3
+- Bump all libretro cores
+- Bump Retroarch to 1.7.3 + patch required parts
+- configgen: N64 back to fullscreen the real way, without forcing resolution
+- configgen: the video syntax "auto DMT 4 HDMI" now works for N64
 
 ## [18.04.20] - 2018-04-20
 - ES: Added pop-ups
