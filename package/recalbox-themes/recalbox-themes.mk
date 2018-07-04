@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-RECALBOX_THEMES_VERSION = 777c82261e44c932faa7b49585d14abcc1fce086
+RECALBOX_THEMES_VERSION = 6b5cae427e7a0b7cf14aca694bedcb0429b33a40
 RECALBOX_THEMES_SITE = https://gitlab.com/recalbox/recalbox-themes.git
 RECALBOX_THEMES_SITE_METHOD = git
 
