@@ -96,7 +96,6 @@ function getLatestRelease () {
   url=`getGitHubApiUrlFromPackage "$package"`
   [[ -z $url ]] && exit 1
   tag=`export PYTHONIOENCODING=utf8 ; curl ${CURLPARMS} -s "$url"/releases/latest | python -c "import sys, json; print json.load(sys.stdin)['tag_name']" 2>/dev/null`
-  #curl ${CURLPARMS} -s https://api.github.com/repos/amadvance/advancemame/releases/latest | python -c "import sys, json; print json.load(sys.stdin)['tag_name']"
   if [[ ! -z $tag ]] ; then
     echo $tag
   else
@@ -217,6 +216,26 @@ Kernel Version\t${rbxKernelCustomValue}\t${brKernelCustomValue}\t${updateKernelC
 }
 
 #
+# Pi specific informations
+#
+function getPiUpstreamInfo () {
+  # Kernel details
+  currentCommit=`curl -s https://raw.githubusercontent.com/Hexxeh/rpi-firmware/stable/git_hash`
+  currentKernelVersion=`curl -s "https://raw.githubusercontent.com/raspberrypi/linux/${currentCommit}/Makefile" | grep -E "^(VERSION|PATCHLEVEL|SUBLEVEL) = " | grep -Eo "[0-9]*$" | tr -s '\n' '.' | sed 's/\.$/\n/'`
+
+  # Corresponding firmware
+  # We'll look for commits at raspberrypi/firmware that occured AFTER the commit date
+  #commitDate=`curl "https://api.github.com/repos/raspberrypi/linux/commits/${currentCommit}" | python -c "import sys, json; print json.load(sys.stdin)['commit']['author']['date']"`
+  # Afterall, use the search API and pray the 1st result is the good one
+  currentFWCommitId=`curl ${CURLPARMS} -sH "Accept: application/vnd.github.cloak-preview" "https://api.github.com/search/commits?q=repo:raspberrypi/firmware+${currentKernelVersion}" | python -c "import sys, json; print json.load(sys.stdin)['items'][0]['sha']"`
+
+  # Display the result
+  echo -e "\e[7m Pi Upstream infos \e[27m"
+  echo "Kernel stable version: $currentKernelVersion ($currentCommit)"
+  echo "Corresponding firmware: $currentFWCommitId (make sure it's right)"
+}
+
+#
 # Get package infos + upstream infos and compare
 #
 function taskEmulators () {
@@ -319,6 +338,7 @@ function main() {
   echo
   mainPackages "$willUpdate" "$skippedPackages" "$selectedPackages"
   echo
+  getPiUpstreamInfo
   comparePiDefconfig 1 "$willUpdate" "$skippedPackages" "$selectedPackages"
   comparePiDefconfig 2 "$willUpdate" "$skippedPackages" "$selectedPackages"
   comparePiDefconfig 3 "$willUpdate" "$skippedPackages" "$selectedPackages"
