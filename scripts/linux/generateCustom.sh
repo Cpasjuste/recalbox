@@ -14,10 +14,18 @@ rm -rf "$tmpDir" ; mkdir -p "$tmpDir"
 for file in `cd "$BUILDROOT_DIR" ; git status -s | cut -c 4-` ; do 
   patchDest="$customDir/$(dirname $file)"
   patchName="$(basename $file).patch"
-  echo "$patchDest/$patchName"
+  echo "$file: $patchDest/$patchName"
   mkdir -p "$patchDest"
   # Create the patch
-  ( cd "$BUILDROOT_DIR" ; git diff $file ) > "$patchDest/$patchName" || foundError=1
+  if ! ( cd "$BUILDROOT_DIR" ; git diff $file 2>/dev/null ) > "$patchDest/$patchName" ; then
+    if [[ ! -f "$BUILDROOT_DIR/$file" ]] ; then
+      # This file was forcefully removed
+      rm "$patchDest/$patchName"
+      echo "--------------------------------  $file" >> "$hashList" || foundError=1
+      continue
+    fi
+  fi
+
   # Copy the expected file
   cp "$BUILDROOT_DIR/$file" "$customDir/$file"
   # Get the original file hash -> unapply the patch 1st, then md5sum
@@ -29,7 +37,7 @@ for file in `cd "$BUILDROOT_DIR" ; git status -s | cut -c 4-` ; do
   else
     # The patch file is empty because the file is new to buildroot
     rm "$patchDest/$patchName"
-    echo "********************************  $file" >> "$hashList" || foundError=1
+    echo "++++++++++++++++++++++++++++++++  $file" >> "$hashList" || foundError=1
   fi
 done
 
@@ -38,8 +46,9 @@ if [[ $foundError != 0 ]] ; then
   exit 1
 fi
 
-branchName=`( cd $BUILDROOT_DIR && git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* (HEAD detached at \(.*\))/\1/' )`
+branchName=`( cd $BUILDROOT_DIR && git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* .* \([a-z0-9\.]\+\))/\1/' )`
 echo $branchName
-mv custom "custom.pre-${branchName}" && mv "$customDir" custom || exit 1
+[[ -d ./custom ]] && mv custom "custom.pre-${branchName}"
+mv "$customDir" custom || exit 1
 echo "custom has been renamed to custom.pre-${branchName}"
 echo "Your new custom dir is ready"

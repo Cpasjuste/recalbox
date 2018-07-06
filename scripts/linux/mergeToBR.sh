@@ -29,6 +29,15 @@ function applyPatches() {
     patch -p0 "buildroot/$fileToPatch" < "custom/$patchFile"
   done
 }
+
+function removeFiles() {
+  filesList="$1"
+  for fileToRemove in $filesList; do
+    patchFile="${fileToPatch}.patch"
+    echo "Removing $fileToRemove"
+    [[ -f "${BUILDROOT_DIR}/$fileToRemove" ]] && rm "${BUILDROOT_DIR}/$fileToRemove"
+  done
+}
 ####
 echo -e "\e[7m>>> $scriptName 1. Doing basic checks ...\e[27m"
 ####
@@ -56,20 +65,36 @@ echo -e "\e[7m>>> $scriptName 2. Compare source and destination ...\e[27m"
 foundError=0
 filesToPatch=""
 filesToRework=""
+filesToRemove=""
 filesOK=""
 # Make sure source and dest files match
 # Need to read for file descriptor 3 not to messup the loop
 while read -u 3 -r line ; do
   # A hash made of * is to specify files that do not exist in buildroot and should be copied over
-  hash=$(echo "$line" | tr -d '*' | cut -d ' ' -f 1)
+  hash=$(echo "$line" | cut -d ' ' -f 1)
   file=$(echo "$line" | cut -d ' ' -f 3)
 
   # If the hash is empty, make sure the dest file doesn't exist
-  if [[ ! -z $hash ]] ; then
-    # Check if source and dest file exist
-    [[ ! -f custom/$file ]] && echo "Error: custom/$file doesn't exist" >&2 && foundError=1
-    [[ ! -f $BUILDROOT_DIR/$file ]] && echo "Error: $BUILDROOT_DIR/$file doesn't exist" >&2 && foundError=1
+  if [[ -z $hash ]] ; then
+    echo "Error: a hash can't be empty for file $file"
+    foundError=1
+    continue
   fi
+    
+  if [[ $hash == "--------------------------------" ]] ; then
+    # File to remove
+    filesToRemove="$file $filesToRemove"
+    continue
+  elif [[ $hash == "++++++++++++++++++++++++++++++++" ]] ; then
+    # File to add
+    echo "OK for merge: $file"
+    filesOK="$file $filesOK"
+    continue
+  fi
+  
+  # Check if source and dest file exist
+  [[ ! -f custom/$file ]] && echo "Error: custom/$file doesn't exist" >&2 && foundError=1
+  [[ ! -f $BUILDROOT_DIR/$file ]] && echo "Error: $BUILDROOT_DIR/$file doesn't exist" >&2 && foundError=1
 
   # Check if the buildroot file matches. We don't check the md5 dest file if the source has no md5 -> copy a new file from source to dest
   tryToPatch=0
@@ -83,7 +108,7 @@ while read -u 3 -r line ; do
       # The dest file can eventually exist if the script was already run before. But the dest file MUSTN'T be modified
       [[ -z $hash && -f $BUILDROOT_DIR/$file ]] && echo "File is not supposed to exist and differs from source: $BUILDROOT_DIR/$file" >&2 && foundError=1 && filesToRework="$file $filesToRework"
     fi
-  else
+   else
     echo "OK for merge: $file"
     filesOK="$file $filesOK"
   fi
@@ -112,6 +137,7 @@ done
 echo "Valid files: $filesOK"
 echo "Valid patches: $filesToPatch"
 echo "Files that need to be reworked: $filesToRework"
+echo "Files to remove: $filesToRemove"
 
 if [[ $foundError != 0 && $forcePatch != 1 ]] ; then
   echo "Some errors were found. Can't patch buildroot. Abotring ..." >&2
@@ -137,6 +163,8 @@ grep -v '^#' $hashSource | while read line ; do
   #echo $line
   hash=$(echo "$line" | tr -d '*' | cut -d ' ' -f 1)
   file=$(echo "$line" | cut -d ' ' -f 3)
+  # Deleted files have no patch
+  [[ $hash == "--------------------------------" ]] && continue
   # Don't copy files that will be patched
   [[ $filesToPatch == *"$file"* ]] && echo "Skipping $file as it will be patched" && continue
   if  cp "custom/$file" "$BUILDROOT_DIR/$file" ; then
@@ -148,8 +176,9 @@ grep -v '^#' $hashSource | while read line ; do
 done
 
 # Patch required files
-echo -e "\e[7m>>> $scriptName 5. Task Patch flagged files ...\e[27m"
-echo $filesToPatch
+echo -e "\e[7m>>> $scriptName 5. Task Patch or remove flagged files ...\e[27m"
+applyPatches "$filesToPatch"
+removeFiles "$filesToRemove"
 
 echo -e "\e[7m>>> $scriptName 5. Task completed !\e[27m"
 [[ $foundError == 1 ]] && echo "But there were some errors. Please check and correct them"

@@ -38,4 +38,4 @@ f01ea6ba5ccf7e7b094e83301984333d  package/rpi-firmware/config.txt
 087e75dd51e6c2598869a7357a310886  package/sqlite/sqlite.mk
 34acffd3feee1873c55cb5afca0d4e9e  support/scripts/mkusers
 2673dc3e7fbc4920c43ad91ad9214d3e  system/device_table.txt
-********************************  package/odroid-scripts/S02odroidc2_fb
+++++++++++++++++++++++++++++++++  package/odroid-scripts/S02odroidc2_fb
