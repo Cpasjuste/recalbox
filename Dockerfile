@@ -24,7 +24,7 @@ RUN mkdir -p /work
 WORKDIR /work
 
 # Clean host folder
-CMD rm -rf /share/host
+CMD rm -rf /share/host /work/buildroot /work/output
 
 CMD echo ">>> Setting recalbox version to ${RECALBOX_VERSION_LABEL}" && echo "${RECALBOX_VERSION_LABEL}" > board/recalbox/fsoverlay/recalbox/recalbox.version && \
     echo ">>> Fetching and reseting buildroot submodule" && ( git submodule update --init ; cd buildroot && git reset HEAD --hard && git clean -dfx ) && \
