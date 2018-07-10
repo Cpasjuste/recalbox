@@ -2,6 +2,7 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [18.07.13] - 2018-07-13
 - Bump desmume to desmume2015
 - fix: SELECT as hotkey sometimes messy with arcade
 - ES: Arcade roms fullname in Netplay GUID
@@ -13,6 +14,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - N64 rice: fix blank screen
 - N64 GlideN64 and other plugins: also fix blank screen
 - pifba: make sure it's only available for systems supporting it
+- Set the recalbox tag for netplay elsewhere
 
 ## [18.06.27] - 2018-06-27
 - Adding introRecalboxEASports.mp4
