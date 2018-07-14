@@ -9,6 +9,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - ES: fix scraped folders display
 - ES: improve image loading
 - ES: now automatically reboots once the upgrade is ready
+## [unreleased]
+- add Atari 800 core
+- add Atari 5200 System
 
 ## [18.07.13] - 2018-07-13
 - Bump desmume to desmume2015
