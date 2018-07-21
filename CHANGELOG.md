@@ -36,6 +36,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Fix bluetooth detection on Odroid XU4
 - Update version of Theodore core
 - Add homebrew game Mission: Liftoff
+- Fix BT recovery on XU4
 
 ## [18.07.13] - 2018-07-13
 - Bump desmume to desmume2015
