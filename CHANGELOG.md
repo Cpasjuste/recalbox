@@ -2,6 +2,7 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [unreleased]
 - Add support for Mayflash GameCube adapter
 - ES: better cyrillic display
 - Add ipega 9055 udev rule
@@ -9,9 +10,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - ES: fix scraped folders display
 - ES: improve image loading
 - ES: now automatically reboots once the upgrade is ready
-## [unreleased]
-- add Atari 800 core
-- add Atari 5200 System
+- Atari 8 Bits: Added Atari 800 and Atari 5200 support - Thanks to dubbows!
 
 ## [18.07.13] - 2018-07-13
 - Bump desmume to desmume2015
