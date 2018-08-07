@@ -4,6 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 - Add support for Mayflash GameCube adapter
 - ES: better cyrillic display
+- Add ipega 9055 udev rule
 
 ## [18.07.13] - 2018-07-13
 - Bump desmume to desmume2015
