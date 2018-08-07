@@ -5,6 +5,11 @@ dir_nvram /recalbox/share/saves/advance/nvram
 dir_rom /recalbox/share/roms/mame
 dir_sample /recalbox/share/bios/advance/samples
 dir_snap /recalbox/share/screenshots
+dir_artwork /recalbox/share/overlays/advmame
+display_artwork_backdrop yes
+display_artwork_bezel yes
+display_artwork_crop no
+display_artwork_overlay yes
 device_video auto
 device_joystick auto
 device_keyboard none
