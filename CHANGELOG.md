@@ -72,6 +72,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - N64 GlideN64 and other plugins: also fix blank screen
 - pifba: make sure it's only available for systems supporting it
 - Set the recalbox tag for netplay elsewhere
+- Add configuration for static ip addresses on wifi interfaces
 
 ## [18.06.27] - 2018-06-27
 - Adding introRecalboxEASports.mp4

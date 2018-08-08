@@ -9,8 +9,22 @@ rb_wifi_boot_configure() {
         settings_file="/var/lib/connman/recalbox_wifi${X}.config"
         [ "$1" = "1" ] && settings_name="default" || settings_name="${X}"
 
+
+        settings_ip=`egrep "^wifi${X}.ip" /boot/recalbox-backup.conf|sed "s/wifi${X}.ip=//g"`
+        settings_gateway=`egrep "^wifi${X}.gateway" /boot/recalbox-backup.conf|sed "s/wifi${X}.gateway=//g"`
+        settings_netmask=`egrep "^wifi${X}.netmask" /boot/recalbox-backup.conf|sed "s/wifi${X}.netmask=//g"`
+
+	settings_manual_section=""
+        if [[ "$settings_ip" != "" ]] && \
+	   [[ "$settings_gateway" != "" ]] && \
+	   [[ "$settings_netmask" != "" ]] ;then
+	   settings_manual_section="
+IPv4=${settings_ip}/${settings_netmask}/${settings_gateway}"
+	fi
         if [[ "$settings_ssid" != "" ]] ;then
+
 	recallog "Recovering wifi for SSID: $settings_ssid"
+
         mkdir -p "/var/lib/connman"
         cat > "${settings_file}" <<EOF
 [global]
@@ -18,7 +32,7 @@ Name=recalbox
 
 [service_recalbox_${settings_name}]
 Type=wifi
-Name=${settings_ssid}
+Name=${settings_ssid}${settings_manual_section}
 EOF
         if test "${settings_key}" != ""
         then
