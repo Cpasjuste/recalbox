@@ -48,6 +48,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Bump AtariST emulator to december 2018 version
 - Add Oric/Atmos emulator (Oricutron, standalone)
 - Add MGT Sam Coupé emulator (Simcoupe, standalone)
+- c2/xu4: enable generic quirks for usb encoders like Xin-Mo
 
 ## [18.07.13] - 2018-07-13
 - Bump desmume to desmume2015
