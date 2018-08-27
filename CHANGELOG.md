@@ -14,6 +14,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - MSX: Fixed Bluemsx core
 - Add 7z file support for many libretro cores
 - Docker build unified
+- "overlays" folder and roms subfolders automatically created
 
 ## [18.07.13] - 2018-07-13
 - Bump desmume to desmume2015
