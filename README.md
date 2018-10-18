@@ -23,3 +23,70 @@ Please use **Issues** in corresponding projects to report a bug or request a fea
 - [Recalbox Wiki](https://github.com/recalbox/recalbox-os/wiki): the wiki of recalbox.
 - [forum.recalbox.com](https://forum.recalbox.com): recalbox forum. You will find support there.
 
+
+# How to build
+
+### General steps
+
+Install docker: [docs.docker.com/install/](https://docs.docker.com/install/)
+
+Make sure your user belongs to the docker group -> `sudo usermod -a -G docker $USER` then logoff/login
+
+Clone the repository in your home :
+
+```bash
+export RECALBOX_VERSION="dev" ARCH="rpi3"
+git clone https://gitlab.com/recalbox/recalbox.git recalbox-${ARCH}
+```
+
+You can build via docker. You must at least set the ARCH environment variable
+
+```bash
+ARCH=rpi3 scripts/linux/recaldocker.sh
+```
+
+Beside `ARCH`, you can also set:
+* `RECALBOX_VERSION`: to set a Recalbox build version (no impact on build, just the version shown)
+* `PACKAGE`: if you want to build a single package
+
+In the recalbox directory, you will find some directories created by the build:
+* `host` folder that contains output compiled for your host
+* `dl` folder that contains all packages download
+* `output` folder that contains compiled files
+
+### Custom command and menuconfig
+
+Using the command line arguments, you can pass a custom command to run:
+```bash
+ARCH=rpi3 scripts/linux/recaldocker.sh make menuconfig
+```
+
+This way you can run menuconfig and configure the system. If you never built the system, use the following command to create the default configuration for your arch:
+```bash
+export ARCH=rpi3 && scripts/linux/recaldocker.sh make "recalbox-${ARCH}_defconfig" && make menuconfig
+```
+
+Your command will override the default build command from the docker image, so you may have to copy past some variable from it.
+
+### Known errors
+During the image built if you encounter errors like the following :
+
+```text
+Reading package lists...
+W: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/xenial/InRelease  Temporary failure resolving 'archive.ubuntu.com'
+W: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/xenial-updates/InRelease  Temporary failure resolving 'archive.ubuntu.com'
+W: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/xenial-backports/InRelease  Temporary failure resolving 'archive.ubuntu.com'
+W: Failed to fetch http://security.ubuntu.com/ubuntu/dists/xenial-security/InRelease  Temporary failure resolving 'security.ubuntu.com'
+W: Some index files failed to download. They have been ignored, or old ones used instead.
+```
+Docker cannot access to internet to make updates. More precisely, it is a DNS problem (see https://odino.org/cannot-connect-to-the-internet-from-your-docker-containers/). If your `/etc/resolv.conf` is empty (it happens if all is manage by  `network-manager` for example), Docker does not which DNS to use. You'll need to tell him through the `/etc/default/docker` file by adding this line :
+
+```text
+DOCKER_OPTS="--dns IP.OF.YOUR.DNS"
+```
+Restart Docker and retry. It should be ok.
+
+```bash
+sudo service docker restart
+docker build -t "recalbox-dev" .
+```
