@@ -33,6 +33,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Fix bug on bluetooth discover
 - ES: fix pads buttons detection and configuration
 - Fix bluetooth detection on Odroid XU4
+- Update version of Theodore core
+- Add homebrew game Mission: Liftoff
 
 ## [18.07.13] - 2018-07-13
 - Bump desmume to desmume2015
