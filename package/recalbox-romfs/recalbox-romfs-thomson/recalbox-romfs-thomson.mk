@@ -5,7 +5,7 @@
 ################################################################################
 
 # Package generated with :
-# ./scripts/linux/empack.py --system thomson --extension '.fd .FD .sap .SAP .k7 .K7 .m7 .M7 .rom .ROM .zip .ZIP' --fullname 'Thomson' --platform thomsonto --theme to8 libretro:theodore:BR2_PACKAGE_LIBRETRO_THEODORE
+# ./scripts/linux/empack.py --system thomson --extension '.fd .FD .sap .SAP .k7 .K7 .m7 .M7 .rom .ROM .zip .ZIP .7z .7Z' --fullname 'Thomson' --platform thomsonto --theme to8 libretro:theodore:BR2_PACKAGE_LIBRETRO_THEODORE
 
 # Name the 3 vars as the package requires
 RECALBOX_ROMFS_THOMSON_SOURCE = 
@@ -23,7 +23,7 @@ SOURCE_ROMDIR_THOMSON = $(RECALBOX_ROMFS_THOMSON_PKGDIR)/roms
 
 ifneq ($(BR2_PACKAGE_LIBRETRO_THEODORE),)
 define CONFIGURE_MAIN_THOMSON_START
-	$(call RECALBOX_ROMFS_CALL_ADD_SYSTEM,$(SYSTEM_XML_THOMSON),Thomson,$(SYSTEM_NAME_THOMSON),.fd .FD .sap .SAP .k7 .K7 .m7 .M7 .rom .ROM .zip .ZIP,thomsonto,to8)
+	$(call RECALBOX_ROMFS_CALL_ADD_SYSTEM,$(SYSTEM_XML_THOMSON),Thomson,$(SYSTEM_NAME_THOMSON),.fd .FD .sap .SAP .k7 .K7 .m7 .M7 .rom .ROM .zip .ZIP .7z .7Z,thomsonto,to8)
 endef
 
 ifneq ($(BR2_PACKAGE_LIBRETRO_THEODORE),)
