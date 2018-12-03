@@ -15,6 +15,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - fix kodi configgen
 - bump rpi kernel + firmware
 - gpio arcadedriver works again
+- fix bug on bluetooth discover
 
 ## [unreleased]
 - Add support for Mayflash GameCube adapter
