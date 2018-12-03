@@ -15,6 +15,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Add 7z file support for many libretro cores
 - Docker build unified
 - "overlays" folder and roms subfolders automatically created
+- Fix bug on bluetooth discover
 
 ## [18.07.13] - 2018-07-13
 - Bump desmume to desmume2015

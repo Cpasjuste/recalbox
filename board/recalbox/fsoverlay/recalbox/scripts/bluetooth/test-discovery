@@ -11,7 +11,7 @@ except ImportError:
   import gobject as GObject
 import bluezutils
 
-compact = False
+compact = True
 devices = {}
 
 def print_compact(address, properties):
