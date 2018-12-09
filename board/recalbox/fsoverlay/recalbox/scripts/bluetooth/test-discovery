@@ -175,7 +175,8 @@ if __name__ == '__main__':
 	if options.transport:
 		scan_filter.update({ "Transport": options.transport })
 
-	adapter.SetDiscoveryFilter(scan_filter)
+	if scan_filter:
+		adapter.SetDiscoveryFilter(scan_filter)
 	adapter.StartDiscovery()
 
 	mainloop = GObject.MainLoop()
