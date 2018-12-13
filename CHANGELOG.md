@@ -18,6 +18,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - fix bug on bluetooth discover
 
 ## [unreleased]
+- Bump kodi.plugin.video.youtube to 6.2.2 
 - Add support for Mayflash GameCube adapter
 - ES: better cyrillic display
 - Add ipega 9055 udev rule
