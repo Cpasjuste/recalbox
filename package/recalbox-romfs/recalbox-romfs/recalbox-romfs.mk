@@ -443,4 +443,9 @@ ifneq ($(BR2_PACKAGE_LIBRETRO_ATARI800),)
 	RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-atari5200
 endif
 
+# System: pokemini
+ifneq ($(BR2_PACKAGE_LIBRETRO_POKEMINI),)
+	RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-pokemini
+endif
+
 $(eval $(generic-package))

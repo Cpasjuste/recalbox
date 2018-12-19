@@ -39,6 +39,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Fix BT recovery on XU4
 - advmame: add overlay possibility
 - MAME: Added mame2003-plus libretro core. A MAME078 version with added games support plus many fixes and improvements.
+- PokeMini: Add Pokémon Mini support
 
 ## [18.07.13] - 2018-07-13
 - Bump desmume to desmume2015

@@ -100,6 +100,10 @@ cb0a5cfcf7247a7eab74bb2716260269  keropi/cgrom.dat
 51f2f43ae2f3508a14d9f56597e2d3ce  panafz10.bin
 
 
+- POKÉMON MINI :
+1e4fb124a3a886865acb574f388c803d  bios.min
+
+
 - Amiga 600 ADF :
 82a21c1890cae844b3df741f2762d48d  kick13.rom
 
