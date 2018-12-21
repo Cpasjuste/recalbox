@@ -1,0 +1,18 @@
+################################################################################
+#
+# FREEINTV
+#
+################################################################################
+LIBRETRO_FREEINTV_VERSION = f2bdca644ef541cc6fb3c81adb8fe78ac6aefca4
+LIBRETRO_FREEINTV_SITE = $(call github,libretro,FreeIntv,$(LIBRETRO_FREEINTV_VERSION))
+
+define LIBRETRO_FREEINTV_BUILD_CMDS
+	CFLAGS="$(TARGET_CFLAGS)" CXXFLAGS="$(TARGET_CXXFLAGS)" $(MAKE) CXX="$(TARGET_CXX)" CC="$(TARGET_CC)" LD="$(TARGET_CXX)" AR="$(TARGET_AR)" RANLIB="$(TARGET_RANLIB)" -C $(@D)/ -f Makefile platform="unix"
+endef
+
+define LIBRETRO_FREEINTV_INSTALL_TARGET_CMDS
+	$(INSTALL) -D $(@D)/freeintv_libretro.so \
+		$(TARGET_DIR)/usr/lib/libretro/freeintv_libretro.so
+endef
+
+$(eval $(generic-package))
