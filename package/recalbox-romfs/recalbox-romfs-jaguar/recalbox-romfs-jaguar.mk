@@ -5,7 +5,7 @@
 ################################################################################
 
 # Package generated with :
-# ./scripts/linux/empack.py --system jaguar --extension '.j64 .J64 .jag .JAG .rom .ROM .abs .ABS .cof .COF .bin .BIN .prg .PRG' --fullname 'Atari Jaguar' --platform jaguar --theme jaguar libretro:virtualjaguar:BR2_PACKAGE_LIBRETRO_VIRTUALJAGUAR
+# ./scripts/linux/empack.py --system jaguar --extension '.j64 .J64 .jag .JAG .rom .ROM .abs .ABS .cof .COF .bin .BIN .prg .PRG .zip .ZIP .7z .7Z' --fullname 'Atari Jaguar' --platform jaguar --theme jaguar libretro:virtualjaguar:BR2_PACKAGE_LIBRETRO_VIRTUALJAGUAR
 
 # Name the 3 vars as the package requires
 RECALBOX_ROMFS_JAGUAR_SOURCE = 
@@ -23,7 +23,7 @@ SOURCE_ROMDIR_JAGUAR = $(RECALBOX_ROMFS_JAGUAR_PKGDIR)/roms
 
 ifneq ($(BR2_PACKAGE_LIBRETRO_VIRTUALJAGUAR),)
 define CONFIGURE_MAIN_JAGUAR_START
-	$(call RECALBOX_ROMFS_CALL_ADD_SYSTEM,$(SYSTEM_XML_JAGUAR),Atari Jaguar,$(SYSTEM_NAME_JAGUAR),.j64 .J64 .jag .JAG .rom .ROM .abs .ABS .cof .COF .bin .BIN .prg .PRG,jaguar,jaguar)
+	$(call RECALBOX_ROMFS_CALL_ADD_SYSTEM,$(SYSTEM_XML_JAGUAR),Atari Jaguar,$(SYSTEM_NAME_JAGUAR),.j64 .J64 .jag .JAG .rom .ROM .abs .ABS .cof .COF .bin .BIN .prg .PRG .zip .ZIP .7z .7Z,jaguar,jaguar)
 endef
 
 ifneq ($(BR2_PACKAGE_LIBRETRO_VIRTUALJAGUAR),)
