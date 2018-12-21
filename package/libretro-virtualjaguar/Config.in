@@ -2,8 +2,9 @@ config BR2_PACKAGE_LIBRETRO_VIRTUALJAGUAR
         bool "libretro-virtualjaguar"
 	depends on BR2_PACKAGE_RETROARCH
 	depends on BR2_INSTALL_LIBSTDCPP
-        help
-          A libretro VIRTUALJAGUAR emulator core for ARM.
+	select BR2_PACKAGE_RECALBOX_ROMFS_JAGUAR
+    help
+      A libretro VIRTUALJAGUAR emulator core for ARM.
 
 	  http://www.libretro.com
 
