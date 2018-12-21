@@ -2,12 +2,12 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## Beta only
+## [unreleased]
 - Major system upgrade. See https://github.com/buildroot/buildroot/blob/2018.02.3/CHANGES#L1-L1427 for the full log
-- If KODI or emulators crash, reconfigure your pads
 - KODI bumped to 17.6
 - Raspberry Pi3b+ and CM3 support
 - Joypads management updated, mostly impacting joypads advertising as a complete keyboard. You have to reconfigure your pad if it is acting strangely
+- Preconfigured gamepads file rewritten
 - arcade GPIO driver upgraded: now support I2C and GPIO recopnfiguring from the command line
 - x86 now requires a CPU that can handle at least SSE and SS2
 - x86: add support for newer AMD GPU
@@ -16,8 +16,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - bump rpi kernel + firmware
 - gpio arcadedriver works again
 - fix bug on bluetooth discover
-
-## [unreleased]
 - Add Capcom RB video intro
 - Bump kodi.plugin.video.youtube to 6.2.2 
 - Add support for Mayflash GameCube adapter
