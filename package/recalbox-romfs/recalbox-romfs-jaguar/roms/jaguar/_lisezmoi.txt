@@ -1,0 +1,5 @@
+## RECALBOX - SYSTEM JAGUAR ##
+
+Placez ici vos roms Atari Jaguar.
+
+Les roms doivent avoir l'extension ".j64/.jag/.rom/.abs/.cof/.bin/.prg"
