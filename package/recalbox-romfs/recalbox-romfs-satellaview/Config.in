@@ -1,0 +1,6 @@
+config BR2_PACKAGE_RECALBOX_ROMFS_SATELLAVIEW
+	bool "recalbox-romfs-satellaview"
+	select BR2_PACKAGE_RECALBOX_ROMS
+	depends on BR2_PACKAGE_LIBRETRO_SNES9X
+	help
+	  share_init/roms and xml for satellaview

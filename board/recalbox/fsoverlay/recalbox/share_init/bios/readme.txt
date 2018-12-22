@@ -32,6 +32,18 @@ ca30b50f880eb660a320674ed365ef7a  disksys.rom
 a860e8c0b6d573d191e4ec7db1b1e4f6  gba_bios.bin
 
 
+- SUPER GAME BOY :
+d574d4f9c12f305074798f54c091a8b4  sgb_bios.bin
+
+
+- SATELLAVIEW :
+fed4d8242cfbed61343d53d48432aced  BS-X.bin
+
+
+- SUFAMI TURBO :
+d3a44ba7d42a74d3ac58cb9c14c6a5ca  STBIOS.bin
+
+
 - PCENGINE CD : 
 ff1a674273fe3540ccef576376407d1d  syscard3.pce
 

@@ -388,6 +388,16 @@ ifneq ($(BR2_PACKAGE_LIBRETRO_CATSFC)$(BR2_PACKAGE_LIBRETRO_POCKETSNES)$(BR2_PAC
 	RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-snes
 endif
 
+# System: satellaview
+ifneq ($(BR2_PACKAGE_LIBRETRO_SNES9X),)
+	RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-satellaview
+endif
+
+# System: sufami
+ifneq ($(BR2_PACKAGE_LIBRETRO_SNES9X),)
+	RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-sufami
+endif
+
 # System: thomson
 ifneq ($(BR2_PACKAGE_LIBRETRO_THEODORE),)
 	RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-thomson
