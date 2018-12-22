@@ -42,6 +42,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - FreeIntv: Add Mattel Intellivision support
 - Add Atari Jaguar on x86(_64) platforms
 - SNES9X: Add Satellaview and SuFami Turbo as own systems
+- Neo Geo CD: Added support with fbalpha emulator
 
 ## [18.07.13] - 2018-07-13
 - Bump desmume to desmume2015

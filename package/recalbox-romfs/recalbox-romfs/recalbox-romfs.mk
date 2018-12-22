@@ -34,7 +34,7 @@ define RECALBOX_ROMFS_CALL_ADD_SYSTEM
     "<name>$(3)</name>\n" \
     '<path>/recalbox/share/roms/$(3)</path>\n' \
     '<extension>$(4)</extension>\n' \
-    "<command>$(CONFIGGEN_STD_CMD)</command>\n" \
+    "<command>$(CONFIGGEN_STD_CMD)$(7)</command>\n" \
     '<platform>$(5)</platform>\n' \
     '<theme>$(6)</theme>\n' \
     '<emulators>' > $(1)
@@ -311,6 +311,11 @@ endif
 # System: neogeo
 ifneq ($(BR2_PACKAGE_LIBRETRO_MAME2003)$(BR2_PACKAGE_LIBRETRO_IMAME)$(BR2_PACKAGE_LIBRETRO_FBA)$(BR2_PACKAGE_PIFBA)$(BR2_PACKAGE_LIBRETRO_MAME2010),)
 	RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-neogeo
+endif
+
+# System: neogeocd
+ifneq ($(BR2_PACKAGE_LIBRETRO_FBA),)
+	RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-neogeocd
 endif
 
 # System: nes

@@ -3,11 +3,17 @@
 # FBA
 #
 ################################################################################
-LIBRETRO_FBA_VERSION = d48197f98fe82f96bcec083cac6c582b5bec253a
-LIBRETRO_FBA_SITE = $(call github,libretro,fbalpha2018,$(LIBRETRO_FBA_VERSION))
+LIBRETRO_FBA_VERSION = 883b8ebd414410c19978fb9a3cdc9d4732431141
+LIBRETRO_FBA_SITE = $(call github,libretro,fbalpha,$(LIBRETRO_FBA_VERSION))
+
+ifeq($(BR2_ARM_CPU_HAS_NEON),y)
+    LIBRETRO_FBA_NEON += "HAVE_NEON=1"
+    else
+    LIBRETRO_FBA_NEON += "HAVE_NEON=0"
+endif
 
 define LIBRETRO_FBA_BUILD_CMDS
-	CFLAGS="$(TARGET_CFLAGS)" CXXFLAGS="$(TARGET_CXXFLAGS)" $(MAKE) CXX="$(TARGET_CXX)" CC="$(TARGET_CC)" -C $(@D) -f makefile.libretro platform="$(LIBRETRO_BOARD)"
+	CFLAGS="$(TARGET_CFLAGS)" CXXFLAGS="$(TARGET_CXXFLAGS)" $(MAKE) CXX="$(TARGET_CXX)" CC="$(TARGET_CC)" -C $(@D) -f makefile.libretro platform="$(LIBRETRO_BOARD)" $(LIBRETRO_FBA_NEON)
 endef
 
 define LIBRETRO_FBA_INSTALL_TARGET_CMDS
