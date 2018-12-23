@@ -34,7 +34,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - ES: fix pads buttons detection and configuration
 - Fix bluetooth detection on Odroid XU4
 - Update version of Theodore core
-- Add homebrew game Mission: Liftoff
+- Add homebrew game Mission: Liftoff (Theodore)
 - Fix BT recovery on XU4
 - advmame: add overlay possibility
 - MAME: Added mame2003-plus libretro core. A MAME078 version with added games support plus many fixes and improvements.
@@ -44,6 +44,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Add Atari Jaguar on x86(_64) platforms
 - SNES9X: Add Satellaview and SuFami Turbo as own systems
 - Neo Geo CD: Added support with fbalpha emulator
+- Bump FBA libretro to latest version => Romset 0.2.97.44
 
 ## [18.07.13] - 2018-07-13
 - Bump desmume to desmume2015
