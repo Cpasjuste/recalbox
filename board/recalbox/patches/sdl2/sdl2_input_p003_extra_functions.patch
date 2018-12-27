@@ -2,7 +2,7 @@ diff --git a/include/SDL_joystick.h b/include/SDL_joystick.h
 index b0b1c66..802263d 100644
 --- a/include/SDL_joystick.h
 +++ b/include/SDL_joystick.h
-@@ -184,6 +184,11 @@ extern DECLSPEC int SDLCALL SDL_JoystickEventState(int state);
+@@ -184,6 +184,12 @@ extern DECLSPEC int SDLCALL SDL_JoystickEventState(int state);
  extern DECLSPEC Sint16 SDLCALL SDL_JoystickGetAxis(SDL_Joystick * joystick,
                                                     int axis);
  
@@ -10,6 +10,7 @@ index b0b1c66..802263d 100644
 +extern DECLSPEC int SDLCALL SDL_JoystickButtonEventCodeById(int device_index, int button);
 +extern DECLSPEC int SDLCALL SDL_JoystickAxisEventCodeById(int device_index, int axis);
 +extern DECLSPEC int SDLCALL SDL_JoystickHatEventCodeById(int device_index, int hat);
++#define SDL_JOYSTICK_IS_OVERRIDEN_BY_RECALBOX 1
 +
  /**
   *  \name Hat positions
