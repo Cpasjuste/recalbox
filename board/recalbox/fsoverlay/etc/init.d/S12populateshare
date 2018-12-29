@@ -84,12 +84,16 @@ done
 doRecalboxUpgrades
 
 # ssh : create the ssh key while the -R option of dropbear try a chown or an operation which is not permitted on fat32
+# use /tmp pass-thru to avoid operation not permitted error on fat32
 if ! test -e /recalbox/share/system/ssh
 then
     mkdir -p /recalbox/share/system/ssh
-    dropbearkey -t ecdsa -f /recalbox/share/system/ssh/dropbear_ecdsa_host_key
-    dropbearkey -t rsa   -f /recalbox/share/system/ssh/dropbear_rsa_host_key
-    dropbearkey -t dss   -f /recalbox/share/system/ssh/dropbear_dss_host_key
+    dropbearkey -t ecdsa -f /tmp/dropbear_ecdsa_host_key
+    mv /tmp/dropbear_ecdsa_host_key /recalbox/share/system/ssh/
+    dropbearkey -t rsa   -f /tmp/dropbear_rsa_host_key 
+    mv /tmp/dropbear_rsa_host_key /recalbox/share/system/ssh/
+    dropbearkey -t dss   -f /tmp/dropbear_dss_host_key
+    mv /tmp/dropbear_dss_host_key /recalbox/share/system/ssh/
 fi
 
 # bluetooth : now gotta tar/untar, the directory structure for bluez5 is more complex
