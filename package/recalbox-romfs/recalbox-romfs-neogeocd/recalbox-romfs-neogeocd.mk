@@ -6,6 +6,7 @@
 
 # Package generated with :
 # ./scripts/linux/empack.py --system neogeocd --extension '.cue .CUE' --fullname 'Neo-Geo CD' --platform neogeocd --theme neogeocd libretro:fba:BR2_PACKAGE_LIBRETRO_FBA
+# [-extra \"--subsystem neocd\"] added manually afterwards on line 27
 
 # Name the 3 vars as the package requires
 RECALBOX_ROMFS_NEOGEOCD_SOURCE =
