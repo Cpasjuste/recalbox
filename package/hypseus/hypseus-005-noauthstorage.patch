@@ -1,0 +1,10 @@
+--- a/src/CMakeLists.txt	2019-01-02 18:02:21.706813565 +0100
++++ b/src/CMakeLists.txt	2019-01-02 17:29:11.945244000 +0100
+@@ -130,6 +130,6 @@
+ 
+ include(CPack)
+ 
+-execute_process(COMMAND svn export --username svn --password svn https://www.daphne-emu.com:9443/daphnesvn/branches/v_1_0/sound ../sound)
++execute_process(COMMAND svn export --no-auth-cache --username svn --password svn https://www.daphne-emu.com:9443/daphnesvn/branches/v_1_0/sound ../sound)
+ install(TARGETS hypseus DESTINATION bin)
+ install(DIRECTORY ../pics ../fonts ../sound DESTINATION share/daphne)
