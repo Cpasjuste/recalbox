@@ -5,6 +5,6 @@ includedir=${prefix}/include
 
 Name: freeimage
 Description: FreeImage library
-Version: 3.16.0
+Version: 3.18.0
 Libs: -L${libdir} -lfreeimage
 Cflags: -I${includedir}

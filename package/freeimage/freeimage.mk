@@ -3,10 +3,10 @@
 # freeimage
 #
 ################################################################################
-FREEIMAGE_VERSION = 3.16.0
+FREEIMAGE_VERSION = 3.18.0
 FREEIMAGE_LIB_VERSION = 3
 FREEIMAGE_SITE = http://downloads.sourceforge.net/freeimage
-FREEIMAGE_SOURCE = FreeImage3160.zip
+FREEIMAGE_SOURCE = FreeImage3180.zip
 FREEIMAGE_LICENSE = GPLv2
 FREEIMAGE_INSTALL_STAGING = YES
 
