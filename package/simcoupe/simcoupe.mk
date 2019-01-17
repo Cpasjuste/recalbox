@@ -10,12 +10,13 @@ SIMCOUPE_DEPENDENCIES = sdl2
 define SIMCOUPE_INSTALL_TARGET_CMDS
 	$(INSTALL) -D $(@D)/simcoupe \
 		$(TARGET_DIR)/usr/bin/simcoupe
-	cp -R $(@D)/Resource/samcoupe.rom $(TARGET_DIR)/usr/bin/
+	mkdir -p $(TARGET_DIR)/recalbox/share_init/bios/samcoupe
+	cp -R $(@D)/Resource/** $(TARGET_DIR)/recalbox/share_init/bios/samcoupe
 endef
 
 define SIMCOUPE_POST_EXTRACT_FIX_SDL2_PATH
     @echo CHANGING CMakeList.txt
-    /bin/sed -i -E -e "s|set\(RESOURCE_DIR \\$$\{CMAKE_INSTALL_PREFIX\}/share/\\$$\{PROJECT_NAME\}\)|set(RESOURCE_DIR /recalbox/share/bios)|g" $(@D)/CMakeLists.txt
+    /bin/sed -i -E -e "s|set\(RESOURCE_DIR \\$$\{CMAKE_INSTALL_PREFIX\}/share/\\$$\{PROJECT_NAME\}\)|set(RESOURCE_DIR /recalbox/share_init/bios/samcoupe)|g" $(@D)/CMakeLists.txt
     /bin/sed -i -E -e "s|\r$$||g" $(@D)/Base/Joystick.cpp
 endef
  

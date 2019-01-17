@@ -147,7 +147,7 @@ ac9804d4c0e9d07e33472e3726ed15c3  sl31253.bin
 95d339631d867c8f1d15a5f2ec26069d  sl90025.bin
 
 
-- TANDERINE ORIC/ATMOS :
+- TANGERINE ORIC/ATMOS :
 4a1ff5f8719d67dafcf85ac61959cdb6  8dos.rom
 ebe418ec8a6c85d5ac32956c9a96c179  basic10.rom
 a330779c42ad7d0c4ac6ef9e92788ec6  basic11b.rom
@@ -159,8 +159,3 @@ df864344d2a2091c3f952bd1c5ce1707  microdis.rom
 0a814078410353744e2947a8e9342e4e  telmatic.rom
 9a432244d9ee4a49e8ddcde64af94e05  telmon24.rom
 
-
-- MGT SAM COUPE :
-ec1e8290da040307d6b3174b7ace9453  atomlite.rom
-fcb5d837f996efaaece074c3ceec2b55  atom.rom
-ad08ed47b07b0d7047fd3d0b5e7d90b3  samcoupe.rom
