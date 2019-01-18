@@ -3,7 +3,7 @@
 # FBA
 #
 ################################################################################
-LIBRETRO_FBA_VERSION = 9faebb8241c17cae11a59bef2f70a25a1162155e
+LIBRETRO_FBA_VERSION = 4590677b302d658550bcc50582bec2664b7f84dc
 LIBRETRO_FBA_SITE = $(call github,libretro,fbalpha,$(LIBRETRO_FBA_VERSION))
 
 ifeq ($(BR2_ARM_CPU_HAS_NEON),y)
