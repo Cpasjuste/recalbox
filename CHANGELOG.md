@@ -17,7 +17,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - gpio arcadedriver works again
 - fix bug on bluetooth discover
 - Add Capcom RB video intro
-- Bump kodi.plugin.video.youtube to 6.2.2 
+- Bump kodi.plugin.video.youtube to 6.3.1
 - Add support for Mayflash GameCube adapter
 - ES: better cyrillic display
 - Add ipega 9055 udev rule
