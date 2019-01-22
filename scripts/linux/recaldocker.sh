@@ -11,8 +11,6 @@ if [[ -z "$ARCH" ]] ; then
   fi
 fi
 
-[[ -z $RECALBOX_VERSION_LABEL ]] && RECALBOX_VERSION_LABEL=recalbox-dev
-
 docker build -t "recalbox-dev" .
 
 NPM_PREFIX_OUTPUT_PATH="`pwd`/output/build/.npm"
@@ -26,6 +24,6 @@ docker run -ti --rm \
 	-v "${PWD}/host:/share/host" \
 	-e "ARCH=${ARCH}" \
 	-e "PACKAGE=${PACKAGE}" \
-	-e "RECALBOX_VERSION_LABEL=${RECALBOX_VERSION}" \
+	-e "RECALBOX_VERSION=${RECALBOX_VERSION}" \
 	--user="`id -u`:`id -g`" \
 	"recalbox-dev" ${@}
