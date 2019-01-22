@@ -32,20 +32,20 @@ Install docker: [docs.docker.com/install/](https://docs.docker.com/install/)
 
 Make sure your user belongs to the docker group -> `sudo usermod -a -G docker $USER` then logoff/login
 
-Clone the repository in your home :
+Clone the repository in your home:
 
 ```bash
-export RECALBOX_VERSION="dev" ARCH="rpi3"
-git clone https://gitlab.com/recalbox/recalbox.git recalbox-${ARCH}
+ARCH="rpi3" git clone https://gitlab.com/recalbox/recalbox.git recalbox-${ARCH}
 ```
 
-You can build via docker. You must at least set the ARCH environment variable
+Run the script that compiles the project in a Docker container:
 
 ```bash
-ARCH=rpi3 scripts/linux/recaldocker.sh
+scripts/linux/recaldocker.sh
 ```
 
-Beside `ARCH`, you can also set:
+You can set the following environment variables to customise the build:
+* `ARCH`: to force the target architecture (see available architectures in the [`configs` directory](configs), default is to infer it from the current directory name)
 * `RECALBOX_VERSION`: to set a Recalbox build version (no impact on build, just the version shown)
 * `PACKAGE`: if you want to build a single package
 
