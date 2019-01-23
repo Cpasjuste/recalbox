@@ -27,7 +27,7 @@
 - Preconfigured gamepads file rewritten
 - x86: Now requires a CPU that can handle at least SSE and SS2 (Core2duo and higher)
 - x86: Add support for newer AMD GPU
-- Emulator updated! Thodore (Thomson)
+- Emulator updated! Theodore (Thomson)
 - Emulator updated! FBA Libretro core updated to latest version. Recommended Romset: 0.2.97.44
 - Emulator updated! Hatari (Atari ST) updated to latest version.
 - Emulator updated! DoxBox updated to December 2018 version.
