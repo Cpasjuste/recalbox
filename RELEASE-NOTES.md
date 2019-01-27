@@ -34,6 +34,7 @@
 - GPIO arcade driver upgraded: now support I2C and GPIO reconfiguring from the command line
 - EmulationStation: Now automatically reboots once the upgrade is ready
 - "overlays" folder and roms subfolders automatically created
+- Updated all MAME hiscore/cheat files in bios folder - Thanks to olivierdroid92!
 
 ### Fixes
 - bluetooth detection on Odroid XU4

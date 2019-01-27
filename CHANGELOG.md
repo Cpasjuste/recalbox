@@ -51,6 +51,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - c2/xu4: enable generic quirks for usb encoders like Xin-Mo
 - Bump DosBox to revision 4178 (December 2018)
 - Beetle PC-FX: Add NEC PC-FX support (x86, x86_64 and xu4)
+- MAME bios folders: Update hiscore/cheats for all MAME versions (courtesy of olivierdroid92)
 
 ## [18.07.13] - 2018-07-13
 - Bump desmume to desmume2015
