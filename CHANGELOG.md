@@ -54,6 +54,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - MAME bios folders: Update hiscore/cheats for all MAME versions (courtesy of olivierdroid92)
 - Bump 4DO to support threaded DSP emulation & lightgun
 - Activate 4DO package on Rpi3
+- Bump Amiberry to 2.24 (SDL2)
+- Bump Amiberry to 2.24 (SDL2). Compatible Rpi1 and Odroid XU4.
+- Add Amige CD32 system
 
 ## [18.07.13] - 2018-07-13
 - Bump desmume to desmume2015

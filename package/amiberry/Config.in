@@ -7,6 +7,7 @@ config BR2_PACKAGE_AMIBERRY
 	select BR2_PACKAGE_SDL_GFX
 	select BR2_PACKAGE_RECALBOX_ROMFS_AMIGA600
 	select BR2_PACKAGE_RECALBOX_ROMFS_AMIGA1200
+	select BR2_PACKAGE_RECALBOX_ROMFS_AMIGACD32
         bool "Amiberry"
         help
           An Amiga emulator

@@ -125,11 +125,16 @@ cb0a5cfcf7247a7eab74bb2716260269  keropi/cgrom.dat
 
 
 - Amiga 600 WHDL :
-dc10d7bdd1b6f450773dfb558477c230  kick20.rom
+fa4acc75b49e880679fe02716af24d71  kick20.rom
 
 
 - Amiga 1200 (both ADF and WHDL) :
 646773759326fbac3b2311fd8c8793ee  kick31.rom
+
+
+- Amiga CD32 :
+5f8924d013dd57a89cf349f4cdedc6b1  cd32.rom
+bb72565701b1b6faece07d68ea5da639  cd32ext.rom
 
 
 - ATARI 800 & 5200 :

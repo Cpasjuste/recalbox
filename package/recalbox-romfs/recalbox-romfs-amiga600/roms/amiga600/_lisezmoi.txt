@@ -2,14 +2,15 @@
 
 Placez ici vos roms amiga 600.
 
-Les roms doivent avoir l'extension ".adf/.uae"
-Les .uae sont utilisées uniquement pour la fonctionnalité whdload.
+Les roms doivent être:
+- Disquettes ADF (*.adf, zippé or 7zippé)
+- Disquettes IPF Disk (*.ipf, zippé)
+- Packages RP9 d'Amiga Forever (*.rp9)
+- Dossiers WHDL (folder, zip ou lha)
 
-Ce système ne supporte pas les roms compressées au format .zip.
-Ce système nécessite des bios pour fonctionner.
+Des fichiers UAE (*.uae) peuvent être utilisés pour specifier une configuration particulière pour un jeu.
 
-Pour visualiser le GUI appuyez sur Start
-Pour quitter l'émulateur, appuyez sur Hotkey
+Ce système nécessite des bios pour fonctionner (Kickstart 1.3 et Kickstart 2.0 pour les WHDL).
 
 Consultez la documentation à cette adresse : 
 https://github.com/recalbox/recalbox-os/wiki/Amiga-sur-Recalbox-(FR)

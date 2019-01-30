@@ -142,14 +142,24 @@ endef
 
 # Add necessary dependencies
 # System: amiga600
- ifeq ($(BR2_PACKAGE_AMIBERRY),y)
+ifeq ($(BR2_PACKAGE_AMIBERRY),y)
  	RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-amiga600
 endif
  	
 # System: amiga1200
- ifeq ($(BR2_PACKAGE_AMIBERRY),y)
+ifeq ($(BR2_PACKAGE_AMIBERRY),y)
  	RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-amiga1200
 endif
+
+# System: amigacd32
+ifeq ($(BR2_PACKAGE_AMIBERRY),y)
+    RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-amigacd32
+endif
+
+# System: amigacdtv
+#ifeq ($(BR2_PACKAGE_AMIBERRY),y)
+#    RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-amigacdtv
+#endif
  	
 # System: amstradcpc
 ifneq ($(BR2_PACKAGE_LIBRETRO_CAP32)$(BR2_PACKAGE_LIBRETRO_CROCODS),)
