@@ -52,6 +52,22 @@ ff1a674273fe3540ccef576376407d1d  syscard3.pce
 08e36edbea28a017f79f8d4f7ff9b6d7  pcfx.rom
 
 
+- NEC PC-98 : 
+Bios files must be placed in a subfolder named "np2kai"
+
+7da1e5b7c482d4108d22a5b09631d967  np2kai/font.bmp
+38d32748ae49d1815b0614970849fd40  np2kai/FONT.ROM
+cd237e16e7e77c06bb58540e9e9fca68  np2kai/bios.rom
+72ea51443070f0e9212bfc9b793ee28e  np2kai/itf.rom
+524473c1a5a03b17e21d86a0408ff827  np2kai/sound.rom
+d94546e70f17fd899be8df3544ab6cbb  np2kai/2608_bd.wav
+d71004351c8bbfdad53b18222c061d49  np2kai/2608_sd.wav
+593cff6597ab9380d822b8f824fd2c28  np2kai/2608_top.wav
+08c54a0c1f774a5538a848a6665a34b4  np2kai/2608_hh.wav
+96a4ead13f364734f79b0c58af2f0e1f  np2kai/2608_tom.wav
+465ea0768b27da404aec45dfc501404b  np2kai/2608_rim.wav
+
+
 - FMSX : 
 d6dedca1112ddfda94cc9b2e426b818b  CARTS.SHA
 85b38e4128bbc300e675f55b278683a8  CYRILLIC.FNT
