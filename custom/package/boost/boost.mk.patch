@@ -1,0 +1,11 @@
+--- a/package/boost/boost.mk	2019-02-04 19:52:26.373976454 +0100
++++ b/package/boost/boost.mk	2019-02-04 19:49:24.228506477 +0100
+@@ -11,6 +11,8 @@
+ BOOST_LICENSE = BSL-1.0
+ BOOST_LICENSE_FILES = LICENSE_1_0.txt
+ 
++BOOST_CXXFLAGS=$(TARGET_CXXFLAGS) -std=c++11
++
+ # keep host variant as minimal as possible
+ HOST_BOOST_FLAGS = --without-icu --with-toolset=gcc \
+ 	--without-libraries=$(subst $(space),$(comma),atomic chrono context \
