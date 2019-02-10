@@ -44,7 +44,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - pc98: Add PC-98xx series support
 - Add Atari Jaguar on x86(_64) platforms
 - SNES9X: Add Satellaview and SuFami Turbo as own systems
-- Neo Geo CD: Added support with fbalpha emulator
+- Neo Geo CD: Added support with fbalpha emulator (TruRip ccd/sub/img recommended)
 - Bump FBA libretro to latest version => Romset 0.2.97.44
 - Bump AtariST emulator to december 2018 version
 - Add Oric/Atmos emulator (Oricutron, standalone)
@@ -55,12 +55,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - MAME bios folders: Update hiscore/cheats for all MAME versions (courtesy of olivierdroid92)
 - Bump 4DO to support threaded DSP emulation & lightgun
 - Activate 4DO package on Rpi3
-- Bump Amiberry to 2.24 (SDL2)
-- Bump Amiberry to 2.24 (SDL2). Compatible Rpi1 and Odroid XU4.
+- Bump Amiberry to 2.24 (SDL2). Compatible Odroid XU4.
 - Add Amige CD32 system
 - Add AROS bios as default Amiga bios (2019 version)
 - Add configuration for static ip addresses on wifi interfaces
 - Bump ScummVM/ResidualVM (January 2019)
+- Bump almost all libretro cores
 
 ## [18.07.13] - 2018-07-13
 - Bump desmume to desmume2015
