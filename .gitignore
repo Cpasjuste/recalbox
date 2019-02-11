@@ -19,3 +19,4 @@ Thumbs.db
 authorized_keys
 /host
 /scripts/linux/.githubAPIToken
+/local.mk
