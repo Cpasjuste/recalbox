@@ -1,12 +1,11 @@
-config BR2_PACKAGE_LIBRETRO_POCKETSNES
-        bool "libretro-pocketsnes"
+config BR2_PACKAGE_LIBRETRO_SNES9X2005
+        bool "libretro-snes9x2005"
 	depends on BR2_PACKAGE_RETROARCH
 	depends on BR2_INSTALL_LIBSTDCPP
-	select BR2_PACKAGE_RECALBOX_ROMFS_SNES
         help
           A libretro SNES emulator core for ARM.
 
 	  http://www.libretro.com
 
-comment "LIBRETRO_POCKETSNES needs a toolchain w/ C++"
+comment "LIBRETRO_SNES9X2005 needs a toolchain w/ C++"
 	depends on !BR2_INSTALL_LIBSTDCPP

@@ -66,12 +66,12 @@ fi
 
 if [[ "$emulator" == "snes" ]]; then
         settings_snes="`$systemsetting get snes_emulator`"
-        if [[ "$settings_snes" == "catsfc" ]];then
-                /recalbox/scripts/runcommand.sh 4 "$retroarchbin -L $retroarchcores/catsfc_libretro.so --config /recalbox/configs/retroarch/retroarchcustom.cfg \"$1\""
+        if [[ "$settings_snes" == "snes9x2005" ]];then
+                /recalbox/scripts/runcommand.sh 4 "$retroarchbin -L $retroarchcores/snes9x2005_libretro.so --config /recalbox/configs/retroarch/retroarchcustom.cfg \"$1\""
         elif [[ "$settings_snes" == "snes9x" ]];then
-                /recalbox/scripts/runcommand.sh 4 "$retroarchbin -L $retroarchcores/snes9x_next_libretro.so --config /recalbox/configs/retroarch/retroarchcustom.cfg \"$1\""
+                /recalbox/scripts/runcommand.sh 4 "$retroarchbin -L $retroarchcores/snes9x2010_libretro.so --config /recalbox/configs/retroarch/retroarchcustom.cfg \"$1\""
         else
-                /recalbox/scripts/runcommand.sh 4 "$retroarchbin -L $retroarchcores/pocketsnes_libretro.so --config /recalbox/configs/retroarch/retroarchcustom.cfg \"$1\""
+                /recalbox/scripts/runcommand.sh 4 "$retroarchbin -L $retroarchcores/snes9x2002_libretro.so --config /recalbox/configs/retroarch/retroarchcustom.cfg \"$1\""
         fi
 fi
 
@@ -79,7 +79,7 @@ if [[ "$emulator" == "nes" ]]; then
 	/recalbox/scripts/runcommand.sh 4 "$retroarchbin -L $retroarchcores/fceunext_libretro.so --config /recalbox/configs/retroarch/retroarchcustom.cfg \"$1\""
 fi
 if [[ "$emulator" == "virtualboy" ]]; then
-	/recalbox/scripts/runcommand.sh 4 "$retroarchbin -L $retroarchcores/vb_libretro.so --config /recalbox/configs/retroarch/retroarchcustom.cfg \"$1\""
+	/recalbox/scripts/runcommand.sh 4 "$retroarchbin -L $retroarchcores/mednafen_vb_libretro.so --config /recalbox/configs/retroarch/retroarchcustom.cfg \"$1\""
 fi
 
 if [[ "$emulator" == "n64" ]]; then
@@ -182,10 +182,10 @@ fi
 
 if [[ "$emulator" == "neogeo" ]]; then
         settings_neogeo="`$systemsetting get neogeo_emulator`"
-        if [[ "$settings_neogeo" == "fbalibretro" ]];then
-                /recalbox/scripts/runcommand.sh 4 "$retroarchbin -L $retroarchcores/fba_libretro.so --config /recalbox/configs/retroarch/retroarchcustom.cfg \"$1\""
-        elif [[ "$settings_neogeo" == "imame" ]];then
-                /recalbox/scripts/runcommand.sh 4 "$retroarchbin -L $retroarchcores/imame4all_libretro.so --config /recalbox/configs/retroarch/retroarchcustom.cfg \"$1\""
+        if [[ "$settings_neogeo" == "fbalpha" ]];then
+                /recalbox/scripts/runcommand.sh 4 "$retroarchbin -L $retroarchcores/fbalpha_libretro.so --config /recalbox/configs/retroarch/retroarchcustom.cfg \"$1\""
+        elif [[ "$settings_neogeo" == "mame2000" ]];then
+                /recalbox/scripts/runcommand.sh 4 "$retroarchbin -L $retroarchcores/mame2000_libretro.so --config /recalbox/configs/retroarch/retroarchcustom.cfg \"$1\""
         else
                 runsix=0
                 for game in ${sixBTNgames[*]}; do
@@ -203,11 +203,11 @@ if [[ "$emulator" == "neogeo" ]]; then
         fi
 fi
 
-if [[ "$emulator" == "imame" ]]; then
+if [[ "$emulator" == "mame2000" ]]; then
 	if [[ -n ${ratiomap[$filename]} ]]; then
-        	/recalbox/scripts/runcommand.sh 4 "$retroarchbin -L $retroarchcores/imame4all_libretro.so --config /recalbox/configs/retroarch/retroarchcustom.cfg --appendconfig /recalbox/configs/retroarch/${ratiomap[$filename]}.cfg \"$1\""
+        	/recalbox/scripts/runcommand.sh 4 "$retroarchbin -L $retroarchcores/mame2000_libretro.so --config /recalbox/configs/retroarch/retroarchcustom.cfg --appendconfig /recalbox/configs/retroarch/${ratiomap[$filename]}.cfg \"$1\""
 	else
-        	/recalbox/scripts/runcommand.sh 4 "$retroarchbin -L $retroarchcores/imame4all_libretro.so --config /recalbox/configs/retroarch/retroarchcustom.cfg --appendconfig /recalbox/configs/retroarch/4:3.cfg \"$1\""
+        	/recalbox/scripts/runcommand.sh 4 "$retroarchbin -L $retroarchcores/mame2000_libretro.so --config /recalbox/configs/retroarch/retroarchcustom.cfg --appendconfig /recalbox/configs/retroarch/4:3.cfg \"$1\""
 	fi
 fi
 
@@ -226,8 +226,8 @@ if [[ "$emulator" == "fba" ]]; then
                         /recalbox/scripts/runcommand.sh 4 "fba2x --configfile /recalbox/configs/fba/fba2x.cfg \"$1\""
                 fi
 fi
-if [[ "$emulator" == "fbalibretro" ]]; then
-	/recalbox/scripts/runcommand.sh 4 "$retroarchbin -L $retroarchcores/fba_libretro.so --config /recalbox/configs/retroarch/retroarchcustom.cfg \"$1\""
+if [[ "$emulator" == "fbalpha" ]]; then
+	/recalbox/scripts/runcommand.sh 4 "$retroarchbin -L $retroarchcores/fbalpha_libretro.so --config /recalbox/configs/retroarch/retroarchcustom.cfg \"$1\""
 fi
 
 if [[ "$emulator" == "scummvm" ]]; then
