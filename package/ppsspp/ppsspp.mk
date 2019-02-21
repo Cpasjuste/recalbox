@@ -21,7 +21,8 @@ PPSSPP_PRE_CONFIGURE_HOOKS += PPSSPP_CONFIGURE_PI
 
 define PPSSPP_INSTALL_TO_TARGET
 	$(INSTALL) -D -m 0755 $(@D)/PPSSPPSDL $(TARGET_DIR)/usr/bin
-	cp -R $(@D)/assets $(TARGET_DIR)/usr/bin
+	mkdir -p $(TARGET_DIR)/usr/share/ppsspp
+	cp -R $(@D)/assets $(TARGET_DIR)/usr/share/ppsspp
 endef
 
 PPSSPP_INSTALL_TARGET_CMDS = $(PPSSPP_INSTALL_TO_TARGET)
