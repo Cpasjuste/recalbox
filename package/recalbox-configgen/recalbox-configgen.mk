@@ -1,6 +1,6 @@
 ################################################################################
 #
-# recalbox configgen version https://gitlab.com/recalbox/recalbox-configgen
+# recalbox configgen version
 #
 ################################################################################
 

@@ -28,13 +28,14 @@ endif
 
 # Sadly the NEON optimizations in the PNG library don't work yet, so disable them
 define REICAST_BUILD_CMDS
-	$(TARGET_CONFIGURE_OPTS) $(MAKE) \
-		CPP="$(TARGET_CPP)" \
-		CXX="$(TARGET_CXX) -D_GLIBCXX_USE_CXX11_ABI=0" \
-		CC="$(TARGET_CC) -DPNG_ARM_NEON_OPT=0" \
-		AS="$(TARGET_CC)" \
-		STRIP="$(TARGET_STRIP)" \
-		-C $(@D)/shell/linux -f Makefile platform=$(REICAST_RECALBOX_SYSTEM)
+	$(TARGET_CONFIGURE_OPTS) \
+		$(MAKE) \
+			CPP="$(TARGET_CPP)" \
+			CXX="$(TARGET_CXX) -D_GLIBCXX_USE_CXX11_ABI=0" \
+			CC="$(TARGET_CC) -DPNG_ARM_NEON_OPT=0" \
+			AS="$(TARGET_CC)" \
+			STRIP="$(TARGET_STRIP)" \
+			-C $(@D)/shell/linux -f Makefile platform=$(REICAST_RECALBOX_SYSTEM)
 endef
 
 define REICAST_INSTALL_TARGET_CMDS

@@ -3,6 +3,7 @@
 # steamcontroller
 #
 ################################################################################
+
 STEAMCONTROLLER_VERSION = 99852e6114a6ccc3324efab3b65219d2f2ba6469
 STEAMCONTROLLER_SITE =  $(call github,ynsta,steamcontroller,$(STEAMCONTROLLER_VERSION))
 
@@ -13,7 +14,7 @@ STEAMCONTROLLER_LICENSE_FILES = LICENCE
 
 # Install udev rules for usb device
 define STEAMCONTROLLER_POST_INSTALL_TARGET_UDEV_RULES
-    $(INSTALL) -D -m 0755 $(STEAMCONTROLLER_PKGDIR)/99-steam-controller.rules $(TARGET_DIR)/etc/udev/rules.d/99-steam-controller.rules
+	$(INSTALL) -D -m 0755 $(STEAMCONTROLLER_PKGDIR)/99-steam-controller.rules $(TARGET_DIR)/etc/udev/rules.d/99-steam-controller.rules
 endef
 
 # Install service
@@ -26,10 +27,8 @@ define STEAMCONTROLLER_POST_INSTALL_INPUT_HEADERS
 	$(INSTALL) -m 0755 -D $(STAGING_DIR)/usr/include/linux/input-event-codes.h $(TARGET_DIR)/usr/inc/input-event-codes.h
 endef
 
-
 STEAMCONTROLLER_POST_INSTALL_TARGET_HOOKS += STEAMCONTROLLER_POST_INSTALL_TARGET_UDEV_RULES
 STEAMCONTROLLER_POST_INSTALL_TARGET_HOOKS += STEAMCONTROLLER_POST_INSTALL_TARGET_SERVICE
 STEAMCONTROLLER_POST_INSTALL_TARGET_HOOKS += STEAMCONTROLLER_POST_INSTALL_INPUT_HEADERS
 
 $(eval $(python-package))
-

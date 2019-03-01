@@ -12,39 +12,39 @@ RETROARCH_CONF_OPTS += --disable-oss --enable-zlib
 RETROARCH_DEPENDENCIES = host-pkgconf recalbox-system
 
 ifeq ($(BR2_PACKAGE_SDL2),y)
-	RETROARCH_CONF_OPTS += --enable-sdl2
-	RETROARCH_DEPENDENCIES += sdl2
+RETROARCH_CONF_OPTS += --enable-sdl2
+RETROARCH_DEPENDENCIES += sdl2
 else
-	RETROARCH_CONF_OPTS += --disable-sdl2
-	ifeq ($(BR2_PACKAGE_SDL),y)
-		RETROARCH_CONF_OPTS += --enable-sdl
-		RETROARCH_DEPENDENCIES += sdl
-	else
-		RETROARCH_CONF_OPTS += --disable-sdl
-	endif
+RETROARCH_CONF_OPTS += --disable-sdl2
+ifeq ($(BR2_PACKAGE_SDL),y)
+RETROARCH_CONF_OPTS += --enable-sdl
+RETROARCH_DEPENDENCIES += sdl
+else
+RETROARCH_CONF_OPTS += --disable-sdl
+endif
 endif
 
 # RPI 0 and 1
 ifeq ($(BR2_arm1176jzf_s),y)
-        RETROARCH_CONF_OPTS += --enable-floathard
+RETROARCH_CONF_OPTS += --enable-floathard
 endif
 
 # RPI 2 and 3
 ifeq ($(BR2_cortex_a7),y)
-        RETROARCH_CONF_OPTS += --enable-neon --enable-floathard
+RETROARCH_CONF_OPTS += --enable-neon --enable-floathard
 endif
 ifeq ($(BR2_arm)$(BR2_cortex_a53),yy)
-        RETROARCH_CONF_OPTS += --enable-neon --enable-floathard
+RETROARCH_CONF_OPTS += --enable-neon --enable-floathard
 endif
 
 # Add dispamnx renderer for Pi
 ifeq ($(BR2_PACKAGE_RPI_FIRMWARE),y)
-	 RETROARCH_CONF_OPTS += --enable-dispmanx
+RETROARCH_CONF_OPTS += --enable-dispmanx
 endif
 
 # odroid xu4
 ifeq ($(BR2_cortex_a15)$(BR2_cortex_a15_a7),y)
-        RETROARCH_CONF_OPTS += --enable-neon --enable-floathard
+RETROARCH_CONF_OPTS += --enable-neon --enable-floathard
 endif
 
 # x86 : no option
@@ -128,8 +128,8 @@ define RETROARCH_MALI_FIXUP
 endef
 
 ifeq ($(BR2_PACKAGE_MALI_OPENGLES_SDK),y)
-	RETROARCH_PRE_CONFIGURE_HOOKS += RETROARCH_MALI_FIXUP
-	RETROARCH_CONF_OPTS += --enable-opengles --enable-mali_fbdev
+RETROARCH_PRE_CONFIGURE_HOOKS += RETROARCH_MALI_FIXUP
+RETROARCH_CONF_OPTS += --enable-opengles --enable-mali_fbdev
 endif
 
 define RETROARCH_CONFIGURE_CMDS
@@ -163,54 +163,50 @@ endef
 $(eval $(generic-package))
 
 # DEFINITION OF LIBRETRO PLATFORM
-LIBRETRO_PLATFORM =
+RETROARCH_LIBRETRO_PLATFORM =
 ifeq ($(BR2_ARM_CPU_ARMV6),y)
-        LIBRETRO_PLATFORM += armv6
+RETROARCH_LIBRETRO_PLATFORM += armv6
 endif
 
 ifeq ($(BR2_cortex_a7),y)
-        LIBRETRO_PLATFORM += armv7
+RETROARCH_LIBRETRO_PLATFORM += armv7
 endif
 
 ifeq ($(BR2_cortex_a8),y)
-        LIBRETRO_PLATFORM += armv8 cortexa8
+RETROARCH_LIBRETRO_PLATFORM += armv8 cortexa8
 endif
 
 ifeq ($(BR2_i386),y)
-        LIBRETRO_PLATFORM = unix
+RETROARCH_LIBRETRO_PLATFORM = unix
 endif
 
 ifeq ($(BR2_x86_64),y)
-        LIBRETRO_PLATFORM = unix
+RETROARCH_LIBRETRO_PLATFORM = unix
 endif
 
 ifeq ($(BR2_cortex_a15)$(BR2_cortex_a15_a7),y)
-        LIBRETRO_PLATFORM += armv7 odroidxu4
+RETROARCH_LIBRETRO_PLATFORM += armv7 odroidxu4
 endif
 
 ifeq ($(BR2_aarch64)$(BR2_cortex_a53),yy)
-        LIBRETRO_PLATFORM += unix
+RETROARCH_LIBRETRO_PLATFORM += unix
 endif
 
 ifeq ($(BR2_arm)$(BR2_cortex_a53),yy)
-        LIBRETRO_PLATFORM += armv8
+RETROARCH_LIBRETRO_PLATFORM += armv8
 endif
 
-#ifeq ($(BR2_GCC_TARGET_FLOAT_ABI),"hard")
-#        LIBRETRO_PLATFORM += hardfloat
-#endif
-
 ifeq ($(BR2_ARM_CPU_HAS_NEON),y)
-        LIBRETRO_PLATFORM += neon
+RETROARCH_LIBRETRO_PLATFORM += neon
 endif
 
 # SPECIFIC PLATFORM
 # Will be equal to rpi1, rpi2, rpi3 if we are on rpi.
-# Will be equal to LIBRETRO_PLATFORM otherwise
-LIBRETRO_BOARD=$(LIBRETRO_PLATFORM)
+# Will be equal to RETROARCH_LIBRETRO_PLATFORM otherwise
+RETROARCH_LIBRETRO_BOARD=$(RETROARCH_LIBRETRO_PLATFORM)
 ifeq ($(RECALBOX_SYSTEM_VERSION)),rpi2)
-	LIBRETRO_BOARD=$(RECALBOX_SYSTEM_VERSION)
+RETROARCH_LIBRETRO_BOARD=$(RECALBOX_SYSTEM_VERSION)
 endif
 ifeq ($(RECALBOX_SYSTEM_VERSION)),rpi3)
-	LIBRETRO_BOARD=$(RECALBOX_SYSTEM_VERSION)
+RETROARCH_LIBRETRO_BOARD=$(RECALBOX_SYSTEM_VERSION)
 endif

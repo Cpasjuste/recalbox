@@ -3,12 +3,13 @@
 # BEETLE_PSX_HW - Enhanced OpenGL Version with OpenGL renderer
 #
 ################################################################################
+
 LIBRETRO_BEETLE_PSX_HW_VERSION = 53591985319edc34d83a0858ad9a935b934dcf5c
 LIBRETRO_BEETLE_PSX_HW_SITE = $(call github,libretro,beetle-psx-libretro,$(LIBRETRO_BEETLE_PSX_HW_VERSION))
 
-
 define LIBRETRO_BEETLE_PSX_HW_BUILD_CMDS
-	CFLAGS="$(TARGET_CFLAGS)" CXXFLAGS="$(TARGET_CXXFLAGS)" $(MAKE) CXX="$(TARGET_CXX)" CC="$(TARGET_CC)" -C $(@D)/ -f Makefile platform="$(LIBRETRO_PLATFORM)" HAVE_HW=1
+	CFLAGS="$(TARGET_CFLAGS)" CXXFLAGS="$(TARGET_CXXFLAGS)" \
+		$(MAKE) CXX="$(TARGET_CXX)" CC="$(TARGET_CC)" -C $(@D)/ -f Makefile platform="$(RETROARCH_LIBRETRO_PLATFORM)" HAVE_HW=1
 endef
 
 define LIBRETRO_BEETLE_PSX_HW_INSTALL_TARGET_CMDS

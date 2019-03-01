@@ -11,13 +11,12 @@ ADVANCEMAME_LICENSE = GPLv2
 ADVANCEMAME_AUTORECONF = YES
 
 define ADVANCEMAME_RUN_AUTOGEN
-        cd $(@D) && PATH=$(BR_PATH) ./autogen.sh
+	cd $(@D) && PATH=$(BR_PATH) ./autogen.sh
 endef
 
 ADVANCEMAME_PRE_CONFIGURE_HOOKS += ADVANCEMAME_RUN_AUTOGEN
 
-ADVANCEMAME_CONF_ENV += CFLAGS=-I$(STAGING_DIR)/usr/include/freetype2 \
-			LDFLAGS=-L$(STAGING_DIR)/usr/lib/
+ADVANCEMAME_CONF_ENV += CFLAGS=-I$(STAGING_DIR)/usr/include/freetype2 LDFLAGS=-L$(STAGING_DIR)/usr/lib/
 
 ADVANCEMAME_CONF_OPTS += \
 	--prefix=$(TARGET_DIR)/usr \
@@ -27,36 +26,36 @@ ADVANCEMAME_CONF_OPTS += \
 	--disable-oss \
 	--enable-mraw \
 	--enable-mevent
-	
+
 ifeq ($(BR2_PACKAGE_SDL2),y)
-	ADVANCEMAME_DEPENDENCIES += sdl2
-	ADVANCEMAME_CONF_OPTS += \
-		--enable-sdl2 \
-		--with-sdl2-prefix=$(STAGING_DIR)/usr \
-		--enable-jsdl \
-		--enable-ksdl \
-		--enable-msdl
+ADVANCEMAME_DEPENDENCIES += sdl2
+ADVANCEMAME_CONF_OPTS += \
+	--enable-sdl2 \
+	--with-sdl2-prefix=$(STAGING_DIR)/usr \
+	--enable-jsdl \
+	--enable-ksdl \
+	--enable-msdl
 else
-	ADVANCEMAME_CONF_OPTS += \
-		--disable-jsdl \
-		--disable-ksdl \
-		--disable-msdl
+ADVANCEMAME_CONF_OPTS += \
+	--disable-jsdl \
+	--disable-ksdl \
+	--disable-msdl
 endif
 
 ifeq ($(BR2_PACKAGE_ALSA_LIB),y)
-	ADVANCEMAME_DEPENDENCIES += alsa-lib
-	ADVANCEMAME_CONF_OPTS += --enable-alsa
+ADVANCEMAME_DEPENDENCIES += alsa-lib
+ADVANCEMAME_CONF_OPTS += --enable-alsa
 else
-	ADVANCEMAME_CONF_OPTS += --disable-alsa
+ADVANCEMAME_CONF_OPTS += --disable-alsa
 endif
 
 ifeq ($(BR2_PACKAGE_FREETYPE),y)
-	ADVANCEMAME_DEPENDENCIES += freetype
-	ADVANCEMAME_CONF_OPTS += \
-		--enable-freetype \
-		--with-freetype-prefix=$(STAGING_DIR)/usr
+ADVANCEMAME_DEPENDENCIES += freetype
+ADVANCEMAME_CONF_OPTS += \
+	--enable-freetype \
+	--with-freetype-prefix=$(STAGING_DIR)/usr
 else
-	ADVANCEMAME_CONF_OPTS += --disable-freetype
+ADVANCEMAME_CONF_OPTS += --disable-freetype
 endif
 
 define ADVANCEMAME_ADD_PI_LINK
@@ -64,14 +63,10 @@ define ADVANCEMAME_ADD_PI_LINK
 endef
 
 ifeq ($(BR2_PACKAGE_RPI_FIRMWARE),y)
-	ADVANCEMAME_DEPENDENCIES += rpi-firmware rpi-userland
-	ADVANCEMAME_CONF_OPTS += --enable-vc \
-		--with-vc-prefix=$(STAGING_DIR)/usr
-	ADVANCEMAME_POST_CONFIGURE_HOOKS += ADVANCEMAME_ADD_PI_LINK
+ADVANCEMAME_DEPENDENCIES += rpi-firmware rpi-userland
+ADVANCEMAME_CONF_OPTS += --enable-vc \
+	--with-vc-prefix=$(STAGING_DIR)/usr
+ADVANCEMAME_POST_CONFIGURE_HOOKS += ADVANCEMAME_ADD_PI_LINK
 endif
-
-#ifeq ($(BR2_PACKAGE_ADVANCEMAME_MESS),y)
-#	ADVANCEMAME_CONF_OPTS += --with-emu=mess
-#endif
 
 $(eval $(autotools-package))

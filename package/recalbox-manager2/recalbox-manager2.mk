@@ -3,15 +3,14 @@
 # RECALBOX_MANAGER2
 #
 ################################################################################
+
 RECALBOX_MANAGER2_VERSION = 1844c8a6a7d60cae772b23eddbff10c2df4517be
-#RECALBOX_MANAGER2_SITE = $(call gitlab,recalbox,recalbox-manager,$(RECALBOX_MANAGER2_VERSION))
-RECALBOX_MANAGER2_SITE = https://gitlab.com/recalbox/recalbox-manager.git
+RECALBOX_MANAGER2_SITE = https://gitlab.com/recalbox/recalbox-manager
 RECALBOX_MANAGER2_SITE_METHOD = git
 
 RECALBOX_MANAGER2_DEPENDENCIES = nodejs
 
-
-define RECALBOX_MANAGER2_BUILD_CMDS		
+define RECALBOX_MANAGER2_BUILD_CMDS
 	$(NPM) --prefix $(@D) run installboth
 	$(NPM) --prefix $(@D) run buildboth
 	rm -rf $(@D)/release
@@ -27,7 +26,7 @@ define RECALBOX_MANAGER2_BUILD_CMDS
 	cp $(@D)/package.json $(@D)/release
 	$(NPM) install --production $(@D)/release/ --prefix $(@D)/release/
 endef
-    
+
 define RECALBOX_MANAGER2_INSTALL_TARGET_CMDS
 	mkdir -p $(TARGET_DIR)/usr/recalbox-manager2
 	cp -r $(@D)/release/* $(TARGET_DIR)/usr/recalbox-manager2

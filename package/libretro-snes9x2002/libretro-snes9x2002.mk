@@ -3,6 +3,7 @@
 # SNES9X2002 / POCKETSNES
 #
 ################################################################################
+
 LIBRETRO_SNES9X2002_VERSION = 8b456289c6c31e1f36df2843f7a6044757b96dbe
 LIBRETRO_SNES9X2002_SITE = $(call github,libretro,snes9x2002,$(LIBRETRO_SNES9X2002_VERSION))
 

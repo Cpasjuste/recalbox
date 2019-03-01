@@ -3,6 +3,7 @@
 # VIRTUALGAMEPADS
 #
 ################################################################################
+
 VIRTUALGAMEPADS_VERSION = 3bb337f08bfcdefea958928e0d68bde1d5b8da30
 VIRTUALGAMEPADS_BRANCH = recalbox
 VIRTUALGAMEPADS_SITE = $(call github,jehervy,node-virtual-gamepads,$(VIRTUALGAMEPADS_BRANCH),$(VIRTUALGAMEPADS_VERSION))
@@ -16,7 +17,6 @@ NPM = $(TARGET_CONFIGURE_OPTS) \
 	npm_config_nodedir=$(BUILD_DIR)/nodejs-$(NODEJS_VERSION) \
 	$(HOST_DIR)/usr/bin/npm
 
-
 define VIRTUALGAMEPADS_INSTALL_TARGET_CMDS
 	mkdir -p $(TARGET_DIR)/usr/node-virtual-gamepads
 	cp -r $(@D)/* \
@@ -25,12 +25,11 @@ define VIRTUALGAMEPADS_INSTALL_TARGET_CMDS
 	mv $(TARGET_DIR)/usr/node-virtual-gamepads/main.js $(TARGET_DIR)/usr/node-virtual-gamepads/virtualgamepads.js
 
 	cd $(TARGET_DIR)/usr/node-virtual-gamepads && mkdir -p node_modules && \
-		$(NPM) install \
-
+		$(NPM) install
 endef
-
 
 define VIRTUALGAMEPADS_INSTALL_INIT_SYSV
 	$(INSTALL) -m 0755 -D $(VIRTUALGAMEPADS_PKGDIR)/S92virtualgamepads $(TARGET_DIR)/etc/init.d/S92virtualgamepads
 endef
+
 $(eval $(generic-package))

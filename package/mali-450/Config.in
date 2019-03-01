@@ -9,6 +9,8 @@ config BR2_PACKAGE_MALI_450
 	  ARM Mali Midgard 450 GPU. This package requires a
 	  kernel with the ARM Mali Midgard GPU Kernel Drivers enabled.
 
+	  http://malideveloper.arm.com/resources/drivers/arm-mali-midgard-gpu-user-space-drivers
+
 if BR2_PACKAGE_MALI_450
 
 config BR2_PACKAGE_PROVIDES_LIBEGL

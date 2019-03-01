@@ -3,11 +3,13 @@
 # PROSYSTEM
 #
 ################################################################################
+
 LIBRETRO_PROSYSTEM_VERSION = d3c4796983d0758c7bb19249b3088f1973332d36
 LIBRETRO_PROSYSTEM_SITE = $(call github,libretro,prosystem-libretro,$(LIBRETRO_PROSYSTEM_VERSION))
 
 define LIBRETRO_PROSYSTEM_BUILD_CMDS
-	CFLAGS="$(TARGET_CFLAGS)" CXXFLAGS="$(TARGET_CXXFLAGS)" $(MAKE) CXX="$(TARGET_CXX)" CC="$(TARGET_CC)" -C $(@D)/ -f Makefile platform="$(LIBRETRO_BOARD)"
+	CFLAGS="$(TARGET_CFLAGS)" CXXFLAGS="$(TARGET_CXXFLAGS)" \
+		$(MAKE) CXX="$(TARGET_CXX)" CC="$(TARGET_CC)" -C $(@D)/ -f Makefile platform="$(RETROARCH_LIBRETRO_BOARD)"
 endef
 
 define LIBRETRO_PROSYSTEM_INSTALL_TARGET_CMDS

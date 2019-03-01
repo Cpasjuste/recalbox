@@ -3,12 +3,13 @@
 # VICE
 #
 ################################################################################
+
 LIBRETRO_VICE_VERSION = ce4524df3c4e93e25dd97a6586c24c5e40d30c60
 LIBRETRO_VICE_SITE = $(call github,libretro,vice-libretro,$(LIBRETRO_VICE_VERSION))
 
 define LIBRETRO_VICE_BUILD_CMDS
-	CFLAGS="$(TARGET_CFLAGS)" SHARED="$(TARGET_SHARED)" CXXFLAGS="$(TARGET_CXXFLAGS)" LDFLAGS="$(TARGET_LDFLAGS)" $(MAKE) CXX="$(TARGET_CXX)" CC="$(TARGET_CC)" -C $(@D)/ -f Makefile.libretro platform="$(LIBRETRO_PLATFORM)"
-
+	CFLAGS="$(TARGET_CFLAGS)" SHARED="$(TARGET_SHARED)" CXXFLAGS="$(TARGET_CXXFLAGS)" LDFLAGS="$(TARGET_LDFLAGS)" \
+		$(MAKE) CXX="$(TARGET_CXX)" CC="$(TARGET_CC)" -C $(@D)/ -f Makefile.libretro platform="$(RETROARCH_LIBRETRO_PLATFORM)"
 endef
 
 define LIBRETRO_VICE_INSTALL_TARGET_CMDS
@@ -21,6 +22,5 @@ define LIBRETRO_VICE_PRE_PATCH_FIXUP
 endef
 
 LIBRETRO_VICE_PRE_PATCH_HOOKS += LIBRETRO_VICE_PRE_PATCH_FIXUP
-
 
 $(eval $(generic-package))
