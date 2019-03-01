@@ -1,10 +1,10 @@
 config BR2_PACKAGE_LIBRETRO_GLUPEN64
-        bool "libretro-glupen64"
+	bool "libretro-glupen64"
 	depends on BR2_PACKAGE_RETROARCH
 	depends on BR2_INSTALL_LIBSTDCPP
 	select BR2_PACKAGE_RECALBOX_ROMFS_N64
-        help
-          A alternative libretro N64 emulator core for ARM.
+	help
+	  A alternative libretro N64 emulator core for ARM.
 
 	  http://www.libretro.com
 

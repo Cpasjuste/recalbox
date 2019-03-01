@@ -1,8 +1,8 @@
 config BR2_PACKAGE_SFML
-        bool "sfml"
+	bool "sfml"
 	select BR2_PACKAGE_XCB_UTIL_IMAGE
 	select BR2_PACKAGE_OPENAL
 	select BR2_PACKAGE_JPEG
 	select BR2_PACKAGE_FLAC
-        help
-          Simple and Fast Multimedia Library
+	help
+	  Simple and Fast Multimedia Library

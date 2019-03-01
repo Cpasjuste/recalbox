@@ -11,7 +11,7 @@ config BR2_PACKAGE_LINAPPLE_PIE
 	select BR2_PACKAGE_RECALBOX_ROMFS_APPLE2
 	help
 	  Linapple on Raspberry Pi
-	  Great thanks to Mark Ormond for fine tuning LinApple and 
+	  Great thanks to Mark Ormond for fine tuning LinApple and
 	  publishing his work on GitHub
 
 	  https://github.com/dabonetn/linapple-pie

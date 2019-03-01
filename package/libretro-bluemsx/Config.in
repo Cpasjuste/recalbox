@@ -6,7 +6,7 @@ config BR2_PACKAGE_LIBRETRO_BLUEMSX
 	select BR2_PACKAGE_RECALBOX_ROMFS_MSX
 	select BR2_PACKAGE_RECALBOX_ROMFS_MSX1
 	select BR2_PACKAGE_RECALBOX_ROMFS_MSX2
-        help
+	help
 	  A libretro MSX / ColecoVision emulator core for ARM.
 
 	  http://www.libretro.com

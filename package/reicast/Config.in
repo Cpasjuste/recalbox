@@ -1,5 +1,5 @@
 config BR2_PACKAGE_REICAST
-	bool "reicast-new"
+	bool "reicast"
 	depends on BR2_PACKAGE_SDL2
 	depends on BR2_PACKAGE_LIBPNG
 	select BR2_PACKAGE_RECALBOX_ROMFS_DREAMCAST

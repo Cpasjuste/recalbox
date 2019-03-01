@@ -1,9 +1,8 @@
 config BR2_PACKAGE_PPSSPP
-        bool "ppsspp"
+	bool "ppsspp"
 	depends on BR2_PACKAGE_SDL2
 	depends on BR2_PACKAGE_ZLIB
 	depends on BR2_PACKAGE_FFMPEG_SWSCALE
 	select BR2_PACKAGE_RECALBOX_ROMFS_PSP
-        help
-          A  PSP emulator
-
+	help
+	  A  PSP emulator

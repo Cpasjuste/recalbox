@@ -19,5 +19,5 @@ config BR2_PACKAGE_DOLPHIN_EMU
 	  A  Nintendo GameCube/Wii emulator.
 	  https://github.com/dolphin-emu/dolphin
 
-comment "Dolphin needs x86_64, XORG7, LIBGTK2"	
+comment "Dolphin needs x86_64, XORG7, LIBGTK2"
 	depends on !BR2_x86_64 || !BR2_PACKAGE_XORG7 || !BR2_PACKAGE_LIBGTK2

@@ -1,8 +1,8 @@
 config BR2_PACKAGE_KODI_RESOURCE_LANGUAGE_pt_br
-    depends on BR2_PACKAGE_KODI
-    bool "kodi-resource-language-pt_br"
-    default y
-    help
-      Kodi pt_br language resource
+	bool "kodi-resource-language-pt_br"
+	default y
+	depends on BR2_PACKAGE_KODI
+	help
+	  Kodi pt_br language resource
 
-      https://kodi.tv
+	  https://kodi.tv

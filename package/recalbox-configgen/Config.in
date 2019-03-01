@@ -5,4 +5,3 @@ config BR2_PACKAGE_RECALBOX_CONFIGGEN
 	  The configuration utility for recalbox
 
 	  https://gitlab.com/recalbox/recalbox-configgen
-

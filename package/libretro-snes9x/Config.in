@@ -6,9 +6,11 @@ config BR2_PACKAGE_LIBRETRO_SNES9X
 	select BR2_PACKAGE_RECALBOX_ROMFS_SATELLAVIEW
 	select BR2_PACKAGE_RECALBOX_ROMFS_SUFAMI
 	help
-	  Snes9x - Portable Super Nintendo Entertainment System (TM) emulator http://www.snes9x.com
+	  Snes9x
+	  Portable Super Nintendo Entertainment System (TM) emulator
+	  http://www.snes9x.com
 
 	  http://www.libretro.com
 
 comment "LIBRETRO_SNES9X needs a toolchain w/ C++"
-depends on !BR2_INSTALL_LIBSTDCPP
+	depends on !BR2_INSTALL_LIBSTDCPP

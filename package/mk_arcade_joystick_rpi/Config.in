@@ -6,12 +6,12 @@ config BR2_PACKAGE_MK_ARCADE_JOYSTICK_RPI
 
 if BR2_PACKAGE_MK_ARCADE_JOYSTICK_RPI
 choice
-    prompt "mk_arcade_joystick_rpi version"
-    config BR2_PACKAGE_MK_ARCADE_JOYSTICK_RPI_HOTKEY
-          bool "with hotkeys"
-    config BR2_PACKAGE_MK_ARCADE_JOYSTICK_RPI_I2C
-          bool "with i2c"
- endchoice
+	prompt "mk_arcade_joystick_rpi version"
+config BR2_PACKAGE_MK_ARCADE_JOYSTICK_RPI_HOTKEY
+	bool "with hotkeys"
+config BR2_PACKAGE_MK_ARCADE_JOYSTICK_RPI_I2C
+	bool "with i2c"
+endchoice
 endif
 
 comment "mk_arcade_joystick_rpi needs a kernel and headers"

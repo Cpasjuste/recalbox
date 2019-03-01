@@ -1,10 +1,10 @@
 config BR2_PACKAGE_LIBRETRO_METEOR
-        bool "libretro-meteor"
+	bool "libretro-meteor"
 	depends on BR2_PACKAGE_RETROARCH
 	depends on BR2_INSTALL_LIBSTDCPP
 	select BR2_PACKAGE_RECALBOX_ROMFS_GBA
-        help
-          A libretro GBA emulator core for ARM.
+	help
+	  A libretro GBA emulator core for ARM.
 
 	  http://www.libretro.com
 

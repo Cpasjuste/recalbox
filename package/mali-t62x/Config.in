@@ -5,9 +5,9 @@ config BR2_PACKAGE_MALI_T62X
 	select BR2_PACKAGE_HAS_LIBEGL
 	select BR2_PACKAGE_HAS_LIBGLES
 	help
-	  Install the binary user-space components for the ARM Mali Midgard
-	  T62X GPU. This package requires a kernel with the ARM Mali Midgard
-	  GPU Kernel Drivers enabled.
+	  Install the binary user-space components for the
+	  ARM Mali Midgard T62X GPU. This package requires a
+	  kernel with the ARM Mali Midgard GPU Kernel Drivers enabled.
 
 if BR2_PACKAGE_MALI_T62X
 

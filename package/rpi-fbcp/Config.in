@@ -1,7 +1,9 @@
 config BR2_PACKAGE_RPI_FBCP
-    bool "rpi-fbcp"
-    depends on BR2_PACKAGE_TFT_WAVESHARE
-    help
-		Raspberry Pi utility. Used for mirror primary framebuffer to secondary framebuffer.
+	bool "rpi-fbcp"
+	depends on BR2_PACKAGE_TFT_WAVESHARE
+	help
+	  Raspberry Pi utility.
+	  Used for mirror primary framebuffer to secondary framebuffer.
+	  Fork from https://github.com/tasanakorn/rpi-fbcp
 
-		https://github.com/ian57/rpi-fbcp fork from https://github.com/tasanakorn/rpi-fbcp
+	  https://github.com/ian57/rpi-fbcp

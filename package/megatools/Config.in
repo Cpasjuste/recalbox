@@ -1,7 +1,6 @@
 config BR2_PACKAGE_MEGATOOLS
-        bool "megatools"
-        help
-          A command line client for Mega.nz
+	bool "megatools"
+	help
+	  A command line client for Mega.nz
 
-          https://github.com/megous/megatools
-
+	  https://github.com/megous/megatools

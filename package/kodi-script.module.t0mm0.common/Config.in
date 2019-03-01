@@ -1,8 +1,8 @@
 config BR2_PACKAGE_KODI_SCRIPT_MODULE_T0MM0_COMMON
-    depends on BR2_PACKAGE_KODI
-    bool "kodi-script.module.t0mm0.common"
-    default y
-    help
-      Kodi Collection of commonly used addon routines
+	bool "kodi-script.module.t0mm0.common"
+	default y
+	depends on BR2_PACKAGE_KODI
+	help
+	  Kodi Collection of commonly used addon routines
 
-      https://kodi.tv
+	  https://kodi.tv
