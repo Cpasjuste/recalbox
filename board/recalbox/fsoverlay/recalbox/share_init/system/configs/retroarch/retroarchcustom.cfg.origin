@@ -57,3 +57,4 @@ libretro_log_level = 0
 log_verbosity = false
 
 framecount_show = false
+rgui_show_start_screen = false
