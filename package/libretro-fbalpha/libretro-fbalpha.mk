@@ -3,6 +3,7 @@
 # FBALPHA
 #
 ################################################################################
+
 LIBRETRO_FBALPHA_VERSION = 4eda6f1cf7e2dfe24d30e60a26cbc933cb8f710e
 LIBRETRO_FBALPHA_SITE = $(call github,libretro,fbalpha,$(LIBRETRO_FBALPHA_VERSION))
 
@@ -22,9 +23,9 @@ define LIBRETRO_FBALPHA_INSTALL_TARGET_CMDS
 		$(TARGET_DIR)/usr/lib/libretro/fbalpha_libretro.so
 	mkdir -p $(TARGET_DIR)/recalbox/share_init/bios/fba/samples
 	cp "$(@D)/dats/FB Alpha (ClrMame Pro XML, Arcade only).dat" \
-	    $(TARGET_DIR)/recalbox/share_init/bios/fba
+		$(TARGET_DIR)/recalbox/share_init/bios/fba
 	cp "$(@D)/dats/FB Alpha (ClrMame Pro XML, Neogeo only).dat" \
-	    $(TARGET_DIR)/recalbox/share_init/bios/fba
+		$(TARGET_DIR)/recalbox/share_init/bios/fba
 	cp -R $(@D)/metadata/* $(TARGET_DIR)/recalbox/share_init/bios/fba
 endef
 

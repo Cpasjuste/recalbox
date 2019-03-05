@@ -20,6 +20,14 @@ lint es_input:
     - apk add --update --no-cache libxml2-utils
     - xmllint --noout --relaxng board/recalbox/fsoverlay/recalbox/scripts/es_input.rng board/recalbox/fsoverlay/recalbox/share_init/system/.emulationstation/es_input.cfg
 
+lint buildroot packages:
+  stage: lint
+  image: python:2-alpine
+  script:
+    - buildroot/utils/check-package package/**/*.hash custom/package/**/*.hash
+    - buildroot/utils/check-package package/**/*.mk custom/package/**/*.mk
+    - buildroot/utils/check-package package/**/Config.in custom/package/**/Config.in
+
 # Build
 
 .build_template: &build_definition
