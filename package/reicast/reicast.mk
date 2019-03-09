@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-REICAST_VERSION = ca837e19b8c8247f8ff9efd699ff49533e834d9a
+REICAST_VERSION = ad61f95dd6b4c6218846a25de6194550311a5d28
 REICAST_SITE = $(call github,reicast,reicast-emulator,$(REICAST_VERSION))
 REICAST_DEPENDENCIES = sdl2 libpng
 
@@ -19,7 +19,7 @@ ifeq ($(BR2_PACKAGE_RECALBOX_TARGET_RPI3),y)
 else ifeq ($(BR2_PACKAGE_RECALBOX_TARGET_RPI2),y)
 	RECALBOX_SYSTEM=rpi2
 else ifeq ($(BR2_PACKAGE_RECALBOX_TARGET_XU4),y)
-	RECALBOX_SYSTEM=odroidxu4
+	RECALBOX_SYSTEM=odroidxu3
 else ifeq ($(BR2_PACKAGE_RECALBOX_TARGET_X86),y)
 	RECALBOX_SYSTEM=x86
 else ifeq ($(BR2_PACKAGE_RECALBOX_TARGET_X86_64),y)
