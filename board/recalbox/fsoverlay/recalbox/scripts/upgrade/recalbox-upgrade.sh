@@ -20,12 +20,11 @@ REVIEW_URL="https://recalbox-reviews.s3.nl-ams.scw.cloud"
 
 UUID=$("$BINDIR/../system/uuid.sh" --uuid-file "${RECALBOX_SYSTEM_DIR}/uuid")
 
-if [[ "${UPGRADETYPE}" == "beta" || "${UPGRADETYPE}" == "unstable" ]]; then
-  UPGRADETYPE="stable"
-  else
+if [[ "${UPGRADETYPE}" != "stable" ]]; then
   UPGRADETYPE="${REVIEW_URL}/${UPGRADETYPE}"
+else
+  UPGRADETYPE="${SERVICE_URL}/${UPGRADETYPE}"
 fi
-
 
 ## COMMANDS
 if [ "${COMMAND}" == "canupgrade" ];then
