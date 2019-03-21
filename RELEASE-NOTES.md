@@ -1,6 +1,6 @@
 # Release notes
 
-## Work in Progress - Unreleased
+## Version 6.0.0-rc2
 
 ## News
 - Raspberry Pi3b+ & CM3 compatibility
