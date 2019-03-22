@@ -79,7 +79,15 @@ function doRbxConfUpgrade {
     fi
 
   done < <(grep -E "^[[:alnum:]\-]+\.[[:alnum:].\-]+=[[:print:]]+$" $cfgOut)
-  
+
+  # Change cores that have been renamed in bf151a1c2c19462fc4c49df75279d1dc87179e68
+  declare -A renamedCores
+  renamedCores=([catsfc]=snes9x2005 [pocketsnes]=snes9x2002 [snes9x_next]=snes9x2010 [pce]=mednafen_pce_fast [vb]=mednafen_vb [imame]=mame2000 [mame078]=mame2003 [fba]=fbalpha)
+  for oldCoreName in ${!renamedCores[@]}; do
+    sed -i "s/.core=${oldCoreName}/.core=${renamedCores[${oldCoreName}]}/" ${tmpFile} \
+      || { recallog "ERROR: Couldn't replace '${oldCoreName}' by '${renamedCores[${oldCoreName}]}' in ${tmpFile}" ; return 1 ; }
+  done
+
   cp $cfgOut $savefile || { recallog -e "ERROR : Couldn't backup $cfgOut to $savefile" ; return 1 ; }
   rm -f $cfgOut
   mv $tmpFile $cfgOut || { recallog -e "ERROR : Couldn't apply the new recalbox.conf" ; return 1 ; }
