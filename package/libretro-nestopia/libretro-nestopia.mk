@@ -13,6 +13,8 @@ endef
 define LIBRETRO_NESTOPIA_INSTALL_TARGET_CMDS
 	$(INSTALL) -D $(@D)/libretro/nestopia_libretro.so \
 		$(TARGET_DIR)/usr/lib/libretro/nestopia_libretro.so
+	# NstDatabase needed for proper emulation
+	cp $(@D)/NstDatabase.xml $(TARGET_DIR)/recalbox/share_init/bios
 endef
 
 $(eval $(generic-package))

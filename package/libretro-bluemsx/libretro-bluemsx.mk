@@ -14,6 +14,10 @@ endef
 define LIBRETRO_BLUEMSX_INSTALL_TARGET_CMDS
 	$(INSTALL) -D $(@D)/bluemsx_libretro.so \
 		$(TARGET_DIR)/usr/lib/libretro/bluemsx_libretro.so
+	# Create bios directory
+	mkdir -p $(TARGET_DIR)/recalbox/share_init/bios
+	# Copy Databases and Machines directories
+	cp -R $(@D)/system/bluemsx/* $(TARGET_DIR)/recalbox/share_init/bios
 endef
 
 $(eval $(generic-package))

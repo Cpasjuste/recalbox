@@ -19,6 +19,12 @@ endef
 define LIBRETRO_FBALPHA_INSTALL_TARGET_CMDS
 	$(INSTALL) -D $(@D)/fbalpha_libretro.so \
 		$(TARGET_DIR)/usr/lib/libretro/fbalpha_libretro.so
+	mkdir -p $(TARGET_DIR)/recalbox/share_init/bios/fba/samples
+	cp "$(@D)/dats/FB Alpha (ClrMame Pro XML, Arcade only).dat" \
+	    $(TARGET_DIR)/recalbox/share_init/bios/fba
+	cp "$(@D)/dats/FB Alpha (ClrMame Pro XML, Neogeo only).dat" \
+	    $(TARGET_DIR)/recalbox/share_init/bios/fba
+	cp -R $(@D)/metadata/* $(TARGET_DIR)/recalbox/share_init/bios/fba
 endef
 
 $(eval $(generic-package))
