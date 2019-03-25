@@ -220,6 +220,9 @@ endif
 ifeq ($(BR2_PACKAGE_REICAST),y)
 	RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-dreamcast
 endif
+ifeq ($(BR2_PACKAGE_REICAST_OLD),y)
+	RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-dreamcast
+endif
 
 # System: fba
 ifneq ($(BR2_PACKAGE_PIFBA),)

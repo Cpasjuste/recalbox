@@ -11,3 +11,4 @@ index 63e10d3..358d755 100644
      LDFLAGS += -m32
      CFLAGS += -m32 -D TARGET_LINUX_x86 -D TARGET_NO_AREC -fsingle-precision-constant
      CXXFLAGS += -fno-exceptions
+
