@@ -84,7 +84,7 @@ function doRbxConfUpgrade {
   declare -A renamedCores
   renamedCores=([catsfc]=snes9x2005 [pocketsnes]=snes9x2002 [snes9x_next]=snes9x2010 [pce]=mednafen_pce_fast [vb]=mednafen_vb [imame]=mame2000 [mame078]=mame2003 [fba]=fbalpha)
   for oldCoreName in ${!renamedCores[@]}; do
-    sed -i "s/.core=${oldCoreName}/.core=${renamedCores[${oldCoreName}]}/" ${tmpFile} \
+    sed -i "s/\.core=${oldCoreName}\s*$/.core=${renamedCores[${oldCoreName}]}/" ${tmpFile} \
       || { recallog "ERROR: Couldn't replace '${oldCoreName}' by '${renamedCores[${oldCoreName}]}' in ${tmpFile}" ; return 1 ; }
   done
 
