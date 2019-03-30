@@ -38,6 +38,7 @@ function doRecalboxUpgrades {
   upgradeConfiggen
   upgradeInputs
   upgradeTheme
+  upgradeEsInput
 }
 
 # Upgrade the recalbox.conf if necessary
@@ -109,6 +110,11 @@ function upgradeInputs {
 
 function upgradeTheme {
   /recalbox/scripts/recalbox-themes.sh
+}
+
+function upgradeEsInput {
+  # Ugrade es_input.cfg for Virtual Gamepad
+  sed -i 's/deviceGUID="03000000030000000300000002000000">/deviceGUID="03000000030000000300000002000000" deviceNbAxes="2" deviceNbHats="0" deviceNbButtons="8">/g' /recalbox/share/system/.emulationstation/es_input.cfg
 }
 
 function upgradeRetroarchCoreNames {
