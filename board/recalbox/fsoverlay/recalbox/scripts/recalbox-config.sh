@@ -390,7 +390,7 @@ pcm.!default {
         card ${cardId}
         device ${deviceId}
 }
- 
+
 ctl.!default {
         type hw           
         card ${cardId}
@@ -679,7 +679,7 @@ if [[ "$command" == "updateesinput" ]]; then
 
     deviceName="$mode"
     deviceGUID="$extra1"
-    
+
     recallog "Updating ${inputDstFile} for deviceName=\"${deviceName}\" deviceGUID=\"${deviceGUID}\""
     # Get the node from share_init, then escape \n for sed
     realNode=`sed "/inputConfig type=\"joystick\" deviceName=\"${deviceName}\" deviceGUID=\"${deviceGUID}\"/,/<\/inputConfig>/!d" "${inputSrcFile}"`
@@ -697,6 +697,16 @@ fi
 if [[ "$command" == "getEmulatorDefaults" ]]; then
     emulator="$mode"
     python -c "import json; import sys; sys.path.append('/usr/lib/python2.7/site-packages/configgen'); from emulatorlauncher import emulators; print(json.dumps(emulators['$emulator'].config))"
+    exit 0
+fi
+
+if [[ "$command" == "configbackup" ]]; then
+    #Backup recalbox.conf to /boot partition
+    preBootConfig
+    cp /recalbox/share/system/recalbox.conf /boot/recalbox-backup.conf
+    sed -i '1s/^/#THIS IS A BACKUP OF RECALBOX.CONF\n#PLEASE DO NOT MAKE ANY CHANGE HERE !!!\n\n\n/' /boot/recalbox-backup.conf
+    postBootConfig
+    recallog "recalbox.conf saved to /boot partition"
     exit 0
 fi
 
