@@ -68,6 +68,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Add 8BitDo M30 gamepad support
 - Fix virtual gamepad even if user has an existing configuration from previous Recalbox version
 - Wifi: improved storage in case of emergency shutdown
+- Bluetooth: detection of 8bitdo and other pads asking for "0000" pin code improved
 
 ## [18.07.13] - 2018-07-13
 - Bump desmume to desmume2015
