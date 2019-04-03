@@ -33,7 +33,11 @@ define RESIDUALVM_ADD_VIRTUAL_KEYBOARD
 	cp $(@D)/backends/vkeybd/packs/vkeybd_default.zip $(TARGET_DIR)/usr/share/residualvm
 	cp $(@D)/backends/vkeybd/packs/vkeybd_small.zip $(TARGET_DIR)/usr/share/residualvm
 endef
+define RESIDUALVM_CONTROLLERS_LINK
+        ln -fs /tmp/gamecontrollerdb.txt $(TARGET_DIR)/usr/share/residualvm
+endef
 
 RESIDUALVM_POST_INSTALL_TARGET_HOOKS += RESIDUALVM_ADD_VIRTUAL_KEYBOARD
+RESIDUALVM_POST_INSTALL_TARGET_HOOKS += RESIDUALVM_CONTROLLERS_LINK
 
 $(eval $(autotools-package))
