@@ -69,6 +69,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Fix virtual gamepad even if user has an existing configuration from previous Recalbox version
 - Wifi: improved storage in case of emergency shutdown
 - Bluetooth: detection of 8bitdo and other pads asking for "0000" pin code improved
+- Bump mk_arcade_joystick_rpi to hotkeybtn branch to get custom gpio features
 
 ## [18.07.13] - 2018-07-13
 - Bump desmume to desmume2015

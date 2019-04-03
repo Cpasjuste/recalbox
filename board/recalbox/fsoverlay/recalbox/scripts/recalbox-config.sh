@@ -10,6 +10,8 @@ command="$1"
 mode="$2"
 extra1="$3"
 extra2="$4"
+extra3="$5"
+extra4="$6"
 postMode="${@:3}"
 arch=`cat /recalbox/recalbox.arch`
 
@@ -469,7 +471,7 @@ fi
 
 if [ "$command" == "module" ];then
     modulename="$extra1"
-    map="$extra2"
+    map="$extra2 $extra3 $extra4"
     # remove in all cases
     rmmod /lib/modules/`uname -r`/extra/${modulename}.ko 2>&1 | recallog
 
