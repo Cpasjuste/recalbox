@@ -1,6 +1,6 @@
 # Release notes
 
-## Version 6.0-rc2
+## Version 6.0-rc3
 
 ## News
 - Raspberry Pi3b+ & CM3 compatibility
@@ -20,11 +20,12 @@
 - New Core! Added mame2003-plus libretro core. A MAME078 version with added games support plus many fixes and improvements. DAT files available in rom folder
 - New free game! "Mission: Liftoff" for Thomson emulator. 
 - New free game! "Flower" for Amiga emulator. 
-- New Capcom RB video intro
+- New Capcom RB intro video
+- New PCEngine intro video
 - Add support for Mayflash GameCube adapter
 - Add 7z file support for many libretro cores
 - Add overlay possibility for advmame core
-- Add new Screensaver "DEMO" to play continuously random games
+- Add new Screensaver "DEMO" to play continuously random games (Press START/ENTER to play the current game)
 
 ### Improvements
 - KODI updated to 17.6
@@ -95,6 +96,7 @@
 - Updated all MAME hiscore/cheat files in bios folder - Thanks to olivierdroid92!
 - Static IP configuration available for WIFI connections (in recalbox.conf)
 - Add support for AZERTY/QWERTY virtual keyboards
+- ScummVM/ResidualVM now use Recalbox pad configurations
 
 ### Fixes
 - bluetooth detection on Odroid XU4
@@ -104,6 +106,8 @@
 - MSX Emulator: Fixed Bluemsx core
 - PS3/PS4 pads are working now
 - SSH is now working when moving the share on Fat32/exFat partitions
+- Recalbox sends 0000 to BT devices asking for pincode
+- WIFI settings saved in a more secure way
 
 ---
 
