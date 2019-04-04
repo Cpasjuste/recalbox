@@ -9,10 +9,9 @@ f88354ec482be09aeccd76a97bb75868  32X_M_BIOS.BIN
 
 
 - Sega MEGA CD :
-854b9150240a198070150e4566ae1290  us_scd2_9306.bin
-d8b8b720dea6c6ba25c309ed633930f4  eu_mcd2_9306.bin
-bdeb4c47da613946d422d97d98b21cda  jp_mcd1_9112.bin
-
+e66fa1dc5820d254611fdcdba0662372  bios_CD_E.bin
+2efd74e3232ff260e371b99f84024f7f  bios_CD_U.bin
+278a9397d192149e84e820ac621a8edd  bios_CD_J.bin
 
 - FAMICOM DISK SYSTEM : 
 ca30b50f880eb660a320674ed365ef7a  disksys.rom
