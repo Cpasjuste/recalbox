@@ -1,0 +1,108 @@
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+  <!-- Root element -->
+  <start>
+    <ref name="inputList" />
+  </start>
+
+  <!-- <inputList> definition -->
+  <define name="inputList">
+    <element name="inputList">
+      <oneOrMore>
+        <ref name="inputConfig" />
+      </oneOrMore>
+    </element>
+  </define>
+
+  <!-- Definition shared by all <inputConfig> -->
+  <define name="inputConfig">
+    <element name="inputConfig">
+      <oneOrMore>
+        <element name="input">
+          <ref name="input" />
+        </element>
+      </oneOrMore>
+      <attribute name="deviceName">
+        <data type="string" />
+      </attribute>
+      <attribute name="deviceGUID">
+        <data type="string" />
+      </attribute>
+      <choice>
+        <ref name="keyboardSpecificAttributes" />
+        <ref name="joystickSpecificAttributes" />
+      </choice>
+    </element>
+  </define>
+
+  <!-- Definition for <inputConfig type="keyboard"> specificity -->
+  <define name="keyboardSpecificAttributes">
+    <attribute name="type">
+      <value>keyboard</value>
+    </attribute>
+  </define>
+
+  <!-- <inputConfig type="joystick"> definition -->
+  <define name="joystickSpecificAttributes">
+    <attribute name="type">
+      <value>joystick</value>
+    </attribute>
+    <attribute name="deviceNbAxes">
+      <data type="string" />
+    </attribute>
+    <attribute name="deviceNbHats">
+      <data type="string" />
+    </attribute>
+    <attribute name="deviceNbButtons">
+      <data type="string" />
+    </attribute>
+  </define>
+
+  <!-- <input> definition -->
+  <define name="input">
+    <attribute name="name">
+      <choice>
+        <value>up</value>
+        <value>down</value>
+        <value>left</value>
+        <value>right</value>
+        <value>a</value>
+        <value>b</value>
+        <value>x</value>
+        <value>y</value>
+        <value>start</value>
+        <value>select</value>
+        <value>hotkey</value>
+        <value>pageup</value>
+        <value>pagedown</value>
+        <value>l2</value>
+        <value>r2</value>
+        <value>l3</value>
+        <value>r3</value>
+        <value>joystick1up</value>
+        <value>joystick1left</value>
+        <value>joystick2up</value>
+        <value>joystick2left</value>
+      </choice>
+    </attribute>
+    <attribute name="type">
+      <choice>
+        <value>hat</value>
+        <value>axis</value>
+        <value>button</value>
+        <value>key</value>
+      </choice>
+    </attribute>
+    <attribute name="id">
+      <data type="integer" />
+    </attribute>
+    <attribute name="value">
+      <data type="integer" />
+    </attribute>
+    <optional>
+      <attribute name="code">
+        <data type="integer" />
+      </attribute>
+    </optional>
+  </define>
+</grammar>

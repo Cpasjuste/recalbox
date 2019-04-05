@@ -61,7 +61,7 @@ if [ "$command" == "getRootPassword" ]; then
         echo "recalboxroot"
         exit 0
     fi
-    
+
     ENCPASSWD=$(grep -E '^[ \t]*rootshadowpassword[ \t]*=' "${storageFile}" | sed -e s+'^[ \t]*rootshadowpassword[ \t]*='++)
     if test -z "${ENCPASSWD}"
     then
@@ -82,14 +82,14 @@ if [ "$command" == "setRootPassword" ]; then
     if [ "$securityenabled" != "1" ];then
         exit 0
     fi
-    
+
     # if no password if provided, generate one
     if test -z "${PASSWD}"
     then
         PASSWD=$(tr -cd _A-Z-a-z-0-9 < /dev/urandom | fold -w8 | head -n1)
     fi
     PASSWDENC=$(/recalbox/scripts/recalbox-encode.sh encode "${PASSWD}")
-    
+
     preBootConfig
     if grep -qE '^[ \t]*rootshadowpassword[ \t]*=' "${storageFile}"
     then
@@ -110,7 +110,7 @@ if [ "$command" == "setRootPassword" ]; then
         fi
         postBootConfig
         exit 0
-    fi    
+    fi
 fi
 
 if [ "$command" == "overscan" ]; then
@@ -352,7 +352,7 @@ if [ -f "$configFile" ];then
     recallog "enabled overclock mode : $mode"
 
     postBootConfig
-    
+
     exit 0
 else
     exit 2
@@ -394,7 +394,7 @@ pcm.!default {
 }
 
 ctl.!default {
-        type hw           
+        type hw
         card ${cardId}
 }
 EOF
@@ -667,8 +667,8 @@ if [[ "$command" == "storage" ]]; then
 fi
 
 if [[ "$command" == "forgetBT" ]]; then
-    for mac in $(find /var/lib/bluetooth/ -type d -maxdepth 2 -mindepth 2 | grep -v "/cache$" | cut -d "/" -f 6) ; do 
-        recallog "Unpairing and removing BT device $mac" 
+    for mac in $(find /var/lib/bluetooth/ -type d -maxdepth 2 -mindepth 2 | grep -v "/cache$" | cut -d "/" -f 6) ; do
+        recallog "Unpairing and removing BT device $mac"
         /recalbox/scripts/bluetooth/test-device remove "$mac"
     done
     exit 0
@@ -691,7 +691,7 @@ if [[ "$command" == "updateesinput" ]]; then
     # 2nd: add the realNode before the closing inputList tag
     sed -e "/inputConfig type=\"joystick\" deviceName=\"${deviceName}\" deviceGUID=\"${deviceGUID}\"/,/<\/inputConfig>/d" \
         -e "/<\/inputList>/i ${realNodeEscaped}" \
-        "${inputDstFile}" | xmllint --format -dtdvalid /recalbox/scripts/es_input.dtd - > $tmpFile
+        "${inputDstFile}" | xmllint --format --relaxng /recalbox/scripts/es_input.rng - > $tmpFile
     [ $? == 0 ] && cp $tmpFile $inputDstFile || recallog -e "Couldn't upgrade es_input.cfg for deviceName=\"${deviceName}\" deviceGUID=\"${deviceGUID}\""
     exit $?
 fi
