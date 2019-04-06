@@ -10,4 +10,4 @@ Each .zip file must contain only one compressed rom.
 
 
 You can download game and watch roms on libretro :
-http://bot.libretro.com/assets/cores/Game%20and%20Watch/
+http://bot.libretro.com/assets/cores/Handheld%20Electronic%20Game/

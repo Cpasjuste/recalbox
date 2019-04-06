@@ -10,4 +10,4 @@ De plus, chaque fichier .zip ne doit contenir qu'une seule rom compressée.
 
 
 Vous pouvez télécharger les roms game and watch à l'adresse :
-http://bot.libretro.com/assets/cores/Game%20and%20Watch/
+http://bot.libretro.com/assets/cores/Handheld%20Electronic%20Game/
