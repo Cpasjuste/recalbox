@@ -36,7 +36,6 @@ function doRecalboxUpgrades {
   fi
   doRbxConfUpgrade
   upgradeConfiggen
-  upgradeInputs
   upgradeTheme
   upgradeEsInput
 }
@@ -116,12 +115,6 @@ function upgradeConfiggen {
   
   NEW_VERSION=$(sed -rn "s/^\s*([0-9a-zA-Z.]*)\s*.*$/\1/p" /recalbox/recalbox.version)
   python -c "import sys; sys.path.append('/usr/lib/python2.7/site-packages/configgen'); from emulatorlauncher import config_upgrade; config_upgrade('$NEW_VERSION')"
-}
-
-function upgradeInputs {
-  /recalbox/scripts/recalbox-config.sh updateesinput "Microsoft X-Box 360 pad" "030000005e0400008e02000014010000"
-  /recalbox/scripts/recalbox-config.sh updateesinput "Xbox 360 Wireless Receiver (XBOX)" "030000005e040000a102000007010000"
-  /recalbox/scripts/recalbox-config.sh updateesinput "Xbox 360 Wireless Receiver" "030000005e0400001907000000010000"
 }
 
 function upgradeTheme {
