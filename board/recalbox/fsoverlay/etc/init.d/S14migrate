@@ -1,0 +1,78 @@
+#!/bin/bash
+
+# This file runs migration scripts at each boot.
+#
+# Because they are run more than once, each migration must be *idempotent*.
+# Running them at each boot ensures that even configurations stored on external
+# USB drives will get migrated too.
+#
+# TODO: each migration should be in a separate timestamped file to ensure they
+#       are executed in order and properly isolated. So far, they are just
+#       declared in order, and assigned an incremental index (the currently
+#       informative timestamp is generated with `date +%Y%m%d%H%M%S`).
+
+# Run this script on startup only
+if [[ $1 != "start" ]]; then
+  exit 0
+fi
+
+# Useful global variables
+_SHAREINIT="/recalbox/share_init"
+_SHARE="/recalbox/share"
+_ARCH=$(cat /recalbox/recalbox.arch)
+
+# Significant files paths
+recalboxConfPath="system/recalbox.conf"
+esInputCfgPath="system/.emulationstation/es_input.cfg"
+
+##########################
+###     Migrations     ###
+##########################
+
+recallog "Running MIGRATIONS…"
+
+### Migration 0 [20190322135434]
+# Change cores that have been renamed in bf151a1
+
+declare -A renamedCores
+renamedCores=([catsfc]=snes9x2005 [pocketsnes]=snes9x2002 [snes9x_next]=snes9x2010 [pce]=mednafen_pce_fast [vb]=mednafen_vb [imame]=mame2000 [mame078]=mame2003 [fba]=fbalpha)
+for oldCoreName in ${!renamedCores[@]}; do
+  sed -i "s/\.core=${oldCoreName}\s*$/.core=${renamedCores[${oldCoreName}]}/" $_SHARE/${recalboxConfPath} \
+    && recallog "RENAMED '${oldCoreName}' core to '${renamedCores[${oldCoreName}]}' in ${tmpFile}." \
+    || { recallog "ERROR: couldn't replace '${oldCoreName}' by '${renamedCores[${oldCoreName}]}' in $_SHARE/${recalboxConfPath}."; exit 1; }
+done
+
+### Migration 1 [20190405131200]
+# Add firmware config added in eb98d67 (squashed to c8a14f4f)
+
+if [[ $_ARCH = "rpi3" ]]; then
+  if ! grep -q temp_soft_limit /boot/config.txt; then
+    mount -o remount,rw /boot
+    {
+      echo
+      echo "# Raise the first security limit up to 70° instead of 60°"
+      echo "temp_soft_limit=70"
+    } >> /boot/config.txt \
+      && recallog "APPENDED 'temp_soft_limit=70' to /boot/config.txt." \
+      || { recallog "ERROR : failed to append 'temp_soft_limit=70' to /boot/config.txt."; exit 1; }
+    mount -o remount,ro /boot
+  fi
+fi
+
+### Migration 2 [20190330205033]
+# Ugrade es_input.cfg for Virtual Gamepad
+
+sed -i \
+  's/deviceGUID="03000000030000000300000002000000">/deviceGUID="03000000030000000300000002000000" deviceNbAxes="2" deviceNbHats="0" deviceNbButtons="8">/g' \
+  $_SHARE/${esInputCfgPath} \
+  && recallog "UPDATED Virtual Gamepad configuration to new 'es_input.cfg' format." \
+  || { recallog "ERROR: failed to update Virtual Gamepad in 'es_input.cfg'."; exit 1; }
+
+### Migration 3 [20190409115114]
+#  Use `es_system.cfg` from SHARE_INIT if the one in SHARE is invalid
+
+if ! xmllint --noout --relaxng /recalbox/scripts/es_input.rng $_SHARE/${esInputCfgPath}; then
+  mv -f $_SHARE/${esInputCfgPath}{,.invalid} && cp {$_SHAREINIT,$_SHARE}/${esInputCfgPath} \
+    && recallog "RETIRED invalid or obsolete 'es_input.cfg' to $_SHARE/${esInputCfgPath}.invalid. Default one is now used instead." \
+    || { recallog "ERROR: failed to retire invalid 'es_input.cfg' file."; exit 1; }
+fi

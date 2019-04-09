@@ -31,13 +31,12 @@ function containsElement {
 }
 
 function doRecalboxUpgrades {
-  if ! shouldUpdate;then 
+  if ! shouldUpdate;then
     recallog -e "No need to upgrade configuration files" && return 0
   fi
   doRbxConfUpgrade
   upgradeConfiggen
   upgradeTheme
-  upgradeEsInput
 }
 
 # Upgrade the recalbox.conf if necessary
@@ -45,11 +44,11 @@ function doRbxConfUpgrade {
   # Update recalbox.conf
   rbxVersion=$_RBX/recalbox.version
   curVersion=$_SHARE/system/logs/lastrecalbox.conf.update
-  
+
   # Check if an update is necessary
-  if ! shouldUpdate;then 
+  if ! shouldUpdate;then
     recallog -e "recalbox.conf already up-to-date" && return 0
-  fi 
+  fi
   cfgIn=$_SHAREINIT/system/recalbox.conf
   cfgOut=$_SHARE/system/recalbox.conf
   forced=(controllers.ps3.driver) # Used as a regex, need to escape .
@@ -58,7 +57,7 @@ function doRbxConfUpgrade {
 
   recallog -e "UPDATE : recalbox.conf to $(cat $rbxVersion)"
   cp $cfgIn $tmpFile || { recallog -e "ERROR : Couldn't copy $cfgIn to $tmpFile" ; return 1 ; }
-  
+
   while read -r line ; do
     name=`echo $line | cut -d '=' -f 1`
     value=`echo $line | cut -d '=' -f 2-`
@@ -80,30 +79,6 @@ function doRbxConfUpgrade {
 
   done < <(grep -E "^[[:alnum:]\-]+\.[[:alnum:].\-]+=[[:print:]]+$" $cfgOut)
 
-  # Migration: change cores that have been renamed in bf151a1
-  declare -A renamedCores
-  renamedCores=([catsfc]=snes9x2005 [pocketsnes]=snes9x2002 [snes9x_next]=snes9x2010 [pce]=mednafen_pce_fast [vb]=mednafen_vb [imame]=mame2000 [mame078]=mame2003 [fba]=fbalpha)
-  for oldCoreName in ${!renamedCores[@]}; do
-    sed -i "s/\.core=${oldCoreName}\s*$/.core=${renamedCores[${oldCoreName}]}/" ${tmpFile} \
-      && recallog "RENAMING '${oldCoreName}' core to '${renamedCores[${oldCoreName}]}' in ${tmpFile}" \
-      || { recallog "ERROR: Couldn't replace '${oldCoreName}' by '${renamedCores[${oldCoreName}]}' in ${tmpFile}" ; return 1 ; }
-  done
-
-  # Migration: add firmware config added in eb98d67
-  if [[ $(cat /recalbox/recalbox.arch) = "rpi3" ]]; then
-    if ! grep -q temp_soft_limit /boot/config.txt; then
-      mount -o remount,rw /boot
-      {
-        echo
-        echo "# Raise the first security limit up to 70° instead of 60°"
-        echo "temp_soft_limit=70"
-      } >> /boot/config.txt \
-        && recallog "APPENDING 'temp_soft_limit=70' to /boot/config.txt" \
-        || recallog "ERROR : Failed to append 'temp_soft_limit=70' to /boot/config.txt"
-      mount -o remount,ro /boot
-    fi
-  fi
-
   cp $cfgOut $savefile || { recallog -e "ERROR : Couldn't backup $cfgOut to $savefile" ; return 1 ; }
   rm -f $cfgOut
   mv $tmpFile $cfgOut || { recallog -e "ERROR : Couldn't apply the new recalbox.conf" ; return 1 ; }
@@ -112,18 +87,12 @@ function doRbxConfUpgrade {
 }
 
 function upgradeConfiggen {
-  
   NEW_VERSION=$(sed -rn "s/^\s*([0-9a-zA-Z.]*)\s*.*$/\1/p" /recalbox/recalbox.version)
   python -c "import sys; sys.path.append('/usr/lib/python2.7/site-packages/configgen'); from emulatorlauncher import config_upgrade; config_upgrade('$NEW_VERSION')"
 }
 
 function upgradeTheme {
   /recalbox/scripts/recalbox-themes.sh
-}
-
-function upgradeEsInput {
-  # Ugrade es_input.cfg for Virtual Gamepad
-  sed -i 's/deviceGUID="03000000030000000300000002000000">/deviceGUID="03000000030000000300000002000000" deviceNbAxes="2" deviceNbHats="0" deviceNbButtons="8">/g' /recalbox/share/system/.emulationstation/es_input.cfg
 }
 
 function upgradeRetroarchCoreNames {
@@ -153,7 +122,7 @@ function fuseC2 {
   # Find the device corresponding to the card
   bootDev=`/recalbox/scripts/recalbox-part.sh boot`
   diskDevice=`/recalbox/scripts/recalbox-part.sh prefix "$bootDev"`
-  
+
   if ! echo "$diskDevice" | grep -q "^/dev/" ; then
     recallog "ERROR: could not find the device of /boot, aborting"
     return 1
