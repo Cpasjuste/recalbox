@@ -2,9 +2,22 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [6.0.0-rc3]
+## [6.0]
 - Adding GPIO, Custom GPIO and MCP inputConfig in es_input.cfg
 - Adding Konami RB splash intro video
+- Add joystick rules for IPega PG-9099 and PG-9021
+- Multiple emulator/core bumps
+- Fix: es_input.cfg format validation
+- Add a basic migration system
+- Raise max allowed temperature on Raspberry Pi 3
+- Fix: Internal Screenscraper temporary disabled - Need to be rewritten
+- Fix: Changed popups handling for better stability
+- Fix: Restore scrapped folder display
+- Fix: Netplay: game not listed in lobby if password protected
+- Fix: Netplay: no game launch if core doesn't match
+- Add new keyboard layouts
+
+## [6.0.0-rc3]
 - Press start/enter to play the current game in demo mode
 - Add PCEngine RB video intro
 - RPI: Add I2C support
@@ -13,22 +26,38 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Bluetooth: detection of 8bitdo and other pads asking for "0000" pin code improved
 - Bump mk_arcade_joystick_rpi to hotkeybtn branch to get custom gpio features
 - Sega Mega CD bios updated no handle Genesis plus (picodrive compatible)
-- Add joystick rules for IPega PG-9099 and PG-9021
 
-## [6.0.0-rc2]
+## [6.0-rc2]
+- Add 8BitDo M30 gamepad support
+- Fix default GBA games metadata
+- Fix old core names in recalbox.conf (automatically renamed)
+- Add Xinmo controller to pre-configured pads/joyticks
+- Fix missing desmume_libretro.so
+- Fix reicast on XU4/X86
+- Fix virtual gamepad
+- Fix device handling to quit demo mode
+- Fix Kodi not starting with some gamepad
+- Fix retroarch core options not saved
+- Fix AROS bios with CD32
+- Fix Oricutron conflicts between 2nd player joystick and keyboard
+- Fix Dragonrise on Amiga (partially, you still need to HK+B and reset the emulator)
+- Fix descending sorts in gamelists
+- Improve randomness in demo mode
+
+## [6.0-rc1]
 - Major system upgrade. See https://github.com/buildroot/buildroot/blob/2018.02.3/CHANGES#L1-L1427 for the full log
 - KODI bumped to 17.6
 - Raspberry Pi3b+ and CM3 support
 - Joypads management updated, mostly impacting joypads advertising as a complete keyboard. You have to reconfigure your pad if it is acting strangely
 - Preconfigured gamepads file rewritten
-- arcade GPIO driver upgraded: now support I2C and GPIO recopnfiguring from the command line
-- x86 now requires a CPU that can handle at least SSE and SS2
-- x86: add support for newer AMD GPU
-- fix PS3/PS4 pads not working
-- fix kodi configgen
-- bump rpi kernel + firmware
+- Arcade GPIO driver upgraded: now support I2C and GPIO recopnfiguring from the command line
+- X86 now requires a CPU that can handle at least SSE and SS2
+- X86: add support for newer AMD GPU
+- Fix PS3/PS4 pads not working
+- Fix kodi configgen
+- Bump rpi kernel + firmware
 - gpio arcadedriver works again
-- fix bug on bluetooth discover
+- Fix bug on bluetooth discover
 - Add Capcom RB video intro
 - Bump kodi.plugin.video.youtube to 6.3.1
 - Add support for Mayflash GameCube adapter
@@ -77,9 +106,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Package names updated (catsfc -> snes9x2005, pocketsnes -> snes9x2002, snes9x_next -> snes9x2010, pce -> mednafen_pce_fast, vb -> mednafen_vb, imame -> mame2000, mame2003 as core name instead of mame078, fbalpha instead of fba)
 - Improved log formatting 
 - Add Demo Screensaver
-- Add xinmo controller support
-- Add 8BitDo M30 gamepad support
-- Fix virtual gamepad even if user has an existing configuration from previous Recalbox version
 
 ## [18.07.13] - 2018-07-13
 - Bump desmume to desmume2015
