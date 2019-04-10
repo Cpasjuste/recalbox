@@ -2,10 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [6.0]
+## [6.0] - DragonBlaze
 - Adding GPIO, Custom GPIO and MCP inputConfig in es_input.cfg
 - Adding Konami RB splash intro video
 - Add joystick rules for IPega PG-9099 and PG-9021
+- Add new keyboard layouts
 - Multiple emulator/core bumps
 - Fix: es_input.cfg format validation
 - Add a basic migration system
@@ -15,7 +16,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Fix: Restore scrapped folder display
 - Fix: Netplay: game not listed in lobby if password protected
 - Fix: Netplay: no game launch if core doesn't match
-- Add new keyboard layouts
+- Fix: delete sends to top or bottom
+- Fix: crash when deleting last element
 
 ## [6.0-rc3]
 - Press start/enter to play the current game in demo mode
