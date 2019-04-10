@@ -17,7 +17,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Fix: Netplay: no game launch if core doesn't match
 - Add new keyboard layouts
 
-## [6.0.0-rc3]
+## [6.0-rc3]
 - Press start/enter to play the current game in demo mode
 - Add PCEngine RB video intro
 - RPI: Add I2C support
