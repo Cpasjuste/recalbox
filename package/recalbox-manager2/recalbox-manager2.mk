@@ -3,7 +3,7 @@
 # RECALBOX_MANAGER2
 #
 ################################################################################
-RECALBOX_MANAGER2_VERSION = 21df0a9b02df644cc17a700c913983fc9b2978e5
+RECALBOX_MANAGER2_VERSION = 1844c8a6a7d60cae772b23eddbff10c2df4517be
 #RECALBOX_MANAGER2_SITE = $(call gitlab,recalbox,recalbox-manager,$(RECALBOX_MANAGER2_VERSION))
 RECALBOX_MANAGER2_SITE = https://gitlab.com/recalbox/recalbox-manager.git
 RECALBOX_MANAGER2_SITE_METHOD = git

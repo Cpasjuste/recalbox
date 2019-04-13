@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [6.1]
+- Fix: Recalbox manager: typo error
+
 ## [6.0] - DragonBlaze
 - Adding GPIO, Custom GPIO and MCP inputConfig in es_input.cfg
 - Adding Konami RB splash intro video
