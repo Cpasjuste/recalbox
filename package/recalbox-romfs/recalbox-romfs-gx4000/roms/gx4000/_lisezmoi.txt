@@ -1,8 +1,8 @@
-## RECALBOX - SYSTEM AMSTRAD CPC ##
+## RECALBOX - SYSTEM AMSTRAD GX4000 ##
 
-Placez ici vos roms amstrad cpc.
+Placez ici vos roms amstrad gx4000.
 
-Les roms doivent avoir l'extension ".dsk/.sna/.tap/.cdt/.voc/.m3u/.zip/.kcr"
+Les roms doivent avoir l'extension ".dsk/.m3u/.zip"
 
 Ce système supporte également les roms compressées au format .zip.
 Attention toutefois, il ne s'agit que d'une archive. Les fichiers contenus dans les .zip doivent correspondre aux extensions citées précédemment.
@@ -10,5 +10,3 @@ De plus, chaque fichier .zip ne doit contenir qu'une seule rom compressée.
 
 Pour activer le support du gamepad, veuillez entrer dans le menu Retroarch avec "Hotkey+B", puis modifiez l'option : 
 "Quick Menu/Core Input Options/User 1 Device type : Retropad" en "Amstrad Joystick"
-
-Pour utiliser les roms .kcr vous devez sélectionner le core crocods.

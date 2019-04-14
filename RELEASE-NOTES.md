@@ -1,6 +1,11 @@
 # Release notes
 
-## Version 6.0-rc3
+## Version 6.1
+
+## Improvements
+- New system! Amstrad GX4000 added with libretro’s cap32 emulator
+
+## Version 6.0 - DragonBlaze
 
 ## News
 - Raspberry Pi3b+ & CM3 compatibility

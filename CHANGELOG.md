@@ -4,6 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [6.1]
 - Fix: Recalbox manager: typo error
+- Cap32: Add gx4000 (Amstrad CPC+ series) as own system
 
 ## [6.0] - DragonBlaze
 - Change name from 5.0 to 6.0 DragonBlaze
