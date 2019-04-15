@@ -1,6 +1,7 @@
 image: docker:latest
 
 stages:
+  - lint
   - build
   - release
   - clean
@@ -10,6 +11,16 @@ variables:
   PROD_STACK_NAME: archive
   REVIEW_STACK_NAME: archive-review
   IMAGE: recalbox/archive
+
+# Lint
+
+lint es_input:
+  stage: lint
+  script:
+    - apk add --update --no-cache libxml2-utils
+    - xmllint --noout --relaxng board/recalbox/fsoverlay/recalbox/scripts/es_input.rng board/recalbox/fsoverlay/recalbox/share_init/system/.emulationstation/es_input.cfg
+
+# Build
 
 .build_template: &build_definition
   stage: build
@@ -148,6 +159,7 @@ build odroidxu4 for test:
     ARCH: 'odroidxu4'
 
 ### Release
+
 .release_template: &release_definition
   stage: release
   variables:
@@ -189,6 +201,8 @@ release review:
     name: review/${CI_COMMIT_REF_SLUG}
     url: https://recalbox-reviews.s3.nl-ams.scw.cloud/${CI_ENVIRONMENT_SLUG}/index.html
     on_stop: clean review
+
+### Clean
 
 clean review:
   image: registry.gitlab.com/recalbox/ops/rancher-cli:0.6.2
