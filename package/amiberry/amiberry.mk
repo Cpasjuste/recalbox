@@ -18,7 +18,7 @@ else ifeq ($(BR2_PACKAGE_RECALBOX_TARGET_XU4),y)
 AMIBERRY_PLATFORM=xu4
 endif
 
-SEDPLUS = /bin/sed -i -E -e
+SEDPLUS = sed -i -E -e
 
 define AMIBERRY_RIGHT_PI_PATH
 	#

@@ -30,7 +30,7 @@ endef
 
 define LIBRETRO_NP2KAI_LINE_ENDINGS_FIXUP
 	# DOS2UNIX Makefile.libretro - patch system does not support different line endings
-	/bin/sed -i -E -e "s|\r$$||g" $(@D)/sdl2/Makefile.libretro
+	sed -i -E -e "s|\r$$||g" $(@D)/sdl2/Makefile.libretro
 endef
 
 LIBRETRO_NP2KAI_PRE_PATCH_HOOKS += LIBRETRO_NP2KAI_LINE_ENDINGS_FIXUP

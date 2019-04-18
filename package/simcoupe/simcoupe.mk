@@ -19,9 +19,9 @@ endef
 
 define SIMCOUPE_POST_EXTRACT_FIX_SDL2_PATH
 	# Change emulator resource folder
-	/bin/sed -i -E -e "s|set\(RESOURCE_DIR \\$$\{CMAKE_INSTALL_PREFIX\}/share/\\$$\{PROJECT_NAME\}\)|set(RESOURCE_DIR $(SIMCOUPE_BIOS_AND_RESOURCES))|g" $(@D)/CMakeLists.txt
+	sed -i -E -e "s|set\(RESOURCE_DIR \\$$\{CMAKE_INSTALL_PREFIX\}/share/\\$$\{PROJECT_NAME\}\)|set(RESOURCE_DIR $(SIMCOUPE_BIOS_AND_RESOURCES))|g" $(@D)/CMakeLists.txt
 	# DOS2UNIX Joystick.cpp - patch system does not support different line endings
-	/bin/sed -i -E -e "s|\r$$||g" $(@D)/Base/Joystick.cpp
+	sed -i -E -e "s|\r$$||g" $(@D)/Base/Joystick.cpp
 endef
 
 SIMCOUPE_POST_EXTRACT_HOOKS += SIMCOUPE_POST_EXTRACT_FIX_SDL2_PATH
