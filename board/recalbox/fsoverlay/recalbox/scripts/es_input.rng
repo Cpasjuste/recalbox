@@ -22,40 +22,28 @@
           <ref name="input" />
         </element>
       </oneOrMore>
+      <attribute name="type">
+        <choice>
+          <value>keyboard</value>
+          <value>joystick</value>
+        </choice>
+      </attribute>
       <attribute name="deviceName">
         <data type="string" />
       </attribute>
       <attribute name="deviceGUID">
         <data type="string" />
       </attribute>
-      <choice>
-        <ref name="keyboardSpecificAttributes" />
-        <ref name="joystickSpecificAttributes" />
-      </choice>
+      <attribute name="deviceNbAxes">
+        <data type="string" />
+      </attribute>
+      <attribute name="deviceNbHats">
+        <data type="string" />
+      </attribute>
+      <attribute name="deviceNbButtons">
+        <data type="string" />
+      </attribute>
     </element>
-  </define>
-
-  <!-- Definition for <inputConfig type="keyboard"> specificity -->
-  <define name="keyboardSpecificAttributes">
-    <attribute name="type">
-      <value>keyboard</value>
-    </attribute>
-  </define>
-
-  <!-- <inputConfig type="joystick"> definition -->
-  <define name="joystickSpecificAttributes">
-    <attribute name="type">
-      <value>joystick</value>
-    </attribute>
-    <attribute name="deviceNbAxes">
-      <data type="string" />
-    </attribute>
-    <attribute name="deviceNbHats">
-      <data type="string" />
-    </attribute>
-    <attribute name="deviceNbButtons">
-      <data type="string" />
-    </attribute>
   </define>
 
   <!-- <input> definition -->
