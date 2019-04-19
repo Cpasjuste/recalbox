@@ -15,8 +15,8 @@ do_start() {
     recallog "... Starting manager v${version}"
     case "$version" in
     1)
-        start-stop-daemon --start --background --user $RUN_AS --pidfile $PIDFILE --make-pidfile --chuid $RUN_AS --startas $CMD -- $OPTS
-        ;;
+        recallog "WARNING: webmanager version 1 is not available anymore. Starting version 2 instead."
+        ;&
     2)
         cd /usr/recalbox-manager2/ && NODE_ENV=production PORT=80 node dist/server.js &
         ;;
@@ -29,8 +29,8 @@ do_stop() {
     version="`$systemsetting  -command load -key system.manager.version`"
     case "$version" in
     1)
-        start-stop-daemon --stop --pidfile $PIDFILE
-        ;;
+        recallog "WARNING: webmanager version 1 is not available anymore. Stopping version 2 instead."
+        ;&
     2)
         ps -ef | grep node | grep "dist/server.js" | grep -v grep | awk '{print $1}' | xargs kill
         ;;
