@@ -14,19 +14,41 @@ variables:
 
 # Lint
 
-lint es_input:
+.lint_template: &lint_definition
   stage: lint
+  only:
+    - branches
+    - tags
+    - master
+    - merge_requests
+
+lint es_input:
+  <<: *lint_definition
   script:
     - apk add --update --no-cache libxml2-utils
     - xmllint --noout --relaxng board/recalbox/fsoverlay/recalbox/scripts/es_input.rng board/recalbox/fsoverlay/recalbox/share_init/system/.emulationstation/es_input.cfg
 
 lint buildroot packages:
-  stage: lint
+  <<: *lint_definition
   image: python:2-alpine
   script:
     - buildroot/utils/check-package package/**/*.hash custom/package/**/*.hash
     - buildroot/utils/check-package package/**/*.mk custom/package/**/*.mk
     - buildroot/utils/check-package package/**/Config.in custom/package/**/Config.in
+
+lint commits:
+  <<: *lint_definition
+  image: node:8
+  script:
+    - npm install -g @commitlint/cli @commitlint/config-conventional
+    - if [[ ${CI_COMMIT_REF_NAME} = "master" ]]; then
+        commitlint --from 257ace67f316d96d0f49de8f349d06d6aa306515;
+      else
+        `# This mess can be avoided when https://gitlab.com/gitlab-org/gitlab-ce/issues/60962 is merged`
+        git fetch origin ${CI_MERGE_REQUEST_SOURCE_BRANCH_NAME};
+        git fetch origin ${CI_MERGE_REQUEST_TARGET_BRANCH_NAME};
+        commitlint --from=origin/${CI_MERGE_REQUEST_TARGET_BRANCH_NAME} --to=origin/${CI_MERGE_REQUEST_SOURCE_BRANCH_NAME};
+      fi
 
 # Build
 
