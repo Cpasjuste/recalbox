@@ -30,6 +30,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Support archive: switch to transfer.sh Temp File Hosting
 - Add a CI stage for linting
 - Update Theodore core: add emulation of Thomson MO6 and Olivetti Prodest PC128
+- Fix key-based SSH login with NTFS and ExFAT external drives
 
 ## [6.0] - DragonBlaze
 - Change name from 5.0 to 6.0 DragonBlaze

@@ -31,6 +31,10 @@ fi
 
 # vfat and ntfs
 
+# Set correct access rights (755 for directories, 644 for files)
+#   default is 777 for NTFS and ExFAT otherwise (umask=0)
+FSMOUNTOPT="${FSMOUNTOPT},fmask=0133,dmask=0022"
+
 # change options
 case "${FSTYPE}" in
     "vfat")
