@@ -9,6 +9,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Fix boot intro videos (x86, x86_64)
 - Enable both hotkeys and I2C on RasberryPi GPIO
 - Add .7z extensions where they were missing
+- Bump MoonLight to support last versions of GFE
 
 ## [6.0] - DragonBlaze
 - Change name from 5.0 to 6.0 DragonBlaze

@@ -10,6 +10,7 @@
 - Libretro core updated! Picodrive updated to latest version (Fix shifted down screen)
 - Enable both hotkeys and I2C on RasberryPi GPIO
 - Add .7z support to more emulators
+- MoonLight updated! Add support for latest GForceExperience softwares
 
 ### Fixes
 - Fix boot intro videos on x86 and x64
