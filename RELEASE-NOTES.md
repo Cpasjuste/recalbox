@@ -2,12 +2,21 @@
 
 ## Version 6.1
 
-## Improvements
+### News
+
+### Improvements
 - New system! Amstrad GX4000 added with libretro’s cap32 emulator
+- Libretro core updated! FBA Libretro core updated to latest version (Neogeo CDRom Speed fix)
+- Libretro core updated! Picodrive updated to latest version (Fix shifted down screen)
+- Enable both hotkeys and I2C on RasberryPi GPIO
+- Add .7z support to more emulators
+
+### Fixes
+- Fix boot intro videos on x86 and x64
 
 ## Version 6.0 - DragonBlaze
 
-## News
+### News
 - Raspberry Pi3b+ & CM3 compatibility
 - Updated emulator names! catsfc -> snes9x2005, pocketsnes -> snes9x2002, snes9x_next -> snes9x2010, pce -> mednafen_pce_fast, vb -> mednafen_vb, imame -> mame2000, mame078 -> mame2003, fba -> fbalpha
 - New emulator! Pokemon Mini on all systems (RetroArch core: libretro-pokemini)
