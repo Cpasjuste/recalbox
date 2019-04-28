@@ -11,9 +11,16 @@
 - Enable both hotkeys and I2C on RasberryPi GPIO
 - Add .7z support to more emulators
 - MoonLight updated! Add support for latest GForceExperience softwares
+- New GUI Menu: In gamelist views, START opens game contextual menu. SELECT switch between all games/favorites only
 
 ### Fixes
 - Fix boot intro videos on x86 and x64
+- Fix system unique key (fullname + platform)
+- Fix demo mode using retroachievements
+- Fix demo mode using autoload/autosave
+- Fix non working pads in Dolphins
+- Fix ScummVM not starting if no pad is configured
+- Fix x86/x64 stuck in demo mode in some circumstances
 
 ## Version 6.0 - DragonBlaze
 

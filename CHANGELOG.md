@@ -10,6 +10,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Enable both hotkeys and I2C on RasberryPi GPIO
 - Add .7z extensions where they were missing
 - Bump MoonLight to support last versions of GFE
+- GUI: In game views, START open the game contextual menu. SELECT switch between all game/favorites only
+- Fix system unique key: fullname+platform instead of name+platform
+- Fix demo mode using retroachievements
+- Fix demo mode using autoload/autosave
+- Fix double-quotes in dolphin's configuration
+- Fix empty controller file for ScummVM
+- Fix x86/x64 scanning too few /dev/input/event
 
 ## [6.0] - DragonBlaze
 - Change name from 5.0 to 6.0 DragonBlaze
