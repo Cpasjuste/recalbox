@@ -3,6 +3,7 @@
 ## Version 6.1
 
 ### News
+- New emulator! Uzebox on all systems (RetroArch core: libretro-uzem)
 
 ### Improvements
 - New system! Amstrad GX4000 added with libretro’s cap32 emulator

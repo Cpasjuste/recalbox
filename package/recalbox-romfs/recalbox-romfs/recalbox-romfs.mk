@@ -514,4 +514,9 @@ ifneq ($(BR2_PACKAGE_LIBRETRO_POKEMINI),)
 	RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-pokemini
 endif
 
+# System: uzebox
+ifneq ($(BR2_PACKAGE_LIBRETRO_UZEM),)
+    RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-uzebox
+endif
+
 $(eval $(generic-package))
