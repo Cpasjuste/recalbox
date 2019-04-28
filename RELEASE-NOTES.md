@@ -8,6 +8,7 @@
 - New system! Amstrad GX4000 added with libretro’s cap32 emulator
 - Libretro core updated! FBA Libretro core updated to latest version (Neogeo CDRom Speed fix)
 - Libretro core updated! Picodrive updated to latest version (Fix shifted down screen)
+- Emulator updated! ScummVM updated to April 2019 versions (new theme included)
 - Enable both hotkeys and I2C on RasberryPi GPIO
 - Add .7z support to more emulators
 - MoonLight updated! Add support for latest GForceExperience softwares
