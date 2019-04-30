@@ -13,9 +13,8 @@ endef
 LIBRETRO_UZEM_PRE_BUILD_HOOKS += LIBRETRO_UZEM_FIX_MISSING_PATH
 
 define LIBRETRO_UZEM_BUILD_CMDS
-	CFLAGS="$(TARGET_CFLAGS)" CPPFLAGS="$(TARGET_CXXFLAGS) -mcpu=cortex-a53 -mfpu=neon-vfpv4 -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-unroll-loops -fmerge-all-constants -lstdc++ -lm" \
+	CFLAGS="$(TARGET_CFLAGS)" CPPFLAGS="$(TARGET_CXXFLAGS) $(COMPILER_COMMONS_CXXFLAGS_SO) -fno-unroll-loops -fmerge-all-constants -lstdc++ -lm" LDFLAGS="$(TARGET_LDFLAGS) $(COMPILER_COMMONS_LDFLAGS_SO)" \
 		$(MAKE) CXX="$(TARGET_CXX)" CC="$(TARGET_CC)" -C $(@D)/tools/uzem -f Makefile release OS=LINUX NOGDB=1 LIBRETRO_BUILD=1
-	#platform="$(LIBRETRO_PLATFORM)"
 endef
 
 define LIBRETRO_UZEM_INSTALL_TARGET_CMDS
