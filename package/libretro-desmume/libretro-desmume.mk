@@ -11,8 +11,8 @@ LIBRETRO_DESMUME_DEPENDENCIES = libpcap-overriden
 
 define LIBRETRO_DESMUME_BUILD_CMDS
 	CFLAGS="$(TARGET_CFLAGS)" CXXFLAGS="$(TARGET_CXXFLAGS)" \
-		$(MAKE) CXX="$(TARGET_CXX)" CC="$(TARGET_CC)" LD="$(TARGET_CXX) -lpthread" AR="$(TARGET_AR)" RANLIB="$(TARGET_RANLIB)"
-			-C $(@D)/desmume/src/frontend/libretro -f Makefile platform="$(RETROARCH_LIBRETRO_PLATFORM)"
+	$(MAKE) CXX="$(TARGET_CXX)" CC="$(TARGET_CC)" LD="$(TARGET_CXX) -lpthread" AR="$(TARGET_AR)" RANLIB="$(TARGET_RANLIB)" \
+		-C $(@D)/desmume/src/frontend/libretro -f Makefile platform="$(RETROARCH_LIBRETRO_PLATFORM)"
 endef
 
 define LIBRETRO_DESMUME_INSTALL_TARGET_CMDS
