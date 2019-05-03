@@ -20,6 +20,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Bump ScummVM (new theme)
 - Enable toolchain LTO
 - Add Uzebox emulator (libretro-uzem)
+- Fix wifi issue in case of bad recalbox.conf
 
 ## [6.0] - DragonBlaze
 - Change name from 5.0 to 6.0 DragonBlaze
