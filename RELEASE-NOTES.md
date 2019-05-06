@@ -27,6 +27,7 @@
 - Fix non working pads in Dolphins
 - Fix ScummVM not starting if no pad is configured
 - Fix x86/x64 stuck in demo mode in some circumstances
+- Fix support archive upload error
 
 ## Version 6.0 - DragonBlaze
 

@@ -27,6 +27,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Shutdown System option moved at the top of the Quit menu
 - Bump np2kai core
 - Fix lutro zipped games unzipping in the .lutro folder
+- Support archive: switch to transfer.sh Temp File Hosting
 
 ## [6.0] - DragonBlaze
 - Change name from 5.0 to 6.0 DragonBlaze
