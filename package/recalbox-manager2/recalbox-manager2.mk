@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-RECALBOX_MANAGER2_VERSION = 1844c8a6a7d60cae772b23eddbff10c2df4517be
+RECALBOX_MANAGER2_VERSION = ed90ac6f98463dac45c862b8f4564a06c3be9b2c
 RECALBOX_MANAGER2_SITE = https://gitlab.com/recalbox/recalbox-manager
 RECALBOX_MANAGER2_SITE_METHOD = git
 
