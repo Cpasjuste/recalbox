@@ -79,7 +79,7 @@ W: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/xenial-backports/InRel
 W: Failed to fetch http://security.ubuntu.com/ubuntu/dists/xenial-security/InRelease  Temporary failure resolving 'security.ubuntu.com'
 W: Some index files failed to download. They have been ignored, or old ones used instead.
 ```
-Docker cannot access to internet to make updates. More precisely, it is a DNS problem (see https://odino.org/cannot-connect-to-the-internet-from-your-docker-containers/). If your `/etc/resolv.conf` is empty (it happens if all is manage by  `network-manager` for example), Docker does not which DNS to use. You'll need to tell him through the `/etc/default/docker` file by adding this line :
+Docker cannot access to internet to make updates. More precisely, it is a DNS problem (see https://odino.org/cannot-connect-to-the-internet-from-your-docker-containers/). If your `/etc/resolv.conf` is empty (it happens if all is managed by `network-manager` for example), Docker does not know which DNS to use. You'll need to tell him through the `/etc/default/docker` file by adding this line :
 
 ```text
 DOCKER_OPTS="--dns IP.OF.YOUR.DNS"
