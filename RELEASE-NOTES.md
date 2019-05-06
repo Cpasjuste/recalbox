@@ -16,6 +16,7 @@
 - New GUI Menu: In gamelist views, START opens game contextual menu. SELECT switch between all games/favorites only
 - Add game information screen in demo mode
 - Mame changes its default emulator to mame2003_plus
+- Shutdown System option moved at the top of the Quit menu
 
 ### Fixes
 - Fix boot intro videos on x86 and x64
