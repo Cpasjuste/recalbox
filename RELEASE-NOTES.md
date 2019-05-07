@@ -7,9 +7,10 @@
 - New system! Amstrad GX4000 added with libretro’s cap32 emulator
 
 ### Improvements
-- Libretro core updated! Np2kai updated to lastest revision
+- Libretro core updated! Np2kai updated to latest revision
 - Libretro core updated! FBA Libretro core updated to latest version (Neogeo CDRom Speed fix)
 - Libretro core updated! Picodrive updated to latest version (Fix shifted down screen)
+- Libretro core updated! Theodore updated to latest version (add emulation of Thomson MO6 and Olivetti Prodest PC128)
 - Emulator updated! ScummVM updated to April 2019 versions (new theme included)
 - Enable both hotkeys and I2C on RasberryPi GPIO
 - Add .7z support to more emulators
