@@ -17,8 +17,6 @@ variables:
 .lint_template: &lint_definition
   stage: lint
   only:
-    - branches
-    - tags
     - master
     - merge_requests
 
@@ -41,14 +39,14 @@ lint commits:
   image: node:8
   script:
     - npm install -g @commitlint/cli @commitlint/config-conventional
-    - if [[ ${CI_COMMIT_REF_NAME} = "master" ]]; then
-        commitlint --from 257ace67f316d96d0f49de8f349d06d6aa306515;
-      else
+    - if [[ -n ${CI_MERGE_REQUEST_SOURCE_BRANCH_NAME} && -n ${CI_MERGE_REQUEST_TARGET_BRANCH_NAME} ]]; then
         `# This mess can be avoided when https://gitlab.com/gitlab-org/gitlab-ce/issues/60962 is merged`
         git fetch origin ${CI_MERGE_REQUEST_SOURCE_BRANCH_NAME};
         git fetch origin ${CI_MERGE_REQUEST_TARGET_BRANCH_NAME};
         commitlint --from=origin/${CI_MERGE_REQUEST_TARGET_BRANCH_NAME} --to=origin/${CI_MERGE_REQUEST_SOURCE_BRANCH_NAME};
-      fi
+      else
+        commitlint --from=257ace67f316d96d0f49de8f349d06d6aa306515;
+      fi;
 
 # Build
 
