@@ -10,10 +10,14 @@ ENV PACKAGE ''
 # Install dependencies
 # needed ? xterm
 RUN apt-get update -y && \
+apt-get install -y tzdata && \
+ln -fs /usr/share/zoneinfo/Europe/Paris /etc/localtime && \
+dpkg-reconfigure --frontend noninteractive tzdata && \
 apt-get -y install build-essential git libncurses5-dev qt5-default qttools5-dev-tools \
 mercurial libdbus-glib-1-dev texinfo zip openssh-client libxml2-utils \
 software-properties-common wget cpio bc locales rsync imagemagick \
-nano vim automake mtools dosfstools subversion openjdk-8-jdk libssl-dev libelf-dev && \
+nano vim automake mtools dosfstools subversion openjdk-8-jdk libssl-dev libelf-dev \
+graphviz python-matplotlib python-numpy && \
 rm -rf /var/lib/apt/lists/*
 
 # Set the locale needed by toolchain
