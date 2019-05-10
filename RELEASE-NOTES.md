@@ -20,11 +20,12 @@
 - Mame changes its default emulator to mame2003_plus
 - Shutdown System option moved at the top of the Quit menu
 - Retroarch ratio resynchronized:
-- "Core provided" and "Retroarch Custom" added to ratio menu
-- Old "custom" ratio renamed "Do not set" (let the user choose in Retroarch)
-- Ratio text localized
+  - "Core provided" and "Retroarch Custom" added to ratio menu
+  - Old "custom" ratio renamed "Do not set" (let the user choose in Retroarch)
+  - Ratio text localized
 - New theme folder in share root folder (old folders are still working)
 - New pads added to known controllers: Moga Pro Power, Wiimote, Logitech RumblePad
+- Bluetooth pads configuration easier than ever: previously configured pads automatically unpaired before pairing again
 - Enable "Threaded DSP" option in 4DO by default (improve emulation speed)
 
 ### Fixes

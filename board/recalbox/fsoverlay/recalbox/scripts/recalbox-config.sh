@@ -593,6 +593,9 @@ if [[ "$command" == "hiddpair" ]]; then
     if [ "$?" != "0" ]; then
         exit 1
     fi
+    recallog "Unpairing and removing BT device $mac"
+    /recalbox/scripts/bluetooth/test-device remove "$mac"
+
     recallog "pairing $name $mac"
     echo $name | grep "8Bitdo\|other"
     if [ "$?" == "0" ]; then
@@ -603,20 +606,18 @@ if [[ "$command" == "hiddpair" ]]; then
             echo "SUBSYSTEM==\"input\", ATTRS{uniq}==\"$macLowerCase\", MODE=\"0666\", ENV{ID_INPUT_JOYSTICK}=\"1\"" >> "/run/udev/rules.d/99-8bitdo.rules"
         fi
     fi
-    /recalbox/scripts/bluetooth/simple-agent -c NoInputNoOutput -i hci0 "$mac" 2>&1 | recallog
-    connected=${PIPESTATUS[0]}
-    if [ $connected -eq 0 ]; then
-        hcitool con | grep $mac1
-        if [[ $? == "0" ]]; then
-            recallog "bluetooth : $mac1 connected !"
-            /recalbox/scripts/bluetooth/test-device trusted "$mac" yes
-            # Save the configuration
-            btTar=/recalbox/share/system/bluetooth/bluetooth.tar
-            rm "$btTar" ; tar cvf "$btTar" /var/lib/bluetooth/
-        else
-            recallog "bluetooth : $mac1 failed connection"
-        fi
+
+    /recalbox/scripts/bluetooth/recalpair $mac | bluetoothctl | recallog
+    hcitool con | grep $mac1
+    if [[ $? == "0" ]]; then
+        connected=0
+        recallog "bluetooth : $mac1 connected !"
+        /recalbox/scripts/bluetooth/test-device trusted "$mac" yes
+        # Save the configuration
+        btTar=/recalbox/share/system/bluetooth/bluetooth.tar
+        rm "$btTar" ; tar cvf "$btTar" /var/lib/bluetooth/
     else
+        connected=1
         recallog "bluetooth : $mac1 failed connection"
     fi
     exit $connected
@@ -694,3 +695,4 @@ echo "Uknown command $command"
 recallog -e "recalbox-config.sh: unknown command $command"
 
 exit 10
+

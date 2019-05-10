@@ -1,0 +1,30 @@
+#!/bin/bash
+#Usage: recalpair XX:XX:XX:XX:XX:XX | bluetoothctl
+
+mac=$1
+
+echo -e "agent on\n"
+sleep 1
+echo -e "default-agent\n"
+sleep 1
+echo -e "power on\n"
+sleep 1
+echo -e "discoverable on\n"
+sleep 1
+echo -e "pairable on\n"
+sleep 1
+echo -e "scan on\n"
+sleep 3
+echo -e "devices\n"
+sleep 1
+echo -e "remove $mac\n"
+sleep 1
+echo -e "pair $mac\n"
+sleep 3
+echo -e "connect $mac\n"
+sleep 5
+echo -e "0000\n"
+sleep 3
+echo -e "trust $mac\n"
+sleep 3
+echo -e "exit"
