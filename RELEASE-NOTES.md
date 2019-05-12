@@ -25,6 +25,7 @@
 - Ratio text localized
 - New theme folder in share root folder (old folders are still working)
 - New pads added to known controllers: Moga Pro Power, Wiimote, Logitech RumblePad
+- Enable "Threaded DSP" option in 4DO by default (improve emulation speed)
 
 ### Fixes
 - Fix boot intro videos on x86 and x64
