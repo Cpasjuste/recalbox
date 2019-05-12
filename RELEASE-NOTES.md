@@ -20,10 +20,11 @@
 - Mame changes its default emulator to mame2003_plus
 - Shutdown System option moved at the top of the Quit menu
 - Retroarch ratio resynchronized:
-  - "Core provided" and "Retroarch Custom" added to ratio menu
-  - Old "custom" ratio renamed "Do not set" (let the user choose in Retroarch)
-  - Ratio text localized
-- New theme folder in share root folder (old folders are still working)  
+- "Core provided" and "Retroarch Custom" added to ratio menu
+- Old "custom" ratio renamed "Do not set" (let the user choose in Retroarch)
+- Ratio text localized
+- New theme folder in share root folder (old folders are still working)
+- New pads added to known controllers: Moga Pro Power, Wiimote, Logitech RumblePad
 
 ### Fixes
 - Fix boot intro videos on x86 and x64
