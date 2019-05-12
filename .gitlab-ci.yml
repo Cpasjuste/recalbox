@@ -19,6 +19,8 @@ variables:
   only:
     - master
     - branches
+  tags:
+  - lintstage
 
 lint es_input:
   <<: *lint_definition
