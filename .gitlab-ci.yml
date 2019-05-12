@@ -34,17 +34,17 @@ lint buildroot packages:
     - buildroot/utils/check-package package/**/*.mk custom/package/**/*.mk
     - buildroot/utils/check-package package/**/Config.in custom/package/**/Config.in
 
-lint commits:
-  <<: *lint_definition
-  image: node:8
-  script:
-    - npm install -g @commitlint/cli @commitlint/config-conventional
-    - if [[ ${CI_COMMIT_REF_NAME} = "master" ]]; then
-        commitlint --from=257ace67f316d96d0f49de8f349d06d6aa306515;
-      else
-        git fetch origin master;
-        commitlint --from=origin/master;
-      fi
+#lint commits:
+#  <<: *lint_definition
+#  image: node:8
+#  script:
+#    - npm install -g @commitlint/cli @commitlint/config-conventional
+#    - if [[ ${CI_COMMIT_REF_NAME} = "master" ]]; then
+#        commitlint --from=257ace67f316d96d0f49de8f349d06d6aa306515;
+#      else
+#        git fetch origin master;
+#        commitlint --from=origin/master;
+#      fi
 
 # Build
 
