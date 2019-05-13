@@ -24,7 +24,7 @@ Please use **Issues** in corresponding projects to report a bug or request a fea
 - [forum.recalbox.com](https://forum.recalbox.com): recalbox forum. You will find support there.
 
 
-# How to build
+# How to build ![Build status](https://gitlab.com/recalbox/recalbox/badges/master/pipeline.svg?style=flat-square)
 
 ### General steps
 

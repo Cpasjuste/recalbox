@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if ! which xmllint > /dev/null; then
+  echo "ERROR: 'xmllint' is required. Please install and try again."
+  exit 1
+fi
+
+RECALBOX_ROOT=$(realpath $(dirname $(readlink -f "$0"))/../..)
+
+xmllint --noout --relaxng \
+  ${RECALBOX_ROOT}/board/recalbox/fsoverlay/recalbox/scripts/es_input.rng \
+  ${RECALBOX_ROOT}/board/recalbox/fsoverlay/recalbox/share_init/system/.emulationstation/es_input.cfg

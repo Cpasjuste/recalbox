@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# This script easily runs the full test suite on developer machines
+# It should be POSIX-compliant, since we cannot know on which shell it will run
+
+set -e # Exit non-zero if any command fails
+
+RECALBOX_ROOT=$(realpath $(dirname $(readlink -f "$0")))
+
+echo "=== Checking Buildroot files ==="
+${RECALBOX_ROOT}/test/lint/buildroot
+
+echo "=== Checking configuration files ==="
+${RECALBOX_ROOT}/test/lint/config-files
+
+echo "=== Checking commit messages ==="
+${RECALBOX_ROOT}/test/lint/commits
