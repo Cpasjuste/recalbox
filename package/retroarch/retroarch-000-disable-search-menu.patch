@@ -1,7 +1,5 @@
-diff --git a/menu/widgets/menu_entry.c b/menu/widgets/menu_entry.c
-index 1fe68b8..4e472c3 100644
---- a/menu/widgets/menu_entry.c
-+++ b/menu/widgets/menu_entry.c
+--- a/menu/menu_entries.c
++++ b/menu/menu_entries.c
 @@ -493,7 +493,7 @@ int menu_entry_action(menu_entry_t *entry, unsigned i, enum menu_action action)
                    entry->label, entry->type, i);
           break;

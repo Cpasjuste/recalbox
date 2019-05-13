@@ -7,6 +7,8 @@
 - New system! Amstrad GX4000 added with libretro’s cap32 emulator
 
 ### Improvements
+- Retroarch updated to version 1.7.7!
+- Retroarch cheats updated to version 1.7.7!
 - Libretro core updated! Np2kai updated to latest revision
 - Libretro core updated! FBA Libretro core updated to latest version (Neogeo CDRom Speed fix)
 - Libretro core updated! Picodrive updated to latest version (Fix shifted down screen)

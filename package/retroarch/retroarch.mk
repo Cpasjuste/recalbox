@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-RETROARCH_VERSION = v1.7.6
+RETROARCH_VERSION = v1.7.7
 RETROARCH_SITE = git://github.com/libretro/RetroArch.git
 RETROARCH_SITE_METHOD = git
 RETROARCH_LICENSE = GPLv3+
@@ -37,19 +37,32 @@ ifeq ($(BR2_arm)$(BR2_cortex_a53),yy)
 RETROARCH_CONF_OPTS += --enable-neon --enable-floathard
 endif
 
-# Add dispamnx renderer for Pi
+ifeq ($(BR2_ARM_CPU_HAS_NEON),y)
+RETROARCH_CONF_OPTS += --enable-neon
+endif
+
+# Add dispamnx renderer and no opengl1.1 for Pi
 ifeq ($(BR2_PACKAGE_RPI_FIRMWARE),y)
-RETROARCH_CONF_OPTS += --enable-dispmanx
+RETROARCH_CONF_OPTS += --enable-dispmanx --disable-opengl1
 endif
 
 # odroid xu4
 ifeq ($(BR2_cortex_a15)$(BR2_cortex_a15_a7),y)
-RETROARCH_CONF_OPTS += --enable-neon --enable-floathard
+RETROARCH_CONF_OPTS += --enable-neon --enable-floathard --disable-opengl1
 endif
 
-# x86 : no option
+# x86 : SSE
+ifeq ($(BR2_X86_CPU_HAS_SSE),y)
+RETROARCH_CONF_OPTS += --enable-sse
+endif
 
+# Common
+RETROARCH_CONF_OPTS += --enable-rgui --enable-xmb --enable-ozone
+RETROARCH_CONF_OPTS += --enable-threads --enable-dylib
+RETROARCH_CONF_OPTS += --enable-flac
 RETROARCH_CONF_OPTS += --enable-networking
+
+# Package dependant
 
 ifeq ($(BR2_PACKAGE_PYTHON3),y)
 RETROARCH_CONF_OPTS += --enable-python
@@ -97,11 +110,11 @@ ifeq ($(BR2_PACKAGE_HAS_LIBOPENVG),y)
 RETROARCH_DEPENDENCIES += libopenvg
 endif
 
-ifeq ($(BR2_PACKAGE_LIBXML2),y)
-RETROARCH_CONF_OPTS += --enable-libxml2
-RETROARCH_DEPENDENCIES += libxml2
+ifeq ($(BR2_PACKAGE_LIBUSB=y),y)
+RETROARCH_CONF_OPTS += --enable-libusb
+RETROARCH_DEPENDENCIES += libusb
 else
-RETROARCH_CONF_OPTS += --disable-libxml2
+RETROARCH_CONF_OPTS += --disable-libusb
 endif
 
 ifeq ($(BR2_PACKAGE_ZLIB),y)
@@ -113,6 +126,9 @@ endif
 
 ifeq ($(BR2_PACKAGE_HAS_UDEV),y)
 RETROARCH_DEPENDENCIES += udev
+RETROARCH_CONF_OPTS += --enable-udev
+else
+RETROARCH_CONF_OPTS += --disable-udev
 endif
 
 ifeq ($(BR2_PACKAGE_FREETYPE),y)
