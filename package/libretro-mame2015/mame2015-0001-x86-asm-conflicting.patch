@@ -1,0 +1,25 @@
+--- a/src/osd/eigccx86.h	2019-05-13 18:32:26.924515734 +0200
++++ b/src/osd/eigccx86.h.new	2019-05-13 18:32:04.408417172 +0200
+@@ -348,18 +348,10 @@
+ INLINE INT64 ATTR_NONNULL(1) ATTR_FORCE_INLINE
+ _compare_exchange64(INT64 volatile *ptr, INT64 compare, INT64 exchange)
+ {
+-	register INT64 result;
+-
+-	__asm__ __volatile__ (
+-		" lock ; cmpxchgq  %[exchange], %[ptr] ;"
+-		: [ptr]      "+m" (*ptr)
+-		, [result]   "=a" (result)
+-		: [compare]  "1"  (compare)
+-		, [exchange] "q"  (exchange)
+-		: "cc"
+-	);
+-
+-	return result;
++	INT64 oldval = *ptr;
++	if (oldval == compare)
++		*ptr = exchange;
++	return oldval;
+ }
+ 
+ /*-------------------------------------------------
