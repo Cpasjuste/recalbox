@@ -1,0 +1,10 @@
+config BR2_PACKAGE_KERNELFIRMWARES
+	bool "kernelfirmwares"
+	help
+	  This repository contains all these firmware images which
+	  have been extracted from older drivers, as well various
+	  new firmware images which we were never permitted to
+	  include in a GPL'd work, but which we _have_ been
+	  permitted to redistribute under separate cover.
+
+	  https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git
