@@ -33,7 +33,7 @@ xu4_fusing() {
     dd if="${BINARIES_DIR}/bl1.bin.hardkernel"    of="${RECALBOXIMG}" seek=$signed_bl1_position conv=notrunc || return 1
 
     echo "BL2 fusing"
-    dd if="${BINARIES_DIR}/bl2.bin.hardkernel"    of="${RECALBOXIMG}" seek=$bl2_position        conv=notrunc || return 1
+    dd if="${BINARIES_DIR}/bl2.bin.hardkernel.720k_uboot"    of="${RECALBOXIMG}" seek=$bl2_position        conv=notrunc || return 1
 
     echo "u-boot fusing"
     dd if="${BINARIES_DIR}/u-boot.bin.hardkernel" of="${RECALBOXIMG}" seek=$uboot_position      conv=notrunc || return 1
