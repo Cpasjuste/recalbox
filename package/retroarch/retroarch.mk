@@ -31,10 +31,10 @@ endif
 
 # RPI 2 and 3
 ifeq ($(BR2_cortex_a7),y)
-RETROARCH_CONF_OPTS += --enable-neon --enable-floathard
+RETROARCH_CONF_OPTS += --enable-floathard
 endif
 ifeq ($(BR2_arm)$(BR2_cortex_a53),yy)
-RETROARCH_CONF_OPTS += --enable-neon --enable-floathard
+RETROARCH_CONF_OPTS += --enable-floathard
 endif
 
 ifeq ($(BR2_ARM_CPU_HAS_NEON),y)
@@ -47,8 +47,8 @@ RETROARCH_CONF_OPTS += --enable-dispmanx --disable-opengl1
 endif
 
 # odroid xu4
-ifeq ($(BR2_cortex_a15)$(BR2_cortex_a15_a7),y)
-RETROARCH_CONF_OPTS += --enable-neon --enable-floathard --disable-opengl1
+ifeq ($(BR2_PACKAGE_RECALBOX_TARGET_XU4),y)
+RETROARCH_CONF_OPTS += --enable-floathard --disable-opengl1 --disable-opengl
 endif
 
 # x86 : SSE
@@ -59,7 +59,7 @@ endif
 # Common
 RETROARCH_CONF_OPTS += --enable-rgui --enable-xmb --enable-ozone
 RETROARCH_CONF_OPTS += --enable-threads --enable-dylib
-RETROARCH_CONF_OPTS += --enable-flac
+RETROARCH_CONF_OPTS += --enable-flac --enable-lua
 RETROARCH_CONF_OPTS += --enable-networking
 
 # Package dependant
