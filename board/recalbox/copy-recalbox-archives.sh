@@ -121,11 +121,18 @@ case "${RECALBOX_TARGET}" in
         cp "${BINARIES_DIR}/rootfs.tar.xz" "${RECALBOX_BINARIES_DIR}/root.tar.xz" || exit 1
 
         # boot.tar.xz
-        (cd "${BINARIES_DIR}" && tar -cJf "${RECALBOX_BINARIES_DIR}/boot.tar.xz" boot.ini zImage exynos5422-odroidxu3.dtb recalbox-boot.conf) || exit 1
+        (cd "${BINARIES_DIR}" && tar -cJf "${RECALBOX_BINARIES_DIR}/boot.tar.xz" boot.ini zImage exynos5422-odroidxu4.dtb recalbox-boot.conf) || exit 1
+
+        # The bl1.bin.hardkernel file provided by the uboot hardkernel repository is overwritten
+        # by the bl2.bin.hardkernel in the sd_fusing.sh script because it is too big.
+        # In order to implement this in genimage, we need to truncate the bl1.bin file
+        # so that it does not exceed the available place.
+        # An issue has been filled about this: https://github.com/hardkernel/u-boot/issues/45
+        truncate -s 15360 ${BINARIES_DIR}/bl1.bin.hardkernel
 
         # recalbox.img
         support/scripts/genimage.sh -c "${BR2_EXTERNAL_RECALBOX_PATH}/board/recalbox/xu4/genimage.cfg" || exit 1
-        xu4_fusing "${BINARIES_DIR}" "${BINARIES_DIR}/recalbox.img" || exit 1
+        #xu4_fusing "${BINARIES_DIR}" "${BINARIES_DIR}/recalbox.img" || exit 1
         sync || exit 1
         ;;
 
