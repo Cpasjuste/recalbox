@@ -18,33 +18,6 @@
 # http://odroid.com/dokuwiki/doku.php?id=en:xu3_partition_table
 # https://github.com/hardkernel/u-boot/blob/odroidxu3-v2012.07/sd_fuse/hardkernel/sd_fusing.sh
 
-xu4_fusing() {
-    BINARIES_DIR=$1
-    RECALBOXIMG=$2
-
-    # fusing
-    signed_bl1_position=1
-    bl2_position=31
-    uboot_position=63
-    tzsw_position=719
-    env_position=1231
-
-    echo "BL1 fusing"
-    dd if="${BINARIES_DIR}/bl1.bin.hardkernel"    of="${RECALBOXIMG}" seek=$signed_bl1_position conv=notrunc || return 1
-
-    echo "BL2 fusing"
-    dd if="${BINARIES_DIR}/bl2.bin.hardkernel.720k_uboot"    of="${RECALBOXIMG}" seek=$bl2_position        conv=notrunc || return 1
-
-    echo "u-boot fusing"
-    dd if="${BINARIES_DIR}/u-boot.bin.hardkernel" of="${RECALBOXIMG}" seek=$uboot_position      conv=notrunc || return 1
-
-    echo "TrustZone S/W fusing"
-    dd if="${BINARIES_DIR}/tzsw.bin.hardkernel"   of="${RECALBOXIMG}" seek=$tzsw_position       conv=notrunc || return 1
-
-    echo "u-boot env erase"
-    dd if=/dev/zero of="${RECALBOXIMG}" seek=$env_position count=32 bs=512 conv=notrunc || return 1
-}
-
 # C2 SD CARD
 #
 #       1       97         1281
@@ -132,7 +105,6 @@ case "${RECALBOX_TARGET}" in
 
         # recalbox.img
         support/scripts/genimage.sh -c "${BR2_EXTERNAL_RECALBOX_PATH}/board/recalbox/xu4/genimage.cfg" || exit 1
-        #xu4_fusing "${BINARIES_DIR}" "${BINARIES_DIR}/recalbox.img" || exit 1
         sync || exit 1
         ;;
 
