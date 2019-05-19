@@ -9,7 +9,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Fix boot intro videos (x86, x86_64)
 - Enable both hotkeys and I2C on RasberryPi GPIO
 - Add .7z extensions where they were missing
-- Bump MoonLight to support last versions of GFE
+- Bump MoonLight to 2.4.9 and support last versions of GFE
 - GUI: In game views, START open the game contextual menu. SELECT switch between all game/favorites only
 - Fix system unique key: fullname+platform instead of name+platform
 - Fix demo mode using retroachievements
