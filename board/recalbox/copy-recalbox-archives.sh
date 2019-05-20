@@ -29,6 +29,34 @@
 # http://odroid.com/dokuwiki/doku.php?id=en:c2_building_u-boot
 # https://wiki.odroid.com/odroid-c2/software/partition_table#ubuntu_partition_table
 
+xu4_fusing() {
+    BINARIES_DIR=$1
+    RECALBOXIMG=$2
+
+    # fusing
+    signed_bl1_position=1
+    bl2_position=31
+    uboot_position=63
+    tzsw_position=719
+    env_position=1231
+
+    echo "BL1 fusing"
+    dd if="${BINARIES_DIR}/bl1.bin.hardkernel"    of="${RECALBOXIMG}" seek=$signed_bl1_position conv=notrunc || return 1
+
+    echo "BL2 fusing"
+    dd if="${BINARIES_DIR}/bl2.bin.hardkernel"    of="${RECALBOXIMG}" seek=$bl2_position        conv=notrunc || return 1
+
+    echo "u-boot fusing"
+    dd if="${BINARIES_DIR}/u-boot.bin.hardkernel" of="${RECALBOXIMG}" seek=$uboot_position      conv=notrunc || return 1
+
+    echo "TrustZone S/W fusing"
+    dd if="${BINARIES_DIR}/tzsw.bin.hardkernel"   of="${RECALBOXIMG}" seek=$tzsw_position       conv=notrunc || return 1
+
+    echo "u-boot env erase"
+    dd if=/dev/zero of="${RECALBOXIMG}" seek=$env_position count=32 bs=512 conv=notrunc || return 1
+}
+
+
 c2_fusing() {
     BINARIES_DIR=$1
     RECALBOXIMG=$2
@@ -87,6 +115,11 @@ case "${RECALBOX_TARGET}" in
         ;;
 
     XU4)
+        for F in bl1.bin.hardkernel bl2.bin.hardkernel tzsw.bin.hardkernel u-boot.bin.hardkernel
+        do
+            cp "${BUILD_DIR}/uboot-xu4-odroidxu3-v2012.07/sd_fuse/hardkernel/${F}" "${BINARIES_DIR}" || exit 1
+        done
+
         # /boot
         cp "${BR2_EXTERNAL_RECALBOX_PATH}/board/recalbox/xu4/boot.ini" ${BINARIES_DIR}/boot.ini || exit 1
 
@@ -96,15 +129,9 @@ case "${RECALBOX_TARGET}" in
         # boot.tar.xz
         (cd "${BINARIES_DIR}" && tar -cJf "${RECALBOX_BINARIES_DIR}/boot.tar.xz" boot.ini zImage exynos5422-odroidxu4.dtb recalbox-boot.conf) || exit 1
 
-        # The bl1.bin.hardkernel file provided by the uboot hardkernel repository is overwritten
-        # by the bl2.bin.hardkernel in the sd_fusing.sh script because it is too big.
-        # In order to implement this in genimage, we need to truncate the bl1.bin file
-        # so that it does not exceed the available place.
-        # An issue has been filled about this: https://github.com/hardkernel/u-boot/issues/45
-        truncate -s 15360 ${BINARIES_DIR}/bl1.bin.hardkernel
-
         # recalbox.img
         support/scripts/genimage.sh -c "${BR2_EXTERNAL_RECALBOX_PATH}/board/recalbox/xu4/genimage.cfg" || exit 1
+	xu4_fusing "${BINARIES_DIR}" "${BINARIES_DIR}/recalbox.img" || exit 1
         sync || exit 1
         ;;
 
