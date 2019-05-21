@@ -1,14 +1,14 @@
-config BR2_PACKAGE_LIBRETRO_FBALPHA
-	bool "libretro-fbalpha"
+config BR2_PACKAGE_LIBRETRO_FBNEO
+	bool "libretro-fbneo"
 	depends on BR2_PACKAGE_RETROARCH
 	depends on BR2_INSTALL_LIBSTDCPP
 	select BR2_PACKAGE_RECALBOX_ROMFS_FBA_LIBRETRO
 	select BR2_PACKAGE_RECALBOX_ROMFS_NEOGEO
 	select BR2_PACKAGE_RECALBOX_ROMFS_NEOGEOCD
 	help
-	  A libretro fbalpha emulator core for ARM.
+	  A libretro fbneo emulator core for ARM.
 
 	  http://www.libretro.com
 
-comment "LIBRETRO_FBALPHA needs a toolchain w/ C++"
+comment "LIBRETRO_FBNEO needs a toolchain w/ C++"
 	depends on !BR2_INSTALL_LIBSTDCPP
