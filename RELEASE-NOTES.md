@@ -29,6 +29,7 @@
 - New pads added to known controllers: Moga Pro Power, Wiimote, Logitech RumblePad
 - Bluetooth pads configuration easier than ever: previously configured pads automatically unpaired before pairing again
 - Enable "Threaded DSP" option in 4DO by default (improve emulation speed)
+- Odroid XU4 linux kernel upgraded to version 4.14
 
 ### Fixes
 - Fix boot intro videos on x86 and x64

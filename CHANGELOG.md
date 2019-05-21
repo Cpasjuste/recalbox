@@ -39,6 +39,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Enable threaded-dsp option in 4do core 
 - Bluetooth: Previously configured pads automatically unpaired before pairing again
 - Bump retroarch to 1.7.7
+- Bump Odroid XU4 kernel to 4.14
 
 ## [6.0] - DragonBlaze
 - Change name from 5.0 to 6.0 DragonBlaze
