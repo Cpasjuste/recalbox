@@ -502,8 +502,7 @@ Name=${settings_ssid}
 EOF
 	if test "${settings_key}" != ""
 	then
-	settings_key_dec=$(/recalbox/scripts/recalbox-encode.sh decode "${settings_key}")
-	  echo "Passphrase=${settings_key_dec}" >> "${settings_file}"
+        echo "Passphrase=${settings_key}" >> "${settings_file}"
 	fi
 	fi
 }

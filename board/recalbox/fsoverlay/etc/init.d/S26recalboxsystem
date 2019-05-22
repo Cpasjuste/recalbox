@@ -11,27 +11,6 @@ rb_volume_configure() {
     fi
 }
 
-# Function to encode wifi password in recalbox.conf if needed
-
-rb_wifi_share_configure() {
-        [ "$1" = "1" ] && X="" || X="$1"
-        settings_ssid="`$systemsetting -command load -key wifi${X}.ssid`"
-        settings_key="`$systemsetting -command load -key wifi${X}.key`"
-        if test "${settings_key}" != ""
-        then
-            settings_key_dec=$(/recalbox/scripts/recalbox-encode.sh decode "${settings_key}")
-
-            # save the value encoded
-            if test "${settings_key}" = "${settings_key_dec}"
-            then
-                # sed the replace by the secure value in recalbox.conf
-                settings_key=$(/recalbox/scripts/recalbox-encode.sh encode "${settings_key}")
-                sed -i "s|^wifi${X}.key=.*|wifi${X}.key=${settings_key}|g" /recalbox/share/system/recalbox.conf
-            fi
-        fi
-        recallog "updated wifi settings : ssid=$settings_ssid"
-}
-
 rb_audio_save() {
     recallog "Saving ALSA mixers configuration"
     alsactl -f /recalbox/share/system/configs/asound.state store
@@ -137,11 +116,6 @@ case "$1" in
 	# configure
 	rb_gpio_configure&    # 0.9 start by the gpio while it's the longer
 	rb_keyboad_lang&      # 0.7
-
-	for i in {1..3}; do
-		rb_wifi_share_configure $i& # Let's encode wifi passwords if needed
-	done
-
 
 	( rb_volume_configure ; rb_audio_configure ) &  # 1.0
 	rb_timezone&          # 0.4
