@@ -1,15 +1,12 @@
-Add installation instructions in cmake files.
-Install hypseus binary and resources (sounds, pictures and font) in /usr/share/hypseus
-
-Signed-off-by: Laurent Merckx <laurent-merckx@skynet.be>
-
---- a/src/CMakeLists.txt	2018-04-26 21:46:16.815307867 +0200
-+++ b/src/CMakeLists.txt	2018-04-26 21:45:56.547520309 +0200
-@@ -129,3 +129,7 @@ set(CPACK_PACKAGE_VERSION_MINOR "${VER_M
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 0368903..cea1f66 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -133,3 +133,7 @@ set(CPACK_PACKAGE_VERSION_MINOR "${VER_MINOR}")
  set(CPACK_PACKAGE_VERSION_PATCH "${VER_PATCH}")
  
  include(CPack)
-+
-+execute_process(COMMAND svn export --no-auth-cache --username svn --password svn https://www.daphne-emu.com:9443/daphnesvn/branches/v_1_0/sound ../sound)
++execute_process(COMMAND svn export https://github.com/mirror/daphne-emu/trunk/sound ../sound)
 +install(TARGETS hypseus DESTINATION bin)
 +install(DIRECTORY ../pics ../fonts ../sound DESTINATION share/daphne)
++
