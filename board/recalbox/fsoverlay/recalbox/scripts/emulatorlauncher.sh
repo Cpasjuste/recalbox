@@ -56,7 +56,6 @@ if [[ ! "$emulator" ]]; then
 fi
 
 retroarchbin="/usr/bin/retroarch"
-gpspbin="/usr/emulators/gpsp/gpsp"
 mupen64bin="/usr/bin/mupen64plus"
 retroarchcores="/usr/lib/libretro"
 
@@ -103,7 +102,6 @@ fi
 
 if [[ "$emulator" == "gba" ]]; then
 	/recalbox/scripts/runcommand.sh 4 "$retroarchbin -L $retroarchcores/gpsp_libretro.so --config /recalbox/configs/retroarch/retroarchcustom.cfg \"$1\""
-#	/recalbox/scripts/runcommand.sh 4 "$gpspbin \"/recalbox/share/roms/gba/${fullfilename}\""
 fi
 
 if [[ "$emulator" == "gbc" ]]; then

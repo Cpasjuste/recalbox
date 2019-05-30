@@ -1,9 +1,0 @@
-config BR2_PACKAGE_GPSP
-	bool "gpsp"
-	depends on BR2_PACKAGE_SDL
-	depends on BR2_PACKAGE_RPI_USERLAND
-	help
-	  A Gameboy Advance emulator.
-
-comment "gpsp depends on SDL"
-	depends on !BR2_PACKAGE_SDL || !BR2_PACKAGE_RPI_USERLAND
