@@ -14,8 +14,8 @@ apt-get install -y tzdata && \
 ln -fs /usr/share/zoneinfo/Europe/Paris /etc/localtime && \
 dpkg-reconfigure --frontend noninteractive tzdata && \
 apt-get -y install build-essential git libncurses5-dev qt5-default qttools5-dev-tools \
-mercurial libdbus-glib-1-dev texinfo zip openssh-client libxml2-utils \
-software-properties-common wget cpio bc locales rsync imagemagick \
+mercurial libdbus-glib-1-dev texinfo zip openssh-client libxml2-utils libpng-dev \
+software-properties-common wget cpio bc locales rsync imagemagick bison flex bsdmainutils \
 nano vim automake mtools dosfstools subversion openjdk-8-jdk libssl-dev libelf-dev \
 graphviz python-matplotlib python-numpy && \
 rm -rf /var/lib/apt/lists/*
