@@ -1,5 +1,5 @@
-config BR2_PACKAGE_LIBRETRO_MUPEN64_NX
-	bool "libretro-mupen64-nx"
+config BR2_PACKAGE_LIBRETRO_MUPEN64PLUS_NX
+	bool "libretro-mupen64plus-nx"
 	depends on BR2_PACKAGE_RETROARCH
 	depends on BR2_INSTALL_LIBSTDCPP
 	help
@@ -7,5 +7,5 @@ config BR2_PACKAGE_LIBRETRO_MUPEN64_NX
 
 	  http://www.libretro.com
 
-comment "LIBRETRO_MUPEN64_NX needs a toolchain w/ C++"
+comment "LIBRETRO_MUPEN64PLUS_NX needs a toolchain w/ C++"
 	depends on !BR2_INSTALL_LIBSTDCPP

@@ -1,5 +1,5 @@
-config BR2_PACKAGE_LIBRETRO_MUPEN64
-	bool "libretro-mupen64"
+config BR2_PACKAGE_LIBRETRO_MUPEN64PLUS
+	bool "libretro-mupen64plus"
 	depends on BR2_PACKAGE_RETROARCH
 	depends on BR2_INSTALL_LIBSTDCPP
 	help
@@ -7,5 +7,5 @@ config BR2_PACKAGE_LIBRETRO_MUPEN64
 
 	  http://www.libretro.com
 
-comment "LIBRETRO_MUPEN64 needs a toolchain w/ C++"
+comment "LIBRETRO_MUPEN64PLUS needs a toolchain w/ C++"
 	depends on !BR2_INSTALL_LIBSTDCPP
