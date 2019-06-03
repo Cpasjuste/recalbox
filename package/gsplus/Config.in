@@ -1,0 +1,12 @@
+config BR2_PACKAGE_GSPLUS
+	bool "gsplus"
+	select BR2_PACKAGE_SDL2
+	select BR2_PACKAGE_RECALBOX_ROMFS_APPLE2GS
+	select BR2_PACKAGE_LIBPCAP
+	help
+	  Apple II GS emulator
+
+	  http://www.apple2.gs/plus
+
+comment "Gsplus needs a toolchain w/ OpenGl, SDL2"
+	depends on BR2_PACKAGE_SDL2

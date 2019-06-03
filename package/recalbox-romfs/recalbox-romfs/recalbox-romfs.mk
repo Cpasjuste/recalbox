@@ -171,6 +171,11 @@ ifeq ($(BR2_PACKAGE_LINAPPLE_PIE),y)
 	RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-apple2
 endif
 
+# System: apple2gs
+ifeq ($(BR2_PACKAGE_GSPLUS),y)
+    RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-apple2gs
+endif
+
 # System: atari2600
 ifneq ($(BR2_PACKAGE_LIBRETRO_STELLA),)
     RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-atari2600

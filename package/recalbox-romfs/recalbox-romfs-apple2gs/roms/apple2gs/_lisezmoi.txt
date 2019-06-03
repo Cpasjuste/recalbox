@@ -1,0 +1,5 @@
+## RECALBOX - SYSTEM APLE2GS ##
+
+Placez ici vos roms Apple IIGS.
+
+Les roms doivent avoir l'extension ".2mg"

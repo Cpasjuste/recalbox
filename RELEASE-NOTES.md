@@ -7,6 +7,7 @@
 - New system! Amstrad GX4000 added with libretro's cap32 emulator
 - New core! Added Gearsystem libretro core. An optimized GG/SMS core working better on some games.
 - New core! Added SameBoy libretro core. Game link support for GB/GBC
+- New emulator! Apple IIGS on all systems (Standalone: GSplus 0.14)
 - Pi 3A+ compatibility (Firmware bump)
 - New video snaps! Now see short videos of games before launching them
 - New system! Spectravideo added with libretro's bluemsx emulator

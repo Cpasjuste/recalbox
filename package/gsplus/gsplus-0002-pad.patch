@@ -1,0 +1,33 @@
+--- a/src/joystick_driver.c	2019-06-03 19:08:28.115529811 +0200
++++ b/src/joystick_driver.c	2019-06-03 18:45:47.126144939 +0200
+@@ -61,12 +61,15 @@
+ # define JOYSTICK_DEFINED
+ void joystick_init()      {
+   int i;
++  //SDL_SetHint(SDL_HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS, "1");
+   if( SDL_Init( SDL_INIT_JOYSTICK ) < 0 ) {
+     glogf( "SDL could not initialize joystick! SDL Error: %s", SDL_GetError() );
+   } else {
+     glog("SDL2 joystick initialized");
+   }
+-  if (SDL_NumJoysticks()<1) {
++  SDL_JoystickUpdate();
++  int n = SDL_NumJoysticks();
++  if (n <=0 ) {
+     glog("No joysticks detected");
+     SDL_QuitSubSystem(SDL_INIT_JOYSTICK);
+   } else {
+--- a/src/sdl2_driver.c	2019-05-11 17:32:24.000000000 +0200
++++ b/src/sdl2_driver.c	2019-05-24 21:27:03.980467163 +0200
+@@ -471,9 +471,11 @@
+   kimage_ptr->data_ptr = data;
+ }
+ 
++extern double g_paddle_trig_dcycs;
+ 
+ void check_input_events() {
+   check_input_events_sdl();
++  joystick_update(g_paddle_trig_dcycs);
+ }
+ 
+ 
