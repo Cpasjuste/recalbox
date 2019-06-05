@@ -50,6 +50,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Add gearsystem libretro core
 - Add sameboy libretro core
 - Add GSplus standalone emulator
+- Improve volume balancing between RetroArch and Recalbox
 
 ## [6.0] - DragonBlaze
 - Change name from 5.0 to 6.0 DragonBlaze
