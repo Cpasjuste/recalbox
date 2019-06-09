@@ -147,6 +147,7 @@ menu "Libretro Cores"
         source "$BR2_EXTERNAL_RECALBOX_PATH/package/libretro-uzem/Config.in"
         source "$BR2_EXTERNAL_RECALBOX_PATH/package/libretro-minivmac/Config.in"
         source "$BR2_EXTERNAL_RECALBOX_PATH/package/libretro-xmil/Config.in"
+        source "$BR2_EXTERNAL_RECALBOX_PATH/package/libretro-mu/Config.in"
 endmenu
 endif
 menu "Doom packages"

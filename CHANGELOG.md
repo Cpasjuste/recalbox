@@ -52,6 +52,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Add GSplus standalone emulator
 - Improve volume balancing between RetroArch and Recalbox
 - Add Sharp X1 emulator (libretro-xmil)
+- Add Palm OS (OS4, OS5 still in development) emulator (libretro-mu)
 
 ## [6.0] - DragonBlaze
 - Change name from 5.0 to 6.0 DragonBlaze

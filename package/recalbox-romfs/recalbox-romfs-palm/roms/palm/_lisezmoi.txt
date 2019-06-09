@@ -1,0 +1,5 @@
+## RECALBOX - SYSTEM PALM OS ##
+
+Placez ici vos roms PALM OS.
+
+Les roms doivent avoir l'extension ".prc/.pdb/.pqa/.img"

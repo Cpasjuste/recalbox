@@ -12,6 +12,7 @@
 - New video snaps! Now see short videos of games before launching them
 - New system! Spectravideo added with libretro's bluemsx emulator
 - New system! Sharp X1 added with libretro's xmil emulator
+- New system! Palm added with libretro's mu emulator
 
 ### Improvements
 - Retroarch updated to version 1.7.7!

@@ -379,6 +379,11 @@ ifneq ($(BR2_PACKAGE_ORICUTRON),)
 		RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-oricatmos
 endif
 
+# System: palm
+ifneq ($(BR2_PACKAGE_LIBRETRO_MU),)
+        RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-palm
+endif
+
 # System: pcengine
 ifneq ($(BR2_PACKAGE_LIBRETRO_BEETLE_SUPERGRAFX)$(BR2_PACKAGE_LIBRETRO_BEETLE_PCE_FAST),)
         RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-pcengine

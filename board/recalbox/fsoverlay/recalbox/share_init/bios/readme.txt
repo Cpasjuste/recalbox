@@ -194,3 +194,7 @@ df864344d2a2091c3f952bd1c5ce1707  microdis.rom
 0a814078410353744e2947a8e9342e4e  telmatic.rom
 9a432244d9ee4a49e8ddcde64af94e05  telmon24.rom
 
+
+- PALM OS :
+83cb1d1c76e568b916dc2e7c0bf669f6  palmos41-en-m515.rom
+e64c755205bc3e79d1bc5b70128f688d  bootloader-en-m515.rom
