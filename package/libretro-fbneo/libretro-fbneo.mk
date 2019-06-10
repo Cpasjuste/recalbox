@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-LIBRETRO_FBNEO_VERSION = 592bbb64b23a1c23c4ace0461b7cbb9cf8eb1416
+LIBRETRO_FBNEO_VERSION = 6df0149698c44815463077a5083bdc5787d9a5b4
 LIBRETRO_FBNEO_SITE = $(call github,libretro,FBNeo,$(LIBRETRO_FBNEO_VERSION))
 
 ifeq ($(BR2_ARM_CPU_HAS_NEON),y)
@@ -27,12 +27,12 @@ endef
 define LIBRETRO_FBNEO_INSTALL_TARGET_CMDS
 	$(INSTALL) -D $(@D)/src/burner/libretro/fbneo_libretro.so \
 		$(TARGET_DIR)/usr/lib/libretro/fbneo_libretro.so
-	mkdir -p $(TARGET_DIR)/recalbox/share_init/bios/fba/samples
+	mkdir -p $(TARGET_DIR)/recalbox/share_init/bios/fbn/samples
 	cp "$(@D)/dats/FinalBurn Neo (ClrMame Pro XML, Arcade only).dat" \
-		$(TARGET_DIR)/recalbox/share_init/bios/fba
+		$(TARGET_DIR)/recalbox/share_init/bios/fbn
 	cp "$(@D)/dats/FinalBurn Neo (ClrMame Pro XML, Neogeo only).dat" \
-		$(TARGET_DIR)/recalbox/share_init/bios/fba
-	cp -R $(@D)/metadata/* $(TARGET_DIR)/recalbox/share_init/bios/fba
+		$(TARGET_DIR)/recalbox/share_init/bios/fbn
+	cp -R $(@D)/metadata/* $(TARGET_DIR)/recalbox/share_init/bios/fbn
 endef
 
 $(eval $(generic-package))
