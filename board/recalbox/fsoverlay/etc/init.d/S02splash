@@ -21,7 +21,9 @@ do_ffmpeg_start () {
     fi
     ffplay_opts="-hide_banner -autoexit"
     ffplay_srt="subtitles=/recalbox/system/resources/splash/recalboxintro.srt:force_style='FontName=/usr/share/fonts/dejavu/DejaVuSans-BoldOblique.ttf,Fontsize=10'"
-    ffplay $ffplay_opts -vf "$ffplay_srt" "$video" >/dev/null 2>&1 &
+    fbdev_width=$(cat /sys/class/graphics/fb0/virtual_size | cut -d, -f1)
+    fbdev_height=$(cat /sys/class/graphics/fb0/virtual_size | cut -d, -f2)
+    ffplay ${ffplay_opts} -x ${fbdev_width} -y ${fbdev_height} -vf "${ffplay_srt}" "${video}" >/dev/null 2>&1 &
     PID=$!
     count=0
     if [[ $videolength -gt -1 ]]; then
@@ -73,7 +75,7 @@ do_omx_start ()
         recallog "Let's play the video for $videolength seconds"
         # Wait for emulationstation or Kodi, but not more than $videolength seconds
         count=0
-	while [[ ! -f "/tmp/emulationstation.ready" && ! -e "/var/run/kodi.msg" && $count -lt $videolength ]]; do
+        while [[ ! -f "/tmp/emulationstation.ready" && ! -e "/var/run/kodi.msg" && $count -lt $videolength ]]; do
             sleep 1
             ((count++))
         done
@@ -118,9 +120,9 @@ case "$1" in
         fi
         ;;
     stop)
-	   ;;
+        ;;
     restart|reload)
-	   ;;
+        ;;
     *)
 esac
 

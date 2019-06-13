@@ -50,6 +50,7 @@
 - Fix ScummVM not starting if no pad is configured
 - Fix x86/x64 stuck in demo mode in some circumstances
 - Fix support archive upload error
+- Fix intro video fullscreen on x86/x64
 
 ## Version 6.0 - DragonBlaze
 
@@ -69,8 +70,8 @@
 - New System! NeoGeo CD with audio track support (via RetroArch core libretro-fba)
 - New System! Amiga CD32 with audio track support (via Amiberry)
 - New Core! Added mame2003-plus libretro core. A MAME078 version with added games support plus many fixes and improvements. DAT files available in rom folder
-- New free game! "Mission: Liftoff" for Thomson emulator. 
-- New free game! "Flower" for Amiga emulator. 
+- New free game! "Mission: Liftoff" for Thomson emulator.
+- New free game! "Flower" for Amiga emulator.
 - New Capcom RB intro video
 - New PCEngine intro video
 - Add support for Mayflash GameCube adapter
@@ -80,7 +81,7 @@
 
 ### Improvements
 - KODI updated to 17.6
-- Youtube plugin for KODI updated to 6.3.1 
+- Youtube plugin for KODI updated to 6.3.1
 - Joypads management updated, mostly impacting joypads advertising as a complete keyboard.
 - Preconfigured gamepads file rewritten
 - x86: Now requires a CPU that can handle at least SSE and SS2 (Core2duo and higher)
