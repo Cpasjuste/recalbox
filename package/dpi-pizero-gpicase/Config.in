@@ -1,0 +1,8 @@
+config BR2_PACKAGE_DPI_PIZERO_GPICASE
+	bool "dpi-pizero-gpicase"
+	depends on BR2_PACKAGE_RPI_FIRMWARE
+	help
+	  dpi-pizero-gpicase overlay to get dpi 18 bits tft screen works
+	  thanks to GPIOs GPIcase uses GPIO 18 and 19 for audio, so
+	  theses GPIOs need to be avoid during the configuration
+	  using the overlay.
