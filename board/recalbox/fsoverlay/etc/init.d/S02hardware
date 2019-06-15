@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if test "$1" == "start"
+then
+  python2.7 /recalbox/system/hardware/case/manage.pyc "" 1 1 0 
+fi
+
