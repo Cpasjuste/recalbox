@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [6.1]
 - Replacement of the neogeo intro video
 - Fix : bug introrecaboxsms.mp4 is not playing fixed with reencoding
+- Enable vsync in dolphin-emu
 - Fix: adding gpicase specific video dpi overlay
 - Fix: adding gpicase specific audio pwm overlay
 - Fix: non working GPIO and Custom GPIO on Pi0 and Pi1
