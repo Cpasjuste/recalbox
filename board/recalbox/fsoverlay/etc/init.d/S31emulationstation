@@ -2,7 +2,7 @@
 #
 #
 
-systemsetting="python /usr/lib/python2.7/site-packages/configgen/settings/recalboxSettings.pyc"
+systemsetting="recalbox_settings"
 
 PIDFILE=/var/run/emulationstation.pid
 ESBIN=/usr/bin/emulationstation

@@ -1,6 +1,6 @@
 #!/bin/bash
 recalboxupdateurl="http://archive.recalbox.com/updates/v1.0"
-systemsetting="python /usr/lib/python2.7/site-packages/configgen/settings/recalboxSettings.pyc"
+systemsetting="recalbox_settings"
 recalboxFiles="boot.tar.xz root.tar.xz boot.tar.xz.sha1 root.tar.xz.sha1 root.list"
 
 arch=$(cat /recalbox/recalbox.arch)

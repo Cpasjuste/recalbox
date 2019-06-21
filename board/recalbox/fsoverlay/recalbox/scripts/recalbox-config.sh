@@ -50,7 +50,7 @@ function isNewer () {
 
 
 log=/recalbox/share/system/logs/recalbox.log
-systemsetting="python /usr/lib/python2.7/site-packages/configgen/settings/recalboxSettings.pyc"
+systemsetting="recalbox_settings"
 
 recallog "---- recalbox-config.sh ----"
 

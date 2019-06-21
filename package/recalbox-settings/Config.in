@@ -1,0 +1,7 @@
+config BR2_PACKAGE_RECALBOX_SETTINGS
+	bool "recalbox settings"
+	depends on BR2_INSTALL_LIBSTDCPP
+	help
+	  A simple & fast settings manager.
+
+	  https://github.com/recalbox/recalbox-settings

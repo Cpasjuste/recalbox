@@ -5,7 +5,7 @@
 # when you try to quit after seeing a movie
 # and letting the process hang
 
-systemsetting="python /usr/lib/python2.7/site-packages/configgen/settings/recalboxSettings.pyc"
+systemsetting="recalbox_settings"
 WAITMODE="`$systemsetting  -command load -key kodi.network.waitmode`"
 
 # if the mode is required or wish,

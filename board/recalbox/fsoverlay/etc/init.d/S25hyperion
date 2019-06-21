@@ -5,7 +5,7 @@
 # Support for hyperion, config file in /recalbox/share/system/configs/hyperion/hyperion.config.json
 #
 
-systemsetting="python /usr/lib/python2.7/site-packages/configgen/settings/recalboxSettings.pyc"
+systemsetting="recalbox_settings"
 
 start() {
 	echo -n "Starting hyperion: "

@@ -6,7 +6,7 @@ NAME="S13fbcp"
 RUN_AS=`id -u root`
 CMD=/usr/bin/fbcp
 
-systemsetting="python /usr/lib/python2.7/site-packages/configgen/settings/recalboxSettings.pyc"
+systemsetting="recalbox_settings"
 
 do_start() {
     recallog "... Starting : system.fbcp.enabled is set to 1"

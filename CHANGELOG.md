@@ -59,6 +59,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Add Palm OS (OS4, OS5 still in development) emulator (libretro-mu)
 - Add recalbox-hardware package for case management
 - Add gpi auto-detect & install drivers & settings
+- Fix steam controller driver
+- Add optimized settings manager (used in scripts and boot scripts)
 
 ## [6.0] - DragonBlaze
 - Change name from 5.0 to 6.0 DragonBlaze

@@ -8,7 +8,7 @@ RUN_AS=`id -u root`
 CMD=/usr/recalbox-manager/manage.py
 OPTS="runserver 0.0.0.0:80 --settings=project.settings_production --noreload"
 
-systemsetting="python /usr/lib/python2.7/site-packages/configgen/settings/recalboxSettings.pyc"
+systemsetting="recalbox_settings"
 
 do_start() {
     version="`$systemsetting  -command load -key system.manager.version`"

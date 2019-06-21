@@ -52,6 +52,7 @@
 - Fix x86/x64 stuck in demo mode in some circumstances
 - Fix support archive upload error
 - Fix intro video fullscreen on x86/x64
+- Fix steam controller driver
 
 ## Version 6.0 - DragonBlaze
 

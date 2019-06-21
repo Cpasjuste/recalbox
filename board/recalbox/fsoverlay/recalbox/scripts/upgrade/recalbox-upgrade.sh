@@ -9,7 +9,7 @@ fi
 
 
 BINDIR="${BINDIR:-/recalbox/scripts/upgrade/}"
-SYSTEMSETTINGS="python /usr/lib/python2.7/site-packages/configgen/settings/recalboxSettings.pyc"
+SYSTEMSETTINGS="recalbox_settings"
 RECALBOX_SYSTEM_DIR="/recalbox/share/system"
 INSTALLED_VERSION=$(cat /recalbox/recalbox.version)
 ARCH=$(cat /recalbox/recalbox.arch)

@@ -3,7 +3,7 @@
 # Start steam controllers services
 #
 
-systemsetting="python /usr/lib/python2.7/site-packages/configgen/settings/recalboxSettings.pyc"
+systemsetting="recalbox_settings"
 
 case "$1" in
   start)
