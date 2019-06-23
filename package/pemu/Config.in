@@ -1,0 +1,14 @@
+config BR2_PACKAGE_PEMU
+	bool "pemu"
+	depends on BR2_PACKAGE_SDL2
+	select BR2_PACKAGE_GLM
+	select BR2_PACKAGE_LIBCONFIG
+	select BR2_PACKAGE_FREETYPE
+	select BR2_PACKAGE_ZLIB
+	help
+	  pEMU: pFBA, pSNES, pNES emulators
+
+	  https://github.com/Cpasjuste/pemu
+
+comment "pemu needs a toolchain w/ C++,  SDL2"
+	depends on !BR2_INSTALL_LIBSTDCPP || !BR2_PACKAGE_SDL2
