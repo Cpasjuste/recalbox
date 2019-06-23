@@ -5,12 +5,13 @@
 ################################################################################
 
 RECALBOX_SETTINGS_SITE = https://gitlab.com/recalbox/recalbox-settings.git
-RECALBOX_SETTINGS_VERSION = 4a75d4be8e66ef4ddbccf0be3b8e1e901561e407
+RECALBOX_SETTINGS_VERSION = 2bc590d39597370e5310eb290a90631f80510996
 RECALBOX_SETTINGS_SITE_METHOD = git
 RECALBOX_SETTINGS_LICENSE = MIT
 
 define RECALBOX_SETTINGS_INSTALL_TARGET_CMDS
 	cp $(@D)/recalbox_settings $(TARGET_DIR)/usr/bin/
+	cp $(@D)/recallog $(TARGET_DIR)/usr/bin/
 endef
 
 RECALBOX_SETTINGS_CONF_OPTS += -DCMAKE_C_ARCHIVE_CREATE="<CMAKE_AR> qcs <TARGET> <LINK_FLAGS> <OBJECTS>"
