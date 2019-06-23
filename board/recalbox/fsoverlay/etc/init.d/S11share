@@ -289,11 +289,11 @@ ls /var/run/usbmount.delay |
 touch /var/run/recalbox.share.mounted # reenable standard usbmount
 
 # append tmp boot log files to log files in share
-logpath="/recalbox/share/system/logs"
-for bootlogfile in /tmp/logappend-*.*
-do
-	destfile=`echo "$bootlogfile" | sed 's|/tmp/logappend-||'`
-	cat "${bootlogfile}" >> "${logpath}/${destfile}"
-	rm "${bootlogfile}"
-done
+#logpath="/recalbox/share/system/logs"
+#for bootlogfile in /tmp/logappend-*.*
+#do
+#	destfile=`echo "$bootlogfile" | sed 's|/tmp/logappend-||'`
+#	cat "${bootlogfile}" >> "${logpath}/${destfile}"
+#	rm "${bootlogfile}"
+#done
 

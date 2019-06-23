@@ -87,6 +87,8 @@ pre_reboot_actions() {
   alsactl -f /recalbox/share/system/configs/asound.state restore 2>&1 | recallog
   recallog "Upgrading RA Core names"
   upgradeRetroarchCoreNames -f /recalbox/share/system/configs/retroarch.corenames 2>&1 | recallog
+  recallog "Reset case"
+  sed -i -E 's/case=(.*)//g' /boot/recalbox-boot.conf
 }
 
 # what about doing an upgrade ?
