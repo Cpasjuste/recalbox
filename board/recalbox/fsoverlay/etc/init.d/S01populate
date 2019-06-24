@@ -1,7 +1,6 @@
-#!/bin/sh
+#!/bin/ash
 
-if test "$1" != "start"
-then
+if [ "$1" != "start" ]; then
   exit 0
 fi
 
@@ -10,9 +9,9 @@ mkdir -p /var/lib/sixad/profiles
 cp /etc/sixad.profile /var/lib/sixad/profiles/default
 
 # custom network config
-mkdir -p "/var/lib/connman"
-ln -sf "/recalbox/share/system/network-connman.config" "/var/lib/connman/recalbox-custom.config"
-ln -sf "/boot/network-connman.config"                  "/var/lib/connman/recalbox-boot-custom.config"
+mkdir -p /var/lib/connman
+ln -sf /recalbox/share/system/network-connman.config /var/lib/connman/recalbox-custom.config
+ln -sf /boot/network-connman.config /var/lib/connman/recalbox-boot-custom.config
 
 # bluetooth
 mkdir -p /var/lib/bluetooth
@@ -25,7 +24,7 @@ mkdir -p /var/cache
 # dbus
 mkdir -p /var/lib/dbus
 
-# usbmount
+# usbmount, acpid
 mkdir -p /var/run
 
 # Udev custom rules

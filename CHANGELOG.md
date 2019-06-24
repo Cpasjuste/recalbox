@@ -41,7 +41,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Retroarch ratio recynch'ed ('custom' and 'core-provided' added, old 'custom' renamed 'none')
 - New theme folder in /recalbox/share/themes
 - Moga Pro Power, Wiimote, Logitech RumblePad added to es_input.cfg
-- Enable threaded-dsp option in 4do core 
+- Enable threaded-dsp option in 4do core
 - Bluetooth: Previously configured pads automatically unpaired before pairing again
 - Bump retroarch to 1.7.7
 - Bump Odroid XU4 kernel to 4.14
@@ -61,6 +61,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Add gpi auto-detect & install drivers & settings
 - Fix steam controller driver
 - Add optimized settings manager (used in scripts and boot scripts)
+- optimize init scripts up to S09wifi (including heavy refactor of S03splash and S09wifi, and some scripts re-ordering)
 
 ## [6.0] - DragonBlaze
 - Change name from 5.0 to 6.0 DragonBlaze
@@ -167,7 +168,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Bump ScummVM/ResidualVM (January 2019)
 - Bump almost all libretro cores
 - Package names updated (catsfc -> snes9x2005, pocketsnes -> snes9x2002, snes9x_next -> snes9x2010, pce -> mednafen_pce_fast, vb -> mednafen_vb, imame -> mame2000, mame2003 as core name instead of mame078, fbalpha instead of fba)
-- Improved log formatting 
+- Improved log formatting
 - Add Demo Screensaver
 
 ## [18.07.13] - 2018-07-13
@@ -194,7 +195,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - ES: Fixed old themes crash
 - ES: Option for popup position
 - ES: Help messages in popups
-- ES: Slider for popup duration 
+- ES: Slider for popup duration
 - ES: Languages names in their own language
 - Bump kodi-plugin-video-youtube to 5.5.1
 - ES: Refactored gamepad configuration panel
@@ -395,7 +396,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Enhanced gliden64 video plugin configuration
 - Pad : added FuSa GamePad Version 0.3 (PSP homebrew) default mapping
 - Added noobs integration in archive images
-- New review upgrade system 
+- New review upgrade system
 - New video render for retroarch: dispmanx (pi only)
 - Bumped Mupen64plus-GlideN64 video plugin to the Public Release 2.0
 - Fixed joystick sensitivity issue with mupen64plus
@@ -417,7 +418,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - xarcade: delay the startup of the driver
 - xarcade: disable predefined combo keys
 - remove unwanted Kodi plugins
-- fix upgrade 4.0 -> 4.1 with the share on a FAT32 USB device 
+- fix upgrade 4.0 -> 4.1 with the share on a FAT32 USB device
 - BT : improve startup, pairing and forgetting devices
 - Add support for RPI0-W
 - advancemame : bump to 3.4 and disable keyboard to prevent a crash when no keyboard is plugged
@@ -544,12 +545,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Enable highscores for fba_libretro
 - Add mame parent only dat file
 - Add ipega pg 9055 rules
-- Add mame parent only dat file 
+- Add mame parent only dat file
 - Add xin-mo 18pin, mayflash N64 and correction usbhid
 - Add usbhid for Retrobit Genesis to PC USB Adapter
 - new arcade emulator: AdvanceMame
 - 7z support for fba_libretro
-- Synced with buildroot 2016.11 
+- Synced with buildroot 2016.11
 - Added GNU diffutils
 - Now shows changelog when updating the system
 - Added snes9x libretro core (MSU-1 support)
@@ -621,7 +622,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Fixed system locales
 - Updated 8bitdo gamepads
 - Bumped to moonlight-embedded-2.1.4
-- Overclock set to none now delete lines in config.txt 
+- Overclock set to none now delete lines in config.txt
 - Improved keyboard encoders support
 - Fixed an issue concerning ISO loading taking too long
 
@@ -649,7 +650,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Added Chinese and Turkish
 - Added samba switch in recalbox.conf
 - Added WiiMote support
-- Added Kodi controller support 
+- Added Kodi controller support
 - Corrected controller <-> player attribution
 - Added moonlight system support, with roms
 - Added new switch in recalbox.conf for ssh and virtual gamepads
@@ -680,7 +681,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [3.3.0-beta9] - 2015-10-11
 - Fixed Moonlight theme for zoid
 - Added splashscreen for long reboots
-- Added mplayer and jscal 
+- Added mplayer and jscal
 - Updated atari 2600 stella core for 2 players support
 - Updated fba libretro for R3 diag menu
 - Added xbox 360 official wireless dongle support OOTB
@@ -736,7 +737,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Added Vectrex libretro emulator
 - Added Game And Watch libretro emulator
 - Added Lynx libretro emulator
-- Added PRBoom libretro 
+- Added PRBoom libretro
 - Modif zoid theme
 - Patched kernel to support retrobit controllers
 - Patched kernel to support 4NES4SNES controllers
@@ -760,7 +761,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Added Tgbdual libretro core
 - Added Miroof's Virtual Gamepads
 - Added silent install
- 
+
 ## [3.2.11] - 2015-03-24
 - Corrected issues with controllers with idientical names
 - Added zoid theme
@@ -772,7 +773,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [3.2.9] - 2015-03-15
 ### Changed
 - Added fba emulator switch
-- Added snes9x, catsfc, pocketsnes switch 
+- Added snes9x, catsfc, pocketsnes switch
 - Added virtualboy platform
 - Fixed : buttons on axis in retroarch config
 - Added timestamps in logs

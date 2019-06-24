@@ -21,17 +21,11 @@ ln -sf "/var/localtime" "${TARGET_DIR}/etc/localtime" || exit 1
 
 mkdir -p ${TARGET_DIR}/etc/emulationstation || exit 1
 ln -sf "/recalbox/share_init/system/.emulationstation/es_systems.cfg" "${TARGET_DIR}/etc/emulationstation/es_systems.cfg" || exit 1
-ln -sf "/recalbox/share_init/system/.emulationstation/themes"         "${TARGET_DIR}/etc/emulationstation/themes"         || exit 1
-ln -sf "/recalbox/share/cheats"                                       "${TARGET_DIR}/recalbox/share_init/cheats/custom"   || exit 1
+ln -sf "/recalbox/share_init/system/.emulationstation/themes" "${TARGET_DIR}/etc/emulationstation/themes" || exit 1
+ln -sf "/recalbox/share/cheats" "${TARGET_DIR}/recalbox/share_init/cheats/custom" || exit 1
 
 # we don't want the kodi startup script
 rm -f "${TARGET_DIR}/etc/init.d/S50kodi" || exit 1
-
-# acpid requires /var/run, so, requires S03populate
-if test -e "${TARGET_DIR}/etc/init.d/S02acpid"
-then
-    mv "${TARGET_DIR}/etc/init.d/S02acpid" "${TARGET_DIR}/etc/init.d/S05acpid" || exit 1
-fi
 
 # we don't want default xorg files
 rm -f "${TARGET_DIR}/etc/X11/xorg.conf" || exit 1
@@ -40,21 +34,17 @@ rm -f "${TARGET_DIR}/etc/X11/xorg.conf" || exit 1
 rm -rf "${TARGET_DIR}/boot/grub" || exit 1
 
 # reorder the boot scripts for the network boot
-if test -e "${TARGET_DIR}/etc/init.d/S10udev"
-then
-    mv "${TARGET_DIR}/etc/init.d/S10udev"    "${TARGET_DIR}/etc/init.d/S05udev"    || exit 1 # move to make number spaces
+if [ -e "${TARGET_DIR}/etc/init.d/S10udev" ]; then
+  mv "${TARGET_DIR}/etc/init.d/S10udev" "${TARGET_DIR}/etc/init.d/S05udev" || exit 1 # move to make number spaces
 fi
-if test -e "${TARGET_DIR}/etc/init.d/S30dbus"
-then
-    mv "${TARGET_DIR}/etc/init.d/S30dbus"    "${TARGET_DIR}/etc/init.d/S06dbus"    || exit 1 # move really before for network (connman prerequisite)
+if [ -e "${TARGET_DIR}/etc/init.d/S30dbus" ]; then
+  mv "${TARGET_DIR}/etc/init.d/S30dbus" "${TARGET_DIR}/etc/init.d/S06dbus" || exit 1 # move really before for network (connman prerequisite)
 fi
-if test -e "${TARGET_DIR}/etc/init.d/S40network"
-then
-    mv "${TARGET_DIR}/etc/init.d/S40network" "${TARGET_DIR}/etc/init.d/S07network" || exit 1 # move to make ifaces up sooner, mainly mountable/unmountable before/after share
+if [ -e "${TARGET_DIR}/etc/init.d/S40network" ]; then
+  mv "${TARGET_DIR}/etc/init.d/S40network" "${TARGET_DIR}/etc/init.d/S07network" || exit 1 # move to make ifaces up sooner, mainly mountable/unmountable before/after share
 fi
-if test -e "${TARGET_DIR}/etc/init.d/S45connman"
-then
-    mv "${TARGET_DIR}/etc/init.d/S45connman" "${TARGET_DIR}/etc/init.d/S08connman" || exit 1 # move to make before share
+if [ -e "${TARGET_DIR}/etc/init.d/S45connman" ]; then
+  mv "${TARGET_DIR}/etc/init.d/S45connman" "${TARGET_DIR}/etc/init.d/S08connman" || exit 1 # move to make before share
 fi
 
 # remove kodi default joystick configuration files
@@ -65,15 +55,15 @@ rm -rf "${TARGET_DIR}/usr/share/kodi/system/keymaps/joystick."*.xml || exit 1
 # tmpfs or sysfs is mounted over theses directories
 # clear these directories is required for the upgrade (otherwise, tar xf fails)
 rm -rf "${TARGET_DIR}/"{var,run,sys,tmp} || exit 1
-mkdir "${TARGET_DIR}/"{var,run,sys,tmp}  || exit 1
+mkdir "${TARGET_DIR}/"{var,run,sys,tmp} || exit 1
 
 # make /etc/shadow a file generated from /boot/recalbox-boot.conf for security
-rm -f "${TARGET_DIR}/etc/shadow"                         || exit 1
+rm -f "${TARGET_DIR}/etc/shadow" || exit 1
 ln -sf "/run/recalbox.shadow" "${TARGET_DIR}/etc/shadow" || exit 1
 
 # Add the date while the version can be nightly or unstable
 if [ ! -f "${TARGET_DIR}/recalbox/recalbox.version" ]; then
-	echo "development" > "${TARGET_DIR}/recalbox/recalbox.version"
+  echo "development" > "${TARGET_DIR}/recalbox/recalbox.version"
 fi
 RVERSION=$(cat "${TARGET_DIR}/recalbox/recalbox.version")
 

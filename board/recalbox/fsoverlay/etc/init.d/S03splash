@@ -1,140 +1,118 @@
-#!/bin/bash
+#!/bin/ash
 
-selectVideo() {
-IFS='
-'
-fbdev_height=$(cat /sys/class/graphics/fb0/virtual_size | cut -d, -f2)
-videoSubFolder=""
-if [[ $videolength -lt 241 ]]; then
+if [ "$1" != "start" ]; then
+  exit 0
+fi
+
+# on some sytems, fb0 is not immediatly loaded,
+# so, give it a chance by waiting a bit (5 seconds, then fail hard)
+count=0
+until [ -e /dev/fb0 ]; do
+  if [ ${count} -ge 50 ]; then
+    exit 1
+  else
+    sleep 0.1
+    let count++
+  fi
+done
+
+## Functions ##
+
+# selectVideo
+#  takes no argument and outputs a random video from those available
+#  (uses 240p videos if framebuffer height is 240px or less)
+function selectVideo() {
+  if [ ${fbdevHeight} -le 240 ]; then
     videoSubFolder="/240p"
+  fi
+  IFS= find /recalbox/system/resources/splash${videoSubFolder} -name *.mp4 \
+    | while read line; do echo "$RANDOM ${line}"; done \
+    | sort -n \
+    | head -1 \
+    | cut -d' ' -f2
+}
+
+# stopPlayerWhenFrontendReady <playerPID> <timeout>
+#   stops player running with PID <playerPID> when either (whichever comes first):
+#     - EmulationStation is ready
+#     - Kodi is ready
+#     - after <timeout> seconds
+function stopPlayerWhenFrontendReady() {
+  local playerPID="$1"
+  local timeout="$2"
+  local count=0
+
+  [ ${timeout} -eq -1 ] && return
+  until [ -f "/tmp/emulationstation.ready" ] || [ -e "/var/run/kodi.msg" ] || [ ${count} -ge ${timeout} ]; do
+    sleep 1
+    let count++
+  done
+  kill -9 ${playerPID}
+}
+
+# playWithFFPlay
+#   starts playing a video on the framebuffer via ffplay
+function playWithFFPlay() {
+  local videoFile="$(selectVideo)"
+
+  if ! which ffplay > /dev/null; then
+    return
+  fi
+  ffplay_opts="-hide_banner -autoexit"
+  ffplay_srt="subtitles=/recalbox/system/resources/splash/recalboxintro.srt:force_style='FontName=/usr/share/fonts/dejavu/DejaVuSans-BoldOblique.ttf,Fontsize=10'"
+  ffplay ${ffplay_opts} -x ${fbdevWidth} -y ${fbdevHeight} -vf "${ffplay_srt}" "${videoFile}" > /dev/null 2>&1 &
+  if [ ${videoLength} -ne -1 ]; then
+    stopPlayerWhenFrontendReady $! ${videoLength}
+  fi
+}
+
+# playWithOMX
+#   starts playing an intro video via OMX player
+function playWithOMX() {
+  local videoFile="$(selectVideo)"
+
+  if ! which omxplayer.bin > /dev/null; then
+    return
+  fi
+  omx_fnt="--font=/usr/share/fonts/dejavu/DejaVuSans-BoldOblique.ttf"
+  omx_opt="--adev both --no-keys --layer=10000 --aspect-mode=fill"
+  omx_srt="--no-ghost-box --lines=1 --align=left $omx_fnt --font-size=20 --subtitles=/recalbox/system/resources/splash/recalboxintro.srt"
+  /usr/bin/omxplayer.bin ${omx_opt} ${omx_srt} ${videoFile} &
+  if [ ${videoLength} -ne -1 ]; then
+    stopPlayerWhenFrontendReady $! ${videoLength}
+  fi
+}
+
+# showIntroBackground
+#   displays our intro background via the framebuffer
+showIntroBackground() {
+  fbv -f -i /recalbox/system/resources/splash/logo-version.png
+}
+
+# showInstallBackground
+#   displays our install background via the framebuffer
+showInstallBackground() {
+  fbv -f -i /tmp/.install.png
+}
+
+## Global variables ##
+
+videoLength=$(sed -n "s/^system.splash.length=//p" /boot/recalbox-backup.conf)
+if [ -z "${videoLength}" ] || [ ${videoLength} -eq 0 ] || [ ${videoLength} -lt -1 ]; then
+  videoLength=20
 fi
-videoList=($(find /recalbox/system/resources/splash${videoSubFolder} -name *.mp4))
-videoNumber=${#videoList[*]}
-video=${videoList[$((RANDOM%videoNumber))]}
-echo "${video}"
-}
-video="`selectVideo`"
 
-videolength=`egrep "^system.splash.length" /boot/recalbox-backup.conf|sed "s/system.splash.length=//g"`
-if [[ -z $videolength || $videolength -eq 0 || $videolength -lt -1 ]] ; then
-	videolength=20
+fbdevWidth=$(cut -d, -f1 /sys/class/graphics/fb0/virtual_size)
+fbdevHeight=$(cut -d, -f2 cat /sys/class/graphics/fb0/virtual_size)
+
+## Main ##
+
+if [ -f /tmp/.install.png ]; then
+  showInstallBackground &
+elif [ "$(head -c 3 /recalbox/recalbox.arch)" = "rpi" ]; then
+  ( playWithOMX ; showIntroBackground ) &
+else
+  ( playWithFFPlay; showIntroBackground ) &
 fi
 
-do_ffmpeg_start () {
-    if ! `which ffplay >/dev/null` || [[ ! -f $video ]] ; then
-        return
-    fi
-    ffplay_opts="-hide_banner -autoexit"
-    ffplay_srt="subtitles=/recalbox/system/resources/splash/recalboxintro.srt:force_style='FontName=/usr/share/fonts/dejavu/DejaVuSans-BoldOblique.ttf,Fontsize=10'"
-    fbdev_width=$(cat /sys/class/graphics/fb0/virtual_size | cut -d, -f1)
-    fbdev_height=$(cat /sys/class/graphics/fb0/virtual_size | cut -d, -f2)
-    ffplay ${ffplay_opts} -x ${fbdev_width} -y ${fbdev_height} -vf "${ffplay_srt}" "${video}" >/dev/null 2>&1 &
-    PID=$!
-    count=0
-    if [[ $videolength -gt -1 ]]; then
-        while [[ ! -f "/tmp/emulationstation.ready" && ! -e "/var/run/kodi.msg" && $count -lt $(($videolength*10)) ]]; do
-            sleep 0.1
-            ((count++))
-        done
-    fi
-    do_ffmpeg_stop $PID
-    show_logo
-}
-
-do_ffmpeg_stop () {
-    kill -9 $1
-}
-
-do_omx_start ()
-{
-    # odroid xu4 has not omxplayer, make it run this code make it flash
-    if [[ ! -f $video || ! -f /usr/bin/omxplayer ]]; then
-        return
-    fi
-
-    # Initialize dbus session
-    OMXPLAYER_DBUS_ADDR="/tmp/omxplayerdbus.root"
-    OMXPLAYER_DBUS_PID="/tmp/omxplayerdbus.root.pid"
-    exec 5> "$OMXPLAYER_DBUS_ADDR"
-    exec 6> "$OMXPLAYER_DBUS_PID"
-    dbus-daemon --fork --print-address 5 --print-pid 6 --session
-    until [ -s "$OMXPLAYER_DBUS_ADDR" ]; do
-        echo "waiting for dbus address to appear" >&2
-        sleep .2
-    done
-    DBUS_SESSION_BUS_ADDRESS=`cat $OMXPLAYER_DBUS_ADDR`
-    DBUS_SESSION_BUS_PID=`cat $OMXPLAYER_DBUS_PID`
-    export DBUS_SESSION_BUS_ADDRESS
-    export DBUS_SESSION_BUS_PID
-
-    # Launch the video
-    omx_fnt="--font=/usr/share/fonts/dejavu/DejaVuSans-BoldOblique.ttf"
-    omx_opt="--adev both --no-keys --layer=10000 --aspect-mode=fill"
-    omx_srt="--no-ghost-box --lines=1 --align=left $omx_fnt --font-size=20 --subtitles=/recalbox/system/resources/splash/recalboxintro.srt"
-    /usr/bin/omxplayer.bin $omx_opt $omx_srt $video &
-    PID=$!
-
-    # Stop the video when ready
-    if [[ $? -eq 0 && $videolength -gt -1 ]]; then
-        recallog "Let's play the video for $videolength seconds"
-        # Wait for emulationstation or Kodi, but not more than $videolength seconds
-        count=0
-        while [[ ! -f "/tmp/emulationstation.ready" && ! -e "/var/run/kodi.msg" && $count -lt $videolength ]]; do
-            sleep 1
-            ((count++))
-        done
-        # Finish with a one second fade out.
-        audio_fade=1
-        video_fade=250
-        while [[ $video_fade -gt 0 ]]; do
-            sleep .02
-            dbus-send --print-reply=literal --session --dest=org.mpris.MediaPlayer2.omxplayer /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Volume double:$audio_fade >/dev/null
-            dbus-send --print-reply=literal --session --dest=org.mpris.MediaPlayer2.omxplayer /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.SetAlpha objpath:/not/used int64:$video_fade >/dev/null
-            audio_fade=`echo "$audio_fade .02" | awk '{printf "%.2f", $1-$2}'`
-            ((video_fade=video_fade-5))
-        done
-        # Ready flag set or timeout occured; stop video process.
-        dbus-send --print-reply=literal --session --dest=org.mpris.MediaPlayer2.omxplayer /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Action int32:15 >/dev/null
-    else
-        recallog "Let's play the video entirely"
-    fi
-}
-
-wait_for_fb () {
-    # on some sytems, fb0 is not immediatly loaded, so, keep a chance by waiting a bit
-    N=0
-    while ! test -e /dev/fb0 -o $N -gt 15
-    do
-        sleep 1
-        let N++
-    done
-}
-
-show_logo() {
-    wait_for_fb
-    test -e /dev/fb0 && fbv -f -i /recalbox/system/resources/splash/logo-version.png
-}
-
-show_install_logo() {
-    wait_for_fb
-    test -e /dev/fb0 && fbv -f -i /tmp/.install.png
-}
-
-case "$1" in
-    start)
-        if [[ -f /tmp/.install.png ]] ; then
-            ( wait_for_fb ; show_install_logo ) &
-        elif [[ `cat /recalbox/recalbox.arch` == "rpi"* ]] ; then
-            ( do_omx_start ; show_logo ) &
-        else
-            ( wait_for_fb ; do_ffmpeg_start ) &
-        fi
-        ;;
-    stop)
-        ;;
-    restart|reload)
-        ;;
-    *)
-esac
-
-exit $?
+exit 0

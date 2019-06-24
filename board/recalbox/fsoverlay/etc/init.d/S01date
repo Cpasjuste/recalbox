@@ -1,13 +1,11 @@
-#!/bin/bash
+#!/bin/ash
 
-if test "$1" != "start"
-then
+if [ "$1" != "start" ]; then
   exit 0
 fi
 
 # force a date over 1980 because of fat32 (to make rsync to work)
-CURDATE=$(date +%Y)
-if test "${CURDATE}" -lt 1980
-   then
-       date -s '1980-01-01 01:00:00'
+currentYear=$(date +%Y)
+if [ ${currentYear} -lt 1980 ]; then
+  date -s '1980-01-01 01:00:00'
 fi
