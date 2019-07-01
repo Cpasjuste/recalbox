@@ -1,6 +1,6 @@
 --- a/menu/menu_entries.c
 +++ b/menu/menu_entries.c
-@@ -493,7 +493,7 @@ int menu_entry_action(menu_entry_t *entry, unsigned i, enum menu_action action)
+@@ -567,7 +567,7 @@
                    entry->label, entry->type, i);
           break;
        case MENU_ACTION_SEARCH:
