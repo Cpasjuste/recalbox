@@ -38,12 +38,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Fix key-based SSH login with NTFS and ExFAT external drives
 - Fix wifi issue on some boards
 - Architecture added to the image name
-- Retroarch ratio recynch'ed ('custom' and 'core-provided' added, old 'custom' renamed 'none')
+- Retroarch ratio resynced ('custom' and 'core-provided' added, old 'custom' renamed 'none')
 - New theme folder in /recalbox/share/themes
 - Moga Pro Power, Wiimote, Logitech RumblePad added to es_input.cfg
 - Enable threaded-dsp option in 4do core
 - Bluetooth: Previously configured pads automatically unpaired before pairing again
-- Bump retroarch to 1.7.7
+- Bump retroarch to 1.7.7+ (01/07/2019 version)
 - Bump Odroid XU4 kernel to 4.14
 - More firmwares and drivers added
 - Bump libretro pcsx_rearmed to support .chd files

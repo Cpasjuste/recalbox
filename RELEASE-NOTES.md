@@ -16,7 +16,7 @@
 - GPi Case Plug & Play: Autodetect and install drivers & appropriate themes and settings
 
 ### Improvements
-- Retroarch updated to version 1.7.7!
+- Retroarch updated to version 1.7.7+!
 - Retroarch cheats updated to version 1.7.7!
 - Libretro core updated! Np2kai updated to latest revision
 - Libretro core updated! FBA Libretro core updated to latest version (Neogeo CDRom Speed fix)
