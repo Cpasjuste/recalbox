@@ -1,8 +1,6 @@
-diff --git a/input/input_driver.c b/input/input_driver.c
-index 7eb6221aad..e4927f0124 100644
---- a/input/input_driver.c
-+++ b/input/input_driver.c
-@@ -427,6 +427,10 @@ static unsigned input_driver_max_users            = 0;
+--- a/retroarch.c
++++ b/retroarch.c
+@@ -2272,6 +2272,10 @@
  static const void *hid_data                       = NULL;
  #endif
  
@@ -13,38 +11,27 @@ index 7eb6221aad..e4927f0124 100644
  /**
   * check_input_driver_block_hotkey:
   *
-@@ -937,13 +941,17 @@ void input_menu_keys_pressed(void *data, input_bits_t *p_new_state)
+@@ -3806,12 +3810,17 @@
                 && current_input->input_state(current_input_data, joypad_info,
                    &binds[0], port, RETRO_DEVICE_JOYPAD, 0, RARCH_ENABLE_HOTKEY))
           {
 -            input_driver_block_libretro_input = true;
-+           if (hotkey_counter < HOTKEY_DELAY)
-+              hotkey_counter++;
-+           if (hotkey_counter >= HOTKEY_DELAY) {
-+             input_driver_block_libretro_input = true;
++            if (hotkey_counter < HOTKEY_DELAY)
++               hotkey_counter++;
++            if (hotkey_counter >= HOTKEY_DELAY) {
++              input_driver_block_libretro_input = true;
              break;
 +          }
           }
--         else
--         {
+          else
+          {
 -            input_driver_block_hotkey         = true;
--            break;
-+         else {
 +            hotkey_counter = 0;
 +            input_driver_block_hotkey = true;
-+           break;
+             break;
           }
        }
-    }
-@@ -1114,6 +1122,7 @@ void input_keys_pressed(void *data, input_bits_t *p_new_state)
-    input_driver_block_libretro_input            = false;
-    input_driver_block_hotkey                    = false;
- 
-+
-    if (     current_input->keyboard_mapping_is_blocked
-          && current_input->keyboard_mapping_is_blocked(current_input_data))
-       input_driver_block_hotkey = true;
-@@ -1127,9 +1136,17 @@ void input_keys_pressed(void *data, input_bits_t *p_new_state)
+@@ -3925,9 +3934,17 @@
              && current_input->input_state(
                 current_input_data, joypad_info, &binds, 0,
                 RETRO_DEVICE_JOYPAD, 0, RARCH_ENABLE_HOTKEY))
