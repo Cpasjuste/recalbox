@@ -113,7 +113,7 @@ if [ -z "${videoLength}" ] || [ ${videoLength} -eq 0 ] || [ ${videoLength} -lt -
 fi
 
 fbdevWidth=$(cut -d, -f1 /sys/class/graphics/fb0/virtual_size)
-fbdevHeight=$(cut -d, -f2 cat /sys/class/graphics/fb0/virtual_size)
+fbdevHeight=$(cut -d, -f2 /sys/class/graphics/fb0/virtual_size)
 
 ## Main ##
 
