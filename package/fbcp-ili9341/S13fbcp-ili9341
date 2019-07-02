@@ -1,0 +1,47 @@
+#!/bin/sh
+# Start/Stop fbcp 
+
+PIDFILE=/var/run/fbcp.pid
+NAME="S13fbcp-ili9341"
+RUN_AS=`id -u root`
+CMD=/usr/bin/fbcp-ili9341
+
+systemsetting="recalbox_settings"
+
+do_start() {
+    recallog "... Starting : system.fbcp.enabled is set to 1"
+    start-stop-daemon --start --background --user $RUN_AS --pidfile $PIDFILE --make-pidfile --chuid $RUN_AS --startas $CMD -- -n
+}
+
+do_stop() {
+    start-stop-daemon --stop --pidfile $PIDFILE
+}
+
+
+case "$1" in
+start)
+    enabled="`$systemsetting  -command load -key system.fbcp.enabled`"
+    if [ "$enabled" != "0" ];then
+        recallog "Starting $NAME"
+        do_start
+    else
+        recallog "Will not start $NAME : system.fbcp.enabled is set to 0"
+    fi
+
+    
+    ;;
+stop)
+    recallog "Stopping $NAME"
+    do_stop
+    ;;
+restart)
+    recallog "Restarting $NAME"
+    do_stop
+    do_start
+    ;;
+*)
+    echo "Usage: /etc/init.d/S13fbcp-ili9341 {start|stop|restart}"
+    exit 2
+    ;;
+esac
+exit 0

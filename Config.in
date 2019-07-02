@@ -188,5 +188,6 @@ menu "Utils"
 endmenu
 menu "Small TFT Screen"
          source "$BR2_EXTERNAL_RECALBOX_PATH/package/rpi-fbcp/Config.in"
+         source "$BR2_EXTERNAL_RECALBOX_PATH/package/fbcp-ili9341/Config.in"
 endmenu
 endmenu
