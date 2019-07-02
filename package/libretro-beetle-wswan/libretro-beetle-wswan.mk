@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-LIBRETRO_BEETLE_WSWAN_VERSION = b231cff853da4bf221189df8aaed8bc275459db2
+LIBRETRO_BEETLE_WSWAN_VERSION = 8b2613984b7175ad5030d41e3f9e552a8792b35d
 LIBRETRO_BEETLE_WSWAN_SITE = $(call github,libretro,beetle-wswan-libretro,$(LIBRETRO_BEETLE_WSWAN_VERSION))
 
 define LIBRETRO_BEETLE_WSWAN_BUILD_CMDS

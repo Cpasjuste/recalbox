@@ -62,6 +62,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Fix steam controller driver
 - Add optimized settings manager (used in scripts and boot scripts)
 - optimize init scripts up to S09wifi (including heavy refactor of S03splash and S09wifi, and some scripts re-ordering)
+- Linapple-Pie: Use upstream repository
+- Stella libretro: Rebrand stella to stella2014 and add upstream stella core
+- Mupen64Plus libretro: Migrate Glupen64 to Mupen64Plus
+- N64: add .zip and .7z extensions (only work with libretro-mupen64plus)
+- RetroArch Disc Project: Initial backend implementation on beetle-psx, genesis-plus-gx and 4do cores
+- Several core/emulator bumps
 
 ## [6.0] - DragonBlaze
 - Change name from 5.0 to 6.0 DragonBlaze

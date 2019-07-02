@@ -5,10 +5,10 @@
 ################################################################################
 
 ifeq ($(BR2_PACKAGE_RECALBOX_TARGET_XU4),y)
-MUPEN64PLUS_RSPHLE_VERSION = cd9ffb7eb43bd3057f2fa58ff6268a1be9851107
+MUPEN64PLUS_RSPHLE_VERSION = f01fed082abc2aeabd55c8fe685df4c83115e2c2
 MUPEN64PLUS_RSPHLE_SITE = $(call github,mupen64plus,mupen64plus-rsp-hle,$(MUPEN64PLUS_RSPHLE_VERSION))
 else
-MUPEN64PLUS_RSPHLE_VERSION = 5d66105bda2acdfc81a3698b025c99326552146f
+MUPEN64PLUS_RSPHLE_VERSION = 5cfcc31366fc1b1f88bcbc270954b7fedcd27e21
 MUPEN64PLUS_RSPHLE_SITE = $(call github,ricrpi,mupen64plus-rsp-hle,$(MUPEN64PLUS_RSPHLE_VERSION))
 endif
 

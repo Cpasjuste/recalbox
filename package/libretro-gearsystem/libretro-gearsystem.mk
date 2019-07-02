@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-LIBRETRO_GEARSYSTEM_VERSION = 5231acb6dbba8d1193327b3c5a3fff8ca9305e28
+LIBRETRO_GEARSYSTEM_VERSION = 021626e0a3d8ec911fcbed24b9fbbaf9f89c89d7
 LIBRETRO_GEARSYSTEM_SITE = $(call github,drhelius,Gearsystem,$(LIBRETRO_GEARSYSTEM_VERSION))
 
 define LIBRETRO_GEARSYSTEM_BUILD_CMDS

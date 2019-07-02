@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-LIBRETRO_MUPEN64PLUS_NX_VERSION = 374f8bb31ce8e54c815cf5b38dc645ff6d8637cb
+LIBRETRO_MUPEN64PLUS_NX_VERSION = b31459d1e9b1bc1cf93d3577e185fe8d4198a978
 LIBRETRO_MUPEN64PLUS_NX_SITE = $(call github,libretro,mupen64plus-libretro-nx,$(LIBRETRO_MUPEN64PLUS_NX_VERSION))
 LIBRETRO_MUPEN64PLUS_NX_DEPENDENCIES = rpi-userland
 

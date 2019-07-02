@@ -5,7 +5,7 @@
 ################################################################################
 
 # Package generated with :
-# ./scripts/linux/empack.py --system atari2600 --extension '.a26 .A26 .bin .BIN .zip .ZIP .7z .7Z' --fullname 'Atari 2600' --platform atari2600 --theme atari2600 libretro:stella:BR2_PACKAGE_LIBRETRO_STELLA
+# ./scripts/linux/empack.py --system atari2600 --extension '.a26 .A26 .bin .BIN .zip .ZIP .7z .7Z' --fullname 'Atari 2600' --platform atari2600 --theme atari2600 libretro:stella2014:BR2_PACKAGE_LIBRETRO_STELLA2014 libretro:stella:BR2_PACKAGE_LIBRETRO_STELLA
 
 # Name the 3 vars as the package requires
 RECALBOX_ROMFS_ATARI2600_SOURCE = 
@@ -21,18 +21,24 @@ SOURCE_ROMDIR_ATARI2600 = $(RECALBOX_ROMFS_ATARI2600_PKGDIR)/roms
 # variables are global across buildroot
 
 
-ifneq ($(BR2_PACKAGE_LIBRETRO_STELLA),)
+ifneq ($(BR2_PACKAGE_LIBRETRO_STELLA2014)$(BR2_PACKAGE_LIBRETRO_STELLA),)
 define CONFIGURE_MAIN_ATARI2600_START
 	$(call RECALBOX_ROMFS_CALL_ADD_SYSTEM,$(SYSTEM_XML_ATARI2600),Atari 2600,$(SYSTEM_NAME_ATARI2600),.a26 .A26 .bin .BIN .zip .ZIP .7z .7Z,atari2600,atari2600)
 endef
 
-ifneq ($(BR2_PACKAGE_LIBRETRO_STELLA),)
+ifneq ($(BR2_PACKAGE_LIBRETRO_STELLA2014)$(BR2_PACKAGE_LIBRETRO_STELLA),)
 define CONFIGURE_ATARI2600_LIBRETRO_START
 	$(call RECALBOX_ROMFS_CALL_START_EMULATOR,$(SYSTEM_XML_ATARI2600),libretro)
 endef
 ifeq ($(BR2_PACKAGE_LIBRETRO_STELLA),y)
 define CONFIGURE_ATARI2600_LIBRETRO_STELLA_DEF
 	$(call RECALBOX_ROMFS_CALL_ADD_CORE,$(SYSTEM_XML_ATARI2600),stella)
+endef
+endif
+
+ifeq ($(BR2_PACKAGE_LIBRETRO_STELLA2014),y)
+define CONFIGURE_ATARI2600_LIBRETRO_STELLA2014_DEF
+	$(call RECALBOX_ROMFS_CALL_ADD_CORE,$(SYSTEM_XML_ATARI2600),stella2014)
 endef
 endif
 
@@ -52,6 +58,7 @@ define RECALBOX_ROMFS_ATARI2600_CONFIGURE_CMDS
 	$(CONFIGURE_MAIN_ATARI2600_START)
 	$(CONFIGURE_ATARI2600_LIBRETRO_START)
 	$(CONFIGURE_ATARI2600_LIBRETRO_STELLA_DEF)
+	$(CONFIGURE_ATARI2600_LIBRETRO_STELLA2014_DEF)
 	$(CONFIGURE_ATARI2600_LIBRETRO_END)
 	$(CONFIGURE_MAIN_ATARI2600_END)
 endef

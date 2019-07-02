@@ -86,7 +86,7 @@ Signed-off-by: Laurent Merckx <laurent-merckx@skynet.be>
 +    int val1 = 0, val2 = 0, val3 = 0, val4 = 0;
      //	bool done = false;
  
-     // find where the dapinput ini file is (if the file doesn't exist, this
+     // find where the hypinput ini file is (if the file doesn't exist, this
 @@ -188,6 +209,10 @@ void CFG_Keys()
                                      val1         = atoi(sval1.c_str());
                                      val2         = atoi(sval2.c_str());

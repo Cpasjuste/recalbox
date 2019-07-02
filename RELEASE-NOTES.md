@@ -22,7 +22,10 @@
 - Libretro core updated! FBA Libretro core updated to latest version (Neogeo CDRom Speed fix)
 - Libretro core updated! Picodrive updated to latest version (Fix shifted down screen)
 - Libretro core updated! Theodore updated to latest version (add emulation of Thomson MO6 and Olivetti Prodest PC128)
+- Libretro core updated! Migrate Glupen64 to Mupen64Plus
+- Libretro core split! Rebrand stella to stella2014 and add upstream stella core
 - Emulator updated! ScummVM updated to April 2019 versions (new theme included)
+- Emulator updated! Linapple-Pie now uses upstream repository
 - Enable both hotkeys and I2C on RasberryPi GPIO
 - Add .7z support to more emulators
 - MoonLight updated! Add support for latest GForceExperience softwares
@@ -41,6 +44,9 @@
 - Odroid XU4 linux kernel upgraded to version 4.14
 - pcsx_rearmed supports .chd files now too
 - Improve volume balancing between RetroArch and Recalbox
+- Add .zip and .7z extensions for N64 (only work with libretro-mupen64plus)
+- RetroArch Disc Project: Initial backend implementation on beetle-psx, genesis-plus-gx and 4do cores
+- Almost all core/emulators has been bumped again. Too much for the detailed list!
 
 ### Fixes
 - Fix boot intro videos on x86 and x64

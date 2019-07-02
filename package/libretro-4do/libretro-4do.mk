@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-LIBRETRO_4DO_VERSION = e2ba1ebcbf6f210fcb8807ea43f57fe03c5a10ba
+LIBRETRO_4DO_VERSION = 4818f79a30815c59e06ac38c0eec4093b6e8ee43
 LIBRETRO_4DO_SITE = $(call github,libretro,4do-libretro,$(LIBRETRO_4DO_VERSION))
 
 ifeq ($(BR2_PACKAGE_RECALBOX_TARGET_RPI3),y)
@@ -27,7 +27,8 @@ define LIBRETRO_4DO_BUILD_CMDS
 	CFLAGS="$(TARGET_CFLAGS) $(COMPILER_COMMONS_CFLAGS_SO) -DARM" \
 		CXXFLAGS="$(TARGET_CXXFLAGS) $(COMPILER_COMMONS_CXXFLAGS_SO) -DARM" \
 		LDFLAGS="$(TARGET_LDFLAGS) $(COMPILER_COMMONS_LDFLAGS_SO)" \
-		$(MAKE) CXX="$(TARGET_CXX)" CC="$(TARGET_CC)" -C $(@D) -f Makefile platform="unix"
+		$(MAKE) CXX="$(TARGET_CXX)" CC="$(TARGET_CC)" -C $(@D) -f Makefile platform="unix" \
+		HAVE_CDROM=1
 endef
 
 define LIBRETRO_4DO_INSTALL_TARGET_CMDS

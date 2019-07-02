@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-HYPSEUS_VERSION = c6af13b1274bbeb3e0406c84db6b9a5b3ce0bc72
+HYPSEUS_VERSION = 41fc33edaa8273cbf1ad807b57d8c2a7ae143351
 HYPSEUS_REPO = btolab
 HYPSEUS_SITE = $(call github,$(HYPSEUS_REPO),hypseus,$(HYPSEUS_VERSION))
 HYPSEUS_LICENSE = GPL3
@@ -16,7 +16,7 @@ HYPSEUS_CONF_OPTS = ../src -DBUILD_SHARED_LIBS=OFF
 
 # Post-install: create link to configuration file
 define HYPSEUS_CONFIG_LINK
-	ln -fs /recalbox/share/system/configs/daphne/dapinput.ini $(TARGET_DIR)/usr/share/daphne
+	ln -fs /recalbox/share/system/configs/daphne/dapinput.ini $(TARGET_DIR)/usr/share/daphne/hypinput.ini
 endef
 
 HYPSEUS_POST_INSTALL_TARGET_HOOKS += HYPSEUS_CONFIG_LINK
