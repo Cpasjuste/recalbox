@@ -59,6 +59,7 @@
 - Fix support archive upload error
 - Fix intro video fullscreen on x86/x64
 - Fix steam controller driver
+- Fix Amiga multi-disk bug with [] characters
 
 ## Version 6.0 - DragonBlaze
 
