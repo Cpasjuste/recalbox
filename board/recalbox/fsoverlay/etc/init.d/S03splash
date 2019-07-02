@@ -18,6 +18,16 @@ done
 
 ## Functions ##
 
+#hdmiOff
+# takes no argument and in case of a GPICase, we power off the hdmi port to save energy
+hdmiOff() {
+case=`egrep "^case=" /boot/recalbox-boot.conf|sed "s/case=//g"` 
+if [[ "$case" == "GPiV1:1" ]]; then
+    echo HDMI OFF
+    tvservice -o
+fi
+}
+
 # selectVideo
 #  takes no argument and outputs a random video from those available
 #  (uses 240p videos if framebuffer height is 240px or less)
@@ -110,7 +120,7 @@ fbdevHeight=$(cut -d, -f2 cat /sys/class/graphics/fb0/virtual_size)
 if [ -f /tmp/.install.png ]; then
   showInstallBackground &
 elif [ "$(head -c 3 /recalbox/recalbox.arch)" = "rpi" ]; then
-  ( playWithOMX ; showIntroBackground ) &
+  ( hdmiOff ; playWithOMX ; showIntroBackground ) &
 else
   ( playWithFFPlay; showIntroBackground ) &
 fi
