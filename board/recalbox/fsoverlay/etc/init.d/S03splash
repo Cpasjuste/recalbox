@@ -18,14 +18,14 @@ done
 
 ## Functions ##
 
-#hdmiOff
-# takes no argument and in case of a GPICase, we power off the hdmi port to save energy
-hdmiOff() {
-case=`egrep "^case=" /boot/recalbox-boot.conf|sed "s/case=//g"` 
-if [[ "$case" == "GPiV1:1" ]]; then
-    echo HDMI OFF
+# turnOffGPiCaseHDMI
+#   takes no argument, power off HDMI port to save energy when running in a GPi case
+turnOffGPiCaseHDMI() {
+  case=$(sed -n 's/^case=\(.*\)/\1/p' /boot/recalbox-boot.conf)
+  if [ "${case}" = "GPiV1:1" ]; then
+    recallog "GPi case detected: turning HDMI off"
     tvservice -o
-fi
+  fi
 }
 
 # selectVideo
@@ -120,7 +120,7 @@ fbdevHeight=$(cut -d, -f2 /sys/class/graphics/fb0/virtual_size)
 if [ -f /tmp/.install.png ]; then
   showInstallBackground &
 elif [ "$(head -c 3 /recalbox/recalbox.arch)" = "rpi" ]; then
-  ( hdmiOff ; playWithOMX ; showIntroBackground ) &
+  ( turnOffGPiCaseHDMI; playWithOMX; showIntroBackground ) &
 else
   ( playWithFFPlay; showIntroBackground ) &
 fi
