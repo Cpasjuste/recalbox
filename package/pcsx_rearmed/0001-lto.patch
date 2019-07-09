@@ -1,0 +1,44 @@
+--- a/plugins/gpu-gles/gpulib_if.c	2019-03-25 22:48:57.000000000 +0100
++++ b/plugins/gpu-gles/gpulib_if.c	2019-07-05 15:57:03.683219143 +0200
+@@ -674,7 +674,7 @@
+ 
+ static struct rearmed_cbs *cbs;
+ 
+-long GPUopen(void **dpy)
++long GPUopen(unsigned long * disp,char * CapText,char * CfgFile)
+ {
+  int ret;
+ 
+@@ -733,7 +733,7 @@
+  if (is_opened && cbs->gles_display != NULL && cbs->gles_surface != NULL) {
+   // HACK..
+   GPUclose();
+-  GPUopen(NULL);
++  GPUopen(NULL, NULL, NULL);
+  }
+ 
+  set_vram(gpu.vram);
+diff -ru -x '*.o' -x '*.map' -x '.stamp*' -x '.applied*' output/build/pcsx_rearmed-9d3801c90db3dee73a7a30d898857ad1a5821e59/plugins/gpulib/gpu.h output/build/pcsx_rearmed-modified/plugins/gpulib/gpu.h
+--- a/plugins/gpulib/gpu.h	2019-03-25 22:48:57.000000000 +0100
++++ b/plugins/gpulib/gpu.h	2019-07-05 15:57:40.711490215 +0200
+@@ -131,7 +131,7 @@
+ void GPUwriteStatus(uint32_t data);
+ long GPUfreeze(uint32_t type, struct GPUFreeze *freeze);
+ void GPUupdateLace(void);
+-long GPUopen(void **dpy);
++long GPUopen(unsigned long * disp,char * CapText,char * CfgFile);
+ long GPUclose(void);
+ void GPUvBlank(int is_vblank, int lcf);
+ void GPUrearmedCallbacks(const struct rearmed_cbs *cbs_);
+diff -ru -x '*.o' -x '*.map' -x '.stamp*' -x '.applied*' output/build/pcsx_rearmed-9d3801c90db3dee73a7a30d898857ad1a5821e59/plugins/gpulib/vout_pl.c output/build/pcsx_rearmed-modified/plugins/gpulib/vout_pl.c
+--- a/plugins/gpulib/vout_pl.c	2019-03-25 22:48:57.000000000 +0100
++++ b/plugins/gpulib/vout_pl.c	2019-07-05 15:57:03.675219084 +0200
+@@ -98,7 +98,7 @@
+   cbs->pl_vout_flip(NULL, 1024, gpu.status.rgb24, w, h);
+ }
+ 
+-long GPUopen(void **unused)
++long GPUopen(unsigned long * disp,char * CapText,char * CfgFile)
+ {
+   gpu.frameskip.active = 0;
+   gpu.frameskip.frame_ready = 1;

@@ -1,0 +1,11 @@
+config BR2_PACKAGE_PCSX_REARMED
+	bool "pcsx_rearmed"
+	depends on BR2_INSTALL_LIBSTDCPP
+	select BR2_PACKAGE_RECALBOX_ROMFS_PSX
+	help
+	  A psx emulator core for ARM.
+
+	  http://github.com/notaz/pcsx_rearmed
+
+comment "PCSX_REARMED needs a toolchain w/ C++"
+	depends on !BR2_INSTALL_LIBSTDCPP

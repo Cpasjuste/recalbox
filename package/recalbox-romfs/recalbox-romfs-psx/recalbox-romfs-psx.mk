@@ -5,7 +5,7 @@
 ################################################################################
 
 # Package generated with :
-# ./scripts/linux/empack.py --system psx --extension '.img .IMG .pbp .PBP .cue .CUE .iso .ISO .ccd .CCD .cbn .CBN .m3u .M3U .chd .CHD' --fullname 'Sony Playstation 1' --platform psx --theme psx libretro:pcsx_rearmed:BR2_PACKAGE_LIBRETRO_PCSX_REARMED libretro:mednafen_psx:BR2_PACKAGE_LIBRETRO_BEETLE_PSX libretro:mednafen_psx_hw:BR2_PACKAGE_LIBRETRO_BEETLE_PSX_HW
+# ./scripts/linux/empack.py --system psx --extension '.img .IMG .pbp .PBP .cue .CUE .iso .ISO .ccd .CCD .cbn .CBN .m3u .M3U .chd .CHD' --fullname 'Sony Playstation 1' --platform psx --theme psx libretro:pcsx_rearmed:BR2_PACKAGE_LIBRETRO_PCSX_REARMED libretro:mednafen_psx:BR2_PACKAGE_LIBRETRO_BEETLE_PSX libretro:mednafen_psx_hw:BR2_PACKAGE_LIBRETRO_BEETLE_PSX_HW BR2_PACKAGE_PCSX_REARMED
 
 # Name the 3 vars as the package requires
 RECALBOX_ROMFS_PSX_SOURCE = 
@@ -21,12 +21,12 @@ SOURCE_ROMDIR_PSX = $(RECALBOX_ROMFS_PSX_PKGDIR)/roms
 # variables are global across buildroot
 
 
-ifneq ($(BR2_PACKAGE_LIBRETRO_PCSX_REARMED)$(BR2_PACKAGE_LIBRETRO_BEETLE_PSX)$(BR2_PACKAGE_LIBRETRO_BEETLE_PSX_HW),)
+ifneq ($(BR2_PACKAGE_LIBRETRO_PCSX_REARMED)$(BR2_PACKAGE_LIBRETRO_BEETLE_PSX)$(BR2_PACKAGE_LIBRETRO_BEETLE_PSX_HW)$(BR2_PACKAGE_PCSX_REARMED),)
 define CONFIGURE_MAIN_PSX_START
 	$(call RECALBOX_ROMFS_CALL_ADD_SYSTEM,$(SYSTEM_XML_PSX),Sony Playstation 1,$(SYSTEM_NAME_PSX),.img .IMG .pbp .PBP .cue .CUE .iso .ISO .ccd .CCD .cbn .CBN .m3u .M3U .chd .CHD,psx,psx)
 endef
 
-ifneq ($(BR2_PACKAGE_LIBRETRO_PCSX_REARMED)$(BR2_PACKAGE_LIBRETRO_BEETLE_PSX)$(BR2_PACKAGE_LIBRETRO_BEETLE_PSX_HW),)
+ifneq ($(BR2_PACKAGE_LIBRETRO_PCSX_REARMED)$(BR2_PACKAGE_LIBRETRO_BEETLE_PSX)$(BR2_PACKAGE_LIBRETRO_BEETLE_PSX_HW)$(BR2_PACKAGE_PCSX_REARMED),)
 define CONFIGURE_PSX_LIBRETRO_START
 	$(call RECALBOX_ROMFS_CALL_START_EMULATOR,$(SYSTEM_XML_PSX),libretro)
 endef
@@ -53,7 +53,17 @@ define CONFIGURE_PSX_LIBRETRO_END
 endef
 endif
 
-
+ifeq ($(BR2_PACKAGE_PCSX_REARMED),y)
+define CONFIGURE_PCSX_REARMED_START
+	$(call RECALBOX_ROMFS_CALL_START_EMULATOR,$(SYSTEM_XML_PSX),pcsx_rearmed)
+endef
+define CONFIGURE_PCSX_REARMED_DEF
+	$(call RECALBOX_ROMFS_CALL_ADD_CORE,$(SYSTEM_XML_PSX),pcsx_rearmed)
+endef
+define CONFIGURE_PCSX_REARMED_END
+	$(call RECALBOX_ROMFS_CALL_END_EMULATOR,$(SYSTEM_XML_PSX))
+endef
+endif
 
 define CONFIGURE_MAIN_PSX_END
 	$(call RECALBOX_ROMFS_CALL_END_SYSTEM,$(SYSTEM_XML_PSX),$(SOURCE_ROMDIR_PSX),$(@D))
@@ -67,6 +77,9 @@ define RECALBOX_ROMFS_PSX_CONFIGURE_CMDS
 	$(CONFIGURE_PSX_LIBRETRO_MEDNAFEN_PSX_HW_DEF)
 	$(CONFIGURE_PSX_LIBRETRO_PCSX_REARMED_DEF)
 	$(CONFIGURE_PSX_LIBRETRO_END)
+	$(CONFIGURE_PCSX_REARMED_START)
+	$(CONFIGURE_PCSX_REARMED_DEF)
+	$(CONFIGURE_PCSX_REARMED_END)
 	$(CONFIGURE_MAIN_PSX_END)
 endef
 
