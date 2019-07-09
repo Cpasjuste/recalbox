@@ -29,13 +29,13 @@ fi
 }
 
 # selectVideo
-#  takes no argument and outputs a random video from those available
-#  (uses 240p videos if framebuffer height is 240px or less)
+#   takes no argument and outputs a random video from those available
+#   (uses 240p videos if framebuffer height is 240px or less)
 function selectVideo() {
   if [ ${fbdevHeight} -le 240 ]; then
     videoSubFolder="/240p"
   fi
-  IFS= find /recalbox/system/resources/splash${videoSubFolder} -name *.mp4 \
+  IFS= find /recalbox/system/resources/splash${videoSubFolder} -maxdepth 1 -name *.mp4 \
     | while read line; do echo "$RANDOM ${line}"; done \
     | sort -n \
     | head -1 \
