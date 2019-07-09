@@ -32,13 +32,13 @@ fi
 
 SHARECONFFILE="/boot/recalbox-boot.conf"
 INTERNALDEVICE=$(/recalbox/scripts/recalbox-part.sh "share_internal")
-SHAREDEVICE=`cat ${SHARECONFFILE} | grep "sharedevice=" | head -n1 | cut -d'=' -f2`
+SHAREDEVICE=`cat ${SHARECONFFILE} | grep "^sharedevice=" | head -n1 | cut -d'=' -f2`
 [[ "$?" -ne "0" || "$SHAREDEVICE" == "" ]] && SHAREDEVICE=INTERNAL
 
 getMaxTryConfig() {
     SHARECONFFILE=${1}
 
-    X=$(grep -E '^[ \t]*sharewait[ \t]*=' "${SHARECONFFILE}" | sed -e s+'^[ \t]*sharewait[ \t]*='+''+)
+    X=$(grep -E '^sharewait=' "${SHARECONFFILE}" | sed -e s+'^sharewait='+''+)
     if echo "${X}" | grep -qE '^[0-9][0-9]*$'
     then
 	echo "${X}"
@@ -61,7 +61,7 @@ if ! test -e "${INTERNALDEVICE}"
 then
     # but the system partition exists
     INTERNALPREVIOUSDEVICE=$(/recalbox/scripts/recalbox-part.sh previous "${INTERNALDEVICE}")
-    
+
     if test -e "${INTERNALPREVIOUSDEVICE}" # the partition n-1 must exist (just in case the parameter given is not wrong)
     then
 	PARTPREFIX=$(/recalbox/scripts/recalbox-part.sh prefix "${INTERNALDEVICE}")
@@ -213,7 +213,7 @@ mountNetwork() {
     return 0
 }
 
-RMODE="$SHAREDEVICE" 
+RMODE="$SHAREDEVICE"
 
 if echo "${RMODE}" | grep -qE '^DEV '
 then
@@ -296,4 +296,3 @@ touch /var/run/recalbox.share.mounted # reenable standard usbmount
 #	cat "${bootlogfile}" >> "${logpath}/${destfile}"
 #	rm "${bootlogfile}"
 #done
-

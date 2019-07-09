@@ -626,7 +626,7 @@ if [[ "$command" == "storage" ]]; then
     if [[ "$mode" == "current" ]]; then
         if test -e $storageFile
         then
-            SHAREDEVICE=`cat ${storageFile} | grep "sharedevice=" | head -n1 | cut -d'=' -f2`
+            SHAREDEVICE=`cat ${storageFile} | grep "^sharedevice=" | head -n1 | cut -d'=' -f2`
             [[ "$?" -ne "0" || "$SHAREDEVICE" == "" ]] && SHAREDEVICE=INTERNAL
             echo "$SHAREDEVICE"
         else
@@ -648,7 +648,7 @@ if [[ "$command" == "storage" ]]; then
         if [[ "${mode}" == "INTERNAL" || "${mode}" == "ANYEXTERNAL" || "${mode}" == "RAM" ]]; then
             if grep -qE "^sharedevice=" "${storageFile}"
             then
-                sed -i "s|sharedevice=.*|sharedevice=${mode}|g" "${storageFile}"
+                sed -i "s|^sharedevice=.*|sharedevice=${mode}|g" "${storageFile}"
             else
                 echo "sharedevice=${mode}" >> "${storageFile}"
             fi
@@ -656,7 +656,7 @@ if [[ "$command" == "storage" ]]; then
         if [[ "${mode}" == "DEV" ]]; then
             if grep -qE "^sharedevice=" "${storageFile}"
             then
-                sed -i "s|sharedevice=.*|sharedevice=${mode} $extra1|g" "${storageFile}"
+                sed -i "s|^sharedevice=.*|sharedevice=${mode} $extra1|g" "${storageFile}"
             else
                echo "sharedevice=${mode} ${extra1}" >> "${storageFile}"
             fi
@@ -694,4 +694,3 @@ echo "Uknown command $command"
 recallog -e "recalbox-config.sh: unknown command $command"
 
 exit 10
-

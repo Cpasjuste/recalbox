@@ -42,7 +42,7 @@ do_upgrade() {
     BOOTTAR="/recalbox/share/system/upgrade/boot.tar.xz"
     ROOTTAR="/recalbox/share/system/upgrade/root.tar.xz"
     NB_FILES_TARGET=`cat /recalbox/share/system/upgrade/root.list | wc -l`
-    
+
     cp /bin/busybox /tmp
     # percentage
     touch /tmp/upgrade.files
@@ -56,7 +56,7 @@ do_upgrade() {
 	    /tmp/busybox sleep 10
 	done
     ) | /recalbox/scripts/shell2fb.py &
-    
+
     # /boot is already upgraded
     # upgrading /root
     EXIT_CODE=1
@@ -88,7 +88,7 @@ pre_reboot_actions() {
   recallog "Upgrading RA Core names"
   upgradeRetroarchCoreNames -f /recalbox/share/system/configs/retroarch.corenames 2>&1 | recallog
   recallog "Reset case"
-  sed -i -E 's/case=(.*)//g' /boot/recalbox-boot.conf
+  sed -i 's/^case=.*$/d' /boot/recalbox-boot.conf
 }
 
 # what about doing an upgrade ?
@@ -98,10 +98,10 @@ then
     do_upgrade > /recalbox/share/system/upgrade/upgrade.out.log 2> /recalbox/share/system/upgrade/upgrade.err.log && \
       find /lib/modules/ ! -name "`uname -r`" -maxdepth 1 -mindepth 1 -exec rm -rf {} \;
     # remove existing previous kernel modules, remember that new /lib/modules was added before reboot
-    
+
     # remove to not apply it indefinitly, even if it fails
     rm "/recalbox/share/system/upgrade/boot.tar.xz" "/recalbox/share/system/upgrade/root.tar.xz" "/recalbox/share/system/upgrade/okforupgrade.go"
-    
+
     # Last commands before reboot
     pre_reboot_actions
     # rebooting now

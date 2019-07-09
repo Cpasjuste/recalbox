@@ -69,6 +69,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - RetroArch Disc Project: Initial backend implementation on beetle-psx, genesis-plus-gx and 4do cores
 - Several core/emulator bumps
 - Fix amiga multi-disks files bugs with []
+- Document `/boot/recalbox-boot.conf` (in-file comments)
 
 ## [6.0] - DragonBlaze
 - Change name from 5.0 to 6.0 DragonBlaze
