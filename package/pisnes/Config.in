@@ -1,0 +1,11 @@
+config BR2_PACKAGE_PISNES
+	bool "pisnes"
+	depends on BR2_INSTALL_LIBSTDCPP
+	select BR2_PACKAGE_RECALBOX_ROMFS_SNES
+	help
+	  A SNES emulator core for ARM.
+
+	  https://gitlab.com/Bkg2k/pisnes
+
+comment "PCSX_REARMED needs a toolchain w/ C++"
+	depends on !BR2_INSTALL_LIBSTDCPP

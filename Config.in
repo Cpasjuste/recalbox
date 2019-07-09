@@ -50,6 +50,7 @@ endmenu
 menu "Emulators"
 	 source "$BR2_EXTERNAL_RECALBOX_PATH/package/ppsspp/Config.in"
          source "$BR2_EXTERNAL_RECALBOX_PATH/package/pcsx_rearmed/Config.in"
+         source "$BR2_EXTERNAL_RECALBOX_PATH/package/pisnes/Config.in"
 	 source "$BR2_EXTERNAL_RECALBOX_PATH/package/linapple-pie/Config.in"
 	 source "$BR2_EXTERNAL_RECALBOX_PATH/package/oricutron/Config.in"
 	 source "$BR2_EXTERNAL_RECALBOX_PATH/package/simcoupe/Config.in"
