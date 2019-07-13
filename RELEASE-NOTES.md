@@ -35,6 +35,7 @@
 - New GUI Menu: In gamelist views, START opens game contextual menu. SELECT switch between all games/favorites only
 - Add game information screen in demo mode
 - Mame changes its default emulator to mame2003_plus
+- Add option to confirm before exiting a game (libretro cores only)
 - Shutdown System option moved at the top of the Quit menu
 - Retroarch ratio resynchronized:
   - "Core provided" and "Retroarch Custom" added to ratio menu

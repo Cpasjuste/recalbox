@@ -31,6 +31,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Add game info screen in demo mode
 - Change default mame emulator to mame2003_plus core (0.78 romset with improvements and additions)
 - Web interface: IRC link replaced by Discord link in help section
+- Add RetroArch option "quit_press_twice" to confirm before exiting a game
 - Shutdown System option moved at the top of the Quit menu
 - Fix lutro zipped games unzipping in the .lutro folder
 - Support archive: switch to transfer.sh Temp File Hosting
