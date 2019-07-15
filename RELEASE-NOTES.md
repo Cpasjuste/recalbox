@@ -14,6 +14,7 @@
 - New core! Added SameBoy libretro core. Game link support for GB/GBC
 - New video snaps! Now see short videos of games before launching them
 - GPi Case Plug & Play: Autodetect and install drivers & appropriate themes and settings
+- New system! PC-88 added with libretro's quasi88 emulator
 
 ### Improvements
 - Retroarch updated to version 1.7.7+!

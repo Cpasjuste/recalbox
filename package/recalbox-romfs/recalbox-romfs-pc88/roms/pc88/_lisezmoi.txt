@@ -1,6 +1,6 @@
-## RECALBOX - SYSTEM NEC PC-98 ##
+## RECALBOX - SYSTEM NEC PC-88 ##
 
-Placez ici vos roms NEC PC-98.
+Placez ici vos roms NEC PC-88.
 
 Les roms doivent avoir l'extension ".d98/.98d/.fdi/.fdd/.2hd/.tfd/.d88/.88d/.hdm/.xdf/.dup/.cmd/.hdi/.thd/.nhd/.hdd/.hdn/.zip/.7z"
 

@@ -1,6 +1,6 @@
-## RECALBOX - SYSTEM NEC PC-98 ##
+## RECALBOX - SYSTEM NEC PC-88 ##
 
-Put your NEC PC-98 roms in this directory.
+Put your NEC PC-88 roms in this directory.
 
 Rom files must have a ".d98/.98d/.fdi/.fdd/.2hd/.tfd/.d88/.88d/.hdm/.xdf/.dup/.cmd/.hdi/.thd/.nhd/.hdd/.hdn/.zip/.7z" extension.
 
