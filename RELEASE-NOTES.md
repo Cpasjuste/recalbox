@@ -48,7 +48,7 @@
 - pcsx_rearmed supports .chd files now too
 - Improve volume balancing between RetroArch and Recalbox
 - Add .zip and .7z extensions for N64 (only work with libretro-mupen64plus)
-- RetroArch Disc Project: Initial backend implementation on beetle-psx, genesis-plus-gx and 4do cores
+- RetroArch Disc Project: Groundwork for playing games directly from your CDROM
 - Almost all core/emulators has been bumped again. Too much for the detailed list!
 
 ### Fixes

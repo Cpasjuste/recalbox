@@ -14,6 +14,8 @@ for DIR in cheats \
            themes \
            system/.cache \
            system/.config/lirc \
+           system/.config/residualvm \
+           system/.config/scummvm \
            system/.emulationstation/themes \
            system/bluetooth \
            system/configs \
@@ -33,18 +35,15 @@ done
 # there are almost empty, it's just for the structure
 # the user can delete the directory, it will recreate the structure
 # the user can delete files, files will not be recreated
-for FILE in music bios bios/amiga bios/keropi extractions kodi saves saves/amiga screenshots \
+for FILE in music bios extractions kodi saves saves/amiga screenshots \
             system/.config/lirc/lircd.conf \
+            system/.config/residualvm/residualvm.ini \
+            system/.config/scummvm/scummvm.ini \
             system/.emulationstation/{es_input.cfg,es_settings.cfg} \
             system/{.hatari,.kodi,.atari800.cfg} \
             system/configs/{advancemame,daphne,dolphin-emu,dosbox,fba,kodi,moonlight,mupen64,ppsspp,reicast,retroarch,shadersets,xarcade2jstick} \
             system/recalbox.conf \
-            bios/mame2003 \
-            bios/fba \
-            bios/mame2000 \
-            bios/mame2003-plus \
-            bios/mame2010 \
-            bios/np2kai
+            bios/{amiga,Databases,dc,fba,fbneo,keropi,Machines,mame2000,mame2003,mame2003-plus,mame2010,mame2015,mame2016,np2kai,oricutron,prboom,quasi88,xmil}
 do
     # not wanted for kodi
     test -e "$IN""/""$FILE" && test ! -e "$OUT""/""$FILE" && cp -r "$IN""/""$FILE" "$OUT""/""$FILE"

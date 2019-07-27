@@ -67,7 +67,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Stella libretro: Rebrand stella to stella2014 and add upstream stella core
 - Mupen64Plus libretro: Migrate Glupen64 to Mupen64Plus
 - N64: add .zip and .7z extensions (only work with libretro-mupen64plus)
-- RetroArch Disc Project: Initial backend implementation on beetle-psx, genesis-plus-gx and 4do cores
+- RetroArch Disc Project: Initial backend implementation
 - Several core/emulator bumps
 - Fix amiga multi-disks files bugs with []
 - Document `/boot/recalbox-boot.conf` (in-file comments)

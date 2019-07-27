@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-LIBRETRO_HANDY_VERSION = 567f2906cd3110ce638d2ba68a0baf8feac10b2b
+LIBRETRO_HANDY_VERSION = 165ad6a5105bef56864112ff66494ee86734348b
 LIBRETRO_HANDY_SITE = $(call github,libretro,libretro-handy,$(LIBRETRO_HANDY_VERSION))
 
 define LIBRETRO_HANDY_BUILD_CMDS
