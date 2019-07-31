@@ -50,6 +50,11 @@
 - Add .zip and .7z extensions for N64 (only work with libretro-mupen64plus)
 - RetroArch Disc Project: Groundwork for playing games directly from your CDROM
 - Almost all core/emulators has been bumped again. Too much for the detailed list!
+- ScreenScraper internal scraper is back with new options
+  - Choose your image: Screenshot, Title, Front Case, 3D Case, Mix V1 and Mix V2
+  - Use your ScreenScraper account to get higher per day limitations
+  - Choose your favorite region/language to get appropriate images and texts
+- TheGameDB internal scraper is back using newest APIs 
 
 ### Fixes
 - Fix boot intro videos on x86 and x64
@@ -63,6 +68,9 @@
 - Fix intro video fullscreen on x86/x64
 - Fix steam controller driver
 - Fix Amiga multi-disk bug with [] characters
+- Fix Amiga WHDL loader
+- Fix default scraper
+
 
 ## Version 6.0 - DragonBlaze
 

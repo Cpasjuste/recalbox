@@ -5,7 +5,7 @@
 ################################################################################
 
 # Package generated with :
-# ./scripts/linux/empack.py --system amigacdtv --extension '.adf .Adf .ADF .uae' --fullname 'Amiga CDTV' --platform amiga --theme amigacdtv BR2_PACKAGE_AMIBERRY
+# ./scripts/linux/empack.py --system amigacdtv --extension '.adf .Adf .ADF .uae' --fullname 'Amiga CDTV' --platform amigacdtv --theme amigacdtv BR2_PACKAGE_AMIBERRY
 
 # Name the 3 vars as the package requires
 RECALBOX_ROMFS_AMIGACDTV_SOURCE = 
@@ -23,7 +23,7 @@ SOURCE_ROMDIR_AMIGACDTV = $(RECALBOX_ROMFS_AMIGACDTV_PKGDIR)/roms
 
 ifeq ($(BR2_PACKAGE_AMIBERRY),y)
 define CONFIGURE_AMIGACDTV
-	$(call RECALBOX_ROMFS_CALL_ADD_STANDALONE_SYSTEM,$(SYSTEM_XML_AMIGACDTV),Amiga CDTV,$(SYSTEM_NAME_AMIGACDTV),.adf .Adf .ADF .uae,amiga,amigacdtv,$(SOURCE_ROMDIR_AMIGACDTV),$(@D))
+	$(call RECALBOX_ROMFS_CALL_ADD_STANDALONE_SYSTEM,$(SYSTEM_XML_AMIGACDTV),Amiga CDTV,$(SYSTEM_NAME_AMIGACDTV),.adf .Adf .ADF .uae,amigacdtv,amigacdtv,$(SOURCE_ROMDIR_AMIGACDTV),$(@D))
 endef
 RECALBOX_ROMFS_AMIGACDTV_CONFIGURE_CMDS += $(CONFIGURE_AMIGACDTV)
 endif
