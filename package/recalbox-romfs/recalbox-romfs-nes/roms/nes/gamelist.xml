@@ -1,5 +1,14 @@
 <?xml version="1.0"?>
 <gameList>
+	  <game>
+    <path>./Underground Adventure (Arcade) [NESMaker].nes</path>
+    <name>Underground Adventure</name>
+    <desc>Follow Harry & Jack's adventures in mysterious caves. Collect all gems to complete levels. Escapes monsters and complete all levels to reach the final exit!</desc>
+    <developer>dale_coop</developer>
+    <genre>Plateforme</genre>
+    <players>1-2</players>
+    <image>./media/images/Underground Adventure (Arcade) [NESMaker].png</image>
+  </game>
 	<game>
 		<path>./2048 (tsone).nes</path>
 		<name>2048</name>
