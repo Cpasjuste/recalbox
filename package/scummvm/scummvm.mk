@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-SCUMMVM_VERSION = bc857785485884e4fb0b05b659e399031db833cb
+SCUMMVM_VERSION = 0b0f803a93973311dc8aaa08f114994fe1446ab7
 SCUMMVM_REPO = scummvm
 SCUMMVM_SITE = $(call github,$(SCUMMVM_REPO),scummvm,$(SCUMMVM_VERSION))
 SCUMMVM_LICENSE = GPL2
