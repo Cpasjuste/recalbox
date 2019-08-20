@@ -116,7 +116,20 @@ b2a8570de2e850c5acf81cb80512d9f6  tos.img
 
 - DREAMCAST :
 e10c53c2f8b90bab96ead2d368858623  dc_boot.bin
-d6e11a23f1fa01cddb5dfccf7e4cc8d7  dc_flash.bin
+0a93f7940c455905bea6e392dfde92a4  dc_flash.bin
+
+
+- DREAMCAST/NAOMI/ATOMISWAVE (flycast emulator) :
+Les fichiers bios doivent être placés dans un sous dossier nommé "dc"
+
+e10c53c2f8b90bab96ead2d368858623  dc/dc_boot.bin
+0a93f7940c455905bea6e392dfde92a4  dc/dc_flash.bin
+eb4099aeb42ef089cfe94f8fe95e51f6  dc/naomi.zip
+9c755171b222fb1f4e1439d5b709dbf1  dc/hod2bios.zip
+5e83867c751f692a000afdf658dc181f  dc/f355dlx.zip
+f126d318f135f38ee377fef2acf08d7e  dc/f355bios.zip
+3f348c88af99a40fbd11fa435f28c69d  dc/airlbios.zip
+0ec5ae5b5a5c4959fa8b43fcf8687f7c  dc/awbios.zip
 
 
 - Nintendo DS (Uniquement X86/X86_64) :

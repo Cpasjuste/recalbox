@@ -1,0 +1,14 @@
+config BR2_PACKAGE_LIBRETRO_FLYCAST
+	bool "libretro-flycast"
+	depends on BR2_PACKAGE_RETROARCH
+	depends on BR2_INSTALL_LIBSTDCPP
+	select BR2_PACKAGE_RECALBOX_ROMFS_ATOMISWAVE
+	select BR2_PACKAGE_RECALBOX_ROMFS_DREAMCAST
+	select BR2_PACKAGE_RECALBOX_ROMFS_NAOMI
+	help
+	  A libretro atomiswave, dreamcast and naomi core.
+
+	  http://www.libretro.com
+
+comment "LIBRETRO_FLYCAST needs a toolchain w/ C++"
+	depends on !BR2_INSTALL_LIBSTDCPP

@@ -18,6 +18,9 @@
 - New system! TIC-80 added with libretro's tic80 emulator
 - New system! MSXturboR as own system. Generic msx system has been removed.
 - New system! Multivision added with libretro's gearsystem emulator
+- New system! Atomiswave added with libretro's flycast emulator (pc only)
+- New system! NAOMI added with libretro's flycast emulator (pc only)
+- New core! Added flycast libretro core. Dreamcast (et al.) emulator
 
 ### Improvements
 - Retroarch updated to version 1.7.7+!

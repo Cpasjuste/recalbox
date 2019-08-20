@@ -191,6 +191,11 @@ ifneq ($(BR2_PACKAGE_LIBRETRO_HATARI),)
         RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-atarist
 endif
 
+# System: atomiswave
+ifneq ($(BR2_PACKAGE_LIBRETRO_FLYCAST),)
+        RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-atomiswave
+endif
+
 # System: c64
 ifneq ($(BR2_PACKAGE_LIBRETRO_VICE_x64),)
         RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-c64
@@ -221,12 +226,12 @@ ifeq ($(BR2_PACKAGE_DOSBOX),y)
 	RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-dos
 endif
 
-# Sytem: dreamcast
-ifeq ($(BR2_PACKAGE_REICAST),y)
-	RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-dreamcast
+# System: dreamcast
+ifneq ($(BR2_PACKAGE_LIBRETRO_FLYCAST)$(BR2_PACKAGE_REICAST),)
+        RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-dreamcast
 endif
-ifeq ($(BR2_PACKAGE_REICAST_OLD),y)
-	RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-dreamcast
+ifneq ($(BR2_PACKAGE_LIBRETRO_FLYCAST)$(BR2_PACKAGE_REICAST_OLD),)
+        RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-dreamcast
 endif
 
 # System: fba
@@ -342,6 +347,11 @@ endif
 # System: n64
 ifneq ($(BR2_PACKAGE_MUPEN64PLUS_GLIDEN64)$(BR2_PACKAGE_MUPEN64PLUS_GLES2N64)$(BR2_PACKAGE_MUPEN64PLUS_GLES2RICE)$(BR2_PACKAGE_MUPEN64PLUS_VIDEO_GLIDE64MK2)$(BR2_PACKAGE_LIBRETRO_MUPEN64PLUS),)
         RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-n64
+endif
+
+# System: naomi
+ifneq ($(BR2_PACKAGE_LIBRETRO_FLYCAST),)
+        RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-naomi
 endif
 
 # System: nds
