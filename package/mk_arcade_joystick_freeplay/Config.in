@@ -1,0 +1,8 @@
+config BR2_PACKAGE_MK_ARCADE_JOYSTICK_FREEPLAY
+	bool "mk_arcade_joystick_freeplay"
+	depends on BR2_LINUX_KERNEL
+	help
+	  Kernel module to support joystick on freeplay devices
+
+comment "mk_arcade_joystick_freeplay needs a kernel and headers"
+	depends on !BR2_LINUX_KERNEL
