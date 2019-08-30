@@ -5,7 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [6.1]
 - Replacement of the neogeo intro video
 - Fix : bug introrecaboxsms.mp4 is not playing fixed with reencoding
-- Enable vsync in dolphin-emu
+- Enable Vsync in dolphin-emu
 - Enable VSync on retroarch (x86, x86_64)
 - Fix: adding gpicase specific video dpi overlay
 - Fix: adding gpicase specific audio pwm overlay
@@ -45,10 +45,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Moga Pro Power, Wiimote, Logitech RumblePad added to es_input.cfg
 - Enable threaded-dsp option in 4do core
 - Bluetooth: Previously configured pads automatically unpaired before pairing again
-- Bump retroarch to 1.7.7+
+- Bump retroarch to 1.7.8
 - Bump Odroid XU4 kernel to 4.14
 - More firmwares and drivers added
-- Bump libretro pcsx_rearmed to support .chd files
+- Bump libretro pcsx_rearmed to support .chd files and "optimized" PSXONPSP660.bin BIOS
 - Wifi password encryption removed
 - Bump raspberry pi firmware - Compatible Pi 3A+
 - New video snaps
@@ -80,7 +80,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Replace old TheGameDB scraper with a new one usign latest APIs
 - Vice x64sc (accurate) emulator for Commodore 64
 - Remove generic MSX in favor of new MSXturboR system
-- Add Atomiswave, NAOMI and new Dreamcast emulator on x86(_64) (libretro-flycast)
+- Add Atomiswave, NAOMI and new Dreamcast emulator on x86_64 (libretro-flycast)
 
 ## [6.0] - DragonBlaze
 - Change name from 5.0 to 6.0 DragonBlaze

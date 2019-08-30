@@ -1,6 +1,6 @@
 --- a/retroarch.c
 +++ b/retroarch.c
-@@ -732,6 +732,7 @@
+@@ -791,6 +791,7 @@
     RA_OPT_EOF_EXIT,
     RA_OPT_LOG_FILE,
     RA_OPT_MAX_FRAMES,
@@ -40,7 +40,7 @@
                          &recording_width,
 --- a/retroarch.h
 +++ b/retroarch.h
-@@ -278,6 +278,7 @@
+@@ -233,6 +233,7 @@
        char ips[8192];
        char label[8192];
        char *remapfile;
@@ -50,7 +50,7 @@
     /* Recording. */
 --- a/tasks/task_content.c
 +++ b/tasks/task_content.c
-@@ -666,6 +666,7 @@
+@@ -702,6 +702,7 @@
        int64_t *length)
  {
     uint8_t *ret_buf          = NULL;
@@ -58,7 +58,7 @@
  
     RARCH_LOG("%s: %s.\n",
           msg_hash_to_str(MSG_LOADING_CONTENT_FILE), path);
-@@ -713,7 +714,13 @@
+@@ -749,7 +750,13 @@
           }
        }
        else
@@ -73,7 +73,7 @@
     }
  
     *buf = ret_buf;
-@@ -903,6 +910,7 @@
+@@ -939,6 +946,7 @@
  {
     unsigned i;
     retro_ctx_load_content_info_t load_info;
@@ -81,7 +81,7 @@
     bool used_vfs_fallback_copy = false;
  #ifdef __WINRT__
     rarch_system_info_t *system = runloop_get_system_info();
-@@ -1051,6 +1059,10 @@
+@@ -1087,6 +1095,10 @@
  
           RARCH_LOG("%s\n", msg_hash_to_str(
                    MSG_CONTENT_LOADING_SKIPPED_IMPLEMENTATION_WILL_DO_IT));
@@ -92,7 +92,7 @@
           pending_content_rom_crc      = true;
           strlcpy(pending_content_rom_crc_path,
                 path, sizeof(pending_content_rom_crc_path));
-@@ -2383,6 +2395,7 @@
+@@ -2406,6 +2418,7 @@
              (const char*)pending_content_rom_crc_path);
        RARCH_LOG("CRC32: 0x%x .\n", (unsigned)content_rom_crc);
     }
