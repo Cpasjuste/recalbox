@@ -70,5 +70,3 @@ dtoverlay=gpio-poweroff,gpiopin=21,active_low
 dtparam=act_led_trigger=none
 dtparam=act_led_activelow=on
 audio_pwm_mode=2
-# gpio keys: https://github.com/TheFlav/Freeplay-Support/blob/master/gpio-keys-freeplay.txt
-dtoverlay=gpio-keys-freeplay
