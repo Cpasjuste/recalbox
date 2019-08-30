@@ -48,10 +48,10 @@ temp_soft_limit=70
 
 # FreePlay
 # force 320x240 resolution on hdmi for fbcp-ili*
-#hdmi_group=2
-#hdmi_mode=87
-#hdmi_cvt=320 240 60 1 0 0 0
-#hdmi_force_hotplug=1
+hdmi_group=2
+hdmi_mode=87
+hdmi_cvt=320 240 60 1 0 0 0
+hdmi_force_hotplug=1
 [pi0]
 #Freeplay Zero
 dtoverlay=audremap,swap_lr=off
