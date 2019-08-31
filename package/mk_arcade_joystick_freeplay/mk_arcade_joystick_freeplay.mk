@@ -32,7 +32,6 @@ endef
 define MK_ARCADE_JOYSTICK_FREEPLAY_INSTALL_TARGET_CMDS
 	$(MAKE) -C $(@D) $(LINUX_MAKE_FLAGS) KERNELDIR=$(LINUX_DIR) modules_install
 	$(INSTALL) -D -m 0644 $(MK_ARCADE_JOYSTICK_FREEPLAY_PKGDIR)/mk_arcade_joystick.conf $(TARGET_DIR)/etc/modprobe.d/mk_arcade_joystick.conf
-	$(INSTALL) -D -m 0644 $(MK_ARCADE_JOYSTICK_FREEPLAY_PKGDIR)/modules.conf $(TARGET_DIR)/etc/modules.conf
 endef
 
 $(eval $(generic-package))

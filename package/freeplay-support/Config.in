@@ -1,5 +1,6 @@
 config BR2_PACKAGE_FREEPLAY_SUPPORT
 	bool "freeplay-support"
+	depends on BR2_PACKAGE_RECALBOX_THEMES
 	help
 	  Support for the freeplay handheld
 
