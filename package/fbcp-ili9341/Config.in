@@ -1,0 +1,7 @@
+config BR2_PACKAGE_FBCP_ILI9341
+	bool "fbcp-ili9341"
+	help
+	  Raspberry Pi utility.
+	  Used for mirror primary framebuffer to secondary framebuffer.
+
+	  https://github.com/Cpasjuste/fbcp-ili9341
