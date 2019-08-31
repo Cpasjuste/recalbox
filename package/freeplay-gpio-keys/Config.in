@@ -1,5 +1,0 @@
-config BR2_PACKAGE_FREEPLAY_GPIO_KEYS
-	bool "freeplay-gpio-keys"
-	depends on BR2_PACKAGE_RPI_FIRMWARE
-	help
-	  Handle freeplay gpio keys
