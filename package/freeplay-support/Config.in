@@ -1,0 +1,6 @@
+config BR2_PACKAGE_FREEPLAY_SUPPORT
+	bool "freeplay-support"
+	help
+	  Support for the freeplay handheld
+
+	  https://www.freeplaytech.com/
