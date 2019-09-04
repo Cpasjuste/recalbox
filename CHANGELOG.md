@@ -78,9 +78,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Add TIC-80 emulator (libretro-tic80)
 - Replace old ScreenScraper scraper with a new one using API v2
 - Replace old TheGameDB scraper with a new one usign latest APIs
-- Vice x64sc (accurate) emulator for Commodore 64
+- Add Vice x64sc (accurate) emulator for Commodore 64
 - Remove generic MSX in favor of new MSXturboR system
 - Add Atomiswave, NAOMI and new Dreamcast emulator on x86_64 (libretro-flycast)
+- Add Saturn libretro emulators (mednafen_saturn, yabause and yabasanshiro) on x86(_64)
 
 ## [6.0] - DragonBlaze
 - Change name from 5.0 to 6.0 DragonBlaze

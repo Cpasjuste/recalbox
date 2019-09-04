@@ -21,6 +21,7 @@
 - New system! Atomiswave added with libretro's flycast emulator (pc only)
 - New system! NAOMI added with libretro's flycast emulator (pc only)
 - New core! Added flycast libretro core. Dreamcast (et al.) emulator
+- New system! Saturn added with libretro's bettle-saturn, yabause and yabasanshiro emulators (pc only)
 
 ### Improvements
 - Retroarch updated to version 1.7.8!
