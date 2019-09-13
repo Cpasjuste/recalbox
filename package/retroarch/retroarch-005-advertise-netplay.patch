@@ -1,6 +1,6 @@
 --- a/network/netplay/netplay_frontend.c
 +++ b/network/netplay/netplay_frontend.c
-@@ -845,7 +845,7 @@
+@@ -850,7 +850,7 @@
                 sizeof(architecture));
           break;
     }

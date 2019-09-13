@@ -2,16 +2,27 @@ Utilisez la commande md5 pour verifier le checksum de vos fichiers
 Voici la liste des bios compatibles, avec le nom correspondant, triés par systemes.
 
 
-- Sega 32X : 
+- SEGA 32X : 
 6a5433f6a132a2b683635819a6dcf085  32X_G_BIOS.BIN
 f88354ec482be09aeccd76a97bb75868  32X_M_BIOS.BIN
 7f041b6a55cd7423a6c08a219335269e  32X_S_BIOS.BIN
 
 
-- Sega MEGA CD :
+- SEGA MEGA CD :
 e66fa1dc5820d254611fdcdba0662372  bios_CD_E.bin
 2efd74e3232ff260e371b99f84024f7f  bios_CD_U.bin
 278a9397d192149e84e820ac621a8edd  bios_CD_J.bin
+
+- SEGA SATURN (MEDNAFEN_SATURN) :
+85ec9ca47d8f6807718151cbcca8b964  sega_101.bin
+3240872c70984b6cbfda1586cab68dbe  mpr-17933.bin
+255113ba943c92a54facd25a10fd780c  mpr-18811-mx.ic1
+1cd19988d1d72a3e7caa0b73234c96b4  mpr-19367-mx.ic1
+
+
+- SEGA SATURN (YABAUSE/KRONOS/YABASANSHIRO) :
+af5828fdff51384f99b3c4926be27762  saturn_bios.bin
+53a094ad3a188f86de4e64624fe9b3ca  stvbios.zip
 
 
 - FAMICOM DISK SYSTEM : 

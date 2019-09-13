@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-LIBRETRO_MU_VERSION = 33f7cb89480ae51cd26ad032e73346bb362d39b2
+LIBRETRO_MU_VERSION = ab608e1d78e0e833e5b6f81831ba937b593ebfb0
 LIBRETRO_MU_SITE = $(call github,meepingsnesroms,mu,$(LIBRETRO_MU_VERSION))
 
 define LIBRETRO_MU_BUILD_CMDS
