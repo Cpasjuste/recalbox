@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-LIBRETRO_HATARI_VERSION = 3fdaff4dce22c6a328fce932dc6ebcb30ff76dff
+LIBRETRO_HATARI_VERSION = 544b36b5972757afc6d309f9400aa42338aedc21
 LIBRETRO_HATARI_SITE = $(call github,libretro,hatari,$(LIBRETRO_HATARI_VERSION))
 LIBRETRO_HATARI_DEPENDENCIES = libcapsimage
 
