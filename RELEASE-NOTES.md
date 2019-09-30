@@ -6,6 +6,7 @@
 
 ### Improvements
 - Add zfast shaders, fast CRT shaders for all platforms
+- Odroid C2 removed from supported boards
 
 ### Fixes
 - Fix Reicast on XU4 and PC platforms and fix wrong flycast entry on Rpi
@@ -99,7 +100,6 @@
 - Fix Amiga multi-disk bug with [] characters
 - Fix Amiga WHDL loader
 - Fix default scraper
-
 
 ## Version 6.0 - DragonBlaze
 
