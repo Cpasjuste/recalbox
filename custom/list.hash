@@ -1,7 +1,8 @@
 --------------------------------  package/bluez5_utils/0002-bt_shell-APIs-shall-only-be-build-if-readline-is-pre.patch
 19140a13d0e2ab4a203801ada1d4120e  package/bluez5_utils/bluez5_utils.hash
 e67f118b5f106f6bc39307022af93d72  package/bluez5_utils/bluez5_utils.mk
-00f2f167ced7fcc7200e20c6eec3db4c  package/boost/boost.mk
+4b4f874a9cb6397ff31fdee7d1029a4d  package/boost/boost.mk
+e1574895e6b1031a7439ee527b6662bf  package/dhcpcd/dhcpcd.mk
 c445390118f5d058dd372a8b2beb25a8  package/dropbear/S50dropbear
 04ab2c6ad3f5da17bd1a481a06b99271  package/e2fsprogs/e2fsprogs.hash
 fc5eeda08e636b90db05aa703cd3a783  package/e2fsprogs/e2fsprogs.mk

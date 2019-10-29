@@ -1,92 +1,181 @@
-#!/bin/ash
+#!/bin/bash
 
-if [ "$1" != "start" ]; then
-  exit 0
+interface=wlan0
+config_file=/recalbox/share/system/recalbox.conf
+config_file_boot=/boot/recalbox-backup.conf
+wpa_file=/etc/wpa_supplicant.conf
+
+# if /recalbox/share is not yet mounted
+if ! [ -f "$config_file" ]; then
+  # use the boot version of the file
+  config_file="$config_file_boot"
 fi
 
-## Functions ##
-
-# readSetting <setting>
-#   returns the setting value in /boot/recalbox-backup.conf
-function readSetting() {
-  local setting="$1"
-  echo "${recalboxConfig}" | sed -n "s/^${setting}=\(.*\)$/\1/p" | head -1
+mask2cidr() {
+    nbits=0
+    IFS=.
+    for dec in $1 ; do
+        case $dec in
+            255) let nbits+=8;;
+            254) let nbits+=7;;
+            252) let nbits+=6;;
+            248) let nbits+=5;;
+            240) let nbits+=4;;
+            224) let nbits+=3;;
+            192) let nbits+=2;;
+            128) let nbits+=1;;
+            0);;
+            *) echo "Error: $dec is not recognised"; exit 1
+        esac
+    done
+    echo "$nbits"
 }
 
-# waitForConnmanDaemon
-#   sleeps until connmand is started, up to 2 seconds
-function waitForConnmanDaemon() {
-  local count=0
+# Function to create wifi profiles based on user settings
+rb_wifi_configure() {
+  [ "$1" = "1" ] && X="" || X="$1"
+  settings_ssid=`egrep -m1 "^wifi${X}.ssid" ${config_file}|sed "s/wifi${X}.ssid=//g"`
+  settings_key=`egrep -m1 "^wifi${X}.key" ${config_file}|sed "s/wifi${X}.key=//g"`
+  settings_ip=`egrep -m1 "^wifi${X}.ip" ${config_file}|sed "s/wifi${X}.ip=//g"`
+  settings_gateway=`egrep -m1 "^wifi${X}.gateway" ${config_file}|sed "s/wifi${X}.gateway=//g"`
+  settings_netmask=`egrep -m1 "^wifi${X}.netmask" ${config_file}|sed "s/wifi${X}.netmask=//g"`
 
-  until connmanctl state; do
-    if [ ${count} -gt 20 ]; then
-      recallog -f init.log "Error: Connmand not ready. Cannot configure it."
-      exit 1
-    else
-      sleep 0.1
-      let count++
+  # setup wpa_supplicant network
+  if [[ "$settings_ssid" != "" ]] ;then
+
+    recallog "Configuring wifi for SSID: $settings_ssid"
+    network=`wpa_cli -i ${interface} add_network`
+    wpa_cli -i "$interface" set_network "$network" ssid "\"$settings_ssid\"" || exit 1
+    wpa_cli -i "$interface" set_network "$network" psk "\"$settings_key\"" || exit 1
+    wpa_cli -i "$interface" set_network "$network" scan_ssid 1 || exit 1
+    wpa_cli -i "$interface" enable_network "$network" || exit 1
+
+    # static ip configuration in dhcpcd.conf
+    mount -o remount,rw /
+    sed -i "/\b\($interface\|static\)\b/d" /etc/dhcpcd.conf
+    if [[ "$settings_ip" != "" ]] && \
+      [[ "$settings_gateway" != "" ]] && \
+      [[ "$settings_netmask" != "" ]] ;then
+      recallog "static ip configuration"
+      settings_netmask=$(mask2cidr $settings_netmask)
+      recallog "static ip_address=$settings_ip/$settings_netmask"
+      recallog "static routers=$settings_gateway"
+      echo "interface $interface" >> /etc/dhcpcd.conf
+      echo "static ip_address=$settings_ip/$settings_netmask" >> /etc/dhcpcd.conf
+      echo "static routers=$settings_gateway" >> /etc/dhcpcd.conf
     fi
+    mount -o remount,ro /
+
+  fi
+
+}
+
+# function to drop all of the wpa_suppliment networks
+wpa_drop_all_networks() {
+  # limit any infinite loop to 10 max
+  for i in {1..10}; do
+
+    # get the last network id
+    netid=`wpa_cli -i $interface list_networks | tail -n1` 
+    netid=$(echo $netid | tr " " "\n")
+
+    # exit at the header record
+    if [[ $netid == network* ]]; then
+      break
+    fi
+
+    # remove network id
+    wpa_cli -i "$interface" remove_network "$netid" || exit 1
   done
 }
 
-# writeConnmanConfig [number]
-#   creates a configuration file for Connman, with values from /boot/recalbox-backup.conf
-#   [number] can be 2 or 3 (default is empty), it allows us to have 3 configured networks
-function writeConnmanConfig() {
-  local configIndex="$1"
-  local outputFile="/var/lib/connman/recalbox_wifi${configIndex}.config"
-  local ssid=$(readSetting "wifi${configIndex}.ssid")
-  local key=$(readSetting "wifi${configIndex}.key")
-  local ip=$(readSetting "wifi${configIndex}.ip")
-  local netmask=$(readSetting "wifi${configIndex}.netmask")
-  local gateway=$(readSetting "wifi${configIndex}.gateway")
+enable_wifi() {
+  # enable interface
+  ifconfig "$interface" up
 
-  if [ -n "${ssid}" ]; then
-    recallog "Recovering wifi configuration for SSID: ${ssid}"
-    mkdir -p "/var/lib/connman"
-    cat > "${outputFile}" <<EOF
-[global]
-Name=recalbox
+  # start wpa_supplicant
+  killall -q wpa_supplicant
+  sleep 2 # prevents a race condition on killall
+  wpa_supplicant -B -i "$interface" -c "$wpa_file"
 
-[service_recalbox_${configIndex:-default}]
-Type=wifi
-Name=${ssid}
-EOF
-    if [ -n "${ip}" ] && [ -n "${netmask}" ] && [ -n "${gateway}" ]; then
-      echo "IPv4=${ip}/${netmask}/${gateway}" >> "${outputFile}"
+  # clear wpa_supplicant configuration and rebuild
+  wpa_drop_all_networks
+  wpa_cli -i "$interface" set update_config 1
+
+  settings_region=`egrep "^wifi.region" ${config_file}|sed "s/wifi.region=//g"`
+  wpa_cli -i "$interface" set country "$settings_region"
+
+  # iterate through all network ...
+  for i in {1..3}; do
+    rb_wifi_configure $i
+  done
+
+  #cat /etc/dhcpcd.conf | recallog
+
+  # write wpa_supplicant configuration
+  mount -o remount,rw /
+    wpa_cli -i "$interface" save_config
+  mount -o remount,ro /
+
+  #cat /etc/dhcpcd.conf | recallog
+}
+
+start() {
+  # turn on rf signals
+  if [ -c /dev/rfkill ]; then
+    rfkill unblock all
+  fi
+
+  if [ -f "$config_file" ]; then
+    if [ `egrep "^wifi.enabled" ${config_file}|sed "s/wifi.enabled=//g"` -ne 0  ]; then
+      recallog "Wifi option enabled, trying to configure"
+      sleep 2 # wait a bit to be sure tmpfs is initialized
+      enable_wifi
+    else
+      recallog "Wifi option disabled"
+      stop
     fi
-    if [ -n "${key}" ]; then
-      echo "Passphrase=${key}" >> "${outputFile}"
-    fi
+  else
+    recallog "${config_file} not found"
+  fi
+
+  # If share over network, let's add a timeout of 10 seconds (max) for slow networks
+  if [ `grep -c "^sharedevice=NETWORK$" ${config_file}` -ne 0 ]; then
+    try=0
+    until [ ! $try -lt 10 ]
+    do
+      if [ `ifconfig |grep -v "127.0.0.1"|grep -c "inet addr"` -gt 0 ]; then
+        break # Of course if network is OK, don't wait anymore!
+      fi
+      sleep 1
+      try=`expr $try + 1`
+    done
   fi
 }
 
-## Global variables ##
+stop() {
+  # stop wpa_supplicant
+  killall -q wpa_supplicant
 
-recalboxConfig=$(cat /boot/recalbox-backup.conf 2> /dev/null)
+  # disable interface
+  ifconfig "$interface" down
+}
 
-## Main ##
+# Main
+case "$1" in
+  start)
+    start
+	;;
+  stop)
+    stop
+	;;
+  restart|reload)
+    stop
+    start
+	;;
+  *)
+    echo "Usage $0 {start|stop|restart}"
+    exit 1
+esac
 
-if [ -z "${recalboxConfig}" ]; then
-  recallog "No /boot/recalbox-backup.conf found to recover wifi configuration from."
-  exit 0
-fi
-
-if [ $(readSetting wifi.enabled) -ne 1  ]; then
-  recallog "Wifi option disabled"
-  exit 0
-fi
-
-recallog "Wifi option enabled, trying to configure"
-for i in '' 2 3; do
-  writeConnmanConfig $i
-done
-waitForConnmanDaemon
-connmanctl enable wifi || exit 1
-wifiRegion=$(readSetting wifi.region)
-if [ -n "${wifiRegion}" ]; then
-  recallog "Wifi region: ${wifiRegion}"
-  iw reg set "${wifiRegion}"
-fi
-
-exit 0
+exit $?

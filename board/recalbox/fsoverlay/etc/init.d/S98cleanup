@@ -61,4 +61,7 @@ doClean "/etc/init.d/S03populate"
 doClean "/etc/init.d/S04populate"
 doClean "/etc/init.d/S05acpid"
 
+# V6.1.1
+doClean "/etc/init.d/S08connman"
+
 exit 0
