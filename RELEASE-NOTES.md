@@ -15,6 +15,7 @@
 - New wifi management
 - Improve Blutooth association
 - Bump FreeIntV to include latest fixes
+- Bump FBNeo to include latest fixes
 
 ### Fixes
 - Fix Reicast on XU4 and PC platforms and fix wrong flycast entry on Rpi

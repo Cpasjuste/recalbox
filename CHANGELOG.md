@@ -37,6 +37,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Add Retro City controller defaults
 - Add videosnaps config keys in recalbox.conf
 - Bump FreeIntV
+- Bump FBNeo
 
 ## [6.1]
 - Replacement of the neogeo intro video
