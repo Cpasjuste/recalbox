@@ -142,23 +142,23 @@ endef
 
 # Add necessary dependencies
 # System: amiga600
-ifeq ($(BR2_PACKAGE_AMIBERRY),y)
- 	RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-amiga600
+ifneq ($(BR2_PACKAGE_AMIBERRY)$(BR2_PACKAGE_LIBRETRO_UAE),)
+        RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-amiga600
 endif
  	
 # System: amiga1200
-ifeq ($(BR2_PACKAGE_AMIBERRY),y)
- 	RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-amiga1200
+ifneq ($(BR2_PACKAGE_AMIBERRY)$(BR2_PACKAGE_LIBRETRO_UAE),)
+        RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-amiga1200
 endif
 
 # System: amigacd32
-ifeq ($(BR2_PACKAGE_AMIBERRY),y)
-    RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-amigacd32
+ifneq ($(BR2_PACKAGE_AMIBERRY),)
+        RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-amigacd32
 endif
 
 # System: amigacdtv
-#ifeq ($(BR2_PACKAGE_AMIBERRY),y)
-#    RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-amigacdtv
+#ifneq ($(BR2_PACKAGE_AMIBERRY)$(BR2_PACKAGE_LIBRETRO_UAE),)
+#        RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-amigacdtv
 #endif
  	
 # System: amstradcpc
@@ -424,11 +424,6 @@ ifneq ($(BR2_PACKAGE_LIBRETRO_NP2KAI),)
         RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-pc98
 endif
 
-# System: supergrafx
-ifneq ($(BR2_PACKAGE_LIBRETRO_BEETLE_SUPERGRAFX),)
-        RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-supergrafx
-endif
-
 # System: psp
 ifeq ($(BR2_PACKAGE_PPSSPP),y)
 	RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-psp
@@ -444,9 +439,14 @@ ifneq ($(BR2_PACKAGE_LIBRETRO_PRBOOM),)
         RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-prboom
 endif
 
-# System: scummvm
-ifeq ($(BR2_PACKAGE_SCUMMVM),y)
-        RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-scummvm
+# System: samcoupe
+ifeq ($(BR2_PACKAGE_SIMCOUPE),y)
+	RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-samcoupe
+endif
+
+# System: saturn
+ifneq ($(BR2_PACKAGE_LIBRETRO_BEETLE_SATURN)$(BR2_PACKAGE_LIBRETRO_KRONOS)$(BR2_PACKAGE_LIBRETRO_YABASANSHIRO)$(BR2_PACKAGE_LIBRETRO_YABAUSE),)
+        RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-saturn
 endif
 
 # System: sega32x
@@ -464,14 +464,14 @@ ifneq ($(BR2_PACKAGE_LIBRETRO_GENESISPLUSGX)$(BR2_PACKAGE_LIBRETRO_GEARSYSTEM),)
         RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-sg1000
 endif
 
+# System: scummvm
+ifeq ($(BR2_PACKAGE_SCUMMVM),y)
+        RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-scummvm
+endif
+
 # System: snes
 ifneq ($(BR2_PACKAGE_LIBRETRO_SNES9X2002)$(BR2_PACKAGE_LIBRETRO_SNES9X2005)$(BR2_PACKAGE_LIBRETRO_SNES9X2010)$(BR2_PACKAGE_LIBRETRO_SNES9X),)
         RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-snes
-endif
-
-# System: samcoupe
-ifeq ($(BR2_PACKAGE_SIMCOUPE),y)
-	RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-samcoupe
 endif
 
 # System: satellaview
@@ -487,6 +487,11 @@ endif
 # System: sufami
 ifneq ($(BR2_PACKAGE_LIBRETRO_SNES9X),)
 	RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-sufami
+endif
+
+# System: supergrafx
+ifneq ($(BR2_PACKAGE_LIBRETRO_BEETLE_SUPERGRAFX),)
+        RECALBOX_ROMFS_DEPENDENCIES += recalbox-romfs-supergrafx
 endif
 
 # System: thomson

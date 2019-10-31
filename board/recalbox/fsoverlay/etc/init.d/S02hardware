@@ -1,5 +1,8 @@
 #!/bin/ash
 
 if [ "$1" == "start" ]; then
+  if [ "$(uname -m)" == "x86_64" ]; then
+    /recalbox/system/hardware/videocard/nvidia-install
+  fi
   python2.7 /recalbox/system/hardware/case/manage.pyc "" 1 1 0
 fi

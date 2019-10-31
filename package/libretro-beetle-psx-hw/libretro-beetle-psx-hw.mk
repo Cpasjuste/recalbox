@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-LIBRETRO_BEETLE_PSX_HW_VERSION = 3e3acfc4d2d05d20858c775141dec802e2ea671e
+LIBRETRO_BEETLE_PSX_HW_VERSION = e4c36745a35a492b947bbc5ee92a3d4f120b69db
 LIBRETRO_BEETLE_PSX_HW_SITE = $(call github,libretro,beetle-psx-libretro,$(LIBRETRO_BEETLE_PSX_HW_VERSION))
 
 define LIBRETRO_BEETLE_PSX_HW_BUILD_CMDS

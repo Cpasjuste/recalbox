@@ -1,6 +1,6 @@
 --- a/retroarch.c
 +++ b/retroarch.c
-@@ -732,6 +732,7 @@
+@@ -802,6 +802,7 @@
     RA_OPT_EOF_EXIT,
     RA_OPT_LOG_FILE,
     RA_OPT_MAX_FRAMES,
@@ -8,17 +8,16 @@
     RA_OPT_MAX_FRAMES_SCREENSHOT,
     RA_OPT_MAX_FRAMES_SCREENSHOT_PATH
  };
-@@ -17357,7 +17358,8 @@
- #endif
-    puts("      --nick=NICK       Picks a username (for use with netplay). "
-          "Not mandatory.");
--
-+   puts("      --hash=HASH       Force a ROM hash. "
-+         "Not mandatory.");
-    puts("  -r, --record=FILE     Path to record video file.\n        "
-          "Using .mkv extension is recommended.");
-    puts("      --recordconfig    Path to settings used during recording.");
-@@ -17450,6 +17452,7 @@
+@@ -17357,6 +17358,8 @@
+ 
+       strlcat(buf, "      --nick=NICK       Picks a username (for use with netplay). "
+             "Not mandatory.\n", sizeof(buf));
++      puts("      --hash=HASH       Force a ROM hash. "
++            "Not mandatory.");
+       strlcat(buf, "  -r, --record=FILE     Path to record video file.\n        "
+             "Using .mkv extension is recommended.\n", sizeof(buf));
+       strlcat(buf, "      --recordconfig    Path to settings used during recording.\n", sizeof(buf));
+@@ -21851,6 +21853,7 @@
        { "bps",                1, NULL, RA_OPT_BPS },
        { "ips",                1, NULL, RA_OPT_IPS },
        { "no-patch",           0, NULL, RA_OPT_NO_PATCH },
@@ -26,7 +25,7 @@
        { "detach",             0, NULL, 'D' },
        { "features",           0, NULL, RA_OPT_FEATURES },
        { "subsystem",          1, NULL, RA_OPT_SUBSYSTEM },
-@@ -17878,6 +17881,11 @@
+@@ -22302,6 +22304,11 @@
                 }
                 break;
  
@@ -40,7 +39,7 @@
                          &recording_width,
 --- a/retroarch.h
 +++ b/retroarch.h
-@@ -278,6 +278,7 @@
+@@ -248,6 +248,7 @@
        char ips[8192];
        char label[8192];
        char *remapfile;
@@ -50,7 +49,7 @@
     /* Recording. */
 --- a/tasks/task_content.c
 +++ b/tasks/task_content.c
-@@ -666,6 +666,7 @@
+@@ -702,6 +702,7 @@
        int64_t *length)
  {
     uint8_t *ret_buf          = NULL;
@@ -58,7 +57,7 @@
  
     RARCH_LOG("%s: %s.\n",
           msg_hash_to_str(MSG_LOADING_CONTENT_FILE), path);
-@@ -713,7 +714,13 @@
+@@ -749,7 +750,13 @@
           }
        }
        else
@@ -73,7 +72,7 @@
     }
  
     *buf = ret_buf;
-@@ -903,6 +910,7 @@
+@@ -939,6 +946,7 @@
  {
     unsigned i;
     retro_ctx_load_content_info_t load_info;
@@ -81,7 +80,7 @@
     bool used_vfs_fallback_copy = false;
  #ifdef __WINRT__
     rarch_system_info_t *system = runloop_get_system_info();
-@@ -1051,6 +1059,10 @@
+@@ -1087,6 +1095,10 @@
  
           RARCH_LOG("%s\n", msg_hash_to_str(
                    MSG_CONTENT_LOADING_SKIPPED_IMPLEMENTATION_WILL_DO_IT));
@@ -92,7 +91,7 @@
           pending_content_rom_crc      = true;
           strlcpy(pending_content_rom_crc_path,
                 path, sizeof(pending_content_rom_crc_path));
-@@ -2383,6 +2395,7 @@
+@@ -2406,6 +2418,7 @@
              (const char*)pending_content_rom_crc_path);
        RARCH_LOG("CRC32: 0x%x .\n", (unsigned)content_rom_crc);
     }

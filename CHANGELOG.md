@@ -2,10 +2,41 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [6.1.1]
+- Add zfast shaders
+- Fix reicast on XU4 & PC
+- Fix Flycast on RPi
+- Fix Amstrad GX4000 .cpr/.bin extensions
+- Fix libretro-uae bios list
+- Fix GPIO driver not loading
+- Fix random crashes while mapping pads
+- Improved multi-event filtering while mapping pads
+- Odroid XU4 fan control optimization
+- Fix aple2gs configgen and patch emulator to support dpads
+- Change apple II mapping from L/R to A/B
+- Make PiSNES fullscreen
+- Fix demo screen ratio
+- Fix Arcade system not available in GUI
+- Fix demo mode on PC (no infinite run)
+- Bump Retroarch to 1.7.9
+- Bump kernel firmwares
+- Fix emulationstation reporting wrong free space
+- Fix configgen exit in demo mode
+- Fix missing apple IIGS bios information
+- Odroid C2 removed from supported boards
+- Add new Game Boy shader
+- Fix diacritic characters lowercasing/uppercasing
+- Fix atari800 core crashes
+- Fix enable cheevos badge in retroarch menu (retroachievement.org)
+- Make advancemame available on xu4, x86 and x64
+- Set Retroarch threaded_video option to off by default
+- Fix component video still active while scrolling
+- Wifi: connman replaced by wpa_supplicant
+
 ## [6.1]
 - Replacement of the neogeo intro video
 - Fix : bug introrecaboxsms.mp4 is not playing fixed with reencoding
-- Enable vsync in dolphin-emu
+- Enable Vsync in dolphin-emu
 - Enable VSync on retroarch (x86, x86_64)
 - Fix: adding gpicase specific video dpi overlay
 - Fix: adding gpicase specific audio pwm overlay
@@ -45,10 +76,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Moga Pro Power, Wiimote, Logitech RumblePad added to es_input.cfg
 - Enable threaded-dsp option in 4do core
 - Bluetooth: Previously configured pads automatically unpaired before pairing again
-- Bump retroarch to 1.7.7+
+- Bump retroarch to 1.7.8
 - Bump Odroid XU4 kernel to 4.14
 - More firmwares and drivers added
-- Bump libretro pcsx_rearmed to support .chd files
+- Bump libretro pcsx_rearmed to support .chd files and "optimized" PSXONPSP660.bin BIOS
 - Wifi password encryption removed
 - Bump raspberry pi firmware - Compatible Pi 3A+
 - New video snaps
@@ -78,9 +109,17 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Add TIC-80 emulator (libretro-tic80)
 - Replace old ScreenScraper scraper with a new one using API v2
 - Replace old TheGameDB scraper with a new one usign latest APIs
-- Vice x64sc (accurate) emulator for Commodore 64
+- Add Vice x64sc (accurate) emulator for Commodore 64
 - Remove generic MSX in favor of new MSXturboR system
-- Add Atomiswave, NAOMI and new Dreamcast emulator on x86(_64) (libretro-flycast)
+- Add Atomiswave, NAOMI and new Dreamcast emulator on x86_64 (libretro-flycast)
+- Add Saturn libretro emulators (mednafen_saturn, yabause and yabasanshiro) on x86(_64)
+- Add new recalbox/retroarch/core configuration override par system/folder/game
+- Switch default retroarch ui to ozone
+- Improved RGUI configuration on GPI
+- Fix post-upgrade cleanup
+- Add new recalbox.conf keys to ease AI Service configuration
+- Add arcade meta-system
+- Add amiga emulator (libretro-uae) on all platforms
 
 ## [6.0] - DragonBlaze
 - Change name from 5.0 to 6.0 DragonBlaze

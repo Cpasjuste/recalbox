@@ -1,5 +1,42 @@
 # Release notes
 
+## Version 6.1.1
+
+### News
+
+### Improvements
+- Add zfast shaders, fast CRT shaders for all platforms
+- Odroid C2 removed from supported boards
+- Improved button filtering while mapping pads (especially PS2/PS3 pads)
+- Make apple II mapping more consistent: Use button A/B instead of L/R
+- Bump Retroarch to 1.7.9
+- Bump kernel firmwares to latest version
+- Add new Game Boy shader
+- New wifi management
+
+### Fixes
+- Fix Reicast on XU4 and PC platforms and fix wrong flycast entry on Rpi
+- Fix .cpr and .bin extensions for the Amstrad GX4000 system
+- Fix libretro-uae bios list
+- Fix GPIO driver not loading (Arcade, GameCon & DB9)
+- Fix random crashed while remapping pads
+- Fix AppleIIGS not running with some pads
+- Fix AppleIIGS multidisk game configuration
+- Fix PiSNES fullscreen/integer-scale
+- Fix demo screen ratio on non-16:9 screens
+- Fix Arcade system not available in GUI
+- Fix demo mode on PC (first game launched no longer runs indefinitely)
+- Fix emulationstation reporting wrong free space in System menu
+- Fix demo mode exit after the user pressed start
+- Fix missing apple IIGS bios information in Manager and bios/readme.txt
+- Fix diacritic characters in uppercase texts
+- Fix atari800 core crashes
+- Fix enable cheevos badge in retroarch menu (retroachievement.org)
+- Fix advancemame availability on xu4, x86 and x64
+- Fix some retroarch core random crashes and/or lags/slowness
+- Fix videosnaps crashs/artifects while scrolling
+
+
 ## Version 6.1
 
 ### News
@@ -21,17 +58,25 @@
 - New system! Atomiswave added with libretro's flycast emulator (pc only)
 - New system! NAOMI added with libretro's flycast emulator (pc only)
 - New core! Added flycast libretro core. Dreamcast (et al.) emulator
+- New system! Saturn added with libretro's bettle-saturn, yabause and yabasanshiro emulators (pc only)
+- New configuration override system to fine tune all configuration per system, per folder or per game
+- Easy AI Service configuration (Retroarch translation service)
+- Add Arcade meta-system to group piFBA, FBN, MAME and Neogeo into a single system
+- New core! Added UAE libretro core. (Experimental) Amiga emulator on all platforms
+- New documentation available on gitbook: http://recalbox.gitbook.io (still WIP)
 
 ### Improvements
-- Retroarch updated to version 1.7.7+!
-- Retroarch cheats updated to version 1.7.7!
+- Retroarch updated to version 1.7.8v3!
+- Retroarch cheats updated to version 1.7.8!
+- Switched default Retroarch UI to Ozone (except on GPI)
+- Improved RGUI configuration on GPI
 - Libretro core updated! FBA Libretro core updated to latest version (Neogeo CDRom Speed fix)
 - Libretro core updated! Picodrive updated to latest version (Fix shifted down screen)
 - Libretro core updated! Theodore updated to latest version (add emulation of Thomson MO6 and Olivetti Prodest PC128)
 - Libretro core updated! Migrate Glupen64 to Mupen64Plus
 - Libretro core split! Rebrand stella to stella2014 and add upstream stella core
-- Emulator updated! ScummVM updated to July 2019 version (new theme included)
-- Emulator updated! ResidualVM updated to July 2019 Version
+- Emulator updated! ScummVM updated to September 2019 version (new theme included)
+- Emulator updated! ResidualVM updated to September 2019 Version
 - Emulator updated! Linapple-Pie now uses upstream repository
 - Emulator updated! Oricutron updated
 - Enable both hotkeys and I2C on RasberryPi GPIO
@@ -77,7 +122,6 @@
 - Fix Amiga multi-disk bug with [] characters
 - Fix Amiga WHDL loader
 - Fix default scraper
-
 
 ## Version 6.0 - DragonBlaze
 
