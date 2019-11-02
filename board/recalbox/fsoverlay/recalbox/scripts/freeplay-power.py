@@ -38,7 +38,7 @@ STOP_REQ = 20 # Stop/start button input, active low to shutdown RPi
 LOW_BATT = 7  # GPIO7 = low batt from MCU supervisor chip
 
 # recalbox: set btn timeout to 0 instead 4 seconds
-pwr_btn_timeout = 0.0   # how many seconds does the power button need to be held
+pwr_btn_timeout = 0.1   # how many seconds does the power button need to be held
 pwr_btn_edge_start = 0
 
 low_batt_timeout = 60.0
