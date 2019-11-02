@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-FBCP_ILI9341_VERSION = a075f798fa42e30d4da4fa09aa0084138090bce1
+FBCP_ILI9341_VERSION = 16c9e9c38844ff60775e3d96b8125ac49227ab04
 FBCP_ILI9341_SITE = $(call github,Cpasjuste,fbcp-ili9341,$(FBCP_ILI9341_VERSION))
 FBCP_ILI9341_DEPENDENCIES += rpi-userland
 
