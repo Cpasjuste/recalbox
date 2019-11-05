@@ -12,7 +12,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Fix random crashes while mapping pads
 - Improved multi-event filtering while mapping pads
 - Odroid XU4 fan control optimization
-- Fix aple2gs configgen and patch emulator to support dpads
+- Fix apple2gs configgen and patch emulator to support dpads
 - Change apple II mapping from L/R to A/B
 - Make PiSNES fullscreen
 - Fix demo screen ratio
@@ -28,10 +28,16 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Fix diacritic characters lowercasing/uppercasing
 - Fix atari800 core crashes
 - Fix enable cheevos badge in retroarch menu (retroachievement.org)
-- Make advancemame available on xu4, x86 and x64
+- Make advancemame available on xu4 and x86 (not x64)
 - Set Retroarch threaded_video option to off by default
 - Fix component video still active while scrolling
 - Wifi: connman replaced by wpa_supplicant
+- Bluetooth: improve association
+- Bluetooth: option to enable or disable ERTM in recalbox.conf
+- Add Retro City controller defaults
+- Add videosnaps config keys in recalbox.conf
+- Bump FreeIntV
+- Bump FBNeo
 
 ## [6.1]
 - Replacement of the neogeo intro video
