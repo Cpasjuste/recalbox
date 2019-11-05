@@ -5,8 +5,7 @@
 ################################################################################
 
 LIBRETRO_UAE_VERSION = 7088adcf41aa22118d507016be5a87148cc9dbe1
-LIBRETRO_UAE_SITE = git://github.com/libretro/libretro-uae.git
-LIBRETRO_UAE_SITE_METHOD = git
+LIBRETRO_UAE_SITE = $(call github,libretro,libretro-uae,master)
 
 ifeq ($(BR2_PACKAGE_RPI_USERLAND),y)
 UAEPLATFORM=rpi
