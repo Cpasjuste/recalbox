@@ -239,20 +239,6 @@ pin56_stop()
     fi
 }
 
-freeplay_start()
-{
-    python /recalbox/scripts/freeplay-power.py &
-    pid=$!
-    echo "$pid" > /tmp/freeplay-power.pid
-    wait "$pid"
-}
-freeplay_stop()
-{
-    if [[ -f /tmp/freeplay-power.pid ]]; then
-        kill `cat /tmp/freeplay-power.pid`
-    fi
-}
-
 # First parameter must be start or stop
 if [[ "$1" != "start" && $1 != "stop" ]]; then
     exit 1
@@ -297,9 +283,5 @@ case "$CONFVALUE" in
     "PIN356PUSHRESET")
         echo "will start pin356_$1"
         pin356_$1 push
-    ;;
-    "FREEPLAY")
-        echo "will start freeplay_$1"
-        freeplay_$1
     ;;
 esac
