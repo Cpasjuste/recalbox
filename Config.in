@@ -32,7 +32,6 @@ menu "Recalbox"
 	 source "$BR2_EXTERNAL_RECALBOX_PATH/package/guichan/Config.in"
 	 source "$BR2_EXTERNAL_RECALBOX_PATH/package/nvidia-driver-recalbox/Config.in"
 menu "Freeplay"
-	 source "$BR2_EXTERNAL_RECALBOX_PATH/package/freeplay-support/Config.in"
 	 source "$BR2_EXTERNAL_RECALBOX_PATH/package/fbcp-ili9341/Config.in"
 	 source "$BR2_EXTERNAL_RECALBOX_PATH/package/mk_arcade_joystick_freeplay/Config.in"
 endmenu

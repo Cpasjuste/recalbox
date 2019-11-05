@@ -30,7 +30,8 @@ define MK_ARCADE_JOYSTICK_FREEPLAY_BUILD_CMDS
 endef
 
 define MK_ARCADE_JOYSTICK_FREEPLAY_INSTALL_TARGET_CMDS
-	$(MAKE) -C $(@D) $(LINUX_MAKE_FLAGS) KERNELDIR=$(LINUX_DIR) modules_install
+	# mk_arcade_joystick_freeplay.ko will replace mk_arcade_joystick_rpi.ko at runtime (recalbox-hardware)
+	cp $(@D)/mk_arcade_joystick_rpi.ko $(TARGET_DIR)/lib/modules/$(LINUX_VERSION_PROBED)/extra/mk_arcade_joystick_freeplay.ko
 endef
 
 $(eval $(generic-package))

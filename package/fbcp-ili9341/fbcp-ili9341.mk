@@ -22,8 +22,10 @@ FBCP_ILI9341_PRE_CONFIGURE_HOOKS += FBCP_ILI9341_CROSS_FIXUP
 define FBCP_ILI9341_INSTALL_TARGET_CMDS
 	$(INSTALL) -m 0755 -D $(@D)/fbcp-ili9341 $(TARGET_DIR)/usr/bin
 endef
-define FBCP_ILI9341_INSTALL_INIT_SYSV
-	$(INSTALL) -m 0755 -D $(FBCP_ILI9341_PKGDIR)/S04fbcp-ili9341 $(TARGET_DIR)/etc/init.d/S04fbcp-ili9341
-endef
+
+# fbcp will be enabled at runtime for freeplay cm3 (recalbox-hardware)
+#define FBCP_ILI9341_INSTALL_INIT_SYSV
+#	$(INSTALL) -m 0755 -D $(FBCP_ILI9341_PKGDIR)/S04fbcp-ili9341 $(TARGET_DIR)/etc/init.d/S04fbcp-ili9341
+#endef
 
 $(eval $(cmake-package))
